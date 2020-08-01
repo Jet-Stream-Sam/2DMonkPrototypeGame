@@ -1,11 +1,16 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class ScrollRectPageItem : MonoBehaviour, ISelectHandler
 {
+    private GameManager globalManager;
+    private InputMaster controls;
+
     public System.Action<int> OnPageItemSelected;
 
     private ISettingsFuncionality pageItemFuncionality;
@@ -19,23 +24,32 @@ public class ScrollRectPageItem : MonoBehaviour, ISelectHandler
     private void Awake()
     {
         pageItemFuncionality = GetComponent<ISettingsFuncionality>();
+
     }
 
-    private void Update()
+    private void Start()
     {
-        InputHandler();
-        
+        globalManager = GameManager.Instance;
+        controls = globalManager.controls;
+        controls.UIExtra.SwitchOptions.performed += OnButtonPressed;
     }
-
-    private void InputHandler()
+    public void OnButtonPressed(InputAction.CallbackContext context)
     {
-        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.Return))
-        {
-            if (EventSystem.current.currentSelectedGameObject == gameObject && pageItemFuncionality != null) pageItemFuncionality.SwitchRight();
-        }
-        else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+        float options = context.ReadValue<float>();
+
+        if(options == -1)
         {
             if (EventSystem.current.currentSelectedGameObject == gameObject && pageItemFuncionality != null) pageItemFuncionality.SwitchLeft();
         }
+        else if(options == 1)
+        {
+            if (EventSystem.current.currentSelectedGameObject == gameObject && pageItemFuncionality != null) pageItemFuncionality.SwitchRight();
+        }
     }
+
+    private void OnDestroy()
+    {
+        controls.UIExtra.SwitchOptions.performed -= OnButtonPressed;
+    }
+
 }

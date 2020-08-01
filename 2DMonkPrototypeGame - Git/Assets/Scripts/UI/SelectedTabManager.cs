@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SelectedTabManager : MonoBehaviour
 {
+    private GameManager globalManager;
+    private InputMaster controls;
+
     public int selectedTabIndex = -1;
 
-    
+
     private IUIAnimation lastTab;
     private ITabFunction tabFunction;
     private SelectedTabReciever[] tabs;
@@ -18,15 +22,18 @@ public class SelectedTabManager : MonoBehaviour
     }
     private void Start()
     {
+        globalManager = GameManager.Instance;
+        controls = globalManager.controls;
 
+        controls.UIExtra.SwitchTabs.performed += OnButtonPressed;
         foreach (var tab in tabs)
         {
-            tab.OnTabSelected += SlotSelected;
+            tab.OnTabSelected += TabSelected;
         }
         tabs[0].Select();
     }
 
-    void SlotSelected(int tabIndex, IUIAnimation tab)
+    void TabSelected(int tabIndex, IUIAnimation tab)
     {
         
         if(tabIndex != selectedTabIndex && lastTab != tab)
@@ -39,24 +46,13 @@ public class SelectedTabManager : MonoBehaviour
         }
         if (tabFunction != null) tabFunction.OnActivate(tabIndex);
     }
-    private void Update()
-    {
-        InputHandler();
 
-    }
-    private void InputHandler()
+
+    public void OnButtonPressed(InputAction.CallbackContext context)
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            int newIndex = selectedTabIndex;
-            newIndex += 1;
-            if(newIndex >= tabs.Length)
-            {
-                newIndex = 0;
-            }
-            tabs[newIndex].Select();
-        }
-        if (Input.GetKeyDown(KeyCode.Q))  
+        float options = context.ReadValue<float>();
+
+        if (options == -1)
         {
             int newIndex = selectedTabIndex;
             newIndex -= 1;
@@ -66,5 +62,21 @@ public class SelectedTabManager : MonoBehaviour
             }
             tabs[newIndex].Select();
         }
+        else if (options == 1)
+        {
+            int newIndex = selectedTabIndex;
+            newIndex += 1;
+            if (newIndex >= tabs.Length)
+            {
+                newIndex = 0;
+            }
+            tabs[newIndex].Select();
+        }
+        
+    }
+
+    private void OnDestroy()
+    {
+        controls.UIExtra.SwitchTabs.performed -= OnButtonPressed;
     }
 }
