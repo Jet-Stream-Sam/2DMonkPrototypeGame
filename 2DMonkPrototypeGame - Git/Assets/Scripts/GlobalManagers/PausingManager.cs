@@ -1,0 +1,38 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+
+public class PausingManager : MonoBehaviour
+{
+
+    private void Start()
+    {
+        SceneManager.activeSceneChanged += SceneChanged;
+    }
+
+    
+    public bool isGamePaused = false;
+  
+    public void Pause(GameObject pMenu)
+    {
+        if (pMenu.activeInHierarchy || !isGamePaused)
+        {
+            isGamePaused = !isGamePaused;
+
+            pMenu.SetActive(isGamePaused);
+            Time.timeScale = isGamePaused ? 0 : 1;
+
+            if (isGamePaused) pMenu.GetComponent<MenuFirstSelected>().ChangeFirstButtonSelected();
+        }
+        
+    }
+
+    private void SceneChanged(Scene arg0, Scene arg1)
+    {
+        isGamePaused = false;
+        Time.timeScale = 1;
+    }
+}

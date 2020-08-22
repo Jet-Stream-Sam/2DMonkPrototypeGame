@@ -7,8 +7,9 @@ using UnityEngine.InputSystem.Controls;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private GameManager globalManager;
     private InputMaster controls;
-    
+
     private float movementX;
     private float easingMovementX;
     private bool isHoldingJumpButton;
@@ -36,8 +37,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-        controls = new InputMaster();
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void Start()
+    {
+        globalManager = GameManager.Instance;
+        controls = globalManager.controls;
 
         #region Input Handling
         controls.Player.Jump.performed += OnJump;
@@ -46,10 +52,9 @@ public class PlayerMovement : MonoBehaviour
 
         controls.Player.Movement.performed += OnMove;
         controls.Player.Movement.canceled += OnCancelingMove;
+
         #endregion
     }
-
-    
 
     private void Update()
     {
@@ -112,16 +117,6 @@ public class PlayerMovement : MonoBehaviour
         movementX = 0;
     }
 
-    private void OnEnable()
-    {
-        controls.Enable();
-    }
-
-    private void OnDisable()
-    {
-        controls.Disable();
-    }
-
     private void OnDrawGizmos()
     {
         if (debugActivated)
@@ -130,5 +125,15 @@ public class PlayerMovement : MonoBehaviour
             Gizmos.DrawWireSphere(groundCheck.position, groundRadius);
         }
         
+    }
+
+    private void OnDestroy()
+    {
+        controls.Player.Jump.performed -= OnJump;
+        controls.Player.Jump.started -= OnPressingJump;
+        controls.Player.Jump.canceled -= OnReleasingJump;
+
+        controls.Player.Movement.performed -= OnMove;
+        controls.Player.Movement.canceled -= OnCancelingMove;
     }
 }

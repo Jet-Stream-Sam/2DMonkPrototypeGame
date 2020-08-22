@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-
     public InputMaster controls;
+
+    
     private void Awake()
     {
         #region Singleton
@@ -21,7 +23,7 @@ public class GameManager : MonoBehaviour
         }
         #endregion
         controls = new InputMaster();
-        
+
     }
 
     private void OnEnable()

@@ -539,6 +539,14 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""4b3dc865-4cc1-41b5-8332-df0902350bb2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -706,6 +714,28 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""action"": ""SwitchOptions"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1264e14e-c479-4497-85f2-16af70a636fc"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GamePad"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""457ca041-c7eb-4105-ae01-60e71084b615"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard-Mouse"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -1022,6 +1052,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         m_UIExtra = asset.FindActionMap("UIExtra", throwIfNotFound: true);
         m_UIExtra_SwitchTabs = m_UIExtra.FindAction("SwitchTabs", throwIfNotFound: true);
         m_UIExtra_SwitchOptions = m_UIExtra.FindAction("SwitchOptions", throwIfNotFound: true);
+        m_UIExtra_Pause = m_UIExtra.FindAction("Pause", throwIfNotFound: true);
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
@@ -1182,12 +1213,14 @@ public class @InputMaster : IInputActionCollection, IDisposable
     private IUIExtraActions m_UIExtraActionsCallbackInterface;
     private readonly InputAction m_UIExtra_SwitchTabs;
     private readonly InputAction m_UIExtra_SwitchOptions;
+    private readonly InputAction m_UIExtra_Pause;
     public struct UIExtraActions
     {
         private @InputMaster m_Wrapper;
         public UIExtraActions(@InputMaster wrapper) { m_Wrapper = wrapper; }
         public InputAction @SwitchTabs => m_Wrapper.m_UIExtra_SwitchTabs;
         public InputAction @SwitchOptions => m_Wrapper.m_UIExtra_SwitchOptions;
+        public InputAction @Pause => m_Wrapper.m_UIExtra_Pause;
         public InputActionMap Get() { return m_Wrapper.m_UIExtra; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1203,6 +1236,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @SwitchOptions.started -= m_Wrapper.m_UIExtraActionsCallbackInterface.OnSwitchOptions;
                 @SwitchOptions.performed -= m_Wrapper.m_UIExtraActionsCallbackInterface.OnSwitchOptions;
                 @SwitchOptions.canceled -= m_Wrapper.m_UIExtraActionsCallbackInterface.OnSwitchOptions;
+                @Pause.started -= m_Wrapper.m_UIExtraActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_UIExtraActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_UIExtraActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_UIExtraActionsCallbackInterface = instance;
             if (instance != null)
@@ -1213,6 +1249,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @SwitchOptions.started += instance.OnSwitchOptions;
                 @SwitchOptions.performed += instance.OnSwitchOptions;
                 @SwitchOptions.canceled += instance.OnSwitchOptions;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -1293,6 +1332,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
     {
         void OnSwitchTabs(InputAction.CallbackContext context);
         void OnSwitchOptions(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
     public interface IPlayerActions
     {

@@ -23,6 +23,7 @@ public class ScaleInNOut : MonoBehaviour, IUIAnimation
     }
     public void OnSelect()
     {
+
         if (LeanTween.isTweening(gameObject)) 
         {
             LeanTween.cancel(gameObject);
@@ -30,7 +31,7 @@ public class ScaleInNOut : MonoBehaviour, IUIAnimation
         }
 
         newScale = transform.localScale * scaleRate;
-        LTDescr animation = LeanTween.scale(gameObject, newScale, time).setEase(tweenType);
+        LTDescr animation = LeanTween.scale(gameObject, newScale, time).setEase(tweenType).setIgnoreTimeScale(true);
 
     }
 
@@ -42,7 +43,7 @@ public class ScaleInNOut : MonoBehaviour, IUIAnimation
             transform.localScale = newScale;
         }
 
-        LTDescr animation = LeanTween.scale(gameObject, originalScale, time).setEase(tweenType);
+        LTDescr animation = LeanTween.scale(gameObject, originalScale, time).setEase(tweenType).setIgnoreTimeScale(true);
           
     }
 

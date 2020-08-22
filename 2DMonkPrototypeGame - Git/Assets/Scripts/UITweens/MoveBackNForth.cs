@@ -31,7 +31,7 @@ public class MoveBackNForth : MonoBehaviour, IUIAnimation
             transform.localPosition = originalPosition;
         }
         newPosition = transform.localPosition + (Vector3)moveDistance;
-        LTDescr animation = LeanTween.moveLocal(gameObject, newPosition, time).setEase(tweenType); 
+        LTDescr animation = LeanTween.moveLocal(gameObject, newPosition, time).setEase(tweenType).setIgnoreTimeScale(true); 
     }
 
     public void OnDeselect()
@@ -42,7 +42,7 @@ public class MoveBackNForth : MonoBehaviour, IUIAnimation
             transform.localPosition = newPosition;
         }
 
-        LTDescr animation = LeanTween.moveLocal(gameObject, originalPosition, time).setEase(tweenType);
+        LTDescr animation = LeanTween.moveLocal(gameObject, originalPosition, time).setEase(tweenType).setIgnoreTimeScale(true);
     }
  
 }
