@@ -1320,7 +1320,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 89634929}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: c84a81ba4ce705641a037e1c6c7b099c, type: 2}
+  m_Material: {fileID: 6200000, guid: d8936edf37f5fcd488052fc3379cea07, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -6952,7 +6952,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 908113884}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: c84a81ba4ce705641a037e1c6c7b099c, type: 2}
+  m_Material: {fileID: 6200000, guid: d8936edf37f5fcd488052fc3379cea07, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -11950,9 +11950,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1434957415}
   - component: {fileID: 1434957416}
+  - component: {fileID: 1434957414}
   - component: {fileID: 1434957417}
   - component: {fileID: 1434957418}
-  - component: {fileID: 1434957414}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -12008,7 +12008,7 @@ Rigidbody2D:
   m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -12027,14 +12027,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundCheck: {fileID: 1637834396}
-  rb: {fileID: 1434957416}
+  playerRigidBody: {fileID: 1434957416}
   playerAnimationsScript: {fileID: 1434957418}
   playerSpriteTransform: {fileID: 869856662}
   moveSpeed: 10
-  easingRate: 0.23
-  jumpHeight: 3.8
-  fallMultiplier: 3.7
-  groundRadius: 0.28
+  easingRate: 0.4
+  jumpSpeed: 1
+  jumpHeight: 4
+  jumpDelay: 0.2
+  fallMultiplier: 4
+  groundRadius: 0.25
   groundMask:
     serializedVersion: 2
     m_Bits: 256
@@ -17468,7 +17470,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 2123945731}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: c84a81ba4ce705641a037e1c6c7b099c, type: 2}
+  m_Material: {fileID: 6200000, guid: d8936edf37f5fcd488052fc3379cea07, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0

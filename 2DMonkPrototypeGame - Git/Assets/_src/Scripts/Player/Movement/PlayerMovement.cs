@@ -17,14 +17,17 @@ public class PlayerMovement : MonoBehaviour
     [Header("Dependencies")]
 
     [SerializeField] private Transform groundCheck;
-    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Rigidbody2D playerRigidBody;
     [SerializeField] private PlayerAnimations playerAnimationsScript;
     [SerializeField] private Transform playerSpriteTransform;
 
     [Header("Movement Variables")]
     [SerializeField] private float moveSpeed = 10;
     [SerializeField] [Range(0.01f, 1)] private float easingRate = 0.6f;
+    [SerializeField] private float jumpSpeed = 2;
     [SerializeField] private float jumpHeight = 5;
+    [SerializeField] private float jumpDelay = 0.2f;
+    private float jumpTimer;
     [SerializeField] private float fallMultiplier = 1.5f;
 
     [Header("Ground Check")]
@@ -36,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool debugActivated = true;
 
     public System.Action hasPerformedJump;
+    
 
     private void Start()
     {
@@ -43,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
         controls = controlManager.controls;
 
         #region Input Handling
-        controls.Player.Jump.performed += OnJump;
+        controls.Player.Jump.performed += _ => jumpTimer = Time.time + jumpDelay;
         controls.Player.Jump.started += _ => isHoldingJumpButton = true;
         controls.Player.Jump.canceled += _ => isHoldingJumpButton = false;
 
@@ -74,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
                 playerAnimationsScript.ChangeAnimationState("player_idle");
             }
         }
-        else if(rb.velocity.y < 0)
+        else if(playerRigidBody.velocity.y < 0)
         {
             playerAnimationsScript.ChangeAnimationState("player_fall");
         }
@@ -92,22 +96,27 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-
-        if (isGrounded && rb.velocity.y < 0)
+        
+        if (isGrounded && jumpTimer > Time.time)
         {
-            rb.velocity = Vector2.up * Physics.gravity.y;
-
+            Jump();
         }
-        else if (rb.velocity.y < 0 || rb.velocity.y > 0 && !isHoldingJumpButton)
+
+        if (isGrounded && playerRigidBody.velocity.y < 0)
+        {
+            playerRigidBody.velocity = Vector2.up * Physics2D.gravity.y;
+        }
+        else if (playerRigidBody.velocity.y < 0 || playerRigidBody.velocity.y > 0 && !isHoldingJumpButton)
         {
             
-            rb.velocity += Vector2.up * Physics.gravity.y * fallMultiplier * Time.deltaTime;
+            playerRigidBody.velocity += Vector2.up * Physics2D.gravity.y * fallMultiplier * Time.deltaTime;
             
         }
+        
 
         float tempSpeed = easingMovementX * moveSpeed;
         
-        rb.velocity = new Vector2(tempSpeed, rb.velocity.y);
+        playerRigidBody.velocity = new Vector2(tempSpeed, playerRigidBody.velocity.y);
 
     }
 
@@ -128,18 +137,14 @@ public class PlayerMovement : MonoBehaviour
         return value;
     }
 
-    public void OnJump(InputAction.CallbackContext context)
+    private void Jump()
     {
-        if (isGrounded)
-        {
-            isGrounded = false;
-            rb.velocity = Vector2.up * Mathf.Sqrt(jumpHeight * -2 * Physics2D.gravity.y);
-            hasPerformedJump?.Invoke();
-            playerAnimationsScript.ChangeAnimationState("player_jump");
-        }
-            
+        isGrounded = false;
+        playerRigidBody.velocity = Vector2.up * Mathf.Sqrt(jumpHeight * -2 * Physics2D.gravity.y * playerRigidBody.gravityScale);
+        hasPerformedJump?.Invoke();
+        playerAnimationsScript.ChangeAnimationState("player_jump");
+        jumpTimer = 0;
     }
-
 
     private void OnDrawGizmos()
     {
@@ -154,7 +159,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnDestroy()
     {
-        controls.Player.Jump.performed -= OnJump;
+        controls.Player.Jump.performed -= _ => jumpTimer = Time.time + jumpDelay;
         controls.Player.Jump.started -= _ => isHoldingJumpButton = true;
         controls.Player.Jump.canceled -= _ => isHoldingJumpButton = false;
 

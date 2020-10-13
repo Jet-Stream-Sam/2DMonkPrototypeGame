@@ -14,6 +14,6 @@ public class PlayerAnimations : MonoBehaviour
         if (CurrentState == newState) return;
 
         CurrentState = newState;
-        spriteAnimator.Play(CurrentState);
+        spriteAnimator.Play(Animator.StringToHash(CurrentState));
     }
 }
