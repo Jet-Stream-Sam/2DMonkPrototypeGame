@@ -2064,7 +2064,6 @@ GameObject:
   - component: {fileID: 11439282}
   - component: {fileID: 11496292}
   - component: {fileID: 11480938}
-  - component: {fileID: 476178779338753514}
   m_Layer: 5
   m_Name: '[Graphy]'
   m_TagString: Untagged
@@ -2219,18 +2218,6 @@ MonoBehaviour:
     UnityEvents:
       m_PersistentCalls:
         m_Calls: []
---- !u!114 &476178779338753514
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 177638}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24208353ac6a908479667dea1ea70196, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &179256
 GameObject:
   m_ObjectHideFlags: 0

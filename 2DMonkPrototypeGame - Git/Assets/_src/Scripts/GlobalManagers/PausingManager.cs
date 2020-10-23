@@ -7,10 +7,14 @@ using UnityEngine.SceneManagement;
 
 public class PausingManager : MonoBehaviour
 {
-
+    private ControlManager controlManager;
+    private InputMaster controls;
     private void Start()
     {
+        controlManager = ControlManager.Instance;
+        controls = controlManager.controls;
         SceneManager.activeSceneChanged += SceneChanged;
+
     }
 
     
@@ -25,8 +29,19 @@ public class PausingManager : MonoBehaviour
             pMenu.SetActive(isGamePaused);
             Time.timeScale = isGamePaused ? 0 : 1;
 
-            if (isGamePaused) pMenu.GetComponent<MenuFirstSelected>().ChangeFirstButtonSelected();
-        }
+            if (isGamePaused)
+            {
+                pMenu.GetComponent<MenuFirstSelected>().ChangeFirstButtonSelected();
+                controls.Player.Disable();
+
+            }
+            else
+            {
+                controls.Player.Enable();
+            }
+
+            
+}
         
     }
 

@@ -9,15 +9,16 @@ public class ControlManager : MonoBehaviour
     private void Awake()
     {
         #region Singleton
-        if (Instance != null)
+        
+        if (Instance == null)
         {
-            Destroy(gameObject);
+            Instance = this;
         }
         else
         {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
+            Destroy(this);
         }
+
         #endregion
         controls = new InputMaster();
 

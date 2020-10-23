@@ -41,6 +41,7 @@ public class PauseMenu : MonoBehaviour
     private void Escape(InputAction.CallbackContext callbackContext)
     {
         PausingManager pManager = controlManager.GetComponent<PausingManager>();
+        
         pManager.Pause(showCanvasObj);
     }
 

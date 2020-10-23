@@ -7,6 +7,7 @@ using UnityEngine.InputSystem.Controls;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private SoundManager soundManager;
     private ControlManager controlManager;
     private InputMaster controls;
 
@@ -39,10 +40,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool debugActivated = true;
 
     public System.Action hasPerformedJump;
-    
+
+    #region Game Sound Names
+    private const string S_PLAYER_JUMP = "player_jump";
+    #endregion
 
     private void Start()
     {
+        soundManager = SoundManager.Instance;
         controlManager = ControlManager.Instance;
         controls = controlManager.controls;
 
@@ -144,6 +149,8 @@ public class PlayerMovement : MonoBehaviour
         hasPerformedJump?.Invoke();
         playerAnimationsScript.ChangeAnimationState("player_jump");
         jumpTimer = 0;
+
+        soundManager.PlaySFX(S_PLAYER_JUMP);
     }
 
     private void OnDrawGizmos()
