@@ -47,6 +47,7 @@ public class PausingManager : MonoBehaviour
 
     private void SceneChanged(Scene arg0, Scene arg1)
     {
+        controls.Player.Enable();
         isGamePaused = false;
         Time.timeScale = 1;
     }
