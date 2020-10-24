@@ -5,7 +5,7 @@ using UnityEngine;
 public class JumpAchievement : MonoBehaviour, IAchievement
 {
     private int timesJumped = 0;
-    public PlayerMainController player;
+    public PlayerMovement player;
     private void Start()
     {
         player.hasPerformedJump += CalculateJumps;

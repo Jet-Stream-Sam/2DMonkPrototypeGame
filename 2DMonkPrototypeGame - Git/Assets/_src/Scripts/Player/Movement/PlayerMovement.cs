@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 
-public class PlayerMovementOLD : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     private SoundManager soundManager;
     private ControlManager controlManager;
@@ -45,8 +45,6 @@ public class PlayerMovementOLD : MonoBehaviour
     private const string S_PLAYER_JUMP = "player_jump";
     #endregion
 
-    private MainStateMachine stateMachine;
-
     private void Start()
     {
         soundManager = SoundManager.Instance;
@@ -73,16 +71,6 @@ public class PlayerMovementOLD : MonoBehaviour
 
         easingMovementX = ClampMovement(easingMovementX);
 
-        if (movementX > 0)
-        {
-            playerSpriteTransform.localScale = new Vector2(1, 1);
-        }
-        else if (movementX < 0)
-        {
-            playerSpriteTransform.localScale = new Vector2(-1, 1);
-        }
-
-        //Deprecated
         if (isGrounded && playerAnimationsScript.CurrentState != "player_jump")
         {
             if (movementX != 0)
@@ -100,13 +88,20 @@ public class PlayerMovementOLD : MonoBehaviour
             playerAnimationsScript.ChangeAnimationState("player_fall");
         }
 
-        
+        if (movementX > 0)
+        {
+            playerSpriteTransform.localScale = new Vector2(1, 1);
+        }
+        else if (movementX < 0)
+        {
+            playerSpriteTransform.localScale = new Vector2(-1, 1);
+        }
 
     }
 
     private void FixedUpdate()
     {
-        //Inside Grounded State
+        
         if (isGrounded && jumpTimer > Time.time)
         {
             Jump();
@@ -147,7 +142,6 @@ public class PlayerMovementOLD : MonoBehaviour
         return value;
     }
 
-    //Jump Behaviour
     private void Jump()
     {
         isGrounded = false;
