@@ -15,7 +15,7 @@ public class PauseMenu : MonoBehaviour
     {
         controlManager = ControlManager.Instance;
         controls = controlManager.controls;
-        controls.UI.Cancel.performed += Escape;
+        controls.UIExtra.Pause.performed += Escape;
     }
     public void ResumeGame()
     {
@@ -47,6 +47,6 @@ public class PauseMenu : MonoBehaviour
 
     private void OnDestroy()
     {
-        controls.UI.Cancel.performed -= Escape;
+        controls.UIExtra.Pause.performed -= Escape;
     }
 }

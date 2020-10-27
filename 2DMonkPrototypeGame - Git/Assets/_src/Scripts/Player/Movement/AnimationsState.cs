@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAnimations : MonoBehaviour
+public class AnimationsState : MonoBehaviour
 {
     [Header("Dependencies")]
     [SerializeField] private Animator spriteAnimator;
@@ -15,5 +15,10 @@ public class PlayerAnimations : MonoBehaviour
 
         CurrentState = newState;
         spriteAnimator.Play(Animator.StringToHash(CurrentState));
+    }
+
+    public float GetCurrentAnimationLength()
+    {
+        return spriteAnimator.GetCurrentAnimatorStateInfo(0).length;
     }
 }

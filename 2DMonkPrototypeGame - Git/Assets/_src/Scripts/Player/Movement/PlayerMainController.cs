@@ -18,8 +18,10 @@ public class PlayerMainController : MonoBehaviour
 
     public Transform groundCheck;
     public Rigidbody2D playerRigidBody;
-    public PlayerAnimations playerAnimationsScript;
+    public AnimationsState playerAnimationsScript;
     public Transform playerSpriteTransform;
+    public HitCheck hitBoxCheck;
+    public PlayerAttackMoveList playerMoveList; 
 
     [Header("Movement Variables")]
     public float moveSpeed = 10;
@@ -58,6 +60,7 @@ public class PlayerMainController : MonoBehaviour
         Controls.Player.Movement.performed += ctx => MovementX = ctx.ReadValue<Vector2>().x;
         Controls.Player.Movement.canceled += _ => MovementX = 0;
 
+        
         #endregion
 
         StateMachine = new MainStateMachine();

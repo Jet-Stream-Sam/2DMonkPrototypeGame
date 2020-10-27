@@ -1,9 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class StandingState : GroundedState
 {
+    private Action<InputAction.CallbackContext> kickAction;
+    private Action<InputAction.CallbackContext> punchAction;
     public StandingState(PlayerMainController controllerScript, MainStateMachine stateMachine) : base(controllerScript, stateMachine)
     {
 
@@ -12,7 +16,20 @@ public class StandingState : GroundedState
     public override void Enter()
     {
         base.Enter();
-        
+        #region Input Handling
+        controllerScript.Controls.Player.Kick.started -= kickAction;
+        controllerScript.Controls.Player.Fireball.started -= punchAction;
+
+
+        kickAction = _ => stateMachine.ChangeState(new StandingAttackState(controllerScript, stateMachine,
+            controllerScript.playerMoveList.Find("player_kick")));
+        controllerScript.Controls.Player.Kick.started += kickAction;
+        punchAction = _ => stateMachine.ChangeState(new StandingAttackState(controllerScript, stateMachine,
+            controllerScript.playerMoveList.Find("player_punch")));
+        controllerScript.Controls.Player.Fireball.started += punchAction;
+
+        #endregion
+
     }
 
     public override void HandleUpdate()
@@ -44,5 +61,13 @@ public class StandingState : GroundedState
     public override void Exit()
     {
         base.Exit();
+
+        controllerScript.Controls.Player.Kick.started -= kickAction;
+        controllerScript.Controls.Player.Fireball.started -= punchAction;
+
     }
+
+    
+    
+    
 }

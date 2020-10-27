@@ -19,7 +19,7 @@ public class PlayerMovementOLD : MonoBehaviour
 
     [SerializeField] private Transform groundCheck;
     [SerializeField] private Rigidbody2D playerRigidBody;
-    [SerializeField] private PlayerAnimations playerAnimationsScript;
+    [SerializeField] private AnimationsState playerAnimationsScript;
     [SerializeField] private Transform playerSpriteTransform;
 
     [Header("Movement Variables")]

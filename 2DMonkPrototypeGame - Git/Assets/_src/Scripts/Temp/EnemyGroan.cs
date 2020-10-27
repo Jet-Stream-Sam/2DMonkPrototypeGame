@@ -6,12 +6,12 @@ using UnityEngine.InputSystem;
 public class EnemyGroan : MonoBehaviour
 {
     private SoundManager soundManager;
+    [SerializeField] private string groanSound;
     private void Start() => soundManager = SoundManager.Instance;
     
-    
-    void Update()
+
+    public void OnTrigger()
     {
-        Keyboard kb = InputSystem.GetDevice<Keyboard>();
-        if(kb.jKey.wasPressedThisFrame) soundManager.PlayOneShotSFX("weird_sound");
+        soundManager.PlayOneShotSFX(groanSound);
     }
 }
