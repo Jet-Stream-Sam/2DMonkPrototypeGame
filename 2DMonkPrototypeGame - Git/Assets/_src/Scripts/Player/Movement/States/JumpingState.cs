@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using UnityEditorInternal;
 using UnityEngine;
+using System;
+using UnityEngine.InputSystem;
 
 public class JumpingState : PlayerState
 {
     #region Game Sound Names
     private const string S_PLAYER_JUMP = "player_jump";
     #endregion
+
+    private Action<InputAction.CallbackContext> kickAction;
 
     private float pastGravityScale;
     public JumpingState(PlayerMainController playerMovement, MainStateMachine stateMachine) : base(playerMovement, stateMachine)
@@ -18,6 +22,14 @@ public class JumpingState : PlayerState
     public override void Enter()
     {
         base.Enter();
+
+        controllerScript.playerAnimationsScript.ChangeAnimationState("player_fall");
+        #region Input Handling
+        controllerScript.Controls.Player.Kick.started -= kickAction;
+        kickAction = _ => stateMachine.ChangeState(new AirborneAttackState(controllerScript, stateMachine,
+           controllerScript.playerMoveList.Find("player_airborne_kick")));
+        controllerScript.Controls.Player.Kick.started += kickAction;
+        #endregion
 
         pastGravityScale = controllerScript.playerRigidBody.gravityScale;
         controllerScript.playerRigidBody.gravityScale = controllerScript.jumpSpeed;
@@ -53,7 +65,7 @@ public class JumpingState : PlayerState
             stateMachine.ChangeState(new FallingState(controllerScript, stateMachine));
         }
 
-        float tempSpeed = easingMovementX * controllerScript.moveSpeed;
+        float tempSpeed = easingMovementX * controllerScript.standingMoveSpeed;
 
         controllerScript.playerRigidBody.velocity =
             new Vector2(tempSpeed, controllerScript.playerRigidBody.velocity.y);
@@ -61,6 +73,7 @@ public class JumpingState : PlayerState
     public override void Exit()
     {
         base.Exit();
+        controllerScript.Controls.Player.Kick.started -= kickAction;
         controllerScript.playerRigidBody.gravityScale = pastGravityScale;
     }
 }

@@ -3,5 +3,12 @@
 [CreateAssetMenu(menuName = "Scriptable Objects/Combat/Player Attack")]
 public class PlayerAttack : Attack
 {
-   
+   public enum EndsAtState
+   {
+       Standing,
+       Crouching,
+       Falling
+   }
+
+    public EndsAtState attackEndsAtState;
 }

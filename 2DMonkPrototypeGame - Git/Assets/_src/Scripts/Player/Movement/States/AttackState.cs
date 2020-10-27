@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem.Interactions;
 
-public class StandingAttackState : GroundedState
+public class AttackState : PlayerState
 {
     private Vector3 initialPlayerScale;
     private bool lockAsyncMethod;
@@ -14,10 +14,11 @@ public class StandingAttackState : GroundedState
     private string audioClipName;
     private bool lockVelocity;
     private bool lockSideSwitch;
+    private PlayerAttack.EndsAtState attackEndsAtState;
 
     private int damage;
 
-    public StandingAttackState(PlayerMainController controllerScript, MainStateMachine stateMachine,
+    public AttackState(PlayerMainController controllerScript, MainStateMachine stateMachine,
        PlayerAttack playerAttackAsset) : base(controllerScript, stateMachine)
     {
         animationToPlay = playerAttackAsset.animationName;
@@ -25,7 +26,9 @@ public class StandingAttackState : GroundedState
         lockVelocity = playerAttackAsset.lockVelocity;
         lockSideSwitch = playerAttackAsset.lockSideSwitch;
         damage = playerAttackAsset.damage;
+        attackEndsAtState = playerAttackAsset.attackEndsAtState;
     }
+
 
     public override void Enter()
     {
@@ -62,10 +65,25 @@ public class StandingAttackState : GroundedState
         await Task.Delay(TimeSpan.FromSeconds(Time.deltaTime + 0.01f));
 
         await Task.Delay(TimeSpan.FromSeconds
-            (controllerScript.playerAnimationsScript.GetCurrentAnimationLength()));
+            (controllerScript.playerAnimationsScript.GetCurrentAnimationLength() - 0.01f));
 
+        switch (attackEndsAtState)
+        {
+            case PlayerAttack.EndsAtState.Crouching:
+                if(isGrounded)
+                    stateMachine.ChangeState(new CrouchingState(controllerScript, stateMachine, 0.15f));
+                else
+                    stateMachine.ChangeState(new FallingState(controllerScript, stateMachine));
+                break;
+            default:
+                if (isGrounded)
+                    stateMachine.ChangeState(new StandingState(controllerScript, stateMachine));
+                else
+                    stateMachine.ChangeState(new FallingState(controllerScript, stateMachine));
+                break;
+
+        }
         
-        stateMachine.ChangeState(new StandingState(controllerScript, stateMachine));
         
     }
 

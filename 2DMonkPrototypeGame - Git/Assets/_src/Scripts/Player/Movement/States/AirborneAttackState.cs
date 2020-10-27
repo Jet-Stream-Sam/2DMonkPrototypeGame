@@ -1,28 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
-using UnityEngine.InputSystem;
 
-public class FallingState : PlayerState
+public class AirborneAttackState : AttackState
 {
-    private Action<InputAction.CallbackContext> kickAction;
-    public FallingState(PlayerMainController controllerScript, MainStateMachine stateMachine) : base(controllerScript, stateMachine)
+    public AirborneAttackState(PlayerMainController controllerScript, MainStateMachine stateMachine, PlayerAttack playerAttackAsset) : base(controllerScript, stateMachine, playerAttackAsset)
     {
 
     }
-
     public override void Enter()
     {
         base.Enter();
-        controllerScript.playerAnimationsScript.ChangeAnimationState("player_fall");
-        #region Input Handling
-        controllerScript.Controls.Player.Kick.started -= kickAction;
-        kickAction = _ => stateMachine.ChangeState(new AirborneAttackState(controllerScript, stateMachine,
-           controllerScript.playerMoveList.Find("player_airborne_kick")));
-        controllerScript.Controls.Player.Kick.started += kickAction;
-        #endregion
-
     }
     public override void HandleUpdate()
     {
@@ -42,7 +30,7 @@ public class FallingState : PlayerState
     }
     public override void Exit()
     {
-        controllerScript.Controls.Player.Kick.started -= kickAction;
         base.Exit();
+        
     }
 }

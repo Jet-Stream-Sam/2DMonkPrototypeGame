@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b0d9c19a2ed173a4995d816dc2439058, type: 3}
-  m_Name: standing_kick
+  m_Name: airborne_kick
   m_EditorClassIdentifier: 
-  animationName: player_kick
-  damage: 50
+  animationName: player_airborne_kick
+  damage: 75
   audioClipName: player_kick
-  lockVelocity: 1
+  lockVelocity: 0
   lockSideSwitch: 1
-  attackEndsAtState: 1
+  attackEndsAtState: 2

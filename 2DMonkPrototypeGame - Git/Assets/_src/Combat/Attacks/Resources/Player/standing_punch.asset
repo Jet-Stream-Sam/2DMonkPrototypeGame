@@ -17,3 +17,4 @@ MonoBehaviour:
   audioClipName: player_punch
   lockVelocity: 1
   lockSideSwitch: 1
+  attackEndsAtState: 0

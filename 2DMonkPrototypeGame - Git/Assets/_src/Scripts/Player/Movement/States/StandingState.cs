@@ -21,10 +21,10 @@ public class StandingState : GroundedState
         controllerScript.Controls.Player.Fireball.started -= punchAction;
 
 
-        kickAction = _ => stateMachine.ChangeState(new StandingAttackState(controllerScript, stateMachine,
+        kickAction = _ => stateMachine.ChangeState(new AttackState(controllerScript, stateMachine,
             controllerScript.playerMoveList.Find("player_kick")));
         controllerScript.Controls.Player.Kick.started += kickAction;
-        punchAction = _ => stateMachine.ChangeState(new StandingAttackState(controllerScript, stateMachine,
+        punchAction = _ => stateMachine.ChangeState(new AttackState(controllerScript, stateMachine,
             controllerScript.playerMoveList.Find("player_punch")));
         controllerScript.Controls.Player.Fireball.started += punchAction;
 
@@ -41,6 +41,10 @@ public class StandingState : GroundedState
 
         base.HandleUpdate();
 
+        if(controllerScript.MovementY < -0.5f)
+        {
+            stateMachine.ChangeState(new CrouchingState(controllerScript, stateMachine));
+        }
         if (controllerScript.jumpTimer > Time.time)
             stateMachine.ChangeState(new JumpingState(controllerScript, stateMachine));
 
@@ -50,7 +54,7 @@ public class StandingState : GroundedState
     {
         base.HandleFixedUpdate();
 
-        float tempSpeed = easingMovementX * controllerScript.moveSpeed;
+        float tempSpeed = easingMovementX * controllerScript.standingMoveSpeed;
 
         controllerScript.playerRigidBody.velocity =
             new Vector2(tempSpeed, controllerScript.playerRigidBody.velocity.y);
