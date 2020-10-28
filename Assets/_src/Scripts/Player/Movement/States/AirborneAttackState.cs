@@ -15,7 +15,12 @@ public class AirborneAttackState : AttackState
     public override void HandleUpdate()
     {
         base.HandleUpdate();
-        if (isGrounded) stateMachine.ChangeState(new StandingState(controllerScript, stateMachine));
+
+        if (isGrounded)
+        {
+            stateMachine.ChangeState(new StandingState(controllerScript, stateMachine));
+            tokenSource.Cancel();
+        }
 
     }
     public override void HandleFixedUpdate()

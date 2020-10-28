@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem.Interactions;
 
 public class AttackState : PlayerState
 {
+    protected CancellationTokenSource tokenSource;
     private Vector3 initialPlayerScale;
     private bool lockAsyncMethod;
 
@@ -61,12 +63,18 @@ public class AttackState : PlayerState
     }
     private async void AttackLoop()
     {
+        tokenSource = new CancellationTokenSource();
+        var token = tokenSource.Token;
+
         lockAsyncMethod = true;
         await Task.Delay(TimeSpan.FromSeconds(Time.deltaTime + 0.01f));
 
+        
         await Task.Delay(TimeSpan.FromSeconds
             (controllerScript.playerAnimationsScript.GetCurrentAnimationLength() - 0.01f));
 
+        if (token.IsCancellationRequested)
+            return;
         switch (attackEndsAtState)
         {
             case PlayerAttack.EndsAtState.Crouching:
