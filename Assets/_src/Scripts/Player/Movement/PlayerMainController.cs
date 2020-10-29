@@ -46,9 +46,11 @@ public class PlayerMainController : MonoBehaviour
 
     [Header("Debug")]
     [SerializeField] private bool debugActivated = true;
-
     public MainStateMachine StateMachine { get; private set; }
     public string currentStateOutput;
+
+    
+
 
     #region Player Events
     public System.Action hasPerformedJump;
@@ -80,6 +82,7 @@ public class PlayerMainController : MonoBehaviour
 
         StateMachine = new MainStateMachine();
         StateMachine.Init(new GroundedState(this, StateMachine));
+        
     }
 
     private void Update()

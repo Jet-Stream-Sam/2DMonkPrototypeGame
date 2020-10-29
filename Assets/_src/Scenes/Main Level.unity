@@ -681,7 +681,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyGroan: {fileID: 25856831}
   enemyAnimationsScript: {fileID: 25856828}
-  maxHealth: 100
+  maxHealth: 1200
 --- !u!61 &25856830
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3594,7 +3594,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyGroan: {fileID: 359387710}
   enemyAnimationsScript: {fileID: 359387707}
-  maxHealth: 100
+  maxHealth: 1200
 --- !u!61 &359387709
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4790,7 +4790,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6
+  orthographic size: 5.625
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -7163,8 +7163,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.16114381, y: -0.8057184}
-  m_Size: {x: 0.8222876, y: 2.6114368}
+  m_Offset: {x: -0.038884223, y: -1.359642}
+  m_Size: {x: 1.2223438, y: 1.5035896}
   m_Direction: 0
 --- !u!4 &844466904
 Transform:
@@ -14312,7 +14312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyGroan: {fileID: 1523542591}
   enemyAnimationsScript: {fileID: 1523542595}
-  maxHealth: 100
+  maxHealth: 1200
 --- !u!95 &1523542594
 Animator:
   serializedVersion: 3
@@ -15673,7 +15673,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1710943341}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -15732,7 +15732,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyGroan: {fileID: 1710943347}
   enemyAnimationsScript: {fileID: 1710943344}
-  maxHealth: 100
+  maxHealth: 1200
 --- !u!61 &1710943346
 BoxCollider2D:
   m_ObjectHideFlags: 0

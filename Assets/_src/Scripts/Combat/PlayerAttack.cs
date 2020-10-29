@@ -11,4 +11,9 @@ public class PlayerAttack : Attack
    }
 
     public EndsAtState attackEndsAtState;
+
+    [RequireInterface(typeof(IAttackBehaviour))]
+    public Object attackBehaviour;
+    
+    
 }

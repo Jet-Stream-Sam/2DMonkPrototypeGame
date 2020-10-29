@@ -18,3 +18,5 @@ MonoBehaviour:
   lockVelocity: 1
   lockSideSwitch: 1
   attackEndsAtState: 0
+  attackBehaviour: {fileID: -5936667180954219801, guid: cd052468a65dd3f45b359ba2956f32e8,
+    type: 3}

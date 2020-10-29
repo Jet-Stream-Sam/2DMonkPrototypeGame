@@ -18,3 +18,4 @@ MonoBehaviour:
   lockVelocity: 1
   lockSideSwitch: 1
   attackEndsAtState: 1
+  attackBehaviour: {fileID: 0}

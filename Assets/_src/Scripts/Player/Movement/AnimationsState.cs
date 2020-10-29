@@ -15,6 +15,8 @@ public class AnimationsState : MonoBehaviour
 
         CurrentState = newState;
         spriteAnimator.Play(Animator.StringToHash(CurrentState));
+
+        
     }
 
     public float GetCurrentAnimationLength()

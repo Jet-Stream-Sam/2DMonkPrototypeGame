@@ -17,6 +17,7 @@ public class AttackState : PlayerState
     private bool lockVelocity;
     private bool lockSideSwitch;
     private PlayerAttack.EndsAtState attackEndsAtState;
+    protected IAttackBehaviour attackBehaviour;
 
     private int damage;
 
@@ -29,13 +30,21 @@ public class AttackState : PlayerState
         lockSideSwitch = playerAttackAsset.lockSideSwitch;
         damage = playerAttackAsset.damage;
         attackEndsAtState = playerAttackAsset.attackEndsAtState;
+
+        if (playerAttackAsset.attackBehaviour is IAttackBehaviour attack)
+        {
+            attackBehaviour = attack;
+        }
     }
 
 
     public override void Enter()
     {
         base.Enter();
+        attackBehaviour?.Init(controllerScript);
         
+
+
         controllerScript.playerAnimationsScript.ChangeAnimationState(animationToPlay);
         controllerScript.SoundManager.PlayOneShotSFX(audioClipName);
 
@@ -48,6 +57,7 @@ public class AttackState : PlayerState
         if (!lockAsyncMethod)
             AttackLoop();
 
+        attackBehaviour?.OnAttackEnter();
     }
 
     public override void HandleUpdate()
@@ -55,11 +65,19 @@ public class AttackState : PlayerState
         base.HandleUpdate();
         if(lockSideSwitch)
             LockSideSwitch(initialPlayerScale);
+        attackBehaviour?.OnAttackUpdate();
+    }
+
+    public override void HandleFixedUpdate()
+    {
+        base.HandleFixedUpdate();
+        attackBehaviour?.OnAttackFixedUpdate();
     }
     public override void Exit()
     {
         base.Exit();
         controllerScript.hitBoxCheck.Damage = 0;
+        attackBehaviour?.OnAttackExit();
     }
     private async void AttackLoop()
     {
