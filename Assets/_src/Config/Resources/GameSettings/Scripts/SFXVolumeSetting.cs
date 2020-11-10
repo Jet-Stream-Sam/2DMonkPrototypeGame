@@ -16,7 +16,7 @@ public class SFXVolumeSetting : MonoBehaviour, ISetting
         }
 
         float volume = (float)value;
-        float resultVolume = ConvertVolumeToMixer(volume, -60, 0);
+        float resultVolume = ConvertVolumeToMixer(volume, -40, 0);
         mixer.SetFloat(SettingName, resultVolume);
 
 
@@ -33,6 +33,10 @@ public class SFXVolumeSetting : MonoBehaviour, ISetting
 
     private float ConvertVolumeToMixer(float volume, float min, float max)
     {
+        if (volume == 0)
+        {
+            return -80;
+        }
         float normalizedVolume = Mathf.InverseLerp(0, 10, volume);
         float resultVolume = Mathf.Lerp(min, max, normalizedVolume);
 
