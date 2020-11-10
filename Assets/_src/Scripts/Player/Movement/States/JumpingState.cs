@@ -26,7 +26,7 @@ public class JumpingState : PlayerState
 
         pastGravityScale = controllerScript.playerRigidBody.gravityScale;
         controllerScript.playerRigidBody.gravityScale = controllerScript.jumpSpeed;
-        isGrounded = false;
+        controllerScript.isGrounded = false;
         controllerScript.playerRigidBody.velocity = 
             Vector2.up * Mathf.Sqrt(controllerScript.jumpHeight * -2 * 
             Physics2D.gravity.y * controllerScript.playerRigidBody.gravityScale);

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4192581661169642393
+--- !u!1 &6626937518205184726
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2252691855627798188}
-  - component: {fileID: -5936667180954219801}
+  - component: {fileID: 674612472175214220}
+  - component: {fileID: 8825307346974235973}
   m_Layer: 0
-  m_Name: RunningPunch
+  m_Name: Resolutions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2252691855627798188
+--- !u!4 &674612472175214220
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4192581661169642393}
+  m_GameObject: {fileID: 6626937518205184726}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.3554866, y: -3.0988927, z: -5.658647}
+  m_LocalPosition: {x: 4.245985, y: -2.9391725, z: -0.07824716}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-5936667180954219801
+--- !u!114 &8825307346974235973
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4192581661169642393}
+  m_GameObject: {fileID: 6626937518205184726}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc469bc111c3e114fb17dbd5c8aa89b9, type: 3}
+  m_Script: {fileID: 11500000, guid: 811def11814968340a59ee0c51e62d39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

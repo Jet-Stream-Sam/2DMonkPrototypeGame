@@ -663,7 +663,7 @@ GameObject:
   - component: {fileID: 8325524493323053622}
   - component: {fileID: 8325524493323053623}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1459,6 +1459,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 8325524495257528596}
   rawValueText: {fileID: 8325524493646034600}
+  settingType: MasterVolume
   sliderDefaultValue: 10
 --- !u!1 &8325524493447549810
 GameObject:
@@ -1932,6 +1933,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActivated: 0
   textDisplay: {fileID: 8325524493719293312}
+  settingType: 
   OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2276,6 +2278,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActivated: 0
   textDisplay: {fileID: 8325524493405386390}
+  settingType: FullScreen
   OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -5163,6 +5166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 8325524495218175240}
   rawValueText: {fileID: 8325524493784567781}
+  settingType: SFXVolume
   sliderDefaultValue: 10
 --- !u!1 &8325524494097250483
 GameObject:
@@ -5863,6 +5867,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textDisplay: {fileID: 8325524494677304872}
+  settingType: 
   options:
   - High
   - Low
@@ -6059,6 +6064,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textDisplay: {fileID: 8325524493472273305}
+  settingType: Resolutions
   options:
   - 1920x1080
   - 1600x900
@@ -7738,6 +7744,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textDisplay: {fileID: 8325524494258828900}
+  settingType: 
   options:
   - Unlimited
   - 120 FPS
@@ -9979,6 +9986,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 8325524495284965558}
   rawValueText: {fileID: 8325524494960488122}
+  settingType: MusicVolume
   sliderDefaultValue: 10
 --- !u!1 &8325524494835476388
 GameObject:
@@ -11433,6 +11441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textDisplay: {fileID: 8325524494727595395}
+  settingType: 
   options:
   - Activated
   - Deactivated
@@ -11874,6 +11883,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textDisplay: {fileID: 8325524493985190378}
+  settingType: 
   options:
   - English
   - Portuguese

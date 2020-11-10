@@ -16,7 +16,7 @@ public class GroundedState : PlayerState
     {
         base.HandleUpdate();
 
-        if (!isGrounded)
+        if (!controllerScript.isGrounded)
             stateMachine.ChangeState(new FallingState(controllerScript, stateMachine));
 
     }

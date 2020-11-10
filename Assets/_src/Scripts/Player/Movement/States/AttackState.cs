@@ -96,13 +96,13 @@ public class AttackState : PlayerState
         switch (attackEndsAtState)
         {
             case PlayerAttack.EndsAtState.Crouching:
-                if(isGrounded)
+                if(controllerScript.isGrounded)
                     stateMachine.ChangeState(new CrouchingState(controllerScript, stateMachine, 0.15f));
                 else
                     stateMachine.ChangeState(new FallingState(controllerScript, stateMachine));
                 break;
             default:
-                if (isGrounded)
+                if (controllerScript.isGrounded)
                     stateMachine.ChangeState(new StandingState(controllerScript, stateMachine));
                 else
                     stateMachine.ChangeState(new FallingState(controllerScript, stateMachine));

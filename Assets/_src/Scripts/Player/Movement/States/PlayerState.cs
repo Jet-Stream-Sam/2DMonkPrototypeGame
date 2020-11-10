@@ -7,7 +7,7 @@ public class PlayerState : IState
     protected PlayerMainController controllerScript;
     protected MainStateMachine stateMachine;
     protected float easingMovementX;
-    protected bool isGrounded;
+    
     public PlayerState(PlayerMainController controllerScript, MainStateMachine stateMachine)
     {
         this.controllerScript = controllerScript;
@@ -20,7 +20,7 @@ public class PlayerState : IState
     public virtual void HandleUpdate()
     {
 
-        isGrounded = Physics2D.OverlapCircle(
+        controllerScript.isGrounded = Physics2D.OverlapCircle(
             controllerScript.groundCheck.position, 
             controllerScript.groundRadius,
             controllerScript.groundMask);

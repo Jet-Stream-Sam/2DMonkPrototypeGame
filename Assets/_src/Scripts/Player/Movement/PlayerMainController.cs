@@ -10,7 +10,7 @@ public class PlayerMainController : MonoBehaviour
     public SoundManager SoundManager { get; private set; }
     private ControlManager controlManager;
     public InputMaster Controls { get; private set; }
-
+    [HideInInspector] public bool isGrounded;
     public float MovementX { get; private set; }
     public float MovementY { get; private set; }
     public bool IsHoldingJumpButton { get; private set; }
@@ -23,7 +23,8 @@ public class PlayerMainController : MonoBehaviour
     public AnimationsState playerAnimationsScript;
     public Transform playerSpriteTransform;
     public HitCheck hitBoxCheck;
-    public PlayerAttackMoveList playerMoveList; 
+    public PlayerAttackMoveList playerMoveList;
+    public AfterImageEffectPool afterImageEffectPool;
 
     [Header("Movement Variables")]
     public float standingMoveSpeed = 10;
@@ -43,6 +44,8 @@ public class PlayerMainController : MonoBehaviour
     [Header("Ground Check")]
     public float groundRadius = 1f;
     public LayerMask groundMask;
+
+    
 
     [Header("Debug")]
     [SerializeField] private bool debugActivated = true;

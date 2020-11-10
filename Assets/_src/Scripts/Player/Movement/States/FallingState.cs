@@ -27,7 +27,7 @@ public class FallingState : PlayerState
     public override void HandleUpdate()
     {
         base.HandleUpdate();
-        if (isGrounded) stateMachine.ChangeState(new StandingState(controllerScript, stateMachine));
+        if (controllerScript.isGrounded) stateMachine.ChangeState(new StandingState(controllerScript, stateMachine));
 
     }
     public override void HandleFixedUpdate()

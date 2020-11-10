@@ -68,7 +68,14 @@ public class SoundManager : MonoBehaviour
         GameObject soundObj = new GameObject();
         soundObj.transform.parent = soundsTransform;
         soundObj.name = sound.name;
+
         AudioSource source = soundObj.AddComponent<AudioSource>();
+        source.clip = sound.audioClip;
+        source.outputAudioMixerGroup = sound.mixer;
+        source.volume = sound.volume;
+        source.pitch = sound.pitch;
+        source.loop = sound.loop;
+        
         source.PlayOneShot(sound.audioClip);
         if (!source.loop) Destroy(soundObj, sound.audioClip.length);
 
