@@ -63,7 +63,7 @@ public class CrouchingState : GroundedState
                 
         }
         
-        if (controllerScript.jumpTimer > Time.time)
+        if (controllerScript.airborneJumpTimer > Time.time)
         {
             stateMachine.ChangeState(new JumpingState(controllerScript, stateMachine));
             controllerScript.playerMainCollider.offset = controllerScript.standingColliderOffset;

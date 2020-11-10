@@ -43,6 +43,8 @@ public class PlayerState : IState
             controllerScript.playerSpriteTransform.localScale = 
                 new Vector2(-1, 1);
         }
+
+        
     }
 
     public virtual void HandleFixedUpdate()

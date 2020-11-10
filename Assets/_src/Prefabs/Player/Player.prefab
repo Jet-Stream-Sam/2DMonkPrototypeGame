@@ -422,8 +422,10 @@ MonoBehaviour:
   easingRate: 0.6
   jumpSpeed: 2.8
   jumpHeight: 5
-  jumpDelay: 0.1
-  jumpTimer: 0
+  airborneJumpDelay: 0.15
+  groundedJumpDelay: 0.1
+  airborneJumpTimer: 0
+  groundedJumpTimer: 0
   fallMultiplier: 3.5
   standingColliderOffset: {x: 0.05, y: -0.31}
   standingColliderSize: {x: 0.8222876, y: 2.6114368}

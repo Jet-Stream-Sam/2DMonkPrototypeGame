@@ -32,7 +32,7 @@ public class JumpingState : PlayerState
             Physics2D.gravity.y * controllerScript.playerRigidBody.gravityScale);
         controllerScript.hasPerformedJump?.Invoke();
         controllerScript.playerAnimationsScript.ChangeAnimationState("player_jump");
-        controllerScript.jumpTimer = 0;
+        controllerScript.airborneJumpTimer = 0;
 
         controllerScript.SoundManager.PlaySFX(S_PLAYER_JUMP);
     }
@@ -66,7 +66,7 @@ public class JumpingState : PlayerState
     public override void Exit()
     {
         base.Exit();
-        
+        controllerScript.groundedJumpTimer = 0;
         controllerScript.playerRigidBody.gravityScale = pastGravityScale;
     }
 }

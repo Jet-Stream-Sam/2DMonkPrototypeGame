@@ -32,8 +32,10 @@ public class PlayerMainController : MonoBehaviour
     [Range(0.01f, 1)] public float easingRate = 0.6f;
     public float jumpSpeed = 2;
     public float jumpHeight = 5;
-    public float jumpDelay = 0.2f;
-    [HideInInspector] public float jumpTimer;
+    public float airborneJumpDelay = 0.2f;
+    public float groundedJumpDelay = 0.2f;
+    [HideInInspector] public float airborneJumpTimer;
+    [HideInInspector] public float groundedJumpTimer;
     public float fallMultiplier = 1.5f;
 
     [Header("Movement Variables")]
@@ -66,7 +68,7 @@ public class PlayerMainController : MonoBehaviour
         Controls = controlManager.controls;
 
         #region Input Handling
-        Controls.Player.Jump.performed += _ => jumpTimer = Time.time + jumpDelay;
+        Controls.Player.Jump.performed += _ => airborneJumpTimer = Time.time + airborneJumpDelay;
         Controls.Player.Jump.started += _ => IsHoldingJumpButton = true;
         Controls.Player.Jump.canceled += _ => IsHoldingJumpButton = false;
 
@@ -113,7 +115,7 @@ public class PlayerMainController : MonoBehaviour
     private void OnDestroy()
     {
         //TODO: These don't actually unsubscribe themselves
-        Controls.Player.Jump.performed -= _ => jumpTimer = Time.time + jumpDelay;
+        Controls.Player.Jump.performed -= _ => airborneJumpTimer = Time.time + airborneJumpDelay;
         Controls.Player.Jump.started -= _ => IsHoldingJumpButton = true;
         Controls.Player.Jump.canceled -= _ => IsHoldingJumpButton = false;
 

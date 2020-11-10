@@ -16,6 +16,7 @@ public class GroundedState : PlayerState
     {
         base.HandleUpdate();
 
+        controllerScript.groundedJumpTimer = Time.time + controllerScript.groundedJumpDelay;
         if (!controllerScript.isGrounded)
             stateMachine.ChangeState(new FallingState(controllerScript, stateMachine));
 

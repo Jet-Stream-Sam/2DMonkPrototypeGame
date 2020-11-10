@@ -45,7 +45,7 @@ public class StandingState : GroundedState
         {
             stateMachine.ChangeState(new CrouchingState(controllerScript, stateMachine));
         }
-        if (controllerScript.jumpTimer > Time.time)
+        if (controllerScript.airborneJumpTimer > Time.time)
             stateMachine.ChangeState(new JumpingState(controllerScript, stateMachine));
 
     }

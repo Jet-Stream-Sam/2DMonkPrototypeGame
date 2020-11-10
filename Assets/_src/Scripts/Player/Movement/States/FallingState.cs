@@ -27,7 +27,17 @@ public class FallingState : PlayerState
     public override void HandleUpdate()
     {
         base.HandleUpdate();
+
         if (controllerScript.isGrounded) stateMachine.ChangeState(new StandingState(controllerScript, stateMachine));
+
+        if (controllerScript.airborneJumpTimer > Time.time && 
+            controllerScript.groundedJumpTimer > Time.time)
+        {
+            stateMachine.ChangeState(new JumpingState(controllerScript, stateMachine));
+            Debug.Log("SPECIAL JUMP");
+        }
+            
+        
 
     }
     public override void HandleFixedUpdate()
