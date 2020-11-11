@@ -33,8 +33,6 @@ public class AirborneAttackState : AttackState
         
         controllerScript.playerRigidBody.velocity += Vector2.up * Physics2D.gravity.y * controllerScript.fallMultiplier * Time.deltaTime;
 
-        //float tempSpeed = easingMovementX * controllerScript.standingMoveSpeed;
-
         controllerScript.playerRigidBody.velocity =
             new Vector2(controllerScript.playerRigidBody.velocity.x, controllerScript.playerRigidBody.velocity.y);
 

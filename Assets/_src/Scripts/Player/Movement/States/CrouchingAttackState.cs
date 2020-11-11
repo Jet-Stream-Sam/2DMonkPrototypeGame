@@ -24,7 +24,5 @@ public class CrouchingAttackState : AttackState
     public override void Exit()
     {
         base.Exit();
-        controllerScript.playerMainCollider.offset = controllerScript.standingColliderOffset;
-        controllerScript.playerMainCollider.size = controllerScript.standingColliderSize;
     }
 }

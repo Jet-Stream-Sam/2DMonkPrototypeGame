@@ -11,6 +11,7 @@ public class PlayerMainController : MonoBehaviour
     private ControlManager controlManager;
     public InputMaster Controls { get; private set; }
     [HideInInspector] public bool isGrounded;
+    [HideInInspector] public bool isHittingHead;
     public float MovementX { get; private set; }
     public float MovementY { get; private set; }
     public bool IsHoldingJumpButton { get; private set; }
@@ -18,6 +19,7 @@ public class PlayerMainController : MonoBehaviour
     [Header("Dependencies")]
 
     public Transform groundCheck;
+    public Transform ceilingCheck;
     public Rigidbody2D playerRigidBody;
     public CapsuleCollider2D playerMainCollider;
     public AnimationsState playerAnimationsScript;
@@ -38,24 +40,23 @@ public class PlayerMainController : MonoBehaviour
     [HideInInspector] public float groundedJumpTimer;
     public float fallMultiplier = 1.5f;
 
-    [Header("Movement Variables")]
-    public Vector2 standingColliderOffset;
+    
+    /*public Vector2 standingColliderOffset;
     public Vector2 standingColliderSize;
     public Vector2 crouchingColliderOffset;
-    public Vector2 crouchingColliderSize;
+    public Vector2 crouchingColliderSize;*/
     [Header("Ground Check")]
-    public float groundRadius = 1f;
+    public float groundCheckRadius = 1f;
     public LayerMask groundMask;
 
-    
+    [Header("Ceiling Check")]
+    public float ceilingCheckRadius = 1f;
+    public LayerMask ceilingMask;
 
     [Header("Debug")]
     [SerializeField] private bool debugActivated = true;
     public MainStateMachine StateMachine { get; private set; }
     public string currentStateOutput;
-
-    
-
 
     #region Player Events
     public System.Action hasPerformedJump;
@@ -106,8 +107,8 @@ public class PlayerMainController : MonoBehaviour
         if (debugActivated)
         {
             Gizmos.color = Color.cyan;
-            Gizmos.DrawWireSphere(groundCheck.position, groundRadius);
-            
+            Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+            Gizmos.DrawWireSphere(ceilingCheck.position, ceilingCheckRadius);
         }
         
     }

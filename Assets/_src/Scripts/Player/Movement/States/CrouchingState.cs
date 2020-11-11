@@ -31,8 +31,6 @@ public class CrouchingState : GroundedState
         #endregion
 
         controllerScript.playerAnimationsScript.ChangeAnimationState("player_crouch");
-        controllerScript.playerMainCollider.offset = controllerScript.crouchingColliderOffset;
-        controllerScript.playerMainCollider.size = controllerScript.crouchingColliderSize;
 
         if (cooldown > 0)
         {
@@ -44,30 +42,24 @@ public class CrouchingState : GroundedState
     public override void HandleUpdate()
     {
         base.HandleUpdate();
-        if (!canTransition && controllerScript.MovementY > 0.5f)
+        if (!canTransition && controllerScript.MovementY > 0.5f && !controllerScript.isHittingHead)
         {
             stateMachine.ChangeState(new StandingState(controllerScript, stateMachine));
-            controllerScript.playerMainCollider.offset = controllerScript.standingColliderOffset;
-            controllerScript.playerMainCollider.size = controllerScript.standingColliderSize;
         }
-        else if (canTransition)
+        else if (canTransition && !controllerScript.isHittingHead)
         {
             if (controllerScript.MovementY == 0)
             {
                 stateMachine.ChangeState(new StandingState(controllerScript, stateMachine));
-                controllerScript.playerMainCollider.offset = controllerScript.standingColliderOffset;
-                controllerScript.playerMainCollider.size = controllerScript.standingColliderSize;
             }
 
             
                 
         }
         
-        if (controllerScript.airborneJumpTimer > Time.time)
+        if (controllerScript.airborneJumpTimer > Time.time && !controllerScript.isHittingHead)
         {
             stateMachine.ChangeState(new JumpingState(controllerScript, stateMachine));
-            controllerScript.playerMainCollider.offset = controllerScript.standingColliderOffset;
-            controllerScript.playerMainCollider.size = controllerScript.standingColliderSize;
         }
 
     }

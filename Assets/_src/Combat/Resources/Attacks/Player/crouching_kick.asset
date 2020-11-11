@@ -17,5 +17,6 @@ MonoBehaviour:
   audioClipName: player_kick
   lockVelocity: 1
   lockSideSwitch: 1
+  clip: {fileID: 0}
   attackEndsAtState: 1
   attackBehaviour: {fileID: 0}

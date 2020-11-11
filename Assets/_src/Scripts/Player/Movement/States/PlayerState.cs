@@ -22,8 +22,13 @@ public class PlayerState : IState
 
         controllerScript.isGrounded = Physics2D.OverlapCircle(
             controllerScript.groundCheck.position, 
-            controllerScript.groundRadius,
+            controllerScript.groundCheckRadius,
             controllerScript.groundMask);
+
+        controllerScript.isHittingHead = Physics2D.OverlapCircle(
+            controllerScript.ceilingCheck.position,
+            controllerScript.ceilingCheckRadius,
+            controllerScript.ceilingMask);
 
         easingMovementX = 
             Mathf.Lerp(easingMovementX,
