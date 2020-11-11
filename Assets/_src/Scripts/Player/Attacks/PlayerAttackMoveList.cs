@@ -10,7 +10,7 @@ public class PlayerAttackMoveList : MonoBehaviour
     {
         foreach(PlayerAttack attack in playerAttackMoveList)
         {
-            if(name == attack.animationName)
+            if(name == attack.animationClip.name)
             {
                 return attack;
             }

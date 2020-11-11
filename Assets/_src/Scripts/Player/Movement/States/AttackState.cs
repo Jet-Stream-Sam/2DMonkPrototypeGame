@@ -16,6 +16,7 @@ public class AttackState : PlayerState
     private string audioClipName;
     private bool lockVelocity;
     private bool lockSideSwitch;
+    private float attackDuration;
     private PlayerAttack.EndsAtState attackEndsAtState;
     protected IAttackBehaviour attackBehaviour;
 
@@ -24,12 +25,13 @@ public class AttackState : PlayerState
     public AttackState(PlayerMainController controllerScript, MainStateMachine stateMachine,
        PlayerAttack playerAttackAsset) : base(controllerScript, stateMachine)
     {
-        animationToPlay = playerAttackAsset.animationName;
-        audioClipName = playerAttackAsset.audioClipName;
+        animationToPlay = playerAttackAsset.animationClip.name;
+        audioClipName = playerAttackAsset.audioClip.name;
         lockVelocity = playerAttackAsset.lockVelocity;
         lockSideSwitch = playerAttackAsset.lockSideSwitch;
         damage = playerAttackAsset.damage;
         attackEndsAtState = playerAttackAsset.attackEndsAtState;
+        attackDuration = playerAttackAsset.animationClip.length;
 
         if (playerAttackAsset.attackBehaviour is IAttackBehaviour attack)
         {
@@ -85,11 +87,9 @@ public class AttackState : PlayerState
         var token = tokenSource.Token;
 
         lockAsyncMethod = true;
-        await Task.Delay(TimeSpan.FromSeconds(Time.deltaTime + 0.01f));
 
-        
         await Task.Delay(TimeSpan.FromSeconds
-            (controllerScript.playerAnimationsScript.GetCurrentAnimationLength() - 0.01f));
+            (attackDuration));
 
         if (token.IsCancellationRequested)
             return;

@@ -40,11 +40,6 @@ public class PlayerMainController : MonoBehaviour
     [HideInInspector] public float groundedJumpTimer;
     public float fallMultiplier = 1.5f;
 
-    
-    /*public Vector2 standingColliderOffset;
-    public Vector2 standingColliderSize;
-    public Vector2 crouchingColliderOffset;
-    public Vector2 crouchingColliderSize;*/
     [Header("Ground Check")]
     public float groundCheckRadius = 1f;
     public LayerMask groundMask;

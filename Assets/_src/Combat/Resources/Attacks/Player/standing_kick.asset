@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d9c19a2ed173a4995d816dc2439058, type: 3}
   m_Name: standing_kick
   m_EditorClassIdentifier: 
-  animationName: player_kick
-  damage: 50
-  audioClipName: player_kick
+  damage: 65
+  animationClip: {fileID: 7400000, guid: aac11f814f4ad884fbe27d7e6cab108c, type: 2}
+  audioClip: {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
   lockVelocity: 1
   lockSideSwitch: 1
   attackEndsAtState: 1

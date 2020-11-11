@@ -18,7 +18,7 @@ public class StandingState : GroundedState
         base.Enter();
         #region Input Handling
         controllerScript.Controls.Player.Kick.started -= kickAction;
-        controllerScript.Controls.Player.Fireball.started -= punchAction;
+        controllerScript.Controls.Player.Punch.started -= punchAction;
 
 
         kickAction = _ => stateMachine.ChangeState(new AttackState(controllerScript, stateMachine,
@@ -26,7 +26,7 @@ public class StandingState : GroundedState
         controllerScript.Controls.Player.Kick.started += kickAction;
         punchAction = _ => stateMachine.ChangeState(new AttackState(controllerScript, stateMachine,
             controllerScript.playerMoveList.Find("player_punch")));
-        controllerScript.Controls.Player.Fireball.started += punchAction;
+        controllerScript.Controls.Player.Punch.started += punchAction;
 
         #endregion
 
@@ -67,7 +67,7 @@ public class StandingState : GroundedState
         base.Exit();
 
         controllerScript.Controls.Player.Kick.started -= kickAction;
-        controllerScript.Controls.Player.Fireball.started -= punchAction;
+        controllerScript.Controls.Player.Punch.started -= punchAction;
 
     }
 
