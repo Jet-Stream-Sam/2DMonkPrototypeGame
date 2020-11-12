@@ -26,7 +26,7 @@ public class AttackState : PlayerState
        PlayerAttack playerAttackAsset) : base(controllerScript, stateMachine)
     {
         animationToPlay = playerAttackAsset.animationClip.name;
-        audioClipName = playerAttackAsset.audioClip.name;
+        audioClipName = playerAttackAsset.gameSoundAsset.name;
         lockVelocity = playerAttackAsset.lockVelocity;
         lockSideSwitch = playerAttackAsset.lockSideSwitch;
         damage = playerAttackAsset.damage;

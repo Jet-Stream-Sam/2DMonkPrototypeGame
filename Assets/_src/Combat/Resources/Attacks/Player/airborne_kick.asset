@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 75
   animationClip: {fileID: 7400000, guid: 4dff467fb2791644ab82c27012ba96b8, type: 2}
-  audioClip: {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
+  gameSoundAsset: {fileID: 11400000, guid: a1a06036549740e499764153af35452a, type: 2}
   lockVelocity: 1
   lockSideSwitch: 1
   attackEndsAtState: 2

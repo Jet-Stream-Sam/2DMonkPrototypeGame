@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85ce2fde12b5d8a49ad6708701ea6589, type: 3}
   m_Name: player_punch
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 8300000, guid: cabfae866cab347928b74b7d0ca6bfa9, type: 3}
+  audioClip: {fileID: 8300000, guid: 1a80e3341c0083044a8bdfc21f85925f, type: 3}
   mixer: {fileID: 5276277644291418981, guid: 35492a46fbac1924b81f78ed84406c47, type: 2}
-  volume: 1
+  volume: 0.75
   pitch: 1
   loop: 0

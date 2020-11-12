@@ -7,7 +7,7 @@ public class Attack : ScriptableObject
 {
     public int damage;
     public AnimationClip animationClip;
-    public AudioClip audioClip;
+    public GameSound gameSoundAsset;
     public bool lockVelocity = true;
     public bool lockSideSwitch = true;
 
