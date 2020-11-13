@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d9c19a2ed173a4995d816dc2439058, type: 3}
   m_Name: standing_punch
   m_EditorClassIdentifier: 
-  damage: 125
   animationClip: {fileID: 7400000, guid: 36104b2559c3a074ebb401fb252b3dee, type: 2}
   gameSoundAsset: {fileID: 11400000, guid: cf8e1b15eb3eb814c8cb62b689af1f72, type: 2}
   lockVelocity: 1
   lockSideSwitch: 1
+  hitProperties:
+    damage: 125
+    knockbackForce: 65
   attackEndsAtState: 0
   attackBehaviour: {fileID: -5936667180954219801, guid: cd052468a65dd3f45b359ba2956f32e8,
     type: 3}

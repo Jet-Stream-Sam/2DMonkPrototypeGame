@@ -17,10 +17,11 @@ public class AttackState : PlayerState
     private bool lockVelocity;
     private bool lockSideSwitch;
     private float attackDuration;
+    private HitProperties hitProperties;
     private PlayerAttack.EndsAtState attackEndsAtState;
     protected IAttackBehaviour attackBehaviour;
 
-    private int damage;
+    
 
     public AttackState(PlayerMainController controllerScript, MainStateMachine stateMachine,
        PlayerAttack playerAttackAsset) : base(controllerScript, stateMachine)
@@ -29,7 +30,7 @@ public class AttackState : PlayerState
         audioClipName = playerAttackAsset.gameSoundAsset.name;
         lockVelocity = playerAttackAsset.lockVelocity;
         lockSideSwitch = playerAttackAsset.lockSideSwitch;
-        damage = playerAttackAsset.damage;
+        hitProperties = playerAttackAsset.hitProperties;
         attackEndsAtState = playerAttackAsset.attackEndsAtState;
         attackDuration = playerAttackAsset.animationClip.length;
 
@@ -44,15 +45,16 @@ public class AttackState : PlayerState
     {
         base.Enter();
         attackBehaviour?.Init(controllerScript);
-        
 
+        initialPlayerScale = controllerScript.playerSpriteTransform.localScale;
 
         controllerScript.playerAnimationsScript.ChangeAnimationState(animationToPlay);
         controllerScript.SoundManager.PlayOneShotSFX(audioClipName);
 
-        controllerScript.hitBoxCheck.Damage = damage;
+        controllerScript.hitBoxCheck.HitProperties = 
+            new HitProperties(hitProperties);
 
-        initialPlayerScale = controllerScript.playerSpriteTransform.localScale;
+        
         if(lockVelocity)
             LockVelocity();
         
@@ -78,7 +80,7 @@ public class AttackState : PlayerState
     public override void Exit()
     {
         base.Exit();
-        controllerScript.hitBoxCheck.Damage = 0;
+        controllerScript.hitBoxCheck.HitProperties.Reset();
         attackBehaviour?.OnAttackExit();
     }
     private async void AttackLoop()

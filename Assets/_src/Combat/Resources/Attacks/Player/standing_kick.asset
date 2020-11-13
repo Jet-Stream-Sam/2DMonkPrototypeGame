@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d9c19a2ed173a4995d816dc2439058, type: 3}
   m_Name: standing_kick
   m_EditorClassIdentifier: 
-  damage: 65
   animationClip: {fileID: 7400000, guid: aac11f814f4ad884fbe27d7e6cab108c, type: 2}
   gameSoundAsset: {fileID: 11400000, guid: 107a81c4fddf43648a44495511fcb776, type: 2}
   lockVelocity: 1
   lockSideSwitch: 1
+  hitProperties:
+    damage: 65
+    knockbackForce: 5
   attackEndsAtState: 1
   attackBehaviour: {fileID: 0}
