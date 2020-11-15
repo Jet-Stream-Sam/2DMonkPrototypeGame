@@ -3,9 +3,6 @@
 [CreateAssetMenu(menuName = "Scriptable Objects/Combat/Player Attack")]
 public class PlayerAttack : Attack
 {
-   
-   
-
     [Header("Attack Behaviour")]
     [RequireInterface(typeof(IAttackBehaviour))]
     public Object attackBehaviour;

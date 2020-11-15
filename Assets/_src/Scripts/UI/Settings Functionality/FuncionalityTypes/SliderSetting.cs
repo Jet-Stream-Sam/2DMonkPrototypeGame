@@ -42,14 +42,12 @@ public class SliderSetting : MonoBehaviour, ISettingsFuncionality
     public void SwitchRight()
     {
         slider.value += sliderStep;
-        ChangeDisplayText(slider.value);
         
     }
 
     public void SwitchLeft()
     {
         slider.value -= sliderStep;
-        ChangeDisplayText(slider.value);
     }
 
     void ChangeDisplayText(float value)
@@ -60,5 +58,6 @@ public class SliderSetting : MonoBehaviour, ISettingsFuncionality
     void SetSliderChanges()
     {
         settingScript.SetChanges(slider.value);
+        ChangeDisplayText(slider.value);
     }
 }

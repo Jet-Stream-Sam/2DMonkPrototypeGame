@@ -1,12 +1,15 @@
-﻿using System.Collections;
+﻿#if UNITY_EDITOR
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using System.Linq;
 
+
 [CustomPropertyDrawer(typeof(RequireInterfaceAttribute))]
 public class RequireInterfaceDrawer : PropertyDrawer
 {
+
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
         if (property.propertyType == SerializedPropertyType.ObjectReference)
@@ -37,3 +40,4 @@ public class RequireInterfaceDrawer : PropertyDrawer
         }
     }
 }
+#endif

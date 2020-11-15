@@ -57,7 +57,6 @@ public class HitProperties
     public void SetForceDirection(Vector2 positionA, Vector2 positionB)
     {
         Vector2 direction = (positionB - positionA).normalized;
-        Debug.Log(direction);
         ForceDirection = direction;
     }
 }

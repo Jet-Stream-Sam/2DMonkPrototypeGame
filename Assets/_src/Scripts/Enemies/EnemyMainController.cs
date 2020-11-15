@@ -45,7 +45,6 @@ public class EnemyMainController : MonoBehaviour, IDamageable
             bool hasStopped = Mathf.Abs(enemyRigidBody.velocity.x) < 0.01f && enemyRigidBody.velocity.y < 0.01f;
             if (hasStopped)
             {
-                Debug.Log("getting up!");
                 hasNormalizedMovement = true;
                 enemyRigidBody.bodyType = RigidbodyType2D.Kinematic;
                 enemyRigidBody.velocity = Vector2.zero;
@@ -78,6 +77,7 @@ public class EnemyMainController : MonoBehaviour, IDamageable
         {
             currentHealth = 0;
             Die();
+            
             return;
         }
         enemyAnimationsScript.ChangeAnimationState("wizard_hit");
@@ -104,6 +104,8 @@ public class EnemyMainController : MonoBehaviour, IDamageable
 
     private void Die()
     {
+        enemyGroan.OnTrigger();
+        enemyRigidBody.Sleep();
         enemyAnimationsScript.ChangeAnimationState("wizard_death");
         Destroy(gameObject, 0.45f);
     }
