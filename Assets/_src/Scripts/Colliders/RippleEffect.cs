@@ -13,7 +13,7 @@ public class RippleEffect : MonoBehaviour
         mainHitBox.OnSucessfulHit += ApplyEffect;
     }
 
-    private void ApplyEffect(Vector3 pos)
+    private void ApplyEffect(Vector3 pos, IDamageable hitBox)
     {
         GameObject rippleObj = Instantiate(ripplePrefab, pos, Quaternion.identity, VFXTransform);
         
@@ -28,5 +28,10 @@ public class RippleEffect : MonoBehaviour
         comp.rippleSpeed = rippleSettings.rippleSpeed;
         comp.color = rippleSettings.color;
         comp.rippleRenderer = rippleObj.GetComponent<SpriteRenderer>();
+    }
+
+    private void OnDestroy()
+    {
+        mainHitBox.OnSucessfulHit -= ApplyEffect;
     }
 }
