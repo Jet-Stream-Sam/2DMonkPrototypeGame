@@ -32,6 +32,7 @@ public class RippleEffectAdjust : MonoBehaviour
 
         rippleRenderer.SetPropertyBlock(propertyBlock);
 
+        
     }
 
     void Update()
