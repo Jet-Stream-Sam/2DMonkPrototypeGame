@@ -63,8 +63,8 @@ MonoBehaviour:
   m_ImpulseDefinition:
     m_ImpulseChannel: 1
     m_RawSignal: {fileID: 11400000, guid: 1760c9a6ee47e2b4e93eb75f2c2a6775, type: 2}
-    m_AmplitudeGain: 1
-    m_FrequencyGain: 0.6
+    m_AmplitudeGain: 0.9
+    m_FrequencyGain: 0.4
     m_RepeatMode: 0
     m_Randomize: 0
     m_TimeEnvelope:
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rippleRenderer: {fileID: 0}
   rippleAmount: 2
-  rippleLength: 0.3
+  rippleLength: 0.7
   disappearingRate: 4
   rippleSpeed: 40
   color: {r: 0.4392157, g: 2.6980393, b: 5.992157, a: 1}
