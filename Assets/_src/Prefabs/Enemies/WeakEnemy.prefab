@@ -172,6 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyGroan: {fileID: 9103479759381710937}
   enemyAnimationsScript: {fileID: 9103479759381710885}
+  enemyCollider: {fileID: 9103479759381710886}
   enemyRigidBody: {fileID: 9103479759381710882}
   groundCheck: {fileID: 9103479757849635204}
   groundedStunnedToIdleEasingRate: 0.1

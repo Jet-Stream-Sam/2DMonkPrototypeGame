@@ -13,11 +13,16 @@ MonoBehaviour:
   m_Name: standing_kick
   m_EditorClassIdentifier: 
   animationClip: {fileID: 7400000, guid: aac11f814f4ad884fbe27d7e6cab108c, type: 2}
-  gameSoundAsset: {fileID: 11400000, guid: 107a81c4fddf43648a44495511fcb776, type: 2}
+  attackSoundEffect: {fileID: 11400000, guid: 107a81c4fddf43648a44495511fcb776, type: 2}
   lockVelocity: 1
   lockSideSwitch: 1
   hitProperties:
     damage: 65
     knockbackForce: 5
-  attackEndsAtState: 1
+    hitSound: {fileID: 11400000, guid: 4cd25d573c9a79b42952b427acb09137, type: 2}
+    impulseSource: {fileID: 40801258633192796, guid: d4cdfddeaaa19a048999bb3ea85d88c2,
+      type: 3}
+    rippleEffectAdjust: {fileID: 40801258633192796, guid: d4cdfddeaaa19a048999bb3ea85d88c2,
+      type: 3}
   attackBehaviour: {fileID: 0}
+  attackEndsAtState: 1

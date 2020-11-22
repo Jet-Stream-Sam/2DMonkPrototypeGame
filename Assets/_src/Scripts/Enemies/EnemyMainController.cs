@@ -7,6 +7,7 @@ public class EnemyMainController : MonoBehaviour, IDamageable
     [Header("Dependencies")]
     [SerializeField] private EnemyGroan enemyGroan;
     [SerializeField] private AnimationsState enemyAnimationsScript;
+    [SerializeField] private Collider2D enemyCollider;
     [SerializeField] private Rigidbody2D enemyRigidBody;
     [SerializeField] private Transform groundCheck;
 
@@ -71,8 +72,6 @@ public class EnemyMainController : MonoBehaviour, IDamageable
     {
         
         currentHealth -= damage;
-
-        enemyGroan.OnTrigger();
         if(currentHealth <= 0)
         {
             currentHealth = 0;
@@ -86,10 +85,9 @@ public class EnemyMainController : MonoBehaviour, IDamageable
 
     public void TakeDamage(int damage, Vector2 forceDirection, float knockbackForce)
     {
+        if (currentHealth <= 0)
+            return;
         currentHealth -= damage;
-
-        enemyGroan.OnTrigger();
-
         enemyRigidBody.bodyType = RigidbodyType2D.Dynamic;
         enemyRigidBody.AddForce(forceDirection * knockbackForce, ForceMode2D.Impulse);
         if (currentHealth <= 0)
@@ -104,7 +102,7 @@ public class EnemyMainController : MonoBehaviour, IDamageable
 
     private void Die()
     {
-        enemyGroan.OnTrigger();
+        enemyCollider.enabled = false;
         enemyRigidBody.Sleep();
         enemyAnimationsScript.ChangeAnimationState("wizard_death");
         Destroy(gameObject, 0.45f);

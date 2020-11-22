@@ -7,7 +7,7 @@ public class Attack : ScriptableObject
 {
     [Header("Dependencies")]
     public AnimationClip animationClip;
-    public GameSound gameSoundAsset;
+    public GameSound attackSoundEffect;
     [Header("Attack Settings")]
     public bool lockVelocity = true;
     public bool lockSideSwitch = true;
@@ -35,16 +35,23 @@ public class HitProperties
     public int damage;
     public Vector2 ForceDirection { get; private set; }
     public float knockbackForce;
+    public GameSound hitSound;
+    public GameObject impulseSource;
+    public GameObject rippleEffectAdjust;
 
     public HitProperties(HitProperties hitProperties)
     {
         damage = hitProperties.damage;
         knockbackForce = hitProperties.knockbackForce;
+        hitSound = hitProperties.hitSound;
+        impulseSource = hitProperties.impulseSource;
+        rippleEffectAdjust = hitProperties.rippleEffectAdjust;
     }
     public HitProperties(int damage, float knockbackForce)
     {
         this.damage = damage;
         this.knockbackForce = knockbackForce;
+
     }
 
     public void Reset()

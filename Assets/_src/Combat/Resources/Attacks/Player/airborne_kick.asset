@@ -13,12 +13,17 @@ MonoBehaviour:
   m_Name: airborne_kick
   m_EditorClassIdentifier: 
   animationClip: {fileID: 7400000, guid: 4dff467fb2791644ab82c27012ba96b8, type: 2}
-  gameSoundAsset: {fileID: 11400000, guid: a1a06036549740e499764153af35452a, type: 2}
+  attackSoundEffect: {fileID: 11400000, guid: a1a06036549740e499764153af35452a, type: 2}
   lockVelocity: 1
   lockSideSwitch: 1
   hitProperties:
     damage: 80
     knockbackForce: 80
-  attackEndsAtState: 2
+    hitSound: {fileID: 11400000, guid: 4cd25d573c9a79b42952b427acb09137, type: 2}
+    impulseSource: {fileID: 7153814831075158980, guid: 484f98b881023d24490da1aa551d358a,
+      type: 3}
+    rippleEffectAdjust: {fileID: 7153814831075158980, guid: 484f98b881023d24490da1aa551d358a,
+      type: 3}
   attackBehaviour: {fileID: 86241210479870766, guid: 484f98b881023d24490da1aa551d358a,
     type: 3}
+  attackEndsAtState: 2
