@@ -6,6 +6,7 @@ using UnityEngine;
 public class InflictDamage : MonoBehaviour
 {
     [SerializeField] private HitCheck mainHitBox;
+    [SerializeField] private ColliderDirection colliderDirection;
     void Start()
     {
         mainHitBox.OnSucessfulHit += ApplyDamage;
@@ -13,7 +14,8 @@ public class InflictDamage : MonoBehaviour
 
     private void ApplyDamage(Vector3 pos, IDamageable hitBox)
     {
-        mainHitBox.HitProperties.SetForceDirection(transform.position, pos);
+        Vector3 direction = colliderDirection.AttackDirection;
+        mainHitBox.HitProperties.SetForceDirection(direction);
         hitBox.TakeDamage(mainHitBox.HitProperties.damage, 
             mainHitBox.HitProperties.ForceDirection, mainHitBox.HitProperties.knockbackForce);
     }

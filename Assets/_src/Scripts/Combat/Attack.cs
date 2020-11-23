@@ -72,4 +72,9 @@ public class HitProperties
         Vector2 direction = (positionB - positionA).normalized;
         ForceDirection = direction;
     }
+
+    public void SetForceDirection(Vector2 direction)
+    {
+        ForceDirection = direction;
+    }
 }

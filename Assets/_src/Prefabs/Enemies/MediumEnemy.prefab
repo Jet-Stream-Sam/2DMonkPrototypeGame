@@ -151,7 +151,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 256
-  maxHealth: 375
+  maxHealth: 500
 --- !u!114 &1484014983244567257
 MonoBehaviour:
   m_ObjectHideFlags: 0

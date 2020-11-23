@@ -6,10 +6,10 @@ using UnityEngine;
 
 public class HitCheck : MonoBehaviour
 {
-    
     public HitProperties HitProperties { get; set; }
     [SerializeField] private Collider2D subjectCollider2D;
     [SerializeField] private List<Collider2D> checkedHitColliders = new List<Collider2D>();
+    
 
     public Action<Vector3, IDamageable> OnSucessfulHit;
 
@@ -18,18 +18,13 @@ public class HitCheck : MonoBehaviour
         if (checkedHitColliders.Contains(hitCollider))
             return;
         IDamageable hitBox = hitCollider.GetComponent<IDamageable>();
-
-        
+ 
         if(hitBox != null)
         {
             OnSucessfulHit?.Invoke(hitCollider.transform.position, hitBox);
             checkedHitColliders.Add(hitCollider);
-            
-            
-            
+  
         }
-        
-
     }
 
     private void Update()

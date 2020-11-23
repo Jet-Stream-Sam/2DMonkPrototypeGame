@@ -7,6 +7,8 @@ public class RippleEffect : MonoBehaviour
     [SerializeField] private HitCheck mainHitBox;
     [SerializeField] private Transform VFXTransform;
     [SerializeField] private GameObject ripplePrefab;
+    [SerializeField] private ColliderDirection colliderDirection;
+    
 
     private void Start()
     {
@@ -15,7 +17,8 @@ public class RippleEffect : MonoBehaviour
 
     private void ApplyEffect(Vector3 pos, IDamageable hitBox)
     {
-        GameObject rippleObj = Instantiate(ripplePrefab, pos, Quaternion.identity, VFXTransform);
+        Transform hitPoint = colliderDirection.endPoint;
+        GameObject rippleObj = Instantiate(ripplePrefab, hitPoint.position, Quaternion.identity, VFXTransform);
         
         var comp = rippleObj.GetComponent<RippleEffectAdjust>();
         

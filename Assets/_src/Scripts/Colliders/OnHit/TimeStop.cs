@@ -19,9 +19,6 @@ public class TimeStop : MonoBehaviour
         timeStopTimer = mainHitBox.HitProperties.timeStopLength;
         timeStopScale = mainHitBox.HitProperties.timeStopScale;
 
-        Debug.Log(timeStopTimer);
-        Debug.Log(timeStopScale);
-
         if(timeStopTimer > 0)
         {
             Stop();
