@@ -19,10 +19,13 @@ MonoBehaviour:
   hitProperties:
     damage: 65
     knockbackForce: 5
+    timeStopLength: 0.1
+    timeStopScale: 0.16
     hitSound: {fileID: 11400000, guid: 4cd25d573c9a79b42952b427acb09137, type: 2}
     impulseSource: {fileID: 40801258633192796, guid: d4cdfddeaaa19a048999bb3ea85d88c2,
       type: 3}
     rippleEffectAdjust: {fileID: 40801258633192796, guid: d4cdfddeaaa19a048999bb3ea85d88c2,
       type: 3}
+    particleHitEffect: {fileID: 0}
   attackBehaviour: {fileID: 0}
   attackEndsAtState: 1

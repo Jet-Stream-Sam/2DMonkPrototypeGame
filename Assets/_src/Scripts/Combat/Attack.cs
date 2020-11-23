@@ -35,17 +35,23 @@ public class HitProperties
     public int damage;
     public Vector2 ForceDirection { get; private set; }
     public float knockbackForce;
+    public float timeStopLength = 0.08f;
+    [Range(0, 1)] public float timeStopScale = 0;
     public GameSound hitSound;
     public GameObject impulseSource;
     public GameObject rippleEffectAdjust;
+    public GameObject particleHitEffect;
 
     public HitProperties(HitProperties hitProperties)
     {
         damage = hitProperties.damage;
         knockbackForce = hitProperties.knockbackForce;
+        timeStopLength = hitProperties.timeStopLength;
+        timeStopScale = hitProperties.timeStopScale;
         hitSound = hitProperties.hitSound;
         impulseSource = hitProperties.impulseSource;
         rippleEffectAdjust = hitProperties.rippleEffectAdjust;
+        particleHitEffect = hitProperties.particleHitEffect;
     }
     public HitProperties(int damage, float knockbackForce)
     {

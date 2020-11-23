@@ -50,6 +50,9 @@ TagManager:
   - name: Player
     uniqueID: 2108280849
     locked: 0
+  - name: VFX
+    uniqueID: 3896922895
+    locked: 0
   - name: Foreground
     uniqueID: 798559227
     locked: 0

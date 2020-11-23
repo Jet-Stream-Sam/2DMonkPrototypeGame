@@ -18,7 +18,7 @@ public class PausingManager : MonoBehaviour
     }
 
     
-    public bool isGamePaused = false;
+    public static bool isGamePaused = false;
   
     public void Pause(GameObject pMenu)
     {

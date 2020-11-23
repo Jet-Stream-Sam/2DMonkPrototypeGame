@@ -23,7 +23,7 @@ public class AirborneAttackState : AttackState
         if (controllerScript.isGrounded)
         {
             stateMachine.ChangeState(new StandingState(controllerScript, stateMachine));
-            tokenSource.Cancel();
+
         }
 
     }

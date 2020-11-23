@@ -17,6 +17,7 @@ public class AttackState : PlayerState
     private bool lockVelocity;
     private bool lockSideSwitch;
     private float attackDuration;
+    private float attackTimer;
     private HitProperties hitProperties;
     private PlayerAttack.EndsAtState attackEndsAtState;
     protected IAttackBehaviour attackBehaviour;
@@ -80,6 +81,7 @@ public class AttackState : PlayerState
     public override void Exit()
     {
         base.Exit();
+        tokenSource.Cancel();
         controllerScript.hitBoxCheck.HitProperties.Reset();
         attackBehaviour?.OnAttackExit();
     }
@@ -90,9 +92,14 @@ public class AttackState : PlayerState
 
         lockAsyncMethod = true;
 
-        await Task.Delay(TimeSpan.FromSeconds
-            (attackDuration));
+        attackTimer = attackDuration;
 
+        while(attackTimer > 0)
+        {
+            attackTimer -= Time.deltaTime;
+            await Task.Yield();
+        }
+     
         if (token.IsCancellationRequested)
             return;
         switch (attackEndsAtState)
