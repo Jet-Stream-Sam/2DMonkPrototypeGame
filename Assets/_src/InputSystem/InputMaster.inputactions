@@ -780,6 +780,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Punch+Kick",
+                    "type": "Button",
+                    "id": "fcfaaf0d-59d1-40df-8949-dcb40b94bd50",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -1008,7 +1016,7 @@
                     "id": "d46a51fc-b517-4beb-809e-8f76911663d1",
                     "path": "<Gamepad>/leftStick/left",
                     "interactions": "",
-                    "processors": "AxisDeadzone(min=0.525)",
+                    "processors": "AxisDeadzone(min=0.625)",
                     "groups": "GamePad",
                     "action": "Movement",
                     "isComposite": false,
@@ -1019,7 +1027,7 @@
                     "id": "62baf8a4-ed38-4910-8a72-6235e9925d6c",
                     "path": "<Gamepad>/leftStick/right",
                     "interactions": "",
-                    "processors": "AxisDeadzone(min=0.525)",
+                    "processors": "AxisDeadzone(min=0.625)",
                     "groups": "GamePad",
                     "action": "Movement",
                     "isComposite": false,

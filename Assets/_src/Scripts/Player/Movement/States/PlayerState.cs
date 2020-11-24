@@ -15,6 +15,7 @@ public class PlayerState : IState
     public virtual void Enter()
     {
         stateMachine = controllerScript.StateMachine;
+
     }
 
     public virtual void HandleUpdate()

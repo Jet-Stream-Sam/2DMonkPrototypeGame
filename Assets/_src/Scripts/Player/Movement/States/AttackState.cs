@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.InputSystem.Interactions;
+using UnityEngine.InputSystem;
 
 public class AttackState : PlayerState
 {
@@ -47,6 +47,8 @@ public class AttackState : PlayerState
         base.Enter();
         attackBehaviour?.Init(controllerScript);
 
+        controllerScript.InputUnsubscribe();
+
         initialPlayerScale = controllerScript.playerSpriteTransform.localScale;
 
         controllerScript.playerAnimationsScript.ChangeAnimationState(animationToPlay);
@@ -71,6 +73,8 @@ public class AttackState : PlayerState
         if(lockSideSwitch)
             LockSideSwitch(initialPlayerScale);
         attackBehaviour?.OnAttackUpdate();
+
+        
     }
 
     public override void HandleFixedUpdate()
@@ -113,6 +117,7 @@ public class AttackState : PlayerState
             default:
                 if (controllerScript.isGrounded)
                     stateMachine.ChangeState(new StandingState(controllerScript, stateMachine));
+
                 else
                     stateMachine.ChangeState(new FallingState(controllerScript, stateMachine));
                 break;

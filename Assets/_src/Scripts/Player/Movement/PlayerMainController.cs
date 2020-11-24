@@ -53,6 +53,10 @@ public class PlayerMainController : MonoBehaviour
     public MainStateMachine StateMachine { get; private set; }
     public string currentStateOutput;
 
+    #region Input Events
+    public Action<InputAction.CallbackContext> kickAction;
+    public Action<InputAction.CallbackContext> punchAction;
+    #endregion
     #region Player Events
     public System.Action hasPerformedJump;
     #endregion
@@ -78,16 +82,33 @@ public class PlayerMainController : MonoBehaviour
             MovementX = 0;
             MovementY = 0;
         };
-        
+
+        Controls.Player.PunchKick.performed += _ => Debug.Log("Performed:");
+
         #endregion
 
+        InputSubscribe();
         StateMachine = new MainStateMachine();
         StateMachine.Init(new GroundedState(this, StateMachine));
+
+        StateMachine.onStateChanged += InputUnsubscribe;
         
+    }
+    public void InputSubscribe()
+    {
+        Controls.Player.Kick.started += kickAction;
+        Controls.Player.Punch.started += punchAction;
+    }
+
+    public void InputUnsubscribe()
+    {
+        Controls.Player.Kick.started -= kickAction;
+        Controls.Player.Punch.started -= punchAction;
     }
 
     private void Update()
     {
+        
         StateMachine.CurrentState.HandleUpdate();
         currentStateOutput = StateMachine.CurrentState.ToString();
     }

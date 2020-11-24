@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 
 public class FallingState : PlayerState
 {
-    private Action<InputAction.CallbackContext> kickAction;
     public FallingState(PlayerMainController controllerScript, MainStateMachine stateMachine) : base(controllerScript, stateMachine)
     {
 
@@ -17,16 +16,21 @@ public class FallingState : PlayerState
         base.Enter();
         controllerScript.playerAnimationsScript.ChangeAnimationState("player_fall");
         #region Input Handling
-        controllerScript.Controls.Player.Kick.started -= kickAction;
-        kickAction = _ => stateMachine.ChangeState(new AirborneAttackState(controllerScript, stateMachine,
+        controllerScript.kickAction = _ =>
+        {
+           stateMachine.ChangeState(new AirborneAttackState(controllerScript, stateMachine,
            controllerScript.playerMoveList.Find("player_airborne_kick")));
-        controllerScript.Controls.Player.Kick.started += kickAction;
+        };
+        
+        controllerScript.InputSubscribe();
         #endregion
 
     }
     public override void HandleUpdate()
     {
         base.HandleUpdate();
+
+        
 
         if (controllerScript.isGrounded) stateMachine.ChangeState(new StandingState(controllerScript, stateMachine));
 
@@ -52,7 +56,8 @@ public class FallingState : PlayerState
     }
     public override void Exit()
     {
-        controllerScript.Controls.Player.Kick.started -= kickAction;
         base.Exit();
+        
     }
+
 }

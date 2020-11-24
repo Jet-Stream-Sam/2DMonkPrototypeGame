@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 
 public class CrouchingState : GroundedState
 {
-    private Action<InputAction.CallbackContext> kickAction;
     private float cooldown = 0;
     private bool canTransition = true;
     public CrouchingState(PlayerMainController controllerScript, MainStateMachine stateMachine) : base(controllerScript, stateMachine)
@@ -24,10 +23,14 @@ public class CrouchingState : GroundedState
     {
         base.Enter();
         #region Input Handling
-        controllerScript.Controls.Player.Kick.started -= kickAction;
-        kickAction = _ => stateMachine.ChangeState(new AttackState(controllerScript, stateMachine,
+
+        controllerScript.Controls.Player.Kick.started -= controllerScript.kickAction;
+        controllerScript.Controls.Player.Punch.started -= controllerScript.punchAction;
+        controllerScript.kickAction = _ => stateMachine.ChangeState(new AttackState(controllerScript, stateMachine,
            controllerScript.playerMoveList.Find("player_crouching_kick")));
-        controllerScript.Controls.Player.Kick.started += kickAction;
+
+        controllerScript.InputSubscribe();
+
         #endregion
 
         controllerScript.playerAnimationsScript.ChangeAnimationState("player_crouch");
@@ -75,10 +78,7 @@ public class CrouchingState : GroundedState
     }
     public override void Exit()
     {
-        base.Exit();
-        controllerScript.Controls.Player.Kick.started -= kickAction;
-
-        
+        base.Exit();  
     }
 
     private async void CountDown(float value)

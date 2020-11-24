@@ -6,8 +6,6 @@ using UnityEngine.InputSystem;
 
 public class StandingState : GroundedState
 {
-    private Action<InputAction.CallbackContext> kickAction;
-    private Action<InputAction.CallbackContext> punchAction;
     public StandingState(PlayerMainController controllerScript, MainStateMachine stateMachine) : base(controllerScript, stateMachine)
     {
 
@@ -17,19 +15,21 @@ public class StandingState : GroundedState
     {
         base.Enter();
         #region Input Handling
-        controllerScript.Controls.Player.Kick.started -= kickAction;
-        controllerScript.Controls.Player.Punch.started -= punchAction;
 
-
-        kickAction = _ => stateMachine.ChangeState(new AttackState(controllerScript, stateMachine,
+        controllerScript.kickAction = _ => stateMachine.ChangeState(new AttackState(controllerScript, stateMachine,
             controllerScript.playerMoveList.Find("player_kick")));
-        controllerScript.Controls.Player.Kick.started += kickAction;
-        punchAction = _ => stateMachine.ChangeState(new AttackState(controllerScript, stateMachine,
+        controllerScript.punchAction = _ => stateMachine.ChangeState(new AttackState(controllerScript, stateMachine,
             controllerScript.playerMoveList.Find("player_punch")));
-        controllerScript.Controls.Player.Punch.started += punchAction;
+
+        controllerScript.InputSubscribe();
 
         #endregion
 
+        
+        if (controllerScript.MovementX != 0)
+            controllerScript.playerAnimationsScript.ChangeAnimationState("player_walk");
+        else
+            controllerScript.playerAnimationsScript.ChangeAnimationState("player_idle");
     }
 
     public override void HandleUpdate()
@@ -41,7 +41,8 @@ public class StandingState : GroundedState
 
         base.HandleUpdate();
 
-        if(controllerScript.MovementY < -0.5f)
+
+        if (controllerScript.MovementY < -0.5f)
         {
             stateMachine.ChangeState(new CrouchingState(controllerScript, stateMachine));
         }
@@ -66,8 +67,6 @@ public class StandingState : GroundedState
     {
         base.Exit();
 
-        controllerScript.Controls.Player.Kick.started -= kickAction;
-        controllerScript.Controls.Player.Punch.started -= punchAction;
 
     }
 
