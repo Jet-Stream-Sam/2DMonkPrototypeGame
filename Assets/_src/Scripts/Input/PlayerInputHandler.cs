@@ -275,11 +275,11 @@ public class PlayerInputHandler : MonoBehaviour
 
         int InputConvertMovement(float axis, float deadzone, int negEnumValue, int posEnumValue)
         {
-            if (axis > deadzone)
+            if (axis > 0)
             {
                 return posEnumValue;
             }
-            else if (axis < -deadzone)
+            else if (axis < 0)
             {
                 return negEnumValue;
             }

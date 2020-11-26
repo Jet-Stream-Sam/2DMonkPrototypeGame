@@ -41,7 +41,7 @@ MonoBehaviour:
     type: 3}
   attackNotation:
     allowedState: StandingState
-    allowedTimeBetweenInputs: 0.2
+    allowedTimeBetweenInputs: 0.4
     movementNotation: 020000000600000004000000
     buttonNotation: 1
   attackEndsAtState: 0
