@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerState : IState
 {
     protected PlayerMainController controllerScript;
     protected MainStateMachine stateMachine;
     protected float easingMovementX;
+    protected float deadzoneMin;
+    
     
     public PlayerState(PlayerMainController controllerScript, MainStateMachine stateMachine)
     {
@@ -15,12 +18,14 @@ public class PlayerState : IState
     public virtual void Enter()
     {
         stateMachine = controllerScript.StateMachine;
+        deadzoneMin = InputSystem.settings.defaultDeadzoneMin;
+
+        
 
     }
-
     public virtual void HandleUpdate()
     {
-
+ 
         controllerScript.isGrounded = Physics2D.OverlapCircle(
             controllerScript.groundCheck.position, 
             controllerScript.groundCheckRadius,
@@ -43,20 +48,23 @@ public class PlayerState : IState
         {
             controllerScript.playerSpriteTransform.localScale = 
                 new Vector2(1, 1);
+            controllerScript.isReversed = false;
+
         }
         else if (controllerScript.MovementX < 0)
         {
             controllerScript.playerSpriteTransform.localScale = 
                 new Vector2(-1, 1);
+            controllerScript.isReversed = true;
         }
 
+        
         
     }
 
     public virtual void HandleFixedUpdate()
     {
-
-        
+ 
     }
     public virtual void Exit()
     {

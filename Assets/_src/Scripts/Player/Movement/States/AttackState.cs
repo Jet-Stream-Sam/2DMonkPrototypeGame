@@ -47,8 +47,6 @@ public class AttackState : PlayerState
         base.Enter();
         attackBehaviour?.Init(controllerScript);
 
-        controllerScript.InputUnsubscribe();
-
         initialPlayerScale = controllerScript.playerSpriteTransform.localScale;
 
         controllerScript.playerAnimationsScript.ChangeAnimationState(animationToPlay);

@@ -29,8 +29,6 @@ public class CrouchingState : GroundedState
         controllerScript.kickAction = _ => stateMachine.ChangeState(new AttackState(controllerScript, stateMachine,
            controllerScript.playerMoveList.Find("player_crouching_kick")));
 
-        controllerScript.InputSubscribe();
-
         #endregion
 
         controllerScript.playerAnimationsScript.ChangeAnimationState("player_crouch");
@@ -45,7 +43,7 @@ public class CrouchingState : GroundedState
     public override void HandleUpdate()
     {
         base.HandleUpdate();
-        if (!canTransition && controllerScript.MovementY > 0.5f && !controllerScript.isHittingHead)
+        if (!canTransition && controllerScript.MovementY > deadzoneMin && !controllerScript.isHittingHead)
         {
             stateMachine.ChangeState(new StandingState(controllerScript, stateMachine));
         }
@@ -55,9 +53,7 @@ public class CrouchingState : GroundedState
             {
                 stateMachine.ChangeState(new StandingState(controllerScript, stateMachine));
             }
-
-            
-                
+       
         }
         
         if (controllerScript.airborneJumpTimer > Time.time && !controllerScript.isHittingHead)

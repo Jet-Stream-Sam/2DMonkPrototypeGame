@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,6 +22,7 @@ public class RippleEffect : MonoBehaviour
         GameObject rippleObj = Instantiate(ripplePrefab, hitPoint.position, Quaternion.identity, VFXTransform);
         
         var comp = rippleObj.GetComponent<RippleEffectAdjust>();
+
         
         var rippleSettings = mainHitBox.HitProperties.rippleEffectAdjust.GetComponent<RippleEffectAdjust>();
         

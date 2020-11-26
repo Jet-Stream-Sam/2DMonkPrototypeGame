@@ -15,16 +15,7 @@ public class FallingState : PlayerState
     {
         base.Enter();
         controllerScript.playerAnimationsScript.ChangeAnimationState("player_fall");
-        #region Input Handling
-        controllerScript.kickAction = _ =>
-        {
-           stateMachine.ChangeState(new AirborneAttackState(controllerScript, stateMachine,
-           controllerScript.playerMoveList.Find("player_airborne_kick")));
-        };
-        
-        controllerScript.InputSubscribe();
-        #endregion
-
+ 
     }
     public override void HandleUpdate()
     {
@@ -57,7 +48,8 @@ public class FallingState : PlayerState
     public override void Exit()
     {
         base.Exit();
-        
+        controllerScript.canAttackInTheAir = false;
+
     }
 
 }

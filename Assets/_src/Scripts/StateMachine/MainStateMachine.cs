@@ -7,7 +7,7 @@ public class MainStateMachine
 {
     public IState CurrentState { get; private set; }
 
-    public Action onStateChanged;
+    public Action<string> onStateChanged;
     public void Init(IState initalState)
     {
         CurrentState = initalState;
@@ -17,8 +17,8 @@ public class MainStateMachine
     public void ChangeState(IState newState)
     {
         CurrentState.Exit();
-        onStateChanged?.Invoke();
         CurrentState = newState;
+        onStateChanged?.Invoke(newState.ToString());
         CurrentState.Enter();
     }
 }

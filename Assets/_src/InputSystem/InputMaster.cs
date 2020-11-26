@@ -795,9 +795,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Punch+Kick"",
+                    ""name"": ""Grab"",
                     ""type"": ""Button"",
-                    ""id"": ""fcfaaf0d-59d1-40df-8949-dcb40b94bd50"",
+                    ""id"": ""1934ecdc-8a4a-4712-9e05-5a9adac3bc47"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -1029,7 +1029,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""id"": ""d46a51fc-b517-4beb-809e-8f76911663d1"",
                     ""path"": ""<Gamepad>/leftStick/left"",
                     ""interactions"": """",
-                    ""processors"": ""AxisDeadzone(min=0.625)"",
+                    ""processors"": """",
                     ""groups"": ""GamePad"",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
@@ -1040,7 +1040,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""id"": ""62baf8a4-ed38-4910-8a72-6235e9925d6c"",
                     ""path"": ""<Gamepad>/leftStick/right"",
                     ""interactions"": """",
-                    ""processors"": ""AxisDeadzone(min=0.625)"",
+                    ""processors"": """",
                     ""groups"": ""GamePad"",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
@@ -1082,11 +1082,33 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""574634a0-62bf-400d-aafb-c2a0d2ec79d2"",
-                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""GamePad"",
                     ""action"": ""Kick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""081bbe86-db94-4384-9205-f2aa0c3b0f88"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Grab"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""83c71748-c9fe-4278-8e7d-ff961cd19686"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Grab"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1147,7 +1169,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Punch = m_Player.FindAction("Punch", throwIfNotFound: true);
         m_Player_Kick = m_Player.FindAction("Kick", throwIfNotFound: true);
-        m_Player_PunchKick = m_Player.FindAction("Punch+Kick", throwIfNotFound: true);
+        m_Player_Grab = m_Player.FindAction("Grab", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1363,7 +1385,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_Punch;
     private readonly InputAction m_Player_Kick;
-    private readonly InputAction m_Player_PunchKick;
+    private readonly InputAction m_Player_Grab;
     public struct PlayerActions
     {
         private @InputMaster m_Wrapper;
@@ -1372,7 +1394,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @Punch => m_Wrapper.m_Player_Punch;
         public InputAction @Kick => m_Wrapper.m_Player_Kick;
-        public InputAction @PunchKick => m_Wrapper.m_Player_PunchKick;
+        public InputAction @Grab => m_Wrapper.m_Player_Grab;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1394,9 +1416,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @Kick.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnKick;
                 @Kick.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnKick;
                 @Kick.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnKick;
-                @PunchKick.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPunchKick;
-                @PunchKick.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPunchKick;
-                @PunchKick.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPunchKick;
+                @Grab.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGrab;
+                @Grab.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGrab;
+                @Grab.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGrab;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1413,9 +1435,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @Kick.started += instance.OnKick;
                 @Kick.performed += instance.OnKick;
                 @Kick.canceled += instance.OnKick;
-                @PunchKick.started += instance.OnPunchKick;
-                @PunchKick.performed += instance.OnPunchKick;
-                @PunchKick.canceled += instance.OnPunchKick;
+                @Grab.started += instance.OnGrab;
+                @Grab.performed += instance.OnGrab;
+                @Grab.canceled += instance.OnGrab;
             }
         }
     }
@@ -1464,6 +1486,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnPunch(InputAction.CallbackContext context);
         void OnKick(InputAction.CallbackContext context);
-        void OnPunchKick(InputAction.CallbackContext context);
+        void OnGrab(InputAction.CallbackContext context);
     }
 }

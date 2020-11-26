@@ -1,11 +1,15 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 
 [CreateAssetMenu(menuName = "Scriptable Objects/Combat/Player Attack")]
 public class PlayerAttack : Attack
 {
+    
     [Header("Attack Behaviour")]
     [RequireInterface(typeof(IAttackBehaviour))]
     public Object attackBehaviour;
+
+    public AttackNotation attackNotation;
 
     public enum EndsAtState
     {

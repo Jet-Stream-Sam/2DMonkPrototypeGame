@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Sirenix.OdinInspector;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Attack : ScriptableObject
+public class Attack : SerializedScriptableObject
 {
     [Header("Dependencies")]
     public AnimationClip animationClip;
@@ -13,7 +14,7 @@ public class Attack : ScriptableObject
     public bool lockSideSwitch = true;
     [Header("Hit Properties")]
     public HitProperties hitProperties;
-    
+
 
     [ContextMenu("Debug AnimationClip info")]
     public void GetAnimationClipInfo()

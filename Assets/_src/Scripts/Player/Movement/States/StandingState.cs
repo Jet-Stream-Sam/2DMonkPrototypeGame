@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 
 public class StandingState : GroundedState
 {
+    private float toCrouchDelay = 0.18f;
+    private float toCrouchTimer;
     public StandingState(PlayerMainController controllerScript, MainStateMachine stateMachine) : base(controllerScript, stateMachine)
     {
 
@@ -14,22 +16,13 @@ public class StandingState : GroundedState
     public override void Enter()
     {
         base.Enter();
-        #region Input Handling
-
-        controllerScript.kickAction = _ => stateMachine.ChangeState(new AttackState(controllerScript, stateMachine,
-            controllerScript.playerMoveList.Find("player_kick")));
-        controllerScript.punchAction = _ => stateMachine.ChangeState(new AttackState(controllerScript, stateMachine,
-            controllerScript.playerMoveList.Find("player_punch")));
-
-        controllerScript.InputSubscribe();
-
-        #endregion
-
         
         if (controllerScript.MovementX != 0)
             controllerScript.playerAnimationsScript.ChangeAnimationState("player_walk");
         else
             controllerScript.playerAnimationsScript.ChangeAnimationState("player_idle");
+
+        toCrouchTimer = toCrouchDelay;
     }
 
     public override void HandleUpdate()
@@ -42,7 +35,18 @@ public class StandingState : GroundedState
         base.HandleUpdate();
 
 
-        if (controllerScript.MovementY < -0.5f)
+
+        if (controllerScript.MovementY < -deadzoneMin)
+        {
+            toCrouchTimer -= Time.deltaTime;
+            
+        }
+        else if(toCrouchTimer != toCrouchDelay)
+        {
+            toCrouchTimer = toCrouchDelay;
+        }
+
+        if(toCrouchTimer < 0)
         {
             stateMachine.ChangeState(new CrouchingState(controllerScript, stateMachine));
         }

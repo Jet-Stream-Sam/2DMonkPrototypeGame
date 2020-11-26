@@ -20,17 +20,24 @@ public class JumpingState : PlayerState
     {
         base.Enter();
 
+        controllerScript.canAttackInTheAir = true;
+
         controllerScript.playerAnimationsScript.ChangeAnimationState("player_fall");
-        
 
         pastGravityScale = controllerScript.playerRigidBody.gravityScale;
+
         controllerScript.playerRigidBody.gravityScale = controllerScript.jumpSpeed;
+
         controllerScript.isGrounded = false;
+
         controllerScript.playerRigidBody.velocity = 
             Vector2.up * Mathf.Sqrt(controllerScript.jumpHeight * -2 * 
             Physics2D.gravity.y * controllerScript.playerRigidBody.gravityScale);
+
         controllerScript.hasPerformedJump?.Invoke();
+
         controllerScript.playerAnimationsScript.ChangeAnimationState("player_jump");
+
         controllerScript.airborneJumpTimer = 0;
 
         controllerScript.SoundManager.PlaySFX(S_PLAYER_JUMP);

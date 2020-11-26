@@ -782,9 +782,9 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Punch+Kick",
+                    "name": "Grab",
                     "type": "Button",
-                    "id": "fcfaaf0d-59d1-40df-8949-dcb40b94bd50",
+                    "id": "1934ecdc-8a4a-4712-9e05-5a9adac3bc47",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -1016,7 +1016,7 @@
                     "id": "d46a51fc-b517-4beb-809e-8f76911663d1",
                     "path": "<Gamepad>/leftStick/left",
                     "interactions": "",
-                    "processors": "AxisDeadzone(min=0.625)",
+                    "processors": "",
                     "groups": "GamePad",
                     "action": "Movement",
                     "isComposite": false,
@@ -1027,7 +1027,7 @@
                     "id": "62baf8a4-ed38-4910-8a72-6235e9925d6c",
                     "path": "<Gamepad>/leftStick/right",
                     "interactions": "",
-                    "processors": "AxisDeadzone(min=0.625)",
+                    "processors": "",
                     "groups": "GamePad",
                     "action": "Movement",
                     "isComposite": false,
@@ -1069,11 +1069,33 @@
                 {
                     "name": "",
                     "id": "574634a0-62bf-400d-aafb-c2a0d2ec79d2",
-                    "path": "<Gamepad>/buttonEast",
+                    "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "GamePad",
                     "action": "Kick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "081bbe86-db94-4384-9205-f2aa0c3b0f88",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Grab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "83c71748-c9fe-4278-8e7d-ff961cd19686",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Grab",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

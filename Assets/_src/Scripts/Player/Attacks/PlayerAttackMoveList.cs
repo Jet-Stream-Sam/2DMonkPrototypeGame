@@ -8,6 +8,7 @@ public class PlayerAttackMoveList : MonoBehaviour
 
     public PlayerAttack Find(string name)
     {
+        
         foreach(PlayerAttack attack in playerAttackMoveList)
         {
             if(name == attack.animationClip.name)
