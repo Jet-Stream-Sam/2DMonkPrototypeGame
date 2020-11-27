@@ -36,7 +36,7 @@ MonoBehaviour:
     rippleEffectAdjust: {fileID: 40801258633192796, guid: d4cdfddeaaa19a048999bb3ea85d88c2,
       type: 3}
     particleHitEffect: {fileID: 0}
-  attackBehaviour: {fileID: -5936667180954219801, guid: cd052468a65dd3f45b359ba2956f32e8,
+  attackBehaviour: {fileID: -5936667180954219801, guid: 2e2a14200b3cf144eb7487a26efe15d6,
     type: 3}
   attackNotation:
     allowedState: StandingState

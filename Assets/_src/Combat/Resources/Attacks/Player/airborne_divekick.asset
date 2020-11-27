@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b0d9c19a2ed173a4995d816dc2439058, type: 3}
-  m_Name: airborne_kick
+  m_Name: airborne_divekick
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -36,7 +36,7 @@ MonoBehaviour:
     rippleEffectAdjust: {fileID: 40801258633192796, guid: d4cdfddeaaa19a048999bb3ea85d88c2,
       type: 3}
     particleHitEffect: {fileID: 0}
-  attackBehaviour: {fileID: 86241210479870766, guid: 484f98b881023d24490da1aa551d358a,
+  attackBehaviour: {fileID: 86241210479870766, guid: cf987a4e04431ab4cb03e8aaebfd32b1,
     type: 3}
   attackNotation:
     allowedState: FallingState

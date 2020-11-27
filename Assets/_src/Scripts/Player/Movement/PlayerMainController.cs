@@ -28,7 +28,7 @@ public class PlayerMainController : MonoBehaviour
     public Transform playerSpriteTransform;
     public HitCheck hitBoxCheck;
     public PlayerAttackMoveList playerMoveList;
-    public AfterImageEffectPool afterImageEffectPool;
+    public Transform VFXTransform;
 
     [Header("Movement Variables")]
     public float standingMoveSpeed = 10;

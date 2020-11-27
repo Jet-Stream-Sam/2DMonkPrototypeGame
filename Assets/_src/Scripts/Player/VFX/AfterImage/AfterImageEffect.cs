@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class AfterImageEffect : MonoBehaviour
 {
-    [SerializeField] private Transform player;
+    [HideInInspector] public Transform player;
     
     [HideInInspector] public AfterImageEffectPool effectPool;
 
     [SerializeField] private SpriteRenderer currentRenderer;
-    [SerializeField] private SpriteRenderer playerRenderer;
+    [HideInInspector] public SpriteRenderer playerRenderer;
 
 
     [SerializeField] private float activeTime = 0.1f;
@@ -31,8 +31,7 @@ public class AfterImageEffect : MonoBehaviour
 
     private void Update()
     {
-
-        
+ 
         if(Time.time >= timeActivated + activeTime)
         {
             effectPool.AddToPool(gameObject);

@@ -12,6 +12,7 @@ public class AttackState : PlayerState
     private Vector3 initialPlayerScale;
     private bool lockAsyncMethod;
 
+    private PlayerAttack attackAsset;
     private string animationToPlay;
     private string audioClipName;
     private bool lockVelocity;
@@ -27,6 +28,7 @@ public class AttackState : PlayerState
     public AttackState(PlayerMainController controllerScript, MainStateMachine stateMachine,
        PlayerAttack playerAttackAsset) : base(controllerScript, stateMachine)
     {
+        attackAsset = playerAttackAsset;
         animationToPlay = playerAttackAsset.animationClip.name;
         audioClipName = playerAttackAsset.attackSoundEffect.name;
         lockVelocity = playerAttackAsset.lockVelocity;
@@ -39,13 +41,14 @@ public class AttackState : PlayerState
         {
             attackBehaviour = attack;
         }
+        
     }
 
 
     public override void Enter()
     {
         base.Enter();
-        attackBehaviour?.Init(controllerScript);
+        attackBehaviour?.Init(controllerScript, attackAsset);
 
         initialPlayerScale = controllerScript.playerSpriteTransform.localScale;
 

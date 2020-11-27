@@ -1,7 +1,7 @@
 ﻿
 public interface IAttackBehaviour
 {
-    void Init(PlayerMainController controllerScript);
+    void Init(PlayerMainController controllerScript, PlayerAttack attackAsset);
     void OnAttackEnter();
 
     void OnAttackUpdate();

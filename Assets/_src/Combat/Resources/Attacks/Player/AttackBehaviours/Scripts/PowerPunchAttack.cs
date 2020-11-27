@@ -2,19 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RunningPunchAttack : MonoBehaviour, IAttackBehaviour
+public class PowerPunchAttack : MonoBehaviour, IAttackBehaviour
 {
     private PlayerMainController controllerScript;
+    private PlayerAttack attackAsset;
     [SerializeField] private float dashPower = 7;
     [SerializeField] private float easingRate = 0.8f;
     private float easingMovement;
 
+    private AfterImageEffectPool vfxPool;
+    [SerializeField] private GameObject afterImageEffect; 
     [SerializeField] private float allowedDistanceBtwImages = 0.8f;
     private float lastImagePos;
     
-    public void Init(PlayerMainController controllerScript)
+    public void Init(PlayerMainController controllerScript, PlayerAttack attackAsset)
     {
         this.controllerScript = controllerScript;
+        this.attackAsset = attackAsset;
     }
     public void OnAttackEnter()
     {
@@ -26,7 +30,10 @@ public class RunningPunchAttack : MonoBehaviour, IAttackBehaviour
 
         easingMovement = controllerScript.playerRigidBody.velocity.x;
 
-        controllerScript.afterImageEffectPool.GetFromPool();
+        vfxPool = controllerScript.VFXTransform.GetComponentInChildren<AfterImageEffectPool>();
+        vfxPool.UpdatePool(afterImageEffect);
+        vfxPool.GetFromPool();
+        
         lastImagePos = controllerScript.playerMainCollider.transform.position.x;
     }
 
@@ -53,9 +60,8 @@ public class RunningPunchAttack : MonoBehaviour, IAttackBehaviour
 
         if (Mathf.Abs(controllerScript.playerMainCollider.transform.position.x - lastImagePos) > allowedDistanceBtwImages)
         {
-            controllerScript.afterImageEffectPool.GetFromPool();
+            vfxPool.GetFromPool();
             lastImagePos = controllerScript.playerMainCollider.transform.position.x;
-            
         }
     }
 

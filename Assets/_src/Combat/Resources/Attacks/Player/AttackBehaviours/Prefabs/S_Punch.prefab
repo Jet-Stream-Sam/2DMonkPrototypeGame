@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3253387347185636096}
   - component: {fileID: -6585507823163578374}
   m_Layer: 0
-  m_Name: RunningPunch
+  m_Name: S_Punch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,8 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc469bc111c3e114fb17dbd5c8aa89b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashPower: 25
+  dashPower: 15
   easingRate: 0.1
+  afterImageEffect: {fileID: 1208973573239498853, guid: 9c97bd7c792109a42afb5dd6a613a8ec,
+    type: 3}
   allowedDistanceBtwImages: 0.4
 --- !u!114 &3253387347185636096
 MonoBehaviour:

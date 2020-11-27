@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class AfterImageEffectPool : MonoBehaviour
 {
-    [SerializeField] private GameObject effectPrefab;
+    public GameObject effectPrefab;
+    [SerializeField] private Transform playerTransform;
+    [SerializeField] private SpriteRenderer playerSpriteRenderer;
     [SerializeField] private int instantiatedImagesCount = 15;
 
     private Queue<GameObject> availableObjects = new Queue<GameObject>();
@@ -17,10 +19,15 @@ public class AfterImageEffectPool : MonoBehaviour
     {
         for (int i = 0; i < instantiatedImagesCount; i++)
         {
-            var instanceToAdd = Instantiate(effectPrefab);
+            GameObject instanceToAdd = Instantiate(effectPrefab);
             
             instanceToAdd.transform.SetParent(transform);
-            if (instanceToAdd is GameObject g) g.GetComponent<AfterImageEffect>().effectPool = this;
+   
+
+            AfterImageEffect effect = instanceToAdd.GetComponent<AfterImageEffect>();
+            effect.player = playerTransform;
+            effect.effectPool = this;
+            effect.playerRenderer = playerSpriteRenderer;
             AddToPool(instanceToAdd);
         }
     }
@@ -41,5 +48,29 @@ public class AfterImageEffectPool : MonoBehaviour
         var instance = availableObjects.Dequeue();
         instance.SetActive(true);
         return instance;
+    }
+
+    public void UpdatePool(GameObject instance)
+    {
+        if(effectPrefab != instance)
+        {
+            effectPrefab = instance;
+
+            Transform[] allObjsInPool = transform.GetComponentsInChildren<Transform>(true);
+            int count = 0;
+            foreach (Transform t in allObjsInPool)
+            {
+                if (count != 0)
+                {
+                    Destroy(t.gameObject);
+                }
+                count++;
+            }
+            availableObjects.Clear();
+
+            
+            GrowPool();
+        }
+        
     }
 }

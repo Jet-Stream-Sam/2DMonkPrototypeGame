@@ -2249,6 +2249,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 635033216}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &660350968 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3920600528410004728, guid: 21d93d4d6af15ab469e32b1ffc82f08c,
+    type: 3}
+  m_PrefabInstance: {fileID: 3920600529210620271}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &695043415
 GameObject:
   m_ObjectHideFlags: 0
@@ -8209,6 +8215,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstSelectedButton: {fileID: 1867943705}
+--- !u!4 &1732745052 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1070262488774675050, guid: 21d93d4d6af15ab469e32b1ffc82f08c,
+    type: 3}
+  m_PrefabInstance: {fileID: 3920600529210620271}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1742362369
 GameObject:
   m_ObjectHideFlags: 0
@@ -9964,10 +9976,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3920600529210620274, guid: 21d93d4d6af15ab469e32b1ffc82f08c,
+        type: 3}
+      propertyPath: playerTransform
+      value: 
+      objectReference: {fileID: 1772859672}
+    - target: {fileID: 3920600529210620274, guid: 21d93d4d6af15ab469e32b1ffc82f08c,
+        type: 3}
+      propertyPath: playerSpriteRenderer
+      value: 
+      objectReference: {fileID: 660350968}
     - target: {fileID: 3920600530057498372, guid: 21d93d4d6af15ab469e32b1ffc82f08c,
         type: 3}
       propertyPath: playerAttackMoveList.Array.size
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3920600530057498372, guid: 21d93d4d6af15ab469e32b1ffc82f08c,
         type: 3}
@@ -10005,6 +10027,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: e7cbe05ca8e45444597bb8fe96073a48,
         type: 2}
+    - target: {fileID: 3920600530057498372, guid: 21d93d4d6af15ab469e32b1ffc82f08c,
+        type: 3}
+      propertyPath: playerAttackMoveList.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: 598a8f344acd1714fbae9426bc809d0f,
+        type: 2}
+    - target: {fileID: 3920600530057498374, guid: 21d93d4d6af15ab469e32b1ffc82f08c,
+        type: 3}
+      propertyPath: VFXTransform
+      value: 
+      objectReference: {fileID: 1732745052}
     - target: {fileID: 3920600530057498374, guid: 21d93d4d6af15ab469e32b1ffc82f08c,
         type: 3}
       propertyPath: inputHandler
