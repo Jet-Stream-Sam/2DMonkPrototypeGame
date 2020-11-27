@@ -12,7 +12,7 @@ public class PlayerMainController : MonoBehaviour
     public InputMaster Controls { get; private set; }
     [HideInInspector] public bool isGrounded;
     [HideInInspector] public bool isHittingHead;
-     public bool canAttackInTheAir = false;
+    public int attacksInTheAir = 0;
     public float MovementX { get; private set; }
     public float MovementY { get; private set; }
     public bool IsHoldingJumpButton { get; private set; }

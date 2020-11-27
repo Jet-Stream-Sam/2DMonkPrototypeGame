@@ -13,7 +13,8 @@ public class AirborneAttackState : AttackState
     public override void Enter()
     {
         base.Enter();
-        controllerScript.canAttackInTheAir = false;
+        controllerScript.attacksInTheAir -= 1;
+        Debug.Log(controllerScript.attacksInTheAir);
     }
     public override void HandleUpdate()
     {
@@ -21,7 +22,7 @@ public class AirborneAttackState : AttackState
 
         if (controllerScript.isGrounded)
         {
-            
+            controllerScript.attacksInTheAir = 0;
             stateMachine.ChangeState(new StandingState(controllerScript, stateMachine));
 
         }

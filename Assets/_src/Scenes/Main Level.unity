@@ -7598,6 +7598,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[Graphy]'
       objectReference: {fileID: 0}
+    - target: {fileID: 177638, guid: 0abab5bb77339e4428787a870eb31bd3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 11496292, guid: 0abab5bb77339e4428787a870eb31bd3, type: 3}
       propertyPath: m_audioModuleState
       value: 0
@@ -8034,6 +8038,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1693920042}
     m_Modifications:
+    - target: {fileID: 9103479759381710887, guid: ea1176e1c0fedd144a9332c1337813cd,
+        type: 3}
+      propertyPath: maxHealth
+      value: 2000
+      objectReference: {fileID: 0}
     - target: {fileID: 9103479759381710936, guid: ea1176e1c0fedd144a9332c1337813cd,
         type: 3}
       propertyPath: m_RootOrder
@@ -9095,6 +9104,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1693920042}
     m_Modifications:
+    - target: {fileID: 9103479759381710887, guid: ea1176e1c0fedd144a9332c1337813cd,
+        type: 3}
+      propertyPath: maxHealth
+      value: 2000
+      objectReference: {fileID: 0}
     - target: {fileID: 9103479759381710936, guid: ea1176e1c0fedd144a9332c1337813cd,
         type: 3}
       propertyPath: m_RootOrder

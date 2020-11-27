@@ -20,7 +20,6 @@ public class JumpingState : PlayerState
     {
         base.Enter();
 
-        controllerScript.canAttackInTheAir = true;
 
         controllerScript.playerAnimationsScript.ChangeAnimationState("player_fall");
 

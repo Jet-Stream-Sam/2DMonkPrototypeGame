@@ -21,12 +21,12 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  animationClip: {fileID: 7400000, guid: 36104b2559c3a074ebb401fb252b3dee, type: 2}
+  animationClip: {fileID: 7400000, guid: 1e8601e6e50a8144bb3823186865f51e, type: 2}
   attackSoundEffect: {fileID: 11400000, guid: 107a81c4fddf43648a44495511fcb776, type: 2}
   lockVelocity: 1
   lockSideSwitch: 1
   hitProperties:
-    damage: 70
+    damage: 50
     knockbackForce: 12
     timeStopLength: 0.1
     timeStopScale: 0.16

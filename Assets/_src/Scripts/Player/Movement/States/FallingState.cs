@@ -15,6 +15,7 @@ public class FallingState : PlayerState
     {
         base.Enter();
         controllerScript.playerAnimationsScript.ChangeAnimationState("player_fall");
+
  
     }
     public override void HandleUpdate()
@@ -48,7 +49,7 @@ public class FallingState : PlayerState
     public override void Exit()
     {
         base.Exit();
-        controllerScript.canAttackInTheAir = false;
+        controllerScript.attacksInTheAir = 0;
 
     }
 

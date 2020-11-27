@@ -31,7 +31,7 @@ public class PlayerAttackHandler : MonoBehaviour
     {
  
         bool isAirbourne = attack.attackNotation.allowedState == "FallingState";
-        bool canAttackInTheAir = mainController.canAttackInTheAir;
+        bool canAttackInTheAir = mainController.attacksInTheAir >= 0;
         if (isAirbourne && canAttackInTheAir)
         {
             Debug.Log("Combo Performed: " + attack.name);
