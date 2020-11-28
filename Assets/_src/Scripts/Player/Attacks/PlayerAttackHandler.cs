@@ -3,11 +3,13 @@ using Sirenix.Serialization;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class PlayerAttackHandler : MonoBehaviour
 {
     public List<AttackNotation> availableAttacks = new List<AttackNotation>();
+    public List<PlayerAttack> triggeredAttacks = new List<PlayerAttack>();
     [SerializeField] private PlayerInputHandler inputHandler;
     [SerializeField] private PlayerAttackMoveList moveList;
     [SerializeField] private PlayerMainController mainController;
@@ -27,9 +29,34 @@ public class PlayerAttackHandler : MonoBehaviour
         StopAllCoroutines();
     }
 
-    public void ExecuteMove(PlayerAttack attack)
+    public IEnumerator ExecuteMove(PlayerAttack attack)
     {
- 
+        triggeredAttacks.Add(attack);
+
+        yield return null;
+
+        if(triggeredAttacks.Count == 0)
+        {
+            yield break;
+        }
+        if(triggeredAttacks.Count >= 2)
+        {
+            int biggestNotation = 0;
+            PlayerAttack tempAttack = attack;
+            foreach(PlayerAttack tAttack in triggeredAttacks)
+            {
+                if(tAttack.attackNotation.movementNotation.Length > biggestNotation)
+                {
+                    tempAttack = tAttack;
+                    biggestNotation = tAttack.attackNotation.movementNotation.Length;
+                }
+            }
+            attack = tempAttack;
+        }
+
+        ClearAllAttacks();
+        triggeredAttacks.Clear();
+
         bool isAirbourne = attack.attackNotation.allowedState == "FallingState";
         bool canAttackInTheAir = mainController.attacksInTheAir >= 0;
         if (isAirbourne && canAttackInTheAir)
@@ -44,7 +71,9 @@ public class PlayerAttackHandler : MonoBehaviour
             mainController.StateMachine.ChangeState(new AttackState(mainController,
             mainController.StateMachine, attack));
         }
+
         
+
     }
     private void UpdateMoveListOnInput(PlayerInputHandler.MovementInputNotation notation)
     {
@@ -83,6 +112,7 @@ public class PlayerAttackHandler : MonoBehaviour
                         {
                             StartCoroutine(inputHandler.InputCheckTimer(attack.attackNotation, attack, true, this));
                             StartCoroutine(inputHandler.InputCheckTimer(attack.attackNotation, attack, false, this));
+                            yield return null;
                         }
                         
                     }

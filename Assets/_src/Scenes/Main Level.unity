@@ -7157,6 +7157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   availableAttacks: []
+  triggeredAttacks: []
   inputHandler: {fileID: 1277194754}
   moveList: {fileID: 1277194751}
   mainController: {fileID: 1277194753}
@@ -10003,8 +10004,14 @@ PrefabInstance:
     - target: {fileID: 3920600530057498372, guid: 21d93d4d6af15ab469e32b1ffc82f08c,
         type: 3}
       propertyPath: playerAttackMoveList.Array.size
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 3920600530057498372, guid: 21d93d4d6af15ab469e32b1ffc82f08c,
+        type: 3}
+      propertyPath: playerAttackMoveList.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2b31c189c2b7d4b4898956b83959b0de,
+        type: 2}
     - target: {fileID: 3920600530057498372, guid: 21d93d4d6af15ab469e32b1ffc82f08c,
         type: 3}
       propertyPath: playerAttackMoveList.Array.data[1]
@@ -10046,6 +10053,12 @@ PrefabInstance:
       propertyPath: playerAttackMoveList.Array.data[7]
       value: 
       objectReference: {fileID: 11400000, guid: 598a8f344acd1714fbae9426bc809d0f,
+        type: 2}
+    - target: {fileID: 3920600530057498372, guid: 21d93d4d6af15ab469e32b1ffc82f08c,
+        type: 3}
+      propertyPath: playerAttackMoveList.Array.data[8]
+      value: 
+      objectReference: {fileID: 11400000, guid: 0bae32968f926e44695b95085bc33365,
         type: 2}
     - target: {fileID: 3920600530057498374, guid: 21d93d4d6af15ab469e32b1ffc82f08c,
         type: 3}

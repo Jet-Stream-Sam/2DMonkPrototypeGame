@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: AfterImageMaterial
+  m_Name: SpecialAfterImage
   m_Shader: {fileID: -6465566751694194690, guid: 631cb475beb06a545b0f4a3706bb2f48,
     type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
@@ -26,5 +26,5 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats: []
     m_Colors:
-    - Color_3200EC28: {r: 0.4862744, g: 2.9960785, b: 2.6213598, a: 0.6039216}
+    - Color_3200EC28: {r: 1.375392, g: 8.47419, b: 4.0818086, a: 0.6039216}
   m_BuildTextureStacks: []

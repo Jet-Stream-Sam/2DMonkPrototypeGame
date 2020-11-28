@@ -179,8 +179,8 @@ public class PlayerInputHandler : MonoBehaviour
             {
                 if (PressedButtonInput == notation.buttonNotation)
                 {
-                    mainHandler.ExecuteMove(attack);
-                    mainHandler.ClearAllAttacks();
+                    StartCoroutine(mainHandler.ExecuteMove(attack));
+                    
                     break;
                 }
                 if (notation.allowedState != mainHandler.CurrentStateOutput)
@@ -220,8 +220,7 @@ public class PlayerInputHandler : MonoBehaviour
             {
                 if (PressedButtonInput == notation.buttonNotation)
                 {
-                    mainHandler.ExecuteMove(attack);
-                    mainHandler.ClearAllAttacks();
+                    StartCoroutine(mainHandler.ExecuteMove(attack));
                     hasExecutedMove = true;
                     break;
                 }
