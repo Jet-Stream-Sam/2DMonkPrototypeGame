@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b0d9c19a2ed173a4995d816dc2439058, type: 3}
-  m_Name: standing_flaming_kick
+  m_Name: Standing Flaming Punch
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -21,27 +21,27 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  animationClip: {fileID: 7400000, guid: aac11f814f4ad884fbe27d7e6cab108c, type: 2}
-  attackSoundEffect: {fileID: 11400000, guid: e62c080473f10bf44bd8a4aecd20600f, type: 2}
+  animationClip: {fileID: 7400000, guid: 36104b2559c3a074ebb401fb252b3dee, type: 2}
+  attackSoundEffect: {fileID: 11400000, guid: cf8e1b15eb3eb814c8cb62b689af1f72, type: 2}
   lockVelocity: 1
   lockSideSwitch: 1
   hitProperties:
-    damage: 90
-    knockbackForce: 2
-    timeStopLength: 0.2
-    timeStopScale: 0.2
-    hitSound: {fileID: 11400000, guid: cf8e1b15eb3eb814c8cb62b689af1f72, type: 2}
-    impulseSource: {fileID: 7153814831075158980, guid: 484f98b881023d24490da1aa551d358a,
+    damage: 150
+    knockbackForce: 65
+    timeStopLength: 0.1
+    timeStopScale: 0.4
+    hitSound: {fileID: 11400000, guid: aa9e499aaa8001f449bc1fb05dd20fc2, type: 2}
+    impulseSource: {fileID: 5244326971005480206, guid: 80816cadadc4d3046a7c72fdc6f45861,
       type: 3}
-    rippleEffectAdjust: {fileID: 7153814831075158980, guid: 484f98b881023d24490da1aa551d358a,
+    rippleEffectAdjust: {fileID: 5244326971005480206, guid: 80816cadadc4d3046a7c72fdc6f45861,
       type: 3}
     particleHitEffect: {fileID: 5244326971005480206, guid: 80816cadadc4d3046a7c72fdc6f45861,
       type: 3}
-  attackBehaviour: {fileID: -2872195656749309971, guid: 24082f96dc9c0b04d81e5e5988bc1ee6,
+  attackBehaviour: {fileID: -5936667180954219801, guid: cd052468a65dd3f45b359ba2956f32e8,
     type: 3}
+  attackEndsAtState: 0
   attackNotation:
     allowedState: StandingState
-    allowedTimeBetweenInputs: 0.25
-    movementNotation: 020000000000000002000000
-    buttonNotation: 2
-  attackEndsAtState: 1
+    allowedTimeBetweenInputs: 0.4
+    movementNotation: 020000000600000004000000
+    buttonNotation: 1

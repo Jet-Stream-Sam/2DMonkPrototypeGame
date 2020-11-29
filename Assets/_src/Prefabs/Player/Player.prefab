@@ -74,6 +74,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectPrefab: {fileID: 7478729198914860146}
+  playerTransform: {fileID: 3920600528410004729}
+  playerSpriteRenderer: {fileID: 3920600528410004728}
   instantiatedImagesCount: 15
 --- !u!1 &639171968218036645
 GameObject:
@@ -543,6 +545,8 @@ GameObject:
   - component: {fileID: 3920600530057498374}
   - component: {fileID: 3920600530057498373}
   - component: {fileID: 3920600530057498372}
+  - component: {fileID: 1277194754}
+  - component: {fileID: 1277194755}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -580,6 +584,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGrounded: 0
   isHittingHead: 0
+  attacksInTheAir: 0
   groundCheck: {fileID: 3920600529722533875}
   ceilingCheck: {fileID: 1514997771}
   playerRigidBody: {fileID: 1675328969860454351}
@@ -588,7 +593,7 @@ MonoBehaviour:
   playerSpriteTransform: {fileID: 3920600528410004729}
   hitBoxCheck: {fileID: 3920600528258869890}
   playerMoveList: {fileID: 3920600530057498372}
-  afterImageEffectPool: {fileID: 3920600529210620274}
+  VFXTransform: {fileID: 1070262488774675050}
   standingMoveSpeed: 9
   crouchingMoveSpeed: 5
   easingRate: 0.6
@@ -599,6 +604,7 @@ MonoBehaviour:
   airborneJumpTimer: 0
   groundedJumpTimer: 0
   fallMultiplier: 3.5
+  isReversed: 0
   groundCheckRadius: 0.25
   groundMask:
     serializedVersion: 2
@@ -635,10 +641,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerAttackMoveList:
+  - {fileID: 11400000, guid: 14b0bfb8693d28f4095b9e11ace576c5, type: 2}
+  - {fileID: 11400000, guid: f5d9b68bec406044881e36e859c670eb, type: 2}
+  - {fileID: 11400000, guid: 598a8f344acd1714fbae9426bc809d0f, type: 2}
+  - {fileID: 11400000, guid: 0bae32968f926e44695b95085bc33365, type: 2}
   - {fileID: 11400000, guid: 2b31c189c2b7d4b4898956b83959b0de, type: 2}
-  - {fileID: 11400000, guid: 6af67b7c5e646c1429e5b48c5ad61823, type: 2}
+  - {fileID: 11400000, guid: e7cbe05ca8e45444597bb8fe96073a48, type: 2}
   - {fileID: 11400000, guid: 487444dd677ad964ca000bb48abe07e9, type: 2}
+  - {fileID: 11400000, guid: cf71c3dbfc062924c9a49017ad1a8f33, type: 2}
   - {fileID: 11400000, guid: 4ee3794565ecb5b4c875079efc9b7a7b, type: 2}
+  - {fileID: 11400000, guid: dc37bf07789600449b2c2cfdcbd9a72a, type: 2}
+--- !u!114 &1277194754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3920600530057498378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3a87060112ba6d47b216e030bddf450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controllerScript: {fileID: 3920600530057498374}
+  pressedButtonTimeWindow: 0.1
+--- !u!114 &1277194755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3920600530057498378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4c9b23d773aa97409acf7abec8087ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  availableAttacks: []
+  triggeredAttacks: []
+  inputHandler: {fileID: 1277194754}
+  moveList: {fileID: 3920600530057498372}
+  mainController: {fileID: 3920600530057498374}
 --- !u!1 &3956913659667016107
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,13 +7,12 @@ public class ParallaxEffect : MonoBehaviour
 {
     private float startPos;
 
-    private Transform mainCamera;
+    [SerializeField] private Transform mainCamera;
 
     public float parallaxEffect;
 
     void Start()
     {
-        mainCamera = transform.root.transform;
         startPos = transform.position.x;
     }
 
@@ -21,6 +20,6 @@ public class ParallaxEffect : MonoBehaviour
     void FixedUpdate()
     {
         float dist = (mainCamera.position.x * parallaxEffect);
-        transform.position = new Vector2(startPos + dist, transform.position.y); 
+        transform.position = new Vector3(startPos + dist, transform.position.y, transform.position.z); 
     }
 }

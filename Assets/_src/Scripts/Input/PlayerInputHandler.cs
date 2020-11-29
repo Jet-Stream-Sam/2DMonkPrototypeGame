@@ -1,30 +1,33 @@
-﻿using System;
+﻿using Sirenix.OdinInspector;
+using Sirenix.Serialization;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
-public class PlayerInputHandler : MonoBehaviour
+public class PlayerInputHandler : SerializedMonoBehaviour
 {
-    
     private ControlManager controlManager;
     private InputMaster controls;
 
+    [FoldoutGroup("Dependencies")]
     [SerializeField] private PlayerMainController controllerScript;
+    [TitleGroup("Input")]
     [SerializeField] private float pressedButtonTimeWindow = 1f;
-    private float pressedButtonTimer;
+    [ReadOnly] [SerializeField] private float pressedButtonTimer;
 
+    [ReadOnly] [SerializeField] private float holdingButtonTime;
+    private float holdingButtonTimeLimit = 5;
 
     private Vector2 inputAxis;
     private float deadzoneMin;
-    private List<int> buttonsCurrentlyPressed = new List<int>();
+    [ReadOnly] [SerializeField] private List<int> buttonsCurrentlyPressed = new List<int>();
 
     #region Input Events
-    public Action<MovementInputNotation> onMovementCalled;
-    public Action<ButtonInputNotation> onTimedButtonCalled;
-    public Action<ButtonInputNotation> onRawButtonCalled;
+    [HideInInspector] public Action<MovementInputNotation> onMovementCalled;
+    [HideInInspector] public Action<ButtonInputNotation> onTimedButtonCalled;
+    [HideInInspector] public Action<ButtonInputNotation> onRawButtonCalled;
     private Action<InputAction.CallbackContext> inputAxisAction;
     private Action<InputAction.CallbackContext> inputAxisCancel;
 
@@ -92,11 +95,11 @@ public class PlayerInputHandler : MonoBehaviour
         allButtons = one | two | three | four,
     }
 
-    public MovementInputNotation MovementInput { get; private set; }
+    [OdinSerialize] [ReadOnly] public MovementInputNotation MovementInput { get; private set; }
 
-    public ButtonInputNotation RawButtonInput { get; private set; }
+    [OdinSerialize] [ReadOnly] public ButtonInputNotation RawButtonInput { get; private set; }
 
-    public ButtonInputNotation PressedButtonInput { get; private set; }
+    [OdinSerialize] [ReadOnly] public ButtonInputNotation PressedButtonInput { get; private set; }
 
     private void Start()
     {
@@ -312,11 +315,10 @@ public class PlayerInputHandler : MonoBehaviour
 
         RawButtonInput = (ButtonInputNotation)rawInput;
         PressedButtonInput = (ButtonInputNotation)rawInput;
+        StartCoroutine(HoldingButton(RawButtonInput));
 
         onRawButtonCalled?.Invoke(RawButtonInput);
-        onTimedButtonCalled?.Invoke(PressedButtonInput);
-
-
+        
         if (pressedButtonTimer == 0)
         {
             pressedButtonTimer = pressedButtonTimeWindow;
@@ -341,6 +343,7 @@ public class PlayerInputHandler : MonoBehaviour
         {
             RawButtonInput = 0;
             PressedButtonInput = 0;
+
         }
         else
         {
@@ -366,6 +369,7 @@ public class PlayerInputHandler : MonoBehaviour
             
         }
 
+        onTimedButtonCalled?.Invoke(PressedButtonInput);
         onRawButtonCalled?.Invoke(RawButtonInput);
 
     }
@@ -381,9 +385,17 @@ public class PlayerInputHandler : MonoBehaviour
         PressedButtonInput = 0;
         onTimedButtonCalled?.Invoke(PressedButtonInput);
 
-
     }
 
+    private IEnumerator HoldingButton(ButtonInputNotation button)
+    {
+        while(RawButtonInput == button && holdingButtonTime < holdingButtonTimeLimit)
+        {
+            holdingButtonTime += Time.deltaTime;
+            yield return null;
+        }
+        holdingButtonTime = 0;
+    }
     private void OnDestroy()
     {
         StopAllCoroutines();

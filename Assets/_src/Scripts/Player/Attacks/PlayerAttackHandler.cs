@@ -8,11 +8,16 @@ using UnityEngine;
 
 public class PlayerAttackHandler : MonoBehaviour
 {
-    public List<AttackNotation> availableAttacks = new List<AttackNotation>();
-    public List<PlayerAttack> triggeredAttacks = new List<PlayerAttack>();
+    [FoldoutGroup("Dependencies")]
     [SerializeField] private PlayerInputHandler inputHandler;
+    [FoldoutGroup("Dependencies")]
     [SerializeField] private PlayerAttackMoveList moveList;
+    [FoldoutGroup("Dependencies")]
     [SerializeField] private PlayerMainController mainController;
+
+    [ReadOnly] public List<AttackNotation> availableAttacks = new List<AttackNotation>();
+    [ReadOnly] public List<PlayerAttack> triggeredAttacks = new List<PlayerAttack>();
+    
     public string CurrentStateOutput { get; private set; }
 
     private PlayerInputHandler.MovementInputNotation currentMovNotation;
@@ -41,17 +46,7 @@ public class PlayerAttackHandler : MonoBehaviour
         }
         if(triggeredAttacks.Count >= 2)
         {
-            int biggestNotation = 0;
-            PlayerAttack tempAttack = attack;
-            foreach(PlayerAttack tAttack in triggeredAttacks)
-            {
-                if(tAttack.attackNotation.movementNotation.Length > biggestNotation)
-                {
-                    tempAttack = tAttack;
-                    biggestNotation = tAttack.attackNotation.movementNotation.Length;
-                }
-            }
-            attack = tempAttack;
+            attack = ChooseMoveWithHighestPriority();
         }
 
         ClearAllAttacks();
@@ -73,35 +68,45 @@ public class PlayerAttackHandler : MonoBehaviour
         }
 
         
+        PlayerAttack ChooseMoveWithHighestPriority()
+        {
+            int biggestNotation = 0;
+            PlayerAttack tempAttack = attack;
+            foreach (PlayerAttack tAttack in triggeredAttacks)
+            {
+                if (tAttack.attackNotation.movementNotation.Length > biggestNotation)
+                {
+                    tempAttack = tAttack;
+                    biggestNotation = tAttack.attackNotation.movementNotation.Length;
+                }
+            }
 
+            return tempAttack;
+        }
     }
     private void UpdateMoveListOnInput(PlayerInputHandler.MovementInputNotation notation)
     {
         currentMovNotation = notation;
-
-        StartCoroutine(UpdateMoveListCo(notation));
+        UpdateMoveList(notation);
 
     }
-
     private void UpdateMoveListOnStateChanged(string state)
     {
         CurrentStateOutput = state;
-        StartCoroutine(UpdateMoveListCo(currentMovNotation));
+        UpdateMoveList(currentMovNotation);
     }
-    private IEnumerator UpdateMoveListCo(PlayerInputHandler.MovementInputNotation notation)
+    private void UpdateMoveList(PlayerInputHandler.MovementInputNotation notation)
     {
         
         foreach (PlayerAttack attack in moveList.playerAttackMoveList)
         {
             PlayerInputHandler.MovementInputNotation[] movementNotation = attack.attackNotation.movementNotation;
 
-
             if (attack.attackNotation.allowedState == CurrentStateOutput)
             {
                 bool freeMovementAttack = movementNotation.Length == 0;
                 if (freeMovementAttack)
                 {
-                    yield return null;
                     StartCoroutine(inputHandler.InputCheck(attack.attackNotation, attack, this));
                 }
                 else if(movementNotation[0] == notation)
@@ -112,9 +117,8 @@ public class PlayerAttackHandler : MonoBehaviour
                         {
                             StartCoroutine(inputHandler.InputCheckTimer(attack.attackNotation, attack, true, this));
                             StartCoroutine(inputHandler.InputCheckTimer(attack.attackNotation, attack, false, this));
-                            yield return null;
-                        }
-                        
+
+                        }  
                     }
                     else
                     {
@@ -123,15 +127,12 @@ public class PlayerAttackHandler : MonoBehaviour
                             StartCoroutine(inputHandler.InputCheckTimer(attack.attackNotation, attack, false, this));
                         }
                     }
-                    yield return null;
   
                 }
 
             } 
         }
     }
-
-    
 
     private IEnumerator LateStart()
     {

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b0d9c19a2ed173a4995d816dc2439058, type: 3}
-  m_Name: airborne_divekick
+  m_Name: Airborne Divekick
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -38,9 +38,9 @@ MonoBehaviour:
     particleHitEffect: {fileID: 0}
   attackBehaviour: {fileID: 86241210479870766, guid: cf987a4e04431ab4cb03e8aaebfd32b1,
     type: 3}
+  attackEndsAtState: 2
   attackNotation:
     allowedState: FallingState
     allowedTimeBetweenInputs: 0.2
     movementNotation: 
     buttonNotation: 2
-  attackEndsAtState: 2

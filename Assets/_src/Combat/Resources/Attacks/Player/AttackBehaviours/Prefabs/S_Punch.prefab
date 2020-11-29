@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2252691855627798188}
-  - component: {fileID: -5936667180954219801}
   - component: {fileID: 3253387347185636096}
   - component: {fileID: -6585507823163578374}
+  - component: {fileID: -5936667180954219801}
   m_Layer: 0
   m_Name: S_Punch
   m_TagString: Untagged
@@ -33,23 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-5936667180954219801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4192581661169642393}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc469bc111c3e114fb17dbd5c8aa89b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dashPower: 15
-  easingRate: 0.1
-  afterImageEffect: {fileID: 1208973573239498853, guid: 9c97bd7c792109a42afb5dd6a613a8ec,
-    type: 3}
-  allowedDistanceBtwImages: 0.4
 --- !u!114 &3253387347185636096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,3 +120,20 @@ MonoBehaviour:
   disappearingRate: 4
   rippleSpeed: 40
   color: {r: 0.4392157, g: 2.6980393, b: 5.992157, a: 1}
+--- !u!114 &-5936667180954219801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4192581661169642393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc469bc111c3e114fb17dbd5c8aa89b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashPower: 15
+  easingRate: 0.1
+  afterImageEffect: {fileID: 1208973573239498853, guid: 9c97bd7c792109a42afb5dd6a613a8ec,
+    type: 3}
+  allowedDistanceBtwImages: 0.7

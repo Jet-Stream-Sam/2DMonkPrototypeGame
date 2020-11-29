@@ -1,31 +1,41 @@
-﻿using System.Collections;
+﻿using Sirenix.OdinInspector;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyMainController : MonoBehaviour, IDamageable
 {
-    [Header("Dependencies")]
+    [FoldoutGroup("Dependencies")]
     [SerializeField] private EnemyGroan enemyGroan;
+    [FoldoutGroup("Dependencies")]
     [SerializeField] private AnimationsState enemyAnimationsScript;
+    [FoldoutGroup("Dependencies")]
     [SerializeField] private Collider2D enemyCollider;
+    [FoldoutGroup("Dependencies")]
     [SerializeField] private Rigidbody2D enemyRigidBody;
+    [FoldoutGroup("Dependencies")]
     [SerializeField] private Transform groundCheck;
 
-    [Header("Movement Variables")]
+    [TitleGroup("Enemy", Alignment = TitleAlignments.Centered)]
+    [TabGroup("Enemy/Tabs", "Movement Settings")]
     [Range(0, 1f)][SerializeField] private float groundedStunnedToIdleEasingRate = 0.6f;
+    [TabGroup("Enemy/Tabs", "Movement Settings")]
     [Range(0, 1f)] [SerializeField] private float airborneStunnedToIdleEasingRate = 0.6f;
 
-    [Header("Ground Check")]
+    [TabGroup("Enemy/Tabs", "Collision Checks")]
     public float groundCheckRadius = 0.25f;
+    [TabGroup("Enemy/Tabs", "Collision Checks")]
     public LayerMask groundMask;
     private bool isGrounded;
     private bool hasRecovered = true;
     private bool hasNormalizedMovement = true;
     private bool isStunned => enemyRigidBody.bodyType == RigidbodyType2D.Dynamic;
 
-    [Header("Health")]
+    [TabGroup("Enemy/Tabs", "Combat")]
     [SerializeField] private int maxHealth;
-    private int currentHealth;
+    [TabGroup("Enemy/Tabs", "Combat")]
+    [ReadOnly]
+    [SerializeField] private int currentHealth;
 
     private void Start()
     {

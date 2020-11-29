@@ -14,7 +14,6 @@ public class AirborneAttackState : AttackState
     {
         base.Enter();
         controllerScript.attacksInTheAir -= 1;
-        Debug.Log(controllerScript.attacksInTheAir);
     }
     public override void HandleUpdate()
     {

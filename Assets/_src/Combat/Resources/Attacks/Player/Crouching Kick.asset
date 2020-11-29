@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b0d9c19a2ed173a4995d816dc2439058, type: 3}
-  m_Name: standing_kick
+  m_Name: Crouching Kick
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -21,15 +21,15 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  animationClip: {fileID: 7400000, guid: aac11f814f4ad884fbe27d7e6cab108c, type: 2}
+  animationClip: {fileID: 7400000, guid: fc5dd4f68d001bc4087c68d3ec9de187, type: 2}
   attackSoundEffect: {fileID: 11400000, guid: 107a81c4fddf43648a44495511fcb776, type: 2}
   lockVelocity: 1
   lockSideSwitch: 1
   hitProperties:
-    damage: 65
-    knockbackForce: 15
-    timeStopLength: 0.1
-    timeStopScale: 0.16
+    damage: 25
+    knockbackForce: 8
+    timeStopLength: 0
+    timeStopScale: 0
     hitSound: {fileID: 11400000, guid: 4cd25d573c9a79b42952b427acb09137, type: 2}
     impulseSource: {fileID: 40801258633192796, guid: d4cdfddeaaa19a048999bb3ea85d88c2,
       type: 3}
@@ -37,9 +37,9 @@ MonoBehaviour:
       type: 3}
     particleHitEffect: {fileID: 0}
   attackBehaviour: {fileID: 0}
+  attackEndsAtState: 1
   attackNotation:
-    allowedState: StandingState
+    allowedState: CrouchingState
     allowedTimeBetweenInputs: 0.2
     movementNotation: 
     buttonNotation: 2
-  attackEndsAtState: 1

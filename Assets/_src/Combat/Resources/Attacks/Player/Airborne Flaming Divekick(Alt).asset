@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b0d9c19a2ed173a4995d816dc2439058, type: 3}
-  m_Name: crouching_kick
+  m_Name: Airborne Flaming Divekick(Alt)
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -21,25 +21,27 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  animationClip: {fileID: 7400000, guid: fc5dd4f68d001bc4087c68d3ec9de187, type: 2}
-  attackSoundEffect: {fileID: 11400000, guid: 107a81c4fddf43648a44495511fcb776, type: 2}
+  animationClip: {fileID: 7400000, guid: 4dff467fb2791644ab82c27012ba96b8, type: 2}
+  attackSoundEffect: {fileID: 11400000, guid: a1a06036549740e499764153af35452a, type: 2}
   lockVelocity: 1
   lockSideSwitch: 1
   hitProperties:
-    damage: 25
-    knockbackForce: 8
-    timeStopLength: 0
-    timeStopScale: 0
+    damage: 80
+    knockbackForce: 80
+    timeStopLength: 0.2
+    timeStopScale: 0.4
     hitSound: {fileID: 11400000, guid: 4cd25d573c9a79b42952b427acb09137, type: 2}
-    impulseSource: {fileID: 40801258633192796, guid: d4cdfddeaaa19a048999bb3ea85d88c2,
+    impulseSource: {fileID: 5244326971005480206, guid: 1bfcec13ac6c15e4591355d5dd07a74e,
       type: 3}
-    rippleEffectAdjust: {fileID: 40801258633192796, guid: d4cdfddeaaa19a048999bb3ea85d88c2,
+    rippleEffectAdjust: {fileID: 5244326971005480206, guid: 1bfcec13ac6c15e4591355d5dd07a74e,
       type: 3}
-    particleHitEffect: {fileID: 0}
-  attackBehaviour: {fileID: 0}
+    particleHitEffect: {fileID: 5244326971005480206, guid: 1bfcec13ac6c15e4591355d5dd07a74e,
+      type: 3}
+  attackBehaviour: {fileID: 86241210479870766, guid: 484f98b881023d24490da1aa551d358a,
+    type: 3}
+  attackEndsAtState: 2
   attackNotation:
-    allowedState: CrouchingState
-    allowedTimeBetweenInputs: 0.2
-    movementNotation: 
+    allowedState: FallingState
+    allowedTimeBetweenInputs: 0.6
+    movementNotation: 020000000600000004000000
     buttonNotation: 2
-  attackEndsAtState: 1
