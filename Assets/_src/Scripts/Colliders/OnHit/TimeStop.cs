@@ -16,6 +16,7 @@ public class TimeStop : MonoBehaviour
 
     private void ApplyEffect(Vector3 pos, IDamageable hitBox)
     {
+        
         timeStopTimer = mainHitBox.HitProperties.timeStopLength;
         timeStopScale = mainHitBox.HitProperties.timeStopScale;
 

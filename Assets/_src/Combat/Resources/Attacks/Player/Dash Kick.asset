@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b0d9c19a2ed173a4995d816dc2439058, type: 3}
-  m_Name: Standing Special Punch
+  m_Name: Dash Kick
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -21,29 +21,29 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  animationClip: {fileID: 7400000, guid: 36104b2559c3a074ebb401fb252b3dee, type: 2}
-  moveSoundEffect: {fileID: 11400000, guid: cf8e1b15eb3eb814c8cb62b689af1f72, type: 2}
+  animationClip: {fileID: 7400000, guid: d02f71ad3787221438b0e860e3fbcd31, type: 2}
+  moveSoundEffect: {fileID: 11400000, guid: a1a06036549740e499764153af35452a, type: 2}
   lockVelocity: 1
   lockSideSwitch: 1
   moveType: 0
   hitProperties:
-    damage: 325
-    knockbackForce: 100
-    timeStopLength: 0.9
-    timeStopScale: 0.2
+    damage: 110
+    knockbackForce: 80
+    timeStopLength: 0.6
+    timeStopScale: 0.4
     hitSound: {fileID: 11400000, guid: aa9e499aaa8001f449bc1fb05dd20fc2, type: 2}
-    impulseSource: {fileID: 5244326971005480206, guid: eddc9c297aa4bea4a852194abe9888a4,
+    impulseSource: {fileID: 5244326971005480206, guid: 1bfcec13ac6c15e4591355d5dd07a74e,
       type: 3}
-    rippleEffectAdjust: {fileID: 5244326971005480206, guid: eddc9c297aa4bea4a852194abe9888a4,
+    rippleEffectAdjust: {fileID: 5244326971005480206, guid: 1bfcec13ac6c15e4591355d5dd07a74e,
       type: 3}
     particleHitEffect: {fileID: 5244326971005480206, guid: eddc9c297aa4bea4a852194abe9888a4,
       type: 3}
-  moveBehaviour: {fileID: -5936667180954219801, guid: 7ca7b3f1311c62445b981242d42ef1b4,
+  moveBehaviour: {fileID: -2872195656749309971, guid: 6ca38c771a63128438f239ddeebdd0df,
     type: 3}
-  moveEndsAtState: 0
+  moveEndsAtState: 1
   moveNotation:
-    movementNotation: 02000000060000000400000000000000020000000600000004000000
-    buttonNotation: 1
+    movementNotation: 040000000000000004000000
+    buttonNotation: 2
     allowedState: StandingState
-    allowedTimeBetweenInputs: 0.6
+    allowedTimeBetweenInputs: 0.25
     needsToBeHeld: 0

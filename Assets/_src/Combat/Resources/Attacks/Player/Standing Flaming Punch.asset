@@ -22,9 +22,10 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   animationClip: {fileID: 7400000, guid: 36104b2559c3a074ebb401fb252b3dee, type: 2}
-  attackSoundEffect: {fileID: 11400000, guid: cf8e1b15eb3eb814c8cb62b689af1f72, type: 2}
+  moveSoundEffect: {fileID: 11400000, guid: cf8e1b15eb3eb814c8cb62b689af1f72, type: 2}
   lockVelocity: 1
   lockSideSwitch: 1
+  moveType: 0
   hitProperties:
     damage: 150
     knockbackForce: 65
@@ -37,11 +38,12 @@ MonoBehaviour:
       type: 3}
     particleHitEffect: {fileID: 5244326971005480206, guid: 80816cadadc4d3046a7c72fdc6f45861,
       type: 3}
-  attackBehaviour: {fileID: -5936667180954219801, guid: cd052468a65dd3f45b359ba2956f32e8,
+  moveBehaviour: {fileID: -5936667180954219801, guid: cd052468a65dd3f45b359ba2956f32e8,
     type: 3}
-  attackEndsAtState: 0
-  attackNotation:
-    allowedState: StandingState
-    allowedTimeBetweenInputs: 0.4
+  moveEndsAtState: 0
+  moveNotation:
     movementNotation: 020000000600000004000000
     buttonNotation: 1
+    allowedState: StandingState
+    allowedTimeBetweenInputs: 0.4
+    needsToBeHeld: 0

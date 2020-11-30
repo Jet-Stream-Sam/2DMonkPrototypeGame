@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b0d9c19a2ed173a4995d816dc2439058, type: 3}
-  m_Name: Standing Kick
+  m_Name: Standing Heal
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -21,27 +21,25 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  animationClip: {fileID: 7400000, guid: aac11f814f4ad884fbe27d7e6cab108c, type: 2}
-  moveSoundEffect: {fileID: 11400000, guid: 107a81c4fddf43648a44495511fcb776, type: 2}
+  animationClip: {fileID: 7400000, guid: f102029be1850d84299cca7aeb523dd2, type: 2}
+  moveSoundEffect: {fileID: 0}
   lockVelocity: 1
   lockSideSwitch: 1
-  moveType: 0
+  moveType: 1
   hitProperties:
-    damage: 60
-    knockbackForce: 15
-    timeStopLength: 0.1
-    timeStopScale: 0.16
-    hitSound: {fileID: 11400000, guid: 4cd25d573c9a79b42952b427acb09137, type: 2}
-    impulseSource: {fileID: 40801258633192796, guid: d4cdfddeaaa19a048999bb3ea85d88c2,
-      type: 3}
-    rippleEffectAdjust: {fileID: 40801258633192796, guid: d4cdfddeaaa19a048999bb3ea85d88c2,
-      type: 3}
+    damage: 0
+    knockbackForce: 0
+    timeStopLength: 0
+    timeStopScale: 0
+    hitSound: {fileID: 0}
+    impulseSource: {fileID: 0}
+    rippleEffectAdjust: {fileID: 0}
     particleHitEffect: {fileID: 0}
   moveBehaviour: {fileID: 0}
-  moveEndsAtState: 1
+  moveEndsAtState: 0
   moveNotation:
-    movementNotation: 
-    buttonNotation: 2
+    movementNotation: 02000000
+    buttonNotation: 8
     allowedState: StandingState
-    allowedTimeBetweenInputs: 0
-    needsToBeHeld: 0
+    allowedTimeBetweenInputs: 3
+    needsToBeHeld: 1

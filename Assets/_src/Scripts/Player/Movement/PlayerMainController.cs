@@ -34,7 +34,9 @@ public class PlayerMainController : MonoBehaviour
     [FoldoutGroup("Dependencies")]
     public HitCheck hitBoxCheck;
     [FoldoutGroup("Dependencies")]
-    public PlayerAttackMoveList playerMoveList;
+    public PlayerInputHandler playerInputHandler;
+    [FoldoutGroup("Dependencies")]
+    public PlayerMoveList playerMoveList;
     [FoldoutGroup("Dependencies")]
     public Transform VFXTransform;
 

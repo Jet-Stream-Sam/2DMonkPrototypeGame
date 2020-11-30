@@ -5,7 +5,7 @@ using UnityEngine;
 public class AirborneAttackState : AttackState
 {
     
-    public AirborneAttackState(PlayerMainController controllerScript, MainStateMachine stateMachine, PlayerAttack playerAttackAsset) : base(controllerScript, stateMachine, playerAttackAsset)
+    public AirborneAttackState(PlayerMainController controllerScript, MainStateMachine stateMachine, PlayerMoves playerAttackAsset) : base(controllerScript, stateMachine, playerAttackAsset)
     {
         
             

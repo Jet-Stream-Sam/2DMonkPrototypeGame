@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CuttingKickAttack : MonoBehaviour, IAttackBehaviour
+public class CuttingKickAttack : MonoBehaviour, IMoveBehaviour
 {
     private PlayerMainController controllerScript;
-    private PlayerAttack attackAsset;
+    private PlayerMoves attackAsset;
 
     [SerializeField] private float dashPower = 1;
     [SerializeField] private float easingRate = 0.8f;
@@ -19,13 +19,13 @@ public class CuttingKickAttack : MonoBehaviour, IAttackBehaviour
 
     private AfterImageEffectPool vfxPool;
 
-    public void Init(PlayerMainController controllerScript, PlayerAttack attackAsset)
+    public void Init(PlayerMainController controllerScript, PlayerMoves attackAsset)
     {
         this.controllerScript = controllerScript;
         this.attackAsset = attackAsset;
     }
 
-    public void OnAttackEnter()
+    public void OnMoveEnter()
     {
         float playerDirection = controllerScript.playerSpriteTransform.localScale.x;
 
@@ -40,12 +40,12 @@ public class CuttingKickAttack : MonoBehaviour, IAttackBehaviour
         vfxPool.GetFromPool();
     }
 
-    public void OnAttackExit()
+    public void OnMoveExit()
     {
 
     }
 
-    public void OnAttackFixedUpdate()
+    public void OnMoveFixedUpdate()
     {
         easingMovement =
             Mathf.Lerp(easingMovement,
@@ -66,7 +66,7 @@ public class CuttingKickAttack : MonoBehaviour, IAttackBehaviour
         }
     }
 
-    public void OnAttackUpdate()
+    public void OnMoveUpdate()
     {
 
     }

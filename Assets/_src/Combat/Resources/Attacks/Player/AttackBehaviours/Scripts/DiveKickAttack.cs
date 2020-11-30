@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DiveKickAttack : MonoBehaviour, IAttackBehaviour
+public class DiveKickAttack : MonoBehaviour, IMoveBehaviour
 {
     private PlayerMainController controllerScript;
-    private PlayerAttack attackAsset;
+    private PlayerMoves attackAsset;
     [SerializeField] private float diveHorizontalPower = 3;
     [SerializeField] private float diveVerticalPower = 1;
 
@@ -14,12 +14,12 @@ public class DiveKickAttack : MonoBehaviour, IAttackBehaviour
     [SerializeField] private float allowedDistanceBtwImages = 0.8f;
     private float lastImagePos;
 
-    public void Init(PlayerMainController controllerScript, PlayerAttack attackAsset)
+    public void Init(PlayerMainController controllerScript, PlayerMoves attackAsset)
     {
         this.controllerScript = controllerScript;
         this.attackAsset = attackAsset;
     }
-    public void OnAttackEnter()
+    public void OnMoveEnter()
     {
         float playerDirection = controllerScript.playerSpriteTransform.localScale.x;
         
@@ -36,12 +36,12 @@ public class DiveKickAttack : MonoBehaviour, IAttackBehaviour
 
     }
 
-    public void OnAttackUpdate()
+    public void OnMoveUpdate()
     {
         
     }
 
-    public void OnAttackFixedUpdate()
+    public void OnMoveFixedUpdate()
     {
         if (Mathf.Abs(controllerScript.playerMainCollider.transform.position.x - lastImagePos) > allowedDistanceBtwImages)
         {
@@ -50,7 +50,7 @@ public class DiveKickAttack : MonoBehaviour, IAttackBehaviour
         }
     }
 
-    public void OnAttackExit()
+    public void OnMoveExit()
     {
 
     }

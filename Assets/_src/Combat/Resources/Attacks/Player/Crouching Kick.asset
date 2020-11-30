@@ -22,7 +22,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   animationClip: {fileID: 7400000, guid: fc5dd4f68d001bc4087c68d3ec9de187, type: 2}
-  attackSoundEffect: {fileID: 11400000, guid: 107a81c4fddf43648a44495511fcb776, type: 2}
+  moveSoundEffect: {fileID: 11400000, guid: 107a81c4fddf43648a44495511fcb776, type: 2}
   lockVelocity: 1
   lockSideSwitch: 1
   hitProperties:
@@ -36,10 +36,12 @@ MonoBehaviour:
     rippleEffectAdjust: {fileID: 40801258633192796, guid: d4cdfddeaaa19a048999bb3ea85d88c2,
       type: 3}
     particleHitEffect: {fileID: 0}
-  attackBehaviour: {fileID: 0}
-  attackEndsAtState: 1
-  attackNotation:
-    allowedState: CrouchingState
-    allowedTimeBetweenInputs: 0.2
+  moveBehaviour: {fileID: 0}
+  moveEndsAtState: 1
+  moveNotation:
     movementNotation: 
     buttonNotation: 2
+    allowedState: CrouchingState
+    allowedTimeBetweenInputs: 0
+    needsToBeHeld: 0
+    timeHoldingButton: 0

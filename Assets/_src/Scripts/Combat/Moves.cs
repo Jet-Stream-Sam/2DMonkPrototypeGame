@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Attack : SerializedScriptableObject
+public class Moves : SerializedScriptableObject
 {
     
     [Title("Dependencies")]
-    [PropertyOrder(-2), Required] public AnimationClip animationClip;
-    [PropertyOrder(-2)] public GameSound attackSoundEffect;
+    [PropertyOrder(-3), Required] public AnimationClip animationClip;
+    [PropertyOrder(-3)] public GameSound moveSoundEffect;
     [PropertySpace]
-    [PropertyOrder(-1)][Button("Debug AnimationClip info", ButtonSizes.Medium)]
+    [PropertyOrder(-2)][Button("Debug AnimationClip info", ButtonSizes.Medium)]
     public void GetAnimationClipInfo()
     {
         Debug.Log("");
@@ -22,9 +22,17 @@ public class Attack : SerializedScriptableObject
 
     }
 
-    [Title("Attack Settings")]
-    public bool lockVelocity = true;
-    public bool lockSideSwitch = true;
+    [Title("Move Settings")]
+    [PropertyOrder(-1)] public bool lockVelocity = true;
+    [PropertyOrder(-1)] public bool lockSideSwitch = true;
+    public enum MoveType
+    {
+        Attack,
+        Neutral
+    }
+
+    [PropertyOrder(-1)] public MoveType moveType;
+    [ShowIf("moveType", MoveType.Attack)]
     [Title("Hit Properties")]
     [HideLabel]
     public HitProperties hitProperties;
@@ -71,13 +79,6 @@ public class HitProperties
         this.damage = damage;
         this.knockbackForce = knockbackForce;
 
-    }
-
-    public void Reset()
-    {
-        damage = 0;
-        ForceDirection = Vector2.zero;
-        knockbackForce = 0;
     }
 
     public void SetForceDirection(Vector2 positionA, Vector2 positionB)

@@ -3,19 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAttackMoveList : MonoBehaviour
+public class PlayerMoveList : MonoBehaviour
 {
     [ListDrawerSettings(ShowIndexLabels = true, ListElementLabelName = "name")]
-    public PlayerAttack[] playerAttackMoveList;
+    public PlayerMoves[] playerMoveList;
 
-    public PlayerAttack Find(string name)
+    public PlayerMoves Find(string name)
     {
         
-        foreach(PlayerAttack attack in playerAttackMoveList)
+        foreach(PlayerMoves move in playerMoveList)
         {
-            if(name == attack.animationClip.name)
+            if(name == move.animationClip.name)
             {
-                return attack;
+                return move;
             }
         }
         return null;

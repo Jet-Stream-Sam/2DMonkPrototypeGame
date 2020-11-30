@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 using System.Threading;
 using System.Threading.Tasks;
-using UnityEngine;
-using UnityEngine.InputSystem;
 
-public class AttackState : PlayerState
+public class NeutralMoveState : PlayerState
 {
     protected CancellationTokenSource tokenSource;
     private Vector3 initialPlayerScale;
@@ -17,114 +15,105 @@ public class AttackState : PlayerState
     private string audioClipName;
     private bool lockVelocity;
     private bool lockSideSwitch;
-    private float attackDuration;
-    private float attackTimer;
-    private HitProperties hitProperties;
+    private float moveMaxDuration;
+    private float moveTimer;
     private PlayerInputHandler.ButtonInputNotation buttonToHold;
     private bool buttonNeedsToBeHeld = false;
-    private PlayerMoves.EndsAtState attackEndsAtState;
-    protected IMoveBehaviour attackBehaviour;
+    private PlayerMoves.EndsAtState moveEndsAtState;
+    protected IMoveBehaviour moveBehaviour;
 
-    
-
-    public AttackState(PlayerMainController controllerScript, MainStateMachine stateMachine,
+    public NeutralMoveState(PlayerMainController controllerScript, MainStateMachine stateMachine,
        PlayerMoves playerAttackAsset) : base(controllerScript, stateMachine)
     {
         attackAsset = playerAttackAsset;
         animationToPlay = playerAttackAsset.animationClip.name;
-        if(playerAttackAsset.moveSoundEffect != null)
+        if (playerAttackAsset.moveSoundEffect != null)
             audioClipName = playerAttackAsset.moveSoundEffect.name;
         lockVelocity = playerAttackAsset.lockVelocity;
         lockSideSwitch = playerAttackAsset.lockSideSwitch;
-        hitProperties = playerAttackAsset.hitProperties;
-        attackEndsAtState = playerAttackAsset.moveEndsAtState;
-        attackDuration = playerAttackAsset.animationClip.length;
+        moveEndsAtState = playerAttackAsset.moveEndsAtState;
+        moveMaxDuration = playerAttackAsset.animationClip.length;
         buttonToHold = playerAttackAsset.moveNotation.buttonNotation;
         buttonNeedsToBeHeld = playerAttackAsset.moveNotation.needsToBeHeld;
 
-        if (playerAttackAsset.moveBehaviour is IMoveBehaviour attack)
+        if (playerAttackAsset.moveBehaviour is IMoveBehaviour move)
         {
-            attackBehaviour = attack;
+            moveBehaviour = move;
         }
-        
-    }
 
+    }
 
     public override void Enter()
     {
         base.Enter();
-        attackBehaviour?.Init(controllerScript, attackAsset);
+        moveBehaviour?.Init(controllerScript, attackAsset);
 
         initialPlayerScale = controllerScript.playerSpriteTransform.localScale;
 
         controllerScript.playerAnimationsScript.ChangeAnimationState(animationToPlay);
 
-        if(audioClipName != null)
+        if (audioClipName != null)
             controllerScript.SoundManager.PlayOneShotSFX(audioClipName);
 
-        controllerScript.hitBoxCheck.HitProperties = 
-            new HitProperties(hitProperties);
-
-        
-        if(lockVelocity)
+        if (lockVelocity)
             LockVelocity();
-        
-        if (!lockAsyncMethod)
-            AttackLoop();
 
-        attackBehaviour?.OnMoveEnter();
+        if (!lockAsyncMethod)
+            MoveLoop();
+
+        moveBehaviour?.OnMoveEnter();
     }
 
     public override void HandleUpdate()
     {
         base.HandleUpdate();
-        if(lockSideSwitch)
+        if (lockSideSwitch)
             LockSideSwitch(initialPlayerScale);
-        attackBehaviour?.OnMoveUpdate();
-
-        
+        moveBehaviour?.OnMoveUpdate();
     }
 
     public override void HandleFixedUpdate()
     {
         base.HandleFixedUpdate();
-        attackBehaviour?.OnMoveFixedUpdate();
+        moveBehaviour?.OnMoveFixedUpdate();
     }
     public override void Exit()
     {
         base.Exit();
         tokenSource.Cancel();
-        controllerScript.hitBoxCheck.ResetProperties();
-        attackBehaviour?.OnMoveExit();
+        moveBehaviour?.OnMoveExit();
     }
-    private async void AttackLoop()
+
+    private async void MoveLoop()
     {
         tokenSource = new CancellationTokenSource();
         var token = tokenSource.Token;
 
         lockAsyncMethod = true;
 
-        attackTimer = attackDuration;
+        moveTimer = moveMaxDuration;
 
-        while(attackTimer > 0)
+        while(moveTimer > 0)
         {
             if (buttonNeedsToBeHeld)
             {
                 if (controllerScript.playerInputHandler.RawButtonInput != buttonToHold)
                 {
-                    EndMoveAtState(attackEndsAtState);
+                    Debug.Log("Move was interrupted!");
+                    EndMoveAtState(moveEndsAtState);
                     return;
                 }
             }
-            attackTimer -= Time.deltaTime;
+            moveTimer -= Time.deltaTime;
             await Task.Yield();
         }
-     
         if (token.IsCancellationRequested)
             return;
 
-        EndMoveAtState(attackEndsAtState);
+        Debug.Log("Move was executed till the end!");
+        EndMoveAtState(moveEndsAtState);
     }
+
     private void EndMoveAtState(PlayerMoves.EndsAtState state)
     {
         switch (state)
@@ -145,6 +134,7 @@ public class AttackState : PlayerState
 
         }
     }
+
     private void LockVelocity()
     {
         controllerScript.playerRigidBody.velocity = new Vector2(0, 0);

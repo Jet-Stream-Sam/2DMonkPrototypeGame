@@ -795,7 +795,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Grab"",
+                    ""name"": ""Energy"",
                     ""type"": ""Button"",
                     ""id"": ""1934ecdc-8a4a-4712-9e05-5a9adac3bc47"",
                     ""expectedControlType"": ""Button"",
@@ -1097,7 +1097,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Grab"",
+                    ""action"": ""Energy"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1108,7 +1108,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Grab"",
+                    ""action"": ""Energy"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1169,7 +1169,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Punch = m_Player.FindAction("Punch", throwIfNotFound: true);
         m_Player_Kick = m_Player.FindAction("Kick", throwIfNotFound: true);
-        m_Player_Grab = m_Player.FindAction("Grab", throwIfNotFound: true);
+        m_Player_Energy = m_Player.FindAction("Energy", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1385,7 +1385,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_Punch;
     private readonly InputAction m_Player_Kick;
-    private readonly InputAction m_Player_Grab;
+    private readonly InputAction m_Player_Energy;
     public struct PlayerActions
     {
         private @InputMaster m_Wrapper;
@@ -1394,7 +1394,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @Punch => m_Wrapper.m_Player_Punch;
         public InputAction @Kick => m_Wrapper.m_Player_Kick;
-        public InputAction @Grab => m_Wrapper.m_Player_Grab;
+        public InputAction @Energy => m_Wrapper.m_Player_Energy;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1416,9 +1416,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @Kick.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnKick;
                 @Kick.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnKick;
                 @Kick.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnKick;
-                @Grab.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGrab;
-                @Grab.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGrab;
-                @Grab.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGrab;
+                @Energy.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEnergy;
+                @Energy.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEnergy;
+                @Energy.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEnergy;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1435,9 +1435,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @Kick.started += instance.OnKick;
                 @Kick.performed += instance.OnKick;
                 @Kick.canceled += instance.OnKick;
-                @Grab.started += instance.OnGrab;
-                @Grab.performed += instance.OnGrab;
-                @Grab.canceled += instance.OnGrab;
+                @Energy.started += instance.OnEnergy;
+                @Energy.performed += instance.OnEnergy;
+                @Energy.canceled += instance.OnEnergy;
             }
         }
     }
@@ -1486,6 +1486,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnPunch(InputAction.CallbackContext context);
         void OnKick(InputAction.CallbackContext context);
-        void OnGrab(InputAction.CallbackContext context);
+        void OnEnergy(InputAction.CallbackContext context);
     }
 }

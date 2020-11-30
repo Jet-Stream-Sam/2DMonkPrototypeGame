@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CrouchingAttackState : AttackState
 {
-    public CrouchingAttackState(PlayerMainController controllerScript, MainStateMachine stateMachine, PlayerAttack playerAttackAsset) : base(controllerScript, stateMachine, playerAttackAsset)
+    public CrouchingAttackState(PlayerMainController controllerScript, MainStateMachine stateMachine, PlayerMoves playerAttackAsset) : base(controllerScript, stateMachine, playerAttackAsset)
     {
 
     }

@@ -782,7 +782,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Grab",
+                    "name": "Energy",
                     "type": "Button",
                     "id": "1934ecdc-8a4a-4712-9e05-5a9adac3bc47",
                     "expectedControlType": "Button",
@@ -1084,7 +1084,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Grab",
+                    "action": "Energy",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -1095,7 +1095,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Grab",
+                    "action": "Energy",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

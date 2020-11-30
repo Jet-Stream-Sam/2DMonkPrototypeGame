@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Sirenix.OdinInspector;
+using Sirenix.Serialization;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +17,8 @@ public class HitCheck : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D hitCollider)
     {
+        if (HitProperties == null)
+            return;
         if (checkedHitColliders.Contains(hitCollider))
             return;
         IDamageable hitBox = hitCollider.GetComponent<IDamageable>();
@@ -23,18 +27,14 @@ public class HitCheck : MonoBehaviour
         {
             OnSucessfulHit?.Invoke(hitCollider.transform.position, hitBox);
             checkedHitColliders.Add(hitCollider);
+            
   
         }
     }
 
-    private void Update()
-    {
-        if (!subjectCollider2D.enabled)
-            ResetColliders();
-    }
-
-    private void ResetColliders()
+    public void ResetProperties()
     {
         checkedHitColliders = new List<Collider2D>();
+        HitProperties = null;
     }
 }

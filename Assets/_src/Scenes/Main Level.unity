@@ -2505,7 +2505,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 519420032}
-  parallaxEffect: -0.04
+  parallaxEffect: -0.08
 --- !u!1 &719441057
 GameObject:
   m_ObjectHideFlags: 0
@@ -3044,7 +3044,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 519420032}
-  parallaxEffect: -0.04
+  parallaxEffect: -0.08
 --- !u!1 &908113884
 GameObject:
   m_ObjectHideFlags: 0
@@ -3444,7 +3444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 519420032}
-  parallaxEffect: -0.04
+  parallaxEffect: -0.08
 --- !u!1 &1127138211
 GameObject:
   m_ObjectHideFlags: 0
@@ -7686,7 +7686,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 519420032}
-  parallaxEffect: -0.04
+  parallaxEffect: -0.08
 --- !u!1 &1443382270
 GameObject:
   m_ObjectHideFlags: 0
@@ -10156,11 +10156,45 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1277194754, guid: 21d93d4d6af15ab469e32b1ffc82f08c,
         type: 3}
+    - target: {fileID: 3920600528258869890, guid: 21d93d4d6af15ab469e32b1ffc82f08c,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 3920600528258869890, guid: 21d93d4d6af15ab469e32b1ffc82f08c,
+        type: 3}
+    - target: {fileID: 3920600530057498372, guid: 21d93d4d6af15ab469e32b1ffc82f08c,
+        type: 3}
+      propertyPath: playerMoveList.Array.size
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 3920600530057498372, guid: 21d93d4d6af15ab469e32b1ffc82f08c,
+        type: 3}
+      propertyPath: playerMoveList.Array.data[11]
+      value: 
+      objectReference: {fileID: 11400000, guid: b2e5a1c8d38c1fa4980186544584f253,
+        type: 2}
+    - target: {fileID: 3920600530057498372, guid: 21d93d4d6af15ab469e32b1ffc82f08c,
+        type: 3}
+      propertyPath: playerMoveList.Array.data[12]
+      value: 
+      objectReference: {fileID: 11400000, guid: f3d7b6d677dc389428ddceba7b62dc80,
+        type: 2}
+    - target: {fileID: 3920600530057498372, guid: 21d93d4d6af15ab469e32b1ffc82f08c,
+        type: 3}
+      propertyPath: playerMoveList.Array.data[13]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9eb5221cc11ab3f45936c69a9e3f4fe9,
+        type: 2}
     - target: {fileID: 3920600530057498374, guid: 21d93d4d6af15ab469e32b1ffc82f08c,
         type: 3}
       propertyPath: debugActivated
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3920600530057498374, guid: 21d93d4d6af15ab469e32b1ffc82f08c,
+        type: 3}
+      propertyPath: playerInputHandler
+      value: 
+      objectReference: {fileID: 3920600529210620272}
     - target: {fileID: 3920600530057498376, guid: 21d93d4d6af15ab469e32b1ffc82f08c,
         type: 3}
       propertyPath: m_RootOrder
@@ -10223,6 +10257,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21d93d4d6af15ab469e32b1ffc82f08c, type: 3}
+--- !u!114 &3920600529210620272 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1277194754, guid: 21d93d4d6af15ab469e32b1ffc82f08c,
+    type: 3}
+  m_PrefabInstance: {fileID: 3920600529210620271}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3a87060112ba6d47b216e030bddf450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4003428589991942487
 PrefabInstance:
   m_ObjectHideFlags: 0

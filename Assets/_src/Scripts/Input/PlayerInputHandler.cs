@@ -128,12 +128,12 @@ public class PlayerInputHandler : SerializedMonoBehaviour
         controls.Player.Punch.performed += inputWestButtonAction;
         controls.Player.Kick.performed += inputNorthButtonAction;
         controls.Player.Jump.performed += inputSouthButtonAction;
-        controls.Player.Grab.performed += inputEastButtonAction;
+        controls.Player.Energy.performed += inputEastButtonAction;
 
         controls.Player.Punch.canceled += inputWestButtonCancel;
         controls.Player.Kick.canceled += inputNorthButtonCancel;
         controls.Player.Jump.canceled += inputSouthButtonCancel;
-        controls.Player.Grab.canceled += inputEastButtonCancel;
+        controls.Player.Energy.canceled += inputEastButtonCancel;
 
         #endregion
 
@@ -160,6 +160,16 @@ public class PlayerInputHandler : SerializedMonoBehaviour
         return newMovNotation;
     }
 
+    public bool HasLateralMovement(MovementInputNotation notation)
+    {
+        if (notation.HasFlag(MovementInputNotation.f) ||
+                notation.HasFlag(MovementInputNotation.b))
+        {
+            return true;
+        }
+
+        return false;
+    }
     public bool HasLateralMovement(MovementInputNotation[] notations)
     {
         foreach (MovementInputNotation notation in notations)
@@ -173,22 +183,22 @@ public class PlayerInputHandler : SerializedMonoBehaviour
         return false;
     }
 
-    public IEnumerator InputCheck(AttackNotation notation, PlayerAttack attack, PlayerAttackHandler mainHandler)
+    public IEnumerator InputCheck(MoveNotation notation, PlayerMoves move, PlayerMoveHandler mainHandler)
     {
-        if (!mainHandler.availableAttacks.Contains(notation))
+        if (!mainHandler.availableMoves.Contains(notation))
         {
-            mainHandler.availableAttacks.Add(notation);
+            mainHandler.availableMoves.Add(notation);
             while (true)
             {
                 if (PressedButtonInput == notation.buttonNotation)
                 {
-                    StartCoroutine(mainHandler.ExecuteMove(attack));
+                    StartCoroutine(mainHandler.ExecuteMove(move));
                     
                     break;
                 }
                 if (notation.allowedState != mainHandler.CurrentStateOutput)
                 {
-                    mainHandler.availableAttacks.Remove(notation);
+                    mainHandler.availableMoves.Remove(notation);
                     break;
                 }
 
@@ -198,20 +208,22 @@ public class PlayerInputHandler : SerializedMonoBehaviour
         }
 
     }
-    public IEnumerator InputCheckTimer(AttackNotation notation, PlayerAttack attack, bool isReversed, PlayerAttackHandler mainHandler)
+    public IEnumerator InputCheckTimer(MoveNotation notation, PlayerMoves move, bool isReversed, PlayerMoveHandler mainHandler)
     {
         MovementInputNotation[] sequences = notation.movementNotation;
 
         if (isReversed)
         {
             sequences = ReverseInputAll(sequences);
+            
+            
         }
 
         int i = 0;
-        float maxTimeBtwInputs = attack.attackNotation.allowedTimeBetweenInputs;
+        float maxTimeBtwInputs = move.moveNotation.allowedTimeBetweenInputs;
         bool hasExecutedMove = false;
 
-        mainHandler.availableAttacks.Add(notation);
+        mainHandler.availableMoves.Add(notation);
 
         while (maxTimeBtwInputs > 0)
         {
@@ -223,7 +235,7 @@ public class PlayerInputHandler : SerializedMonoBehaviour
             {
                 if (PressedButtonInput == notation.buttonNotation)
                 {
-                    StartCoroutine(mainHandler.ExecuteMove(attack));
+                    StartCoroutine(mainHandler.ExecuteMove(move));
                     hasExecutedMove = true;
                     break;
                 }
@@ -242,7 +254,7 @@ public class PlayerInputHandler : SerializedMonoBehaviour
             else if (MovementInput == sequences[i])
             {
                 i++;
-                maxTimeBtwInputs = attack.attackNotation.allowedTimeBetweenInputs;
+                maxTimeBtwInputs = move.moveNotation.allowedTimeBetweenInputs;
             }
             else if (!firstInput)
             {
@@ -256,7 +268,7 @@ public class PlayerInputHandler : SerializedMonoBehaviour
         }
         if (!hasExecutedMove)
         {
-            mainHandler.availableAttacks.Remove(notation);
+            mainHandler.availableMoves.Remove(notation);
         }
     }
     private void OnMovementPerformed(InputAction.CallbackContext ctx)
@@ -410,12 +422,12 @@ public class PlayerInputHandler : SerializedMonoBehaviour
         controls.Player.Punch.performed -= inputWestButtonAction;
         controls.Player.Kick.performed -= inputNorthButtonAction;
         controls.Player.Jump.performed -= inputSouthButtonAction;
-        controls.Player.Grab.performed -= inputEastButtonAction;
+        controls.Player.Energy.performed -= inputEastButtonAction;
 
         controls.Player.Punch.canceled -= inputWestButtonCancel;
         controls.Player.Kick.canceled -= inputNorthButtonCancel;
         controls.Player.Jump.canceled -= inputSouthButtonCancel;
-        controls.Player.Grab.canceled -= inputEastButtonCancel;
+        controls.Player.Energy.canceled -= inputEastButtonCancel;
         #endregion
     }
 }

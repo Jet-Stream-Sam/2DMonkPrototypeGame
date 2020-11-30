@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerPunchAttack : MonoBehaviour, IAttackBehaviour
+public class PowerPunchAttack : MonoBehaviour, IMoveBehaviour
 {
     private PlayerMainController controllerScript;
-    private PlayerAttack attackAsset;
+    private PlayerMoves attackAsset;
     [SerializeField] private float dashPower = 7;
     [SerializeField] private float easingRate = 0.8f;
     private float easingMovement;
@@ -15,12 +15,12 @@ public class PowerPunchAttack : MonoBehaviour, IAttackBehaviour
     [SerializeField] private float allowedDistanceBtwImages = 0.8f;
     private float lastImagePos;
     
-    public void Init(PlayerMainController controllerScript, PlayerAttack attackAsset)
+    public void Init(PlayerMainController controllerScript, PlayerMoves attackAsset)
     {
         this.controllerScript = controllerScript;
         this.attackAsset = attackAsset;
     }
-    public void OnAttackEnter()
+    public void OnMoveEnter()
     {
         float playerDirection = controllerScript.playerSpriteTransform.localScale.x;
 
@@ -37,14 +37,14 @@ public class PowerPunchAttack : MonoBehaviour, IAttackBehaviour
         lastImagePos = controllerScript.playerMainCollider.transform.position.x;
     }
 
-    public void OnAttackUpdate()
+    public void OnMoveUpdate()
     {
         
 
         
     }
 
-    public void OnAttackFixedUpdate()
+    public void OnMoveFixedUpdate()
     {
         easingMovement =
             Mathf.Lerp(easingMovement,
@@ -65,7 +65,7 @@ public class PowerPunchAttack : MonoBehaviour, IAttackBehaviour
         }
     }
 
-    public void OnAttackExit()
+    public void OnMoveExit()
     {
 
     }
