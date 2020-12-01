@@ -15,6 +15,10 @@ public class EnemyMainController : MonoBehaviour, IDamageable
     [SerializeField] private Rigidbody2D enemyRigidBody;
     [FoldoutGroup("Dependencies")]
     [SerializeField] private Transform groundCheck;
+    [FoldoutGroup("Dependencies")]
+    [SerializeField] public AnimationClip hitAnimationClip;
+    [FoldoutGroup("Dependencies")]
+    [SerializeField] public AnimationClip deathAnimationClip;
 
     [TitleGroup("Enemy", Alignment = TitleAlignments.Centered)]
     [TabGroup("Enemy/Tabs", "Movement Settings")]
@@ -89,8 +93,8 @@ public class EnemyMainController : MonoBehaviour, IDamageable
             
             return;
         }
-        enemyAnimationsScript.ChangeAnimationState("wizard_hit");
-        StartCoroutine(ComeBackToState("wizard_idle", 0.15f));
+        enemyAnimationsScript.ChangeAnimationState(hitAnimationClip.name);
+        StartCoroutine(ComeBackToState("wizard_idle", hitAnimationClip.length));
     }
 
     public void TakeDamage(int damage, Vector2 forceDirection, float knockbackForce)
@@ -106,16 +110,16 @@ public class EnemyMainController : MonoBehaviour, IDamageable
             Die();
             return;
         }
-        enemyAnimationsScript.ChangeAnimationState("wizard_hit");
-        StartCoroutine(ComeBackToState("wizard_idle", 0.15f));
+        enemyAnimationsScript.ChangeAnimationState(hitAnimationClip.name);
+        StartCoroutine(ComeBackToState("wizard_idle", hitAnimationClip.length));
     }
 
     private void Die()
     {
         enemyCollider.enabled = false;
         enemyRigidBody.Sleep();
-        enemyAnimationsScript.ChangeAnimationState("wizard_death");
-        Destroy(gameObject, 0.45f);
+        enemyAnimationsScript.ChangeAnimationState(deathAnimationClip.name);
+        Destroy(gameObject, deathAnimationClip.length);
     }
 
     private IEnumerator ComeBackToState(string state, float time)

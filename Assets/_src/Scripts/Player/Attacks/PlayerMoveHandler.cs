@@ -171,6 +171,7 @@ public class PlayerMoveHandler : MonoBehaviour
         mainController.StateMachine.onStateChanged += UpdateMoveListOnStateChanged;
         inputHandler.onMovementCalled += UpdateMoveListOnInput;
 
+        UpdateMoveListOnStateChanged("StandingState");
     }
 
     private void OnDestroy()

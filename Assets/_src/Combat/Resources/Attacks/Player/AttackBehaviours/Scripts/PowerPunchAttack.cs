@@ -30,7 +30,7 @@ public class PowerPunchAttack : MonoBehaviour, IMoveBehaviour
 
         easingMovement = controllerScript.playerRigidBody.velocity.x;
 
-        vfxPool = controllerScript.VFXTransform.GetComponentInChildren<AfterImageEffectPool>();
+        vfxPool = controllerScript.playerMainVFXManager.afterImageEffectPool;
         vfxPool.UpdatePool(afterImageEffect);
         vfxPool.GetFromPool();
         

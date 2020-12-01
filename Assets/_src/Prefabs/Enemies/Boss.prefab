@@ -145,6 +145,8 @@ MonoBehaviour:
   enemyCollider: {fileID: 343963594249940042}
   enemyRigidBody: {fileID: 343963594249940046}
   groundCheck: {fileID: 343963595502964200}
+  hitAnimationClip: {fileID: 7400000, guid: 7c39e286fa1b37d40b6922b5547f8d6d, type: 2}
+  deathAnimationClip: {fileID: 7400000, guid: 387aa5a5a99f4614ea70b001d9dd66b9, type: 2}
   groundedStunnedToIdleEasingRate: 0.5
   airborneStunnedToIdleEasingRate: 0.25
   groundCheckRadius: 0.25

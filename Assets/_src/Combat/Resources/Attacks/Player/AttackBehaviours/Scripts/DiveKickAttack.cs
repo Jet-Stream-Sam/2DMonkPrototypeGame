@@ -28,7 +28,7 @@ public class DiveKickAttack : MonoBehaviour, IMoveBehaviour
             -diveVerticalPower + controllerScript.playerRigidBody.velocity.y);
 
 
-        vfxPool = controllerScript.VFXTransform.GetComponentInChildren<AfterImageEffectPool>();
+        vfxPool = controllerScript.playerMainVFXManager.afterImageEffectPool;
         vfxPool.UpdatePool(afterImageEffect);
         vfxPool.GetFromPool();
         lastImagePos = controllerScript.playerMainCollider.transform.position.x;

@@ -23,7 +23,8 @@ public class AirborneAttackState : AttackState
         {
             controllerScript.attacksInTheAir = 0;
             stateMachine.ChangeState(new StandingState(controllerScript, stateMachine));
-
+            ParticleSystem landingDust = controllerScript.playerMainVFXManager.playerDustParticles.dustParticles["LandingDust"];
+            landingDust.Play();
         }
 
     }

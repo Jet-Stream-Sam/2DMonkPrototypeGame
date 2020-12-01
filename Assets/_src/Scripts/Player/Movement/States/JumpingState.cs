@@ -20,6 +20,8 @@ public class JumpingState : PlayerState
     {
         base.Enter();
 
+        ParticleSystem jumpDust = controllerScript.playerMainVFXManager.playerDustParticles.dustParticles["JumpDust"];
+        jumpDust.Play();
 
         controllerScript.playerAnimationsScript.ChangeAnimationState("player_fall");
 

@@ -22,10 +22,14 @@ public class FallingState : PlayerState
     {
         base.HandleUpdate();
 
-        
 
-        if (controllerScript.isGrounded) stateMachine.ChangeState(new StandingState(controllerScript, stateMachine));
-
+        bool hasLanded = controllerScript.isGrounded;
+        if (hasLanded)
+        {
+            stateMachine.ChangeState(new StandingState(controllerScript, stateMachine));
+            ParticleSystem landingDust = controllerScript.playerMainVFXManager.playerDustParticles.dustParticles["LandingDust"];
+            landingDust.Play();
+        }
         if (controllerScript.airborneJumpTimer > Time.time && 
             controllerScript.groundedJumpTimer > Time.time)
         {

@@ -38,7 +38,7 @@ public class PlayerMainController : MonoBehaviour
     [FoldoutGroup("Dependencies")]
     public PlayerMoveList playerMoveList;
     [FoldoutGroup("Dependencies")]
-    public Transform VFXTransform;
+    public PlayerMainVFXManager playerMainVFXManager;
 
     [TitleGroup("Player", Alignment = TitleAlignments.Centered)]
     [TabGroup("Player/Tabs", "Movement Settings")]
@@ -117,10 +117,9 @@ public class PlayerMainController : MonoBehaviour
         #endregion
 
         StateMachine = new MainStateMachine();
-        StateMachine.Init(new GroundedState(this, StateMachine));
-
+        
         StateMachine.onStateChanged += state => currentStateOutput = state;
-
+        StateMachine.Init(new StandingState(this, StateMachine));
     }
 
     private void Update()

@@ -8,9 +8,10 @@ public class MainStateMachine
     public IState CurrentState { get; private set; }
 
     public Action<string> onStateChanged;
-    public void Init(IState initalState)
+    public void Init(IState initialState)
     {
-        CurrentState = initalState;
+        CurrentState = initialState;
+        onStateChanged?.Invoke(initialState.ToString());
         CurrentState.Enter();
     }
 
