@@ -4963,6 +4963,8 @@ MonoBehaviour:
   sizeAffectsRange: 1
   alphaAffectsIntensity: 1
   endIfNotAlive: 1
+  sizeMultiplier: 2
+  alphaMultiplier: 2
 --- !u!114 &4988514004374594874
 MonoBehaviour:
   m_ObjectHideFlags: 0

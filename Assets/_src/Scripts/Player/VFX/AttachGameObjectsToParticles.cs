@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Sirenix.OdinInspector;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 
@@ -14,8 +15,10 @@ public class AttachGameObjectsToParticles : MonoBehaviour
     [SerializeField] private bool sizeAffectsRange = true;
     [SerializeField] private bool alphaAffectsIntensity = true;
     [SerializeField] private bool endIfNotAlive = true;
-
-    // Start is called before the first frame update
+    [ShowIf("sizeAffectsRange")]
+    [SerializeField] private float sizeMultiplier = 1;
+    [ShowIf("alphaAffectsIntensity")]
+    [SerializeField] private float alphaMultiplier = 1;
     void Start()
     {
         m_ParticleSystem = GetComponent<ParticleSystem>();
@@ -23,7 +26,6 @@ public class AttachGameObjectsToParticles : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     void LateUpdate()
     {
         if (m_Prefab == null) return;
@@ -43,14 +45,14 @@ public class AttachGameObjectsToParticles : MonoBehaviour
                 Light2D light = m_Instances[i].GetComponent<Light2D>();
                 if (sizeAffectsRange)
                 {
-                    light.pointLightOuterRadius = m_Particles[i].GetCurrentSize(m_ParticleSystem);
+                    light.pointLightOuterRadius = m_Particles[i].GetCurrentSize(m_ParticleSystem) * sizeMultiplier;
                 }
                 if (alphaAffectsIntensity)
                 {
                     float particleAlpha = m_Particles[i].GetCurrentColor(m_ParticleSystem).a;
                     float normalizedLightValue = Mathf.InverseLerp(0, m_Particles[i].startColor.a, particleAlpha);
                     float resultLightValue = Mathf.Lerp(0, 1, normalizedLightValue);
-                    light.intensity = resultLightValue;
+                    light.intensity = resultLightValue * alphaMultiplier;
                 }
                 
                 
