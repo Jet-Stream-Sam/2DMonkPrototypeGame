@@ -27,7 +27,7 @@ MonoBehaviour:
   lockSideSwitch: 1
   moveType: 0
   hitProperties:
-    damage: 150
+    damage: 200
     knockbackForce: 65
     timeStopLength: 0.1
     timeStopScale: 0.4

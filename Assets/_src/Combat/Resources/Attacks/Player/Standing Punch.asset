@@ -25,8 +25,9 @@ MonoBehaviour:
   moveSoundEffect: {fileID: 11400000, guid: 107a81c4fddf43648a44495511fcb776, type: 2}
   lockVelocity: 1
   lockSideSwitch: 1
+  moveType: 0
   hitProperties:
-    damage: 50
+    damage: 48
     knockbackForce: 12
     timeStopLength: 0.1
     timeStopScale: 0.16
@@ -45,4 +46,3 @@ MonoBehaviour:
     allowedState: StandingState
     allowedTimeBetweenInputs: 0
     needsToBeHeld: 0
-    timeHoldingButton: 0
