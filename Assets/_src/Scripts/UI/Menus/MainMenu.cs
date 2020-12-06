@@ -6,10 +6,17 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] private string levelName = "Main Level";
+    private LoadingManager loadingManager;
+    [SerializeField] private string currentLevelName = "Main Menu Ex";
+    [SerializeField] private string levelToLoadName = "Main Level";
+
+    private void Start()
+    {
+        loadingManager = LoadingManager.Instance;
+    }
     public void PlayGame()
     {
-        SceneManager.LoadScene(levelName);
+        loadingManager.InitiateLoad(currentLevelName, levelToLoadName);
     }
 
     public void OptionsMenu(GameObject activatedMenu)

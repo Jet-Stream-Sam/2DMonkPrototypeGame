@@ -9,6 +9,7 @@ public class PausingManager : MonoBehaviour
 {
     private ControlManager controlManager;
     private InputMaster controls;
+    
     private void Start()
     {
         controlManager = ControlManager.Instance;
@@ -17,11 +18,13 @@ public class PausingManager : MonoBehaviour
 
     }
 
-    
+    public static bool canPause = false;
     public static bool isGamePaused = false;
-  
+    
     public void Pause(GameObject pMenu)
     {
+        if (!canPause)
+            return;
         if (pMenu.activeInHierarchy || !isGamePaused)
         {
             isGamePaused = !isGamePaused;
@@ -43,6 +46,13 @@ public class PausingManager : MonoBehaviour
             
 }
         
+    }
+
+    public void PauseReset()
+    {
+        isGamePaused = false;
+        Time.timeScale = 1;
+        controls.Player.Enable();
     }
 
     private void SceneChanged(Scene arg0, Scene arg1)

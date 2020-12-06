@@ -6,14 +6,17 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    private LoadingManager loadingManager;
     private ControlManager controlManager;
     private InputMaster controls;
-    [SerializeField] private string levelName = "Main Menu Ex";
+    [SerializeField] private string currentLevelName = "Main Level";
+    [SerializeField] private string levelToLoadName = "Main Menu Ex";
     [SerializeField] private GameObject showCanvasObj;
 
     private void Start()
     {
         controlManager = ControlManager.Instance;
+        loadingManager = LoadingManager.Instance;
         controls = controlManager.controls;
         controls.UIExtra.Pause.performed += Escape;
     }
@@ -35,7 +38,8 @@ public class PauseMenu : MonoBehaviour
 
     public void BackToMainMenu()
     {
-        SceneManager.LoadScene(levelName);
+        loadingManager.InitiateLoad(currentLevelName, levelToLoadName);
+        
     }
 
     private void Escape(InputAction.CallbackContext callbackContext)
