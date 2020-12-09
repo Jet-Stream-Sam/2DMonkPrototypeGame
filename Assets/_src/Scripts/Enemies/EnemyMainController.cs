@@ -1,90 +1,118 @@
 ﻿using Sirenix.OdinInspector;
+using Sirenix.Serialization;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMainController : MonoBehaviour, IDamageable
+public class EnemyMainController : MonoBehaviour, IDamageable, IEntityController
 {
     [FoldoutGroup("Dependencies")]
-    [SerializeField] private EnemyGroan enemyGroan;
+    public EnemyGroan enemyGroan;
     [FoldoutGroup("Dependencies")]
-    [SerializeField] private AnimationsState enemyAnimationsScript;
+    public AnimationsState enemyAnimationsScript;
     [FoldoutGroup("Dependencies")]
-    [SerializeField] private Collider2D enemyCollider;
+    public Collider2D enemyCollider;
     [FoldoutGroup("Dependencies")]
-    [SerializeField] private Rigidbody2D enemyRigidBody;
+    public Rigidbody2D enemyRigidBody;
     [FoldoutGroup("Dependencies")]
-    [SerializeField] private Transform groundCheck;
+    public Transform enemySpriteTransform;
     [FoldoutGroup("Dependencies")]
-    [SerializeField] public AnimationClip hitAnimationClip;
+    public SpriteRenderer enemySpriteRenderer;
     [FoldoutGroup("Dependencies")]
-    [SerializeField] public AnimationClip deathAnimationClip;
+    public Transform groundCheck;
+    [FoldoutGroup("Dependencies")]
+    public Transform groundDetectionLeft;
+    [FoldoutGroup("Dependencies")]
+    public Transform groundDetectionRight;
+    [FoldoutGroup("Dependencies")]
+    public Transform wallDetectionLeft;
+    [FoldoutGroup("Dependencies")]
+    public Transform wallDetectionRight;
+    [FoldoutGroup("Dependencies")]
+    public AnimationClip enemyIdle;
+    [FoldoutGroup("Dependencies")]
+    public AnimationClip hitAnimationClip;
+    [FoldoutGroup("Dependencies")]
+    public AnimationClip deathAnimationClip;
+    [FoldoutGroup("Dependencies")]
+    public EnemyAIBrain AIBrain;
+    [FoldoutGroup("Dependencies")]
+    public Transform enemyProjectileTransform;
+    [FoldoutGroup("Dependencies")]
+    public HitCheck hitBoxCheck;
 
     [TitleGroup("Enemy", Alignment = TitleAlignments.Centered)]
     [TabGroup("Enemy/Tabs", "Movement Settings")]
-    [Range(0, 1f)][SerializeField] private float groundedStunnedToIdleEasingRate = 0.6f;
+    [Range(0, 1f)] public float groundedStunnedToIdleEasingRate = 0.6f;
     [TabGroup("Enemy/Tabs", "Movement Settings")]
-    [Range(0, 1f)] [SerializeField] private float airborneStunnedToIdleEasingRate = 0.6f;
+    [Range(0, 1f)] public float airborneStunnedToIdleEasingRate = 0.6f;
+    [TabGroup("Enemy/Tabs", "Movement Settings")]
+    [SerializeField] public float enemySpeed;
 
     [TabGroup("Enemy/Tabs", "Collision Checks")]
+    [TabGroup("Enemy/Tabs/Collision Checks/SubTabGroup", "Ground Check")]
     public float groundCheckRadius = 0.25f;
     [TabGroup("Enemy/Tabs", "Collision Checks")]
+    [TabGroup("Enemy/Tabs/Collision Checks/SubTabGroup", "Ground Detection")]
+    public float groundDetectionLRadius = 0.25f;
+    [TabGroup("Enemy/Tabs/Collision Checks/SubTabGroup", "Ground Detection")]
+    public float groundDetectionRRadius = 0.25f;
+    [TabGroup("Enemy/Tabs", "Collision Checks")]
+    [TabGroup("Enemy/Tabs/Collision Checks/SubTabGroup", "Wall Detection")]
+    public float wallDetectionLRadius = 0.25f;
+    [TabGroup("Enemy/Tabs/Collision Checks/SubTabGroup", "Wall Detection")]
+    public float wallDetectionRRadius = 0.25f;
+
+    [TabGroup("Enemy/Tabs", "Collision Checks")]
     public LayerMask groundMask;
-    private bool isGrounded;
-    private bool hasRecovered = true;
-    private bool hasNormalizedMovement = true;
-    private bool isStunned => enemyRigidBody.bodyType == RigidbodyType2D.Dynamic;
 
     [TabGroup("Enemy/Tabs", "Combat")]
-    [SerializeField] private int maxHealth;
+    public int maxHealth;
     [TabGroup("Enemy/Tabs", "Combat")]
     [ReadOnly]
-    [SerializeField] private int currentHealth;
+    public int currentHealth;
+
+    [TabGroup("Enemy/Tabs", "Debug")]
+    [SerializeField] private bool debugActivated = true;
+    public MainStateMachine StateMachine { get; private set; }
+    [TabGroup("Enemy/Tabs", "Debug")]
+    [ShowIf("debugActivated")] [ReadOnly] public string currentStateOutput;
+    [TabGroup("Enemy/Tabs", "Debug")]
+    [ShowIf("debugActivated")] [ReadOnly] public bool isGrounded;
+    [TabGroup("Enemy/Tabs", "Debug")]
+    [ShowIf("debugActivated")] [ReadOnly] public bool hasRecovered = true;
+    [TabGroup("Enemy/Tabs", "Debug")]
+    [ShowIf("debugActivated")] [ReadOnly] public bool hasNormalizedMovement = true;
+
+    #region Enemy Events
+    public Action hasShotAProjectile;
+    #endregion
 
     private void Start()
     {
         currentHealth = maxHealth;
-        enemyAnimationsScript.ChangeAnimationState("wizard_idle");
+
+        StateMachine = new MainStateMachine();
+
+        StateMachine.onStateChanged += state => currentStateOutput = state;
+        StateMachine.Init(new EnemyStandingState(this, StateMachine));
+
     }
 
     private void Update()
     {
-        isGrounded = Physics2D.OverlapCircle(
-            groundCheck.position,
-            groundCheckRadius,
-            groundMask);
-
-        
-        if (isGrounded && isStunned && hasRecovered)
-        {
-            bool hasStopped = Mathf.Abs(enemyRigidBody.velocity.x) < 0.01f && enemyRigidBody.velocity.y < 0.01f;
-            if (hasStopped)
-            {
-                hasNormalizedMovement = true;
-                enemyRigidBody.bodyType = RigidbodyType2D.Kinematic;
-                enemyRigidBody.velocity = Vector2.zero;
-            }
-            
-        }
-
-        
+        StateMachine.CurrentState.HandleUpdate();
     }
 
     private void FixedUpdate()
     {
-
-        if (isStunned && isGrounded && !hasNormalizedMovement)
-        {
-            enemyRigidBody.velocity = Vector2.Lerp(enemyRigidBody.velocity, Vector2.zero, groundedStunnedToIdleEasingRate);
-        }
-        else if (!isGrounded && !hasRecovered || !isGrounded && !hasNormalizedMovement)
-        {
-            enemyRigidBody.velocity = Vector2.Lerp(enemyRigidBody.velocity, Vector2.zero, airborneStunnedToIdleEasingRate);
-        }
+        StateMachine.CurrentState.HandleFixedUpdate(); 
     }
     public void TakeDamage(int damage)
     {
-        
+        if (currentHealth <= 0)
+            return;
         currentHealth -= damage;
         if(currentHealth <= 0)
         {
@@ -93,8 +121,9 @@ public class EnemyMainController : MonoBehaviour, IDamageable
             
             return;
         }
-        enemyAnimationsScript.ChangeAnimationState(hitAnimationClip.name);
-        StartCoroutine(ComeBackToState("wizard_idle", hitAnimationClip.length));
+
+        StateMachine.ChangeState(new EnemyHitStunnedState(this, StateMachine));
+  
     }
 
     public void TakeDamage(int damage, Vector2 forceDirection, float knockbackForce)
@@ -102,7 +131,6 @@ public class EnemyMainController : MonoBehaviour, IDamageable
         if (currentHealth <= 0)
             return;
         currentHealth -= damage;
-        enemyRigidBody.bodyType = RigidbodyType2D.Dynamic;
         enemyRigidBody.AddForce(forceDirection * knockbackForce, ForceMode2D.Impulse);
         if (currentHealth <= 0)
         {
@@ -110,24 +138,34 @@ public class EnemyMainController : MonoBehaviour, IDamageable
             Die();
             return;
         }
-        enemyAnimationsScript.ChangeAnimationState(hitAnimationClip.name);
-        StartCoroutine(ComeBackToState("wizard_idle", hitAnimationClip.length));
+        StateMachine.ChangeState(new EnemyHitStunnedState(this, StateMachine));
     }
 
     private void Die()
     {
-        enemyCollider.enabled = false;
-        enemyRigidBody.Sleep();
-        enemyAnimationsScript.ChangeAnimationState(deathAnimationClip.name);
-        Destroy(gameObject, deathAnimationClip.length);
+        StateMachine.ChangeState(new EnemyDeathState(this, StateMachine));
     }
 
-    private IEnumerator ComeBackToState(string state, float time)
+    private void OnDrawGizmos()
     {
-        hasRecovered = false;
-        hasNormalizedMovement = false;
-        yield return new WaitForSeconds(time);
-        hasRecovered = true;
-        enemyAnimationsScript.ChangeAnimationState(state);
+        if (debugActivated)
+        {
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+            Gizmos.DrawWireSphere(groundDetectionLeft.position, groundDetectionLRadius);
+            Gizmos.DrawWireSphere(groundDetectionRight.position, groundDetectionRRadius);
+            Gizmos.DrawWireSphere(wallDetectionLeft.position, wallDetectionLRadius);
+            Gizmos.DrawWireSphere(wallDetectionRight.position, wallDetectionRRadius);
+        }
+
     }
+
+    #region Animation Event Exclusive Methods
+    public void ShootProjectile()
+    {
+        Debug.Log("BOOM HEADSHOT!!!");
+        hasShotAProjectile?.Invoke();
+    }
+
+    #endregion
 }

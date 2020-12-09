@@ -42,6 +42,6 @@ MonoBehaviour:
   moveNotation:
     movementNotation: 
     buttonNotation: 2
-    allowedState: CrouchingState
+    allowedState: PlayerCrouchingState
     allowedTimeBetweenInputs: 0
     needsToBeHeld: 0

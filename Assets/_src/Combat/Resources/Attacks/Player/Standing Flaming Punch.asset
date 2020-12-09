@@ -44,6 +44,6 @@ MonoBehaviour:
   moveNotation:
     movementNotation: 020000000600000004000000
     buttonNotation: 1
-    allowedState: StandingState
+    allowedState: PlayerStandingState
     allowedTimeBetweenInputs: 0.4
     needsToBeHeld: 0

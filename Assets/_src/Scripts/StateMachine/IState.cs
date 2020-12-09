@@ -4,6 +4,7 @@ using UnityEngine;
 
 public interface IState
 {
+    bool OverridingState { get; set; }
     void Enter();
 
     void HandleUpdate();

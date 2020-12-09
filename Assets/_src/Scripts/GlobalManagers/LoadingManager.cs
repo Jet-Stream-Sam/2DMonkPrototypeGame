@@ -16,7 +16,7 @@ public class LoadingManager : MonoBehaviour
     private void Awake()
     {
         tweenRef = loadingScreen.GetComponentInChildren<FadeInNOut>();
-        SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
+        //SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
 
         #region Singleton
 
@@ -26,7 +26,7 @@ public class LoadingManager : MonoBehaviour
         }
         else
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
 
         #endregion
@@ -53,6 +53,7 @@ public class LoadingManager : MonoBehaviour
     }
     private void LoadGame()
     {
+        
         tempCamera.gameObject.SetActive(true);
         scenesLoading.Add(SceneManager.UnloadSceneAsync(loadedScene));
         scenesLoading.Add(SceneManager.LoadSceneAsync(sceneToLoad, LoadSceneMode.Additive));
@@ -65,7 +66,6 @@ public class LoadingManager : MonoBehaviour
         loadingScreen.SetActive(false);
         isReadyingToLoad = false;
         PausingManager.canPause = true;
-        
     }
 
     public IEnumerator LoadingScenesProgress()
@@ -77,10 +77,11 @@ public class LoadingManager : MonoBehaviour
                 yield return null;
             }
         }
-        PausingManager pManager = GetComponent<PausingManager>();
+        PausingManager pManager = PausingManager.Instance;
         pManager.PauseReset();
         tempCamera.gameObject.SetActive(false);
         tweenRef.FadeOut();
         scenesLoading.Clear();
     }
+
 }

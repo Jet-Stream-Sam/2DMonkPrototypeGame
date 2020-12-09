@@ -43,6 +43,6 @@ MonoBehaviour:
   moveNotation:
     movementNotation: 
     buttonNotation: 1
-    allowedState: StandingState
+    allowedState: PlayerStandingState
     allowedTimeBetweenInputs: 0
     needsToBeHeld: 0

@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class PausingManager : MonoBehaviour
 {
+    public static PausingManager Instance { get; private set; }
     private ControlManager controlManager;
     private InputMaster controls;
     
@@ -16,6 +17,17 @@ public class PausingManager : MonoBehaviour
         controls = controlManager.controls;
         SceneManager.activeSceneChanged += SceneChanged;
 
+        #region Singleton
+
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+        #endregion
     }
 
     public static bool canPause = false;

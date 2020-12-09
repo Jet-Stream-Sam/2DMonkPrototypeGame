@@ -8,10 +8,10 @@ public class Moves : SerializedScriptableObject
 {
     
     [Title("Dependencies")]
-    [PropertyOrder(-3), Required] public AnimationClip animationClip;
-    [PropertyOrder(-3)] public GameSound moveSoundEffect;
+    [PropertyOrder(-5), Required] public AnimationClip animationClip;
+    [PropertyOrder(-5)] public GameSound moveSoundEffect;
     [PropertySpace]
-    [PropertyOrder(-2)][Button("Debug AnimationClip info", ButtonSizes.Medium)]
+    [PropertyOrder(-4)][Button("Debug AnimationClip info", ButtonSizes.Medium)]
     public void GetAnimationClipInfo()
     {
         Debug.Log("");
@@ -23,17 +23,42 @@ public class Moves : SerializedScriptableObject
     }
 
     [Title("Move Settings")]
-    [PropertyOrder(-1)] public bool lockVelocity = true;
-    [PropertyOrder(-1)] public bool lockSideSwitch = true;
+    [PropertyOrder(-3)] public bool lockVelocity = true;
+    [PropertyOrder(-3)] public bool lockSideSwitch = true;
     public enum MoveType
     {
         Attack,
-        Neutral
+        Neutral,
+        Projectile
     }
 
-    [PropertyOrder(-1)] public MoveType moveType;
-    [ShowIf("moveType", MoveType.Attack)]
+    [PropertyOrder(-3)] public MoveType moveType;
+
+    [Title("Projectile Properties")]
+    [ShowIf("moveType", MoveType.Projectile)]
+    [PropertyOrder(-1)] public GameObject projectilePrefab;
+    [HideInInspector] public bool attackAndProjectile;
+    [HideIf("@attackAndProjectile || moveType != MoveType.Projectile")]
+    [PropertyOrder(-1)] [Button("Only Shoot Projectile", ButtonSizes.Medium)]
+    [GUIColor(0.7f, 1f, 0.2f)]
+    void ChangeButton()
+    {
+        attackAndProjectile = true;
+    }
+    [ShowIf("@attackAndProjectile && moveType == MoveType.Projectile")]
+    [PropertyOrder(-1)] [Button("Attack and Shoot Projectile", ButtonSizes.Medium)]
+    [GUIColor(0.7f, 0.2f, 1f)]
+    void ChangeButton2()
+    {
+        attackAndProjectile = false;
+    }
+    
+    [Title("Projectile Hit Properties")]
+    [ShowIf("moveType", MoveType.Projectile)]
+    [HideLabel]
+    public HitProperties projectileHitProperties;
     [Title("Hit Properties")]
+    [ShowIf("@moveType == MoveType.Attack || moveType == MoveType.Projectile && attackAndProjectile")]
     [HideLabel]
     public HitProperties hitProperties;
   

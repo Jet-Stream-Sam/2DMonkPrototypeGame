@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class GameManager : MonoBehaviour
     {
         if(Instance == null)
         {
+            SceneManager.LoadSceneAsync(0, LoadSceneMode.Additive);
+            PausingManager.canPause = true;
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
@@ -18,6 +21,8 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        
     }
 
 }

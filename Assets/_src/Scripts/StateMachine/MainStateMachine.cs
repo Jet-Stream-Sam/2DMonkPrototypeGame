@@ -17,6 +17,11 @@ public class MainStateMachine
 
     public void ChangeState(IState newState)
     {
+        if (newState == CurrentState)
+            return;
+        if (CurrentState.OverridingState == true)
+            return;
+
         CurrentState.Exit();
         CurrentState = newState;
         onStateChanged?.Invoke(newState.ToString());

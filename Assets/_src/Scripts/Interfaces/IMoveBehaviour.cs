@@ -1,7 +1,7 @@
 ﻿
 public interface IMoveBehaviour
 {
-    void Init(PlayerMainController controllerScript, PlayerMoves attackAsset);
+    void Init(IEntityController controllerScript, Moves attackAsset, IState state);
     void OnMoveEnter();
 
     void OnMoveUpdate();

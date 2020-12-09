@@ -19,11 +19,14 @@ public class CuttingKickAttack : MonoBehaviour, IMoveBehaviour
 
     private AfterImageEffectPool vfxPool;
 
-    public void Init(PlayerMainController controllerScript, PlayerMoves attackAsset)
+    public void Init(IEntityController controllerScript, Moves attackAsset, IState state)
     {
-        this.controllerScript = controllerScript;
-        this.attackAsset = attackAsset;
+        if (controllerScript is PlayerMainController controller)
+        {
+            this.controllerScript = controller;
+        }
     }
+
 
     public void OnMoveEnter()
     {

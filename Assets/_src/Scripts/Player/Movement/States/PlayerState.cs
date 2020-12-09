@@ -9,19 +9,17 @@ public class PlayerState : IState
     protected MainStateMachine stateMachine;
     protected float easingMovementX;
     protected float deadzoneMin;
-    
-    
+    public bool OverridingState { get; set; }
+
     public PlayerState(PlayerMainController controllerScript, MainStateMachine stateMachine)
     {
         this.controllerScript = controllerScript;
     }
     public virtual void Enter()
     {
+        OverridingState = false;
         stateMachine = controllerScript.StateMachine;
         deadzoneMin = InputSystem.settings.defaultDeadzoneMin;
-
-        
-
     }
     public virtual void HandleUpdate()
     {

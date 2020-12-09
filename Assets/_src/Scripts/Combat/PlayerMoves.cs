@@ -20,7 +20,7 @@ public class PlayerMoves : Moves
         Crouching,
         Falling
     }
-    [PropertyOrder(-1)]
+    [PropertyOrder(-2)]
     public EndsAtState moveEndsAtState;
 
     [Title("Move Notation")]

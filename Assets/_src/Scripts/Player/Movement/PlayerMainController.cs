@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 
 [HideMonoScript]
-public class PlayerMainController : MonoBehaviour
+public class PlayerMainController : MonoBehaviour, IEntityController
 {
     public SoundManager SoundManager { get; private set; }
     private ControlManager controlManager;
@@ -39,6 +39,8 @@ public class PlayerMainController : MonoBehaviour
     public PlayerMoveList playerMoveList;
     [FoldoutGroup("Dependencies")]
     public PlayerMainVFXManager playerMainVFXManager;
+    [FoldoutGroup("Dependencies")]
+    public Transform playerProjectileTransform;
 
     [TitleGroup("Player", Alignment = TitleAlignments.Centered)]
     [TabGroup("Player/Tabs", "Movement Settings")]
@@ -89,6 +91,7 @@ public class PlayerMainController : MonoBehaviour
     #endregion
     #region Player Events
     public Action hasPerformedJump;
+    public Action hasShotAProjectile;
     #endregion
 
     private void Start()
@@ -119,7 +122,7 @@ public class PlayerMainController : MonoBehaviour
         StateMachine = new MainStateMachine();
         
         StateMachine.onStateChanged += state => currentStateOutput = state;
-        StateMachine.Init(new StandingState(this, StateMachine));
+        StateMachine.Init(new PlayerStandingState(this, StateMachine));
     }
 
     private void Update()
@@ -153,5 +156,12 @@ public class PlayerMainController : MonoBehaviour
         Controls.Player.Movement.canceled -= _ => MovementX = 0;
     }
 
+    #region Animation Event Exclusive Methods
+    public void ShootProjectile()
+    {
+        Debug.Log("BOOM HEADSHOT!!!");
+        hasShotAProjectile?.Invoke();
+    }
 
+    #endregion
 }

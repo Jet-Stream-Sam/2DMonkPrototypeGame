@@ -22,7 +22,7 @@ public class PauseMenu : MonoBehaviour
     }
     public void ResumeGame()
     {
-        PausingManager pManager = controlManager.GetComponent<PausingManager>();
+        PausingManager pManager = PausingManager.Instance;
         pManager.Pause(showCanvasObj);
     }
 
@@ -44,7 +44,7 @@ public class PauseMenu : MonoBehaviour
 
     private void Escape(InputAction.CallbackContext callbackContext)
     {
-        PausingManager pManager = controlManager.GetComponent<PausingManager>();
+        PausingManager pManager = PausingManager.Instance;
         
         pManager.Pause(showCanvasObj);
     }

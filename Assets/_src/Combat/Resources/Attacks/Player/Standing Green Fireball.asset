@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0d9c19a2ed173a4995d816dc2439058, type: 3}
+  m_Name: Standing Green Fireball
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  animationClip: {fileID: 7400000, guid: 1e8601e6e50a8144bb3823186865f51e, type: 2}
+  moveSoundEffect: {fileID: 0}
+  lockVelocity: 1
+  lockSideSwitch: 1
+  moveType: 2
+  projectilePrefab: {fileID: 0}
+  attackAndProjectile: 0
+  projectileHitProperties:
+    damage: 95
+    knockbackForce: 50
+    timeStopLength: 0
+    timeStopScale: 0
+    hitSound: {fileID: 11400000, guid: 4cd25d573c9a79b42952b427acb09137, type: 2}
+    impulseSource: {fileID: 40801258633192796, guid: d4cdfddeaaa19a048999bb3ea85d88c2,
+      type: 3}
+    rippleEffectAdjust: {fileID: 5244326971005480206, guid: 1bfcec13ac6c15e4591355d5dd07a74e,
+      type: 3}
+    particleHitEffect: {fileID: 5244326971005480206, guid: 1bfcec13ac6c15e4591355d5dd07a74e,
+      type: 3}
+  hitProperties:
+    damage: 0
+    knockbackForce: 0
+    timeStopLength: 0
+    timeStopScale: 0
+    hitSound: {fileID: 0}
+    impulseSource: {fileID: 0}
+    rippleEffectAdjust: {fileID: 0}
+    particleHitEffect: {fileID: 0}
+  moveBehaviour: {fileID: 0}
+  moveEndsAtState: 0
+  moveNotation:
+    movementNotation: 020000000600000004000000
+    buttonNotation: 8
+    allowedState: 
+    allowedTimeBetweenInputs: 0
+    needsToBeHeld: 0

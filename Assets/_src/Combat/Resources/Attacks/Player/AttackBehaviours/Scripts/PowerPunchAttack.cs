@@ -14,11 +14,17 @@ public class PowerPunchAttack : MonoBehaviour, IMoveBehaviour
     [SerializeField] private GameObject afterImageEffect; 
     [SerializeField] private float allowedDistanceBtwImages = 0.8f;
     private float lastImagePos;
-    
-    public void Init(PlayerMainController controllerScript, PlayerMoves attackAsset)
+
+    public void Init(IEntityController controllerScript, Moves attackAsset, IState state)
     {
-        this.controllerScript = controllerScript;
-        this.attackAsset = attackAsset;
+        if (controllerScript is PlayerMainController controller)
+        {
+            this.controllerScript = controller;
+        }
+        if (attackAsset is PlayerMoves playerMoves)
+        {
+            this.attackAsset = playerMoves;
+        }
     }
     public void OnMoveEnter()
     {

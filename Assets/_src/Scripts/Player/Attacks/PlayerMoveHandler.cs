@@ -56,24 +56,24 @@ public class PlayerMoveHandler : MonoBehaviour
         switch (moveType)
         {
             case Moves.MoveType.Attack:
-                bool isAirbourne = move.moveNotation.allowedState == "FallingState";
+                bool isAirbourne = move.moveNotation.allowedState == "PlayerFallingState";
                 bool canAttackInTheAir = mainController.attacksInTheAir >= 0;
                 if (isAirbourne && canAttackInTheAir)
                 {
                     Debug.Log("Attack Performed: " + move.name);
-                    mainController.StateMachine.ChangeState(new AirborneAttackState(mainController,
+                    mainController.StateMachine.ChangeState(new PlayerAirborneAttackState(mainController,
                     mainController.StateMachine, move));
                 }
                 else if (!isAirbourne)
                 {
                     Debug.Log("Attack Performed: " + move.name);
-                    mainController.StateMachine.ChangeState(new AttackState(mainController,
+                    mainController.StateMachine.ChangeState(new PlayerAttackState(mainController,
                     mainController.StateMachine, move));
                 }
                 break;
             case Moves.MoveType.Neutral:
                 Debug.Log("Move Performed: " + move.name);
-                mainController.StateMachine.ChangeState(new NeutralMoveState(mainController,
+                mainController.StateMachine.ChangeState(new PlayerNeutralMoveState(mainController,
                     mainController.StateMachine, move));
                 break;
         }
@@ -171,7 +171,7 @@ public class PlayerMoveHandler : MonoBehaviour
         mainController.StateMachine.onStateChanged += UpdateMoveListOnStateChanged;
         inputHandler.onMovementCalled += UpdateMoveListOnInput;
 
-        UpdateMoveListOnStateChanged("StandingState");
+        UpdateMoveListOnStateChanged("PlayerStandingState");
     }
 
     private void OnDestroy()
