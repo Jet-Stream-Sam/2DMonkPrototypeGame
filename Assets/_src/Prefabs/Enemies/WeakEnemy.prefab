@@ -238,8 +238,17 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: hitException
+    - Name: hitInstanceException
       Entry: 6
+      Data: 
+    - Name: hitTypeException
+      Entry: 7
+      Data: 0|System.RuntimeType, mscorlib
+    - Name: 
+      Entry: 1
+      Data: EnemyMainController, Assembly-CSharp
+    - Name: 
+      Entry: 8
       Data: 
     - Name: OnSucessfulHit
       Entry: 6
@@ -260,9 +269,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainHitBox: {fileID: 1840672164}
   VFXTransform: {fileID: 0}
-  ripplePrefab: {fileID: 6378374375909139742, guid: cc2e9ab4be5696c4aa470aa9a3f4e76b,
-    type: 3}
-  colliderDirection: {fileID: 1840672157}
+  hitPoint: {fileID: 24137306}
 --- !u!114 &1840672162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449,12 +456,14 @@ GameObject:
   - component: {fileID: 9103479759381710887}
   - component: {fileID: 140710951}
   - component: {fileID: 9103479759381710885}
+  - component: {fileID: 4434211064589478188}
   - component: {fileID: 9103479759381710884}
-  - component: {fileID: 9103479759381710937}
   - component: {fileID: 1688054556}
   - component: {fileID: 1501664808}
   - component: {fileID: 1688054557}
   - component: {fileID: 1688054558}
+  - component: {fileID: 943370417519970699}
+  - component: {fileID: 3675440340909805267}
   m_Layer: 10
   m_Name: WeakEnemy
   m_TagString: Untagged
@@ -583,7 +592,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 337fd28fe67f44a42ba85dd2bf5f7599, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyGroan: {fileID: 9103479759381710937}
+  enemyGroan: {fileID: 0}
   enemyAnimationsScript: {fileID: 9103479759381710885}
   enemyCollider: {fileID: 1501664809}
   enemyRigidBody: {fileID: 9103479759381710882}
@@ -600,6 +609,7 @@ MonoBehaviour:
   AIBrain: {fileID: 1688054556}
   enemyProjectileTransform: {fileID: 453552881}
   hitBoxCheck: {fileID: 1840672164}
+  spriteFlip: {fileID: 3675440340909805267}
   groundedStunnedToIdleEasingRate: 0.1
   airborneStunnedToIdleEasingRate: 0.05
   enemySpeed: 3
@@ -613,7 +623,7 @@ MonoBehaviour:
     m_Bits: 256
   maxHealth: 200
   currentHealth: 0
-  debugActivated: 1
+  debugActivated: 0
   currentStateOutput: 
   isGrounded: 0
   hasRecovered: 1
@@ -645,6 +655,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteAnimator: {fileID: 9103479759381710884}
+--- !u!114 &4434211064589478188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9103479759381710938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 598d373e3065479478ff88550af3f963, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
 --- !u!95 &9103479759381710884
 Animator:
   serializedVersion: 3
@@ -664,19 +695,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &9103479759381710937
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9103479759381710938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f68737eb167763b4b88e32dcadc10227, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  groanSound: weird_sound
 --- !u!114 &1688054556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -816,3 +834,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyAI: {fileID: 1688054556}
   enemyController: {fileID: 9103479759381710887}
+--- !u!114 &943370417519970699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9103479759381710938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 598d373e3065479478ff88550af3f963, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+--- !u!114 &3675440340909805267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9103479759381710938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22354c531eb111348997de797d87c5ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sRenderer: {fileID: 9103479759381710939}
+  transformToFlip: {fileID: 453552881}
+  direction: {x: 0, y: 0, z: 0}

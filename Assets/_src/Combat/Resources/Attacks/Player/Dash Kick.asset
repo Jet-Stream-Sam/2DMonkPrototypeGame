@@ -22,21 +22,24 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   animationClip: {fileID: 7400000, guid: d02f71ad3787221438b0e860e3fbcd31, type: 2}
-  moveSoundEffect: {fileID: 11400000, guid: a1a06036549740e499764153af35452a, type: 2}
+  moveSoundEffect: {fileID: 11400000, guid: 93a72a56d36f1ba4bab0977dea7ea969, type: 2}
   lockVelocity: 1
   lockSideSwitch: 1
   moveType: 0
+  projectiles: are assigned in the animation clips!
+  attackAndProjectile: 0
   hitProperties:
     damage: 160
     knockbackForce: 80
+    knockbackMode: 0
     timeStopLength: 0.6
     timeStopScale: 0.4
-    hitSound: {fileID: 11400000, guid: aa9e499aaa8001f449bc1fb05dd20fc2, type: 2}
+    hitSound: {fileID: 11400000, guid: 3361715ff025b64418e091e7bfb353b9, type: 2}
     impulseSource: {fileID: 5244326971005480206, guid: 1bfcec13ac6c15e4591355d5dd07a74e,
       type: 3}
     rippleEffectAdjust: {fileID: 5244326971005480206, guid: 1bfcec13ac6c15e4591355d5dd07a74e,
       type: 3}
-    particleHitEffect: {fileID: 5244326971005480206, guid: eddc9c297aa4bea4a852194abe9888a4,
+    particleHitEffect: {fileID: 5244326971005480206, guid: 55abcbe2fe051474e8e9446e32b657e6,
       type: 3}
   moveBehaviour: {fileID: -2872195656749309971, guid: 6ca38c771a63128438f239ddeebdd0df,
     type: 3}

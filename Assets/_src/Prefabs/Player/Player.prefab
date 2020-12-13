@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &565634416
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 565634417}
+  m_Layer: 9
+  m_Name: ProjectilePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &565634417
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565634416}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.79, y: -0.17, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3920600528410004729}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &675529269
 GameObject:
   m_ObjectHideFlags: 0
@@ -10119,7 +10149,10 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: hitException
+    - Name: hitInstanceException
+      Entry: 6
+      Data: 
+    - Name: hitTypeException
       Entry: 6
       Data: 
     - Name: OnSucessfulHit
@@ -10141,9 +10174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainHitBox: {fileID: 3920600528258869890}
   VFXTransform: {fileID: 1070262488774675050}
-  ripplePrefab: {fileID: 6378374375909139742, guid: cc2e9ab4be5696c4aa470aa9a3f4e76b,
-    type: 3}
-  colliderDirection: {fileID: 1330037347}
+  hitPoint: {fileID: 6061449411312772028}
 --- !u!114 &935619406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10239,6 +10270,7 @@ GameObject:
   - component: {fileID: 1675328969860454351}
   - component: {fileID: 800770539803744239}
   - component: {fileID: 1676676019}
+  - component: {fileID: 2115926587}
   m_Layer: 9
   m_Name: Sprite
   m_TagString: Untagged
@@ -10262,6 +10294,7 @@ Transform:
   - {fileID: 2922068356347750039}
   - {fileID: 1514997771}
   - {fileID: 1304793207}
+  - {fileID: 565634417}
   m_Father: {fileID: 3920600530057498376}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10385,6 +10418,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 3920600530057498374}
+--- !u!114 &2115926587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3920600528410004730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 598d373e3065479478ff88550af3f963, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
 --- !u!1 &3920600529626702909
 GameObject:
   m_ObjectHideFlags: 0
@@ -10550,7 +10604,7 @@ MonoBehaviour:
   playerInputHandler: {fileID: 1277194754}
   playerMoveList: {fileID: 3920600530057498372}
   playerMainVFXManager: {fileID: 798466514}
-  playerProjectileTransform: {fileID: 0}
+  playerProjectileTransform: {fileID: 565634417}
   standingMoveSpeed: 9
   crouchingMoveSpeed: 5
   easingRate: 0.6
@@ -10598,6 +10652,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b2e5a1c8d38c1fa4980186544584f253, type: 2}
   - {fileID: 11400000, guid: f3d7b6d677dc389428ddceba7b62dc80, type: 2}
   - {fileID: 11400000, guid: 9eb5221cc11ab3f45936c69a9e3f4fe9, type: 2}
+  - {fileID: 11400000, guid: 932a2cdd08010894e93d8118466399ce, type: 2}
+  - {fileID: 11400000, guid: 0b59a4aa0f721804aba207549cc05a35, type: 2}
 --- !u!114 &3920600530057498373
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ public class WizardFollowBehaviour : MonoBehaviour, IMonoBehaviourState
     private Transform playerTransform;
     private Vector2 directionToFollow;
     private float enemySpeed;
+    private bool wasFlipped;
 
     private void Start()
     {
@@ -33,18 +34,18 @@ public class WizardFollowBehaviour : MonoBehaviour, IMonoBehaviourState
         {
             directionToFollow = new Vector2(playerTransform.position.x - transform.position.x, 0).normalized;
 
-            if(Time.deltaTime > 0)
+            if(directionToFollow.x == 0)
+            {
+                directionToFollow = new Vector2(1, 0);
+            }
+
+            if (Time.deltaTime > 0)
                 enemyRigidBody.velocity = new Vector2(directionToFollow.x * enemySpeed, enemyRigidBody.velocity.y);
 
-            switch (directionToFollow.x)
-            {
-                case -1:
-                    enemyController.enemySpriteRenderer.flipX = false;
-                    break;
-                case 1:
-                    enemyController.enemySpriteRenderer.flipX = true;
-                    break;
-            }
+            enemyController.spriteFlip.Flip(directionToFollow.x);
+
+            
+            
         }
     }
 

@@ -12,7 +12,7 @@ public class PlayerNeutralMoveState : PlayerState
 
     private PlayerMoves attackAsset;
     private string animationToPlay;
-    private string audioClipName;
+    private CollectionSounds audioClip;
     private bool lockVelocity;
     private bool lockSideSwitch;
     private float moveMaxDuration;
@@ -27,8 +27,7 @@ public class PlayerNeutralMoveState : PlayerState
     {
         attackAsset = playerAttackAsset;
         animationToPlay = playerAttackAsset.animationClip.name;
-        if (playerAttackAsset.moveSoundEffect != null)
-            audioClipName = playerAttackAsset.moveSoundEffect.name;
+        audioClip = playerAttackAsset.moveSoundEffect;
         lockVelocity = playerAttackAsset.lockVelocity;
         lockSideSwitch = playerAttackAsset.lockSideSwitch;
         moveEndsAtState = playerAttackAsset.moveEndsAtState;
@@ -52,8 +51,10 @@ public class PlayerNeutralMoveState : PlayerState
 
         controllerScript.playerAnimationsScript.ChangeAnimationState(animationToPlay);
 
-        if (audioClipName != null)
-            controllerScript.SoundManager.PlayOneShotSFX(audioClipName);
+        SoundManager soundManager = SoundManager.Instance;
+
+        if(audioClip != null)
+            audioClip.PlaySound(soundManager);
 
         if (lockVelocity)
             LockVelocity();

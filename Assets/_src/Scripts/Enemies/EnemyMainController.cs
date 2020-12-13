@@ -8,8 +8,6 @@ using UnityEngine;
 public class EnemyMainController : MonoBehaviour, IDamageable, IEntityController
 {
     [FoldoutGroup("Dependencies")]
-    public EnemyGroan enemyGroan;
-    [FoldoutGroup("Dependencies")]
     public AnimationsState enemyAnimationsScript;
     [FoldoutGroup("Dependencies")]
     public Collider2D enemyCollider;
@@ -41,6 +39,8 @@ public class EnemyMainController : MonoBehaviour, IDamageable, IEntityController
     public Transform enemyProjectileTransform;
     [FoldoutGroup("Dependencies")]
     public HitCheck hitBoxCheck;
+    [FoldoutGroup("Dependencies")]
+    public FlipSprite spriteFlip;
 
     [TitleGroup("Enemy", Alignment = TitleAlignments.Centered)]
     [TabGroup("Enemy/Tabs", "Movement Settings")]
@@ -86,7 +86,7 @@ public class EnemyMainController : MonoBehaviour, IDamageable, IEntityController
     [ShowIf("debugActivated")] [ReadOnly] public bool hasNormalizedMovement = true;
 
     #region Enemy Events
-    public Action hasShotAProjectile;
+    public Action<ScriptableObject> AnimationEventWasCalled { get; set; }
     #endregion
 
     private void Start()
@@ -131,7 +131,9 @@ public class EnemyMainController : MonoBehaviour, IDamageable, IEntityController
         if (currentHealth <= 0)
             return;
         currentHealth -= damage;
+        
         enemyRigidBody.AddForce(forceDirection * knockbackForce, ForceMode2D.Impulse);
+
         if (currentHealth <= 0)
         {
             currentHealth = 0;
@@ -161,10 +163,9 @@ public class EnemyMainController : MonoBehaviour, IDamageable, IEntityController
     }
 
     #region Animation Event Exclusive Methods
-    public void ShootProjectile()
+    public void AnimationSendObject(ScriptableObject obj)
     {
-        Debug.Log("BOOM HEADSHOT!!!");
-        hasShotAProjectile?.Invoke();
+        AnimationEventWasCalled?.Invoke(obj);
     }
 
     #endregion

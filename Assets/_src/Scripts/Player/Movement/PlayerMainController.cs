@@ -7,12 +7,11 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 
 [HideMonoScript]
-public class PlayerMainController : MonoBehaviour, IEntityController
+public class PlayerMainController : MonoBehaviour, IDamageable, IEntityController
 {
     public SoundManager SoundManager { get; private set; }
     private ControlManager controlManager;
     public InputMaster Controls { get; private set; }
-    [HideInInspector] public bool isGrounded;
     [HideInInspector] public bool isHittingHead;
     [HideInInspector] public int attacksInTheAir = 0;
     [HideInInspector] public bool isReversed = false;
@@ -63,7 +62,11 @@ public class PlayerMainController : MonoBehaviour, IEntityController
     [HideInInspector] public float groundedJumpTimer;
     [TabGroup("Player/Tabs", "Movement Settings")]
     public float fallMultiplier = 1.5f;
-    
+    [TabGroup("Player/Tabs", "Movement Settings")]
+    [Range(0, 1f)] public float groundedStunnedToIdleEasingRate = 0.6f;
+    [TabGroup("Player/Tabs", "Movement Settings")]
+    [Range(0, 1f)] public float airborneStunnedToIdleEasingRate = 0.6f;
+
 
     [TabGroup("Player/Tabs", "Collision Checks")]
     [TabGroup("Player/Tabs/Collision Checks/SubTabGroup", "Ground Check")]
@@ -77,8 +80,20 @@ public class PlayerMainController : MonoBehaviour, IEntityController
     [TabGroup("Player/Tabs/Collision Checks/SubTabGroup", "Ceiling Check")]
     public LayerMask ceilingMask;
 
+    [TabGroup("Player/Tabs", "Combat")]
+    public int maxHealth;
+    [TabGroup("Player/Tabs", "Combat")]
+    [ReadOnly]
+    public int currentHealth;
+
     [TabGroup("Player/Tabs", "Debug")]
     [SerializeField] private bool debugActivated = true;
+    [TabGroup("Player/Tabs", "Debug")]
+    [ShowIf("debugActivated")] [ReadOnly] public bool isGrounded;
+    [TabGroup("Player/Tabs", "Debug")]
+    [ShowIf("debugActivated")] [ReadOnly] public bool hasRecovered = true;
+    [TabGroup("Player/Tabs", "Debug")]
+    [ShowIf("debugActivated")] [ReadOnly] public bool hasNormalizedMovement = true;
     public MainStateMachine StateMachine { get; private set; }
     [TabGroup("Player/Tabs", "Debug")]
     [ShowIf("debugActivated")]
@@ -90,6 +105,7 @@ public class PlayerMainController : MonoBehaviour, IEntityController
     public Action<InputAction.CallbackContext> punchAction;
     #endregion
     #region Player Events
+    public Action<ScriptableObject> AnimationEventWasCalled { get; set; }
     public Action hasPerformedJump;
     public Action hasShotAProjectile;
     #endregion
@@ -118,6 +134,8 @@ public class PlayerMainController : MonoBehaviour, IEntityController
 
 
         #endregion
+
+        currentHealth = maxHealth;
 
         StateMachine = new MainStateMachine();
         
@@ -156,11 +174,45 @@ public class PlayerMainController : MonoBehaviour, IEntityController
         Controls.Player.Movement.canceled -= _ => MovementX = 0;
     }
 
-    #region Animation Event Exclusive Methods
-    public void ShootProjectile()
+    public void TakeDamage(int damage)
     {
-        Debug.Log("BOOM HEADSHOT!!!");
-        hasShotAProjectile?.Invoke();
+        if (currentHealth <= 0)
+            return;
+        currentHealth -= damage;
+        if (currentHealth <= 0)
+        {
+            currentHealth = 0;
+            Die();
+
+            return;
+        }
+
+    }
+    public void TakeDamage(int damage, Vector2 forceDirection, float knockbackForce)
+    {
+        if (currentHealth <= 0)
+            return;
+        currentHealth -= damage;
+        float originalYVelocity = playerRigidBody.velocity.y;
+        playerRigidBody.AddForce(forceDirection * knockbackForce, ForceMode2D.Impulse);
+        playerRigidBody.velocity = new Vector2(playerRigidBody.velocity.x, originalYVelocity);
+        if (currentHealth <= 0)
+        {
+            currentHealth = 0;
+            Die();
+            return;
+        }
+        StateMachine.ChangeState(new PlayerHitStunnedState(this, StateMachine));
+    }
+
+    private void Die()
+    {
+        
+    }
+    #region Animation Event Exclusive Methods
+    public void AnimationSendObject(ScriptableObject obj)
+    {
+        AnimationEventWasCalled?.Invoke(obj);
     }
 
     #endregion

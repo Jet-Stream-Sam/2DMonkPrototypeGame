@@ -105,12 +105,14 @@ GameObject:
   - component: {fileID: 343963594249940043}
   - component: {fileID: 705711117}
   - component: {fileID: 343963594249940041}
+  - component: {fileID: 6109103077386256579}
   - component: {fileID: 343963594249940040}
-  - component: {fileID: 343963594249940021}
   - component: {fileID: 1546837834}
   - component: {fileID: 1546837830}
   - component: {fileID: 1546837831}
   - component: {fileID: 1546837832}
+  - component: {fileID: 3866297463153205680}
+  - component: {fileID: 177281622889489539}
   m_Layer: 10
   m_Name: Boss
   m_TagString: Untagged
@@ -239,7 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 337fd28fe67f44a42ba85dd2bf5f7599, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyGroan: {fileID: 343963594249940021}
+  enemyGroan: {fileID: 0}
   enemyAnimationsScript: {fileID: 343963594249940041}
   enemyCollider: {fileID: 2448938432017679362}
   enemyRigidBody: {fileID: 343963594249940046}
@@ -256,6 +258,7 @@ MonoBehaviour:
   AIBrain: {fileID: 1546837834}
   enemyProjectileTransform: {fileID: 2230559071831496308}
   hitBoxCheck: {fileID: 6814436414655476199}
+  spriteFlip: {fileID: 177281622889489539}
   groundedStunnedToIdleEasingRate: 0.5
   airborneStunnedToIdleEasingRate: 0.25
   enemySpeed: 2
@@ -269,7 +272,7 @@ MonoBehaviour:
     m_Bits: 256
   maxHealth: 1250
   currentHealth: 0
-  debugActivated: 1
+  debugActivated: 0
   currentStateOutput: 
   isGrounded: 0
   hasRecovered: 1
@@ -301,6 +304,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteAnimator: {fileID: 343963594249940040}
+--- !u!114 &6109103077386256579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343963594249940022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 598d373e3065479478ff88550af3f963, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
 --- !u!95 &343963594249940040
 Animator:
   serializedVersion: 3
@@ -320,19 +344,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &343963594249940021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 343963594249940022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f68737eb167763b4b88e32dcadc10227, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  groanSound: weird_sound
 --- !u!114 &1546837834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -472,6 +483,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyAI: {fileID: 1546837834}
   enemyController: {fileID: 343963594249940043}
+--- !u!114 &3866297463153205680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343963594249940022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 598d373e3065479478ff88550af3f963, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+--- !u!114 &177281622889489539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343963594249940022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22354c531eb111348997de797d87c5ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sRenderer: {fileID: 343963594249940023}
+  transformToFlip: {fileID: 2230559071831496308}
+  direction: {x: 0, y: 0, z: 0}
 --- !u!1 &343963595502964203
 GameObject:
   m_ObjectHideFlags: 0
@@ -710,8 +757,17 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: hitException
+    - Name: hitInstanceException
       Entry: 6
+      Data: 
+    - Name: hitTypeException
+      Entry: 7
+      Data: 0|System.RuntimeType, mscorlib
+    - Name: 
+      Entry: 1
+      Data: EnemyMainController, Assembly-CSharp
+    - Name: 
+      Entry: 8
       Data: 
     - Name: OnSucessfulHit
       Entry: 6
@@ -732,9 +788,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainHitBox: {fileID: 6814436414655476199}
   VFXTransform: {fileID: 0}
-  ripplePrefab: {fileID: 6378374375909139742, guid: cc2e9ab4be5696c4aa470aa9a3f4e76b,
-    type: 3}
-  colliderDirection: {fileID: 741544120199845866}
+  hitPoint: {fileID: 4995492072177446764}
 --- !u!114 &1365957234954651886
 MonoBehaviour:
   m_ObjectHideFlags: 0

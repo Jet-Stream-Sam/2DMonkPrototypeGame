@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e051f83bb44fbf44eb2b9e542c2daeed, type: 3}
+  m_Name: Standing Big Fireball
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  animationClip: {fileID: 7400000, guid: 13facddf0fa93454ebdad0cf8d1e36a4, type: 2}
+  moveSoundEffect: {fileID: 0}
+  lockVelocity: 1
+  lockSideSwitch: 0
+  moveType: 2
+  projectiles: are assigned in the animation clips!
+  attackAndProjectile: 1
+  hitProperties:
+    damage: 100
+    knockbackForce: 25
+    knockbackMode: 0
+    timeStopLength: 0
+    timeStopScale: 0
+    hitSound: {fileID: 11400000, guid: 4cd25d573c9a79b42952b427acb09137, type: 2}
+    impulseSource: {fileID: 40801258633192796, guid: 115b2a39bfba62944a9623db74ed3562,
+      type: 3}
+    rippleEffectAdjust: {fileID: 40801258633192796, guid: 115b2a39bfba62944a9623db74ed3562,
+      type: 3}
+    particleHitEffect: {fileID: 0}
+  moveBehaviour: {fileID: 5196282231864837771, guid: 250221fe02b6a8047bd80864e0a4734e,
+    type: 3}

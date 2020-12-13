@@ -21,28 +21,17 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  animationClip: {fileID: 7400000, guid: 1e8601e6e50a8144bb3823186865f51e, type: 2}
-  moveSoundEffect: {fileID: 0}
+  animationClip: {fileID: 7400000, guid: 36bd9648695c951489a6311bc76bcb71, type: 2}
+  moveSoundEffect: {fileID: 11400000, guid: cad00c46fb8d29943b432ff6b5113d34, type: 2}
   lockVelocity: 1
   lockSideSwitch: 1
   moveType: 2
-  projectilePrefab: {fileID: 0}
+  projectiles: are assigned in the animation clips!
   attackAndProjectile: 0
-  projectileHitProperties:
-    damage: 95
-    knockbackForce: 50
-    timeStopLength: 0
-    timeStopScale: 0
-    hitSound: {fileID: 11400000, guid: 4cd25d573c9a79b42952b427acb09137, type: 2}
-    impulseSource: {fileID: 40801258633192796, guid: d4cdfddeaaa19a048999bb3ea85d88c2,
-      type: 3}
-    rippleEffectAdjust: {fileID: 5244326971005480206, guid: 1bfcec13ac6c15e4591355d5dd07a74e,
-      type: 3}
-    particleHitEffect: {fileID: 5244326971005480206, guid: 1bfcec13ac6c15e4591355d5dd07a74e,
-      type: 3}
   hitProperties:
     damage: 0
     knockbackForce: 0
+    knockbackMode: 0
     timeStopLength: 0
     timeStopScale: 0
     hitSound: {fileID: 0}
@@ -54,6 +43,6 @@ MonoBehaviour:
   moveNotation:
     movementNotation: 020000000600000004000000
     buttonNotation: 8
-    allowedState: 
-    allowedTimeBetweenInputs: 0
+    allowedState: PlayerStandingState
+    allowedTimeBetweenInputs: 0.4
     needsToBeHeld: 0

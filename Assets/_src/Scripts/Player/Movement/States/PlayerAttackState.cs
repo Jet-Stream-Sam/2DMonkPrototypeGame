@@ -14,7 +14,7 @@ public class PlayerAttackState : PlayerState
 
     private PlayerMoves attackAsset;
     private string animationToPlay;
-    private string audioClipName;
+    private CollectionSounds audioClip;
     private bool lockVelocity;
     private bool lockSideSwitch;
     private float attackDuration;
@@ -24,14 +24,15 @@ public class PlayerAttackState : PlayerState
     private bool buttonNeedsToBeHeld = false;
     private PlayerMoves.EndsAtState attackEndsAtState;
     protected IMoveBehaviour attackBehaviour;
+    protected Moves.MoveType moveType;
+    protected bool attackAndProjectile;
 
     public PlayerAttackState(PlayerMainController controllerScript, MainStateMachine stateMachine,
        PlayerMoves playerAttackAsset) : base(controllerScript, stateMachine)
     {
         attackAsset = playerAttackAsset;
         animationToPlay = playerAttackAsset.animationClip.name;
-        if(playerAttackAsset.moveSoundEffect != null)
-            audioClipName = playerAttackAsset.moveSoundEffect.name;
+        audioClip = playerAttackAsset.moveSoundEffect;
         lockVelocity = playerAttackAsset.lockVelocity;
         lockSideSwitch = playerAttackAsset.lockSideSwitch;
         hitProperties = playerAttackAsset.hitProperties;
@@ -39,6 +40,13 @@ public class PlayerAttackState : PlayerState
         attackDuration = playerAttackAsset.animationClip.length;
         buttonToHold = playerAttackAsset.moveNotation.buttonNotation;
         buttonNeedsToBeHeld = playerAttackAsset.moveNotation.needsToBeHeld;
+        moveType = playerAttackAsset.moveType;
+
+        if (moveType == Moves.MoveType.Projectile)
+        {
+            attackAndProjectile = playerAttackAsset.attackAndProjectile;
+            controllerScript.AnimationEventWasCalled += ShootProjectile;
+        }
 
         if (playerAttackAsset.moveBehaviour is IMoveBehaviour attack)
         {
@@ -58,15 +66,18 @@ public class PlayerAttackState : PlayerState
         controllerScript.playerAnimationsScript.ChangeAnimationState(animationToPlay);
 
         SoundManager soundManager = SoundManager.Instance;
-        if (audioClipName != null)
-            soundManager.PlayOneShotSFX(audioClipName);
+
+        if(audioClip != null)
+            audioClip.PlaySound(soundManager);
 
         controllerScript.hitBoxCheck.HitProperties = 
             new HitProperties(hitProperties);
 
         if(lockVelocity)
             LockVelocity();
-        
+
+        if (moveType == Moves.MoveType.Projectile && !attackAndProjectile)
+            hitProperties = null;
         if (!lockAsyncMethod)
             AttackLoop();
 
@@ -91,6 +102,10 @@ public class PlayerAttackState : PlayerState
     public override void Exit()
     {
         base.Exit();
+        if (moveType == Moves.MoveType.Projectile)
+        {
+            controllerScript.AnimationEventWasCalled -= ShootProjectile;
+        }
         tokenSource.Cancel();
         controllerScript.hitBoxCheck.ResetProperties();
         attackBehaviour?.OnMoveExit();
@@ -154,5 +169,20 @@ public class PlayerAttackState : PlayerState
     private void LockSideSwitch(Vector3 initialScale)
     {
         controllerScript.playerSpriteTransform.localScale = initialScale;
+    }
+
+    private void ShootProjectile(ScriptableObject obj)
+    {
+        if (!(obj is ProjectileTriggerEvent projEvent))
+            return;
+
+        
+        GameObject instantiatedObj = UnityEngine.Object.Instantiate(projEvent.fireballPrefab, controllerScript.playerProjectileTransform.position, Quaternion.identity);
+        FireballBehaviour fireball = instantiatedObj.GetComponent<FireballBehaviour>();
+
+        fireball.gameObject.transform.localScale = controllerScript.playerSpriteTransform.localScale.x >= 0 ?
+            new Vector2(fireball.gameObject.transform.localScale.x, fireball.gameObject.transform.localScale.y) :
+            new Vector2(-fireball.gameObject.transform.localScale.x, fireball.gameObject.transform.localScale.y);
+
     }
 }

@@ -21,6 +21,7 @@ public class WizardWanderBehaviour : MonoBehaviour, IMonoBehaviourState
     private bool isCheckingWallDetectionOnTheLeft;
     private bool isCheckingWallDetectionOnTheRight;
     private float enemySpeed;
+    private bool wasFlipped;
     void Start()
     {
         enemyRigidBody = enemyController.enemyRigidBody;
@@ -40,20 +41,14 @@ public class WizardWanderBehaviour : MonoBehaviour, IMonoBehaviourState
 
     private void OnEnable()
     {
+
         directionToFollow = new Vector2(Random.Range(-1, 2), 0).normalized;
-        switch (directionToFollow.x)
+
+        if (directionToFollow.x == 0)
         {
-            case -1:
-                enemyController.enemySpriteRenderer.flipX = false;
-                break;
-            case 1:
-                enemyController.enemySpriteRenderer.flipX = true;
-                break;
-            case 0:
-                directionToFollow = new Vector2(1, 0);
-                enemyController.enemySpriteRenderer.flipX = true;
-                break;
+            directionToFollow = new Vector2(1, 0);
         }
+        enemyController.spriteFlip.Flip(directionToFollow.x);
     }
 
     public void FixedUpdate()
@@ -89,28 +84,19 @@ public class WizardWanderBehaviour : MonoBehaviour, IMonoBehaviourState
             enemyRigidBody.velocity = new Vector2(0, enemyRigidBody.velocity.y);
             return;
         }
-            
 
-        switch (directionToFollow.x)
+        if(!isCheckingGroundDetectionOnTheLeft ||
+            isCheckingWallDetectionOnTheLeft)
         {
-            case -1:
-                if (!isCheckingGroundDetectionOnTheLeft ||
-                    isCheckingWallDetectionOnTheLeft)
-                {
-                    directionToFollow = new Vector2(1, 0);
-                    enemyController.enemySpriteRenderer.flipX = true;
-                }
-                break;
-            case 1:
-                if (!isCheckingGroundDetectionOnTheRight ||
-                    isCheckingWallDetectionOnTheRight)
-                {
-                    directionToFollow = new Vector2(-1, 0);
-                    enemyController.enemySpriteRenderer.flipX = false;
-                }
-                break;
+            directionToFollow = new Vector2(1, 0);
+            enemyController.spriteFlip.Flip(directionToFollow.x);
         }
-
+        if (!isCheckingGroundDetectionOnTheRight ||
+                    isCheckingWallDetectionOnTheRight)
+        {
+            directionToFollow = new Vector2(-1, 0);
+            enemyController.spriteFlip.Flip(directionToFollow.x);
+        }
 
 
     }

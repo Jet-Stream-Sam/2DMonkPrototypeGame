@@ -73,6 +73,9 @@ public class EnemyAIBrain : SerializedMonoBehaviour
     }
     public virtual void AIDetection()
     {
+        if (enemyController.currentStateOutput != "EnemyStandingState")
+            return;
+
         if (isGoingToAttackTarget && attackCooldownTimer == 0)
         {
             Collider2D target = Physics2D.OverlapCircle(detectionTransform.position, attackRange, detectionMask);

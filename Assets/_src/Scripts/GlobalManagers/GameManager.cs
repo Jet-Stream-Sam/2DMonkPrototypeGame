@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     {
         if(Instance == null)
         {
-            SceneManager.LoadSceneAsync(0, LoadSceneMode.Additive);
+            SceneManager.LoadSceneAsync("LoadingScreen", LoadSceneMode.Additive);
             PausingManager.canPause = true;
             Instance = this;
             DontDestroyOnLoad(gameObject);

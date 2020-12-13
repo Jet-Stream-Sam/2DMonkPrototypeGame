@@ -9,13 +9,17 @@ using UnityEngine;
 public class HitCheck : SerializedMonoBehaviour
 {
     public HitProperties HitProperties { get; set; }
-    [SerializeField] private Collider2D subjectCollider2D;
-    [SerializeField] private List<Collider2D> checkedHitColliders = new List<Collider2D>();
-    [SerializeField] private IDamageable hitException;
+    [FoldoutGroup("Dependencies")]
+    [SerializeField] protected Collider2D subjectCollider2D;
+    [Title("Detection Exceptions")]
+    public IDamageable hitInstanceException;
+    public System.Type hitTypeException;
 
+    [ReadOnly]
+    [SerializeField] protected List<Collider2D> checkedHitColliders = new List<Collider2D>();
     [HideInInspector] public Action<Vector3, IDamageable> OnSucessfulHit;
 
-    private void OnTriggerEnter2D(Collider2D hitCollider)
+    public virtual void OnTriggerEnter2D(Collider2D hitCollider)
     {
         if (HitProperties == null)
             return;
@@ -23,17 +27,21 @@ public class HitCheck : SerializedMonoBehaviour
             return;
         IDamageable hitBox = hitCollider.GetComponent<IDamageable>();
         
-        if(hitException != null)
+        if(hitInstanceException != null)
         {
-            if (hitBox == hitException)
+
+            if (hitBox == hitInstanceException)
             {
-                Debug.Log(hitBox + " equals " + hitException);
                 return;
             }
         }
         
         if(hitBox != null)
         {
+            if (hitBox.GetType() == hitTypeException)
+            {
+                return;
+            }
             OnSucessfulHit?.Invoke(hitCollider.transform.position, hitBox);
             checkedHitColliders.Add(hitCollider);
         }

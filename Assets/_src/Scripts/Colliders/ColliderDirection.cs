@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class ColliderDirection : MonoBehaviour
 {
+
     public Transform startPoint;
     public Transform endPoint;
+
     public Vector2 AttackDirection { get; private set; }
 
     private void Update()

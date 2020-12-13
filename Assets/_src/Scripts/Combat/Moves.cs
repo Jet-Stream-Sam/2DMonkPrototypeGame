@@ -1,4 +1,5 @@
 ﻿using Sirenix.OdinInspector;
+using Sirenix.Serialization;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,7 @@ public class Moves : SerializedScriptableObject
     
     [Title("Dependencies")]
     [PropertyOrder(-5), Required] public AnimationClip animationClip;
-    [PropertyOrder(-5)] public GameSound moveSoundEffect;
+    [PropertyOrder(-5)] public CollectionSounds moveSoundEffect;
     [PropertySpace]
     [PropertyOrder(-4)][Button("Debug AnimationClip info", ButtonSizes.Medium)]
     public void GetAnimationClipInfo()
@@ -36,7 +37,8 @@ public class Moves : SerializedScriptableObject
 
     [Title("Projectile Properties")]
     [ShowIf("moveType", MoveType.Projectile)]
-    [PropertyOrder(-1)] public GameObject projectilePrefab;
+    [InfoBox("Projectile prefabs are now assigned in the animation clip's events.")]
+    [PropertyOrder(-1)] public string projectiles = "are assigned in the animation clips!";
     [HideInInspector] public bool attackAndProjectile;
     [HideIf("@attackAndProjectile || moveType != MoveType.Projectile")]
     [PropertyOrder(-1)] [Button("Only Shoot Projectile", ButtonSizes.Medium)]
@@ -53,31 +55,36 @@ public class Moves : SerializedScriptableObject
         attackAndProjectile = false;
     }
     
-    [Title("Projectile Hit Properties")]
-    [ShowIf("moveType", MoveType.Projectile)]
-    [HideLabel]
-    public HitProperties projectileHitProperties;
+    
     [Title("Hit Properties")]
     [ShowIf("@moveType == MoveType.Attack || moveType == MoveType.Projectile && attackAndProjectile")]
     [HideLabel]
     public HitProperties hitProperties;
+
   
 }
 [Serializable]
 public class HitProperties
 {
+    public enum KnockbackMode
+    {
+        AssignedFromColliderDirection,
+        Manual
+    }
     [TabGroup("Gameplay")]
     public int damage;
     [TabGroup("Gameplay")]
     public Vector2 ForceDirection { get; private set; }
     [TabGroup("Gameplay")]
     public float knockbackForce;
+    [TabGroup("Gameplay")]
+    public KnockbackMode knockbackMode = KnockbackMode.AssignedFromColliderDirection;
     [TabGroup("Visuals")]
     public float timeStopLength = 0.08f;
     [TabGroup("Visuals")]
     [Range(0, 1)] public float timeStopScale = 0;
     [TabGroup("SFX")]
-    public GameSound hitSound;
+    public CollectionSounds hitSound;
     [TabGroup("Visuals")]
     [AssetsOnly]
     public GameObject impulseSource;

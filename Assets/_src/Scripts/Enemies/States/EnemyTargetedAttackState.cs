@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Threading;
 using System.Threading.Tasks;
+using System.CodeDom;
 
 public class EnemyTargetedAttackState : EnemyState
 {
@@ -10,12 +11,11 @@ public class EnemyTargetedAttackState : EnemyState
     private Vector3 initialEnemyScale;
     private bool lockAsyncMethod;
     private Vector2 directionToFollow;
-
     public Transform focusedTargetTransform { get; private set; }
     private Transform enemyTransform;
     private EnemyMoves attackAsset;
     private string animationToPlay;
-    private string audioClipName;
+    private CollectionSounds audioClip;
     private bool lockVelocity;
     private bool lockSideSwitch;
     private float attackDuration;
@@ -24,14 +24,13 @@ public class EnemyTargetedAttackState : EnemyState
     protected IMoveBehaviour attackBehaviour;
     protected Moves.MoveType moveType;
     protected bool attackAndProjectile;
-    protected HitProperties projectileHitProperties;
+    protected bool wasFlipped;
     public EnemyTargetedAttackState(EnemyMainController controllerScript, MainStateMachine stateMachine,
         EnemyMoves enemyAttackAsset, Transform target) : base(controllerScript, stateMachine)
     {
         attackAsset = enemyAttackAsset;
         animationToPlay = enemyAttackAsset.animationClip.name;
-        if (enemyAttackAsset.moveSoundEffect != null)
-            audioClipName = enemyAttackAsset.moveSoundEffect.name;
+        audioClip = enemyAttackAsset.moveSoundEffect;
         lockVelocity = enemyAttackAsset.lockVelocity;
         lockSideSwitch = enemyAttackAsset.lockSideSwitch;
         hitProperties = enemyAttackAsset.hitProperties;
@@ -41,9 +40,7 @@ public class EnemyTargetedAttackState : EnemyState
         if(moveType == Moves.MoveType.Projectile)
         {
             attackAndProjectile = enemyAttackAsset.attackAndProjectile;
-            projectileHitProperties = enemyAttackAsset.projectileHitProperties;
-
-            controllerScript.hasShotAProjectile += ShootProjectile;
+            controllerScript.AnimationEventWasCalled += ShootProjectile;
         }
 
         if (enemyAttackAsset.moveBehaviour is IMoveBehaviour attack)
@@ -69,8 +66,9 @@ public class EnemyTargetedAttackState : EnemyState
             LockVelocity();
 
         SoundManager soundManager = SoundManager.Instance;
-        if (audioClipName != null)
-            soundManager.PlayOneShotSFX(audioClipName);
+
+        if(audioClip != null)
+            audioClip.PlaySound(soundManager);
 
         controllerScript.hitBoxCheck.HitProperties =
             new HitProperties(hitProperties);
@@ -92,18 +90,10 @@ public class EnemyTargetedAttackState : EnemyState
             LockSideSwitch(initialEnemyScale);
         else
         {
-            directionToFollow = new Vector2(focusedTargetTransform.position.x - enemyTransform.position.x, 0).normalized;
-
-            switch (directionToFollow.x)
-            {
-                case -1:
-                    controllerScript.enemySpriteRenderer.flipX = false;
-                    break;
-                case 1:
-                    controllerScript.enemySpriteRenderer.flipX = true;
-                    break;
-            }
+            directionToFollow = new Vector2(focusedTargetTransform.position.x - controllerScript.transform.position.x, 0).normalized;
+            controllerScript.spriteFlip.Flip(directionToFollow.x);
         }
+            
         attackBehaviour?.OnMoveUpdate();
     }
 
@@ -118,7 +108,7 @@ public class EnemyTargetedAttackState : EnemyState
         base.Exit();
         if(moveType == Moves.MoveType.Projectile)
         {
-            controllerScript.hasShotAProjectile -= ShootProjectile;
+            controllerScript.AnimationEventWasCalled -= ShootProjectile;
         }
         tokenSource.Cancel();
         controllerScript.hitBoxCheck.ResetProperties();
@@ -167,10 +157,16 @@ public class EnemyTargetedAttackState : EnemyState
         controllerScript.enemySpriteTransform.localScale = initialScale;
     }
 
-    private void ShootProjectile()
+    private void ShootProjectile(ScriptableObject obj)
     {
-        GameObject instantiatedObj = Object.Instantiate(attackAsset.projectilePrefab, controllerScript.transform.position, Quaternion.identity);
+        if (!(obj is ProjectileTriggerEvent projEvent))
+            return;
+
+        GameObject instantiatedObj = Object.Instantiate(projEvent.fireballPrefab, controllerScript.enemyProjectileTransform.position, Quaternion.identity);
         FireballBehaviour fireball = instantiatedObj.GetComponent<FireballBehaviour>();
+        ProjectileHitCheck projectileHitBox = instantiatedObj.GetComponent<ProjectileHitCheck>();
         fireball.target = focusedTargetTransform;
+        projectileHitBox.hitInstanceException = controllerScript;
+        
     }
 }

@@ -71,11 +71,29 @@ public class PlayerMoveHandler : MonoBehaviour
                     mainController.StateMachine, move));
                 }
                 break;
+
+            case Moves.MoveType.Projectile:
+                bool _isAirbourne = move.moveNotation.allowedState == "PlayerFallingState";
+                bool _canAttackInTheAir = mainController.attacksInTheAir >= 0;
+                if (_isAirbourne && _canAttackInTheAir)
+                {
+                    Debug.Log("Attack Performed: " + move.name);
+                    mainController.StateMachine.ChangeState(new PlayerAirborneAttackState(mainController,
+                    mainController.StateMachine, move));
+                }
+                else if (!_isAirbourne)
+                {
+                    Debug.Log("Attack Performed: " + move.name);
+                    mainController.StateMachine.ChangeState(new PlayerAttackState(mainController,
+                    mainController.StateMachine, move));
+                }
+                break;
             case Moves.MoveType.Neutral:
                 Debug.Log("Move Performed: " + move.name);
                 mainController.StateMachine.ChangeState(new PlayerNeutralMoveState(mainController,
                     mainController.StateMachine, move));
                 break;
+            
         }
         
 

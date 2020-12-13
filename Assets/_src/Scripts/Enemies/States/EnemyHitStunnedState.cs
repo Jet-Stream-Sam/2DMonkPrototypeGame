@@ -11,8 +11,8 @@ public class EnemyHitStunnedState : EnemyState
     {
         base.Enter();
         controllerScript.enemyAnimationsScript.ChangeAnimationState(controllerScript.hitAnimationClip.name);
-        controllerScript.StartCoroutine(ComeBackToState(controllerScript.enemyIdle.name,
-            controllerScript.hitAnimationClip.length));
+        controllerScript.AIBrain.StateReset();
+        controllerScript.StartCoroutine(ComeBackToState(controllerScript.hitAnimationClip.length));
     }
 
     public override void HandleUpdate()
@@ -58,12 +58,12 @@ public class EnemyHitStunnedState : EnemyState
     }
 
 
-    private IEnumerator ComeBackToState(string state, float time)
+    private IEnumerator ComeBackToState(float time)
     {
         controllerScript.hasRecovered = false;
         controllerScript.hasNormalizedMovement = false;
         yield return new WaitForSeconds(time);
         controllerScript.hasRecovered = true;
-        controllerScript.enemyAnimationsScript.ChangeAnimationState(state);
+        
     }
 }
