@@ -49,7 +49,7 @@ public class PlayerNeutralMoveState : PlayerState
 
         initialPlayerScale = controllerScript.playerSpriteTransform.localScale;
 
-        controllerScript.playerAnimationsScript.ChangeAnimationState(animationToPlay);
+        controllerScript.playerAnimationsScript.ChangeAnimationState(animationToPlay, false);
 
         SoundManager soundManager = SoundManager.Instance;
 

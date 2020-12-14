@@ -4,6 +4,7 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 public class FireballBehaviour : MonoBehaviour
 {
+    private SoundManager soundManager;
     [HideInInspector] public Transform target;
     private Vector3 directionToShoot;
     
@@ -15,6 +16,8 @@ public class FireballBehaviour : MonoBehaviour
     [SerializeField] private CircleCollider2D circleHitbox;
     [FoldoutGroup("Dependencies")]
     [SerializeField] private ParticleSystem particleExplosion;
+    [FoldoutGroup("Dependencies")]
+    [SerializeField] private CollectionSounds explosionSound;
 
     [TitleGroup("Fireball", Alignment = TitleAlignments.Centered)]
     
@@ -32,6 +35,8 @@ public class FireballBehaviour : MonoBehaviour
 
     private void Start()
     {
+        soundManager = SoundManager.Instance;
+
         if(target == null)
         {
             directionToShoot = (transform.right * transform.localScale.x).normalized;
@@ -58,6 +63,9 @@ public class FireballBehaviour : MonoBehaviour
             return;
 
         hasExploded = true;
+
+        if(explosionSound != null)
+            explosionSound.PlaySound(soundManager);
 
         projectileHitCheck.OnSucessfulHit -= Explode;
         fireballRigidbody.Sleep();

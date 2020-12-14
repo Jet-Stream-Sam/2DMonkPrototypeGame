@@ -10317,7 +10317,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 84d56eb8502642e4c9ecfebff463a41c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10590,7 +10590,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 145b5e71b4c037846b27ef1e282e111a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isGrounded: 0
   isHittingHead: 0
   attacksInTheAir: 0
   isReversed: 0
@@ -10615,6 +10614,8 @@ MonoBehaviour:
   airborneJumpTimer: 0
   groundedJumpTimer: 0
   fallMultiplier: 3.5
+  groundedStunnedToIdleEasingRate: 0.2
+  airborneStunnedToIdleEasingRate: 0.2
   groundCheckRadius: 0.25
   groundMask:
     serializedVersion: 2
@@ -10623,7 +10624,12 @@ MonoBehaviour:
   ceilingMask:
     serializedVersion: 2
     m_Bits: 256
+  maxHealth: 1500
+  currentHealth: 0
   debugActivated: 1
+  isGrounded: 0
+  hasRecovered: 1
+  hasNormalizedMovement: 1
   currentStateOutput: 
 --- !u!114 &3920600530057498372
 MonoBehaviour:

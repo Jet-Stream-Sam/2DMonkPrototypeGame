@@ -10047,6 +10047,7 @@ MonoBehaviour:
   fireballRigidbody: {fileID: 484415720263746237}
   circleHitbox: {fileID: 3314060142123004480}
   particleExplosion: {fileID: 8684666667058487801}
+  explosionSound: {fileID: 11400000, guid: a2000390737cfb043bc054aeb54677d0, type: 2}
   fireballSpeed: 11
   timeUntilDestruction: 0.9
   damageOnImpact: 0
@@ -10096,7 +10097,7 @@ MonoBehaviour:
     knockbackMode: 1
     timeStopLength: 0
     timeStopScale: 0
-    hitSound: {fileID: 11400000, guid: c120905b86f5bb94ea97bdf59f785d50, type: 2}
+    hitSound: {fileID: 11400000, guid: f23a2be400c7e6348bbaceb382ba277b, type: 2}
     impulseSource: {fileID: 40801258633192796, guid: 115b2a39bfba62944a9623db74ed3562,
       type: 3}
     rippleEffectAdjust: {fileID: 0}

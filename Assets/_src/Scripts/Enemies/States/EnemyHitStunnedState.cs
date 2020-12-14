@@ -10,7 +10,7 @@ public class EnemyHitStunnedState : EnemyState
     public override void Enter()
     {
         base.Enter();
-        controllerScript.enemyAnimationsScript.ChangeAnimationState(controllerScript.hitAnimationClip.name);
+        controllerScript.enemyAnimationsScript.ChangeAnimationState(controllerScript.hitAnimationClip.name, true);
         controllerScript.AIBrain.StateReset();
         controllerScript.StartCoroutine(ComeBackToState(controllerScript.hitAnimationClip.length));
     }

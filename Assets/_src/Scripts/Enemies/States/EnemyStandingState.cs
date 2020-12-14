@@ -10,7 +10,7 @@ public class EnemyStandingState : EnemyGroundedState
     {
         base.Enter();
         controllerScript.enemyAnimationsScript.ChangeAnimationState(
-            controllerScript.enemyIdle.name);
+            controllerScript.enemyIdle.name, false);
     }
 
     public override void HandleUpdate()

@@ -87,17 +87,17 @@ public class PlayerMovementOLD : MonoBehaviour
         {
             if (movementX != 0)
             {
-                playerAnimationsScript.ChangeAnimationState("player_walk");
+                playerAnimationsScript.ChangeAnimationState("player_walk", false);
                 
             }
             else
             {
-                playerAnimationsScript.ChangeAnimationState("player_idle");
+                playerAnimationsScript.ChangeAnimationState("player_idle", false);
             }
         }
         else if(playerRigidBody.velocity.y < 0)
         {
-            playerAnimationsScript.ChangeAnimationState("player_fall");
+            playerAnimationsScript.ChangeAnimationState("player_fall", false);
         }
 
         
@@ -153,7 +153,7 @@ public class PlayerMovementOLD : MonoBehaviour
         isGrounded = false;
         playerRigidBody.velocity = Vector2.up * Mathf.Sqrt(jumpHeight * -2 * Physics2D.gravity.y * playerRigidBody.gravityScale);
         hasPerformedJump?.Invoke();
-        playerAnimationsScript.ChangeAnimationState("player_jump");
+        playerAnimationsScript.ChangeAnimationState("player_jump", false);
         jumpTimer = 0;
 
         soundManager.PlaySFX(S_PLAYER_JUMP);

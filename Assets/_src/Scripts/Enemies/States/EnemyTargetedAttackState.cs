@@ -60,7 +60,7 @@ public class EnemyTargetedAttackState : EnemyState
         initialEnemyScale = enemyTransform.localScale;
         
 
-        controllerScript.enemyAnimationsScript.ChangeAnimationState(animationToPlay);
+        controllerScript.enemyAnimationsScript.ChangeAnimationState(animationToPlay, false);
 
         if (lockVelocity)
             LockVelocity();

@@ -16,7 +16,7 @@ public class PlayerHitStunnedState : PlayerState
     {
         base.Enter();
         initialPlayerScale = controllerScript.playerSpriteTransform.localScale;
-        controllerScript.playerAnimationsScript.ChangeAnimationState("player_hit_stunned");
+        controllerScript.playerAnimationsScript.ChangeAnimationState("player_hit_stunned", true);
         controllerScript.StartCoroutine(ComeBackToState(0.2f));
     }
 
@@ -31,19 +31,23 @@ public class PlayerHitStunnedState : PlayerState
             {
                 controllerScript.hasNormalizedMovement = true;
                 controllerScript.playerRigidBody.velocity = Vector2.zero;
-                stateMachine.ChangeState(new PlayerStandingState(controllerScript, stateMachine));
+
+                if(controllerScript.isHittingHead)
+                    stateMachine.ChangeState(new PlayerCrouchingState(controllerScript, stateMachine));
+                else
+                    stateMachine.ChangeState(new PlayerStandingState(controllerScript, stateMachine));
             }
 
         }
 
-
+        controllerScript.playerSpriteTransform.localScale = initialPlayerScale;
     }
 
     public override void HandleFixedUpdate()
     {
         base.HandleFixedUpdate();
 
-        controllerScript.playerSpriteTransform.localScale = initialPlayerScale;
+        
 
         
 

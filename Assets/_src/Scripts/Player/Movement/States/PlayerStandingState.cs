@@ -18,9 +18,9 @@ public class PlayerStandingState : PlayerGroundedState
         base.Enter();
         
         if (controllerScript.MovementX != 0)
-            controllerScript.playerAnimationsScript.ChangeAnimationState("player_walk");
+            controllerScript.playerAnimationsScript.ChangeAnimationState("player_walk", false);
         else
-            controllerScript.playerAnimationsScript.ChangeAnimationState("player_idle");
+            controllerScript.playerAnimationsScript.ChangeAnimationState("player_idle", false);
 
         toCrouchTimer = toCrouchDelay;
     }
@@ -28,9 +28,9 @@ public class PlayerStandingState : PlayerGroundedState
     public override void HandleUpdate()
     {
         if (controllerScript.MovementX != 0)
-            controllerScript.playerAnimationsScript.ChangeAnimationState("player_walk");
+            controllerScript.playerAnimationsScript.ChangeAnimationState("player_walk", false);
         else
-            controllerScript.playerAnimationsScript.ChangeAnimationState("player_idle");
+            controllerScript.playerAnimationsScript.ChangeAnimationState("player_idle", false);
 
         base.HandleUpdate();
 

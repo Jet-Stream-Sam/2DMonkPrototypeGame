@@ -9,12 +9,15 @@ public class AnimationsState : MonoBehaviour
 
     public string CurrentState { get; private set; }
 
-    public void ChangeAnimationState(string newState)
+    public void ChangeAnimationState(string newState, bool overridesLastState)
     {
-        if (CurrentState == newState) return;
-
+        if (!overridesLastState)
+        {
+            if (CurrentState == newState) return;
+        }
+        
         CurrentState = newState;
-        spriteAnimator.Play(Animator.StringToHash(CurrentState));
+        spriteAnimator.Play(Animator.StringToHash(CurrentState), -1, 0f);
     }
 
     public float GetCurrentAnimationLength()

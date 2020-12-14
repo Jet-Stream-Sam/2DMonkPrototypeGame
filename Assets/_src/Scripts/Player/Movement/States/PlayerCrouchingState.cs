@@ -31,7 +31,7 @@ public class PlayerCrouchingState : PlayerGroundedState
 
         #endregion
 
-        controllerScript.playerAnimationsScript.ChangeAnimationState("player_crouch");
+        controllerScript.playerAnimationsScript.ChangeAnimationState("player_crouch", false);
 
         if (cooldown > 0)
         {

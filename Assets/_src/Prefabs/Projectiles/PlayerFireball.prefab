@@ -10061,7 +10061,7 @@ MonoBehaviour:
     knockbackMode: 1
     timeStopLength: 0
     timeStopScale: 0
-    hitSound: {fileID: 11400000, guid: c120905b86f5bb94ea97bdf59f785d50, type: 2}
+    hitSound: {fileID: 11400000, guid: 23b150f36e6328749a313bb88a2660cf, type: 2}
     impulseSource: {fileID: 5244326971005480206, guid: 7dc973756717da9489258e493c60af93,
       type: 3}
     rippleEffectAdjust: {fileID: 5244326971005480206, guid: 7dc973756717da9489258e493c60af93,

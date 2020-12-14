@@ -14,7 +14,7 @@ public class PlayerFallingState : PlayerState
     public override void Enter()
     {
         base.Enter();
-        controllerScript.playerAnimationsScript.ChangeAnimationState("player_fall");
+        controllerScript.playerAnimationsScript.ChangeAnimationState("player_fall", false);
 
  
     }

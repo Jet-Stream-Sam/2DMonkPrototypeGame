@@ -9954,6 +9954,7 @@ MonoBehaviour:
   fireballRigidbody: {fileID: 484415720263746237}
   circleHitbox: {fileID: 3314060142123004480}
   particleExplosion: {fileID: 493859241871701665}
+  explosionSound: {fileID: 11400000, guid: 3646ac7998e80e04cbb68de7fba2fab1, type: 2}
   fireballSpeed: 10
   timeUntilDestruction: 4
   damageOnImpact: 1

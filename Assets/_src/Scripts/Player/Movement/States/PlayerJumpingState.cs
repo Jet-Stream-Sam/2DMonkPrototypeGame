@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class PlayerJumpingState : PlayerState
 {
     #region Game Sound Names
-    private const string S_PLAYER_JUMP = "player_jump";
+    private const string S_PLAYER_JUMP = "Player Jump";
     #endregion
 
     private float pastGravityScale;
@@ -23,7 +23,7 @@ public class PlayerJumpingState : PlayerState
         ParticleSystem jumpDust = controllerScript.playerMainVFXManager.playerDustParticles.dustParticles["JumpDust"];
         jumpDust.Play();
 
-        controllerScript.playerAnimationsScript.ChangeAnimationState("player_fall");
+        controllerScript.playerAnimationsScript.ChangeAnimationState("player_fall", false);
 
         pastGravityScale = controllerScript.playerRigidBody.gravityScale;
 
@@ -37,7 +37,7 @@ public class PlayerJumpingState : PlayerState
 
         controllerScript.hasPerformedJump?.Invoke();
 
-        controllerScript.playerAnimationsScript.ChangeAnimationState("player_jump");
+        controllerScript.playerAnimationsScript.ChangeAnimationState("player_jump", false);
 
         controllerScript.airborneJumpTimer = 0;
 

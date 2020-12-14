@@ -12,7 +12,7 @@ public class EnemyDeathState : EnemyState
         base.Enter();
         OverridingState = true;
         controllerScript.enemyAnimationsScript.ChangeAnimationState(
-            controllerScript.deathAnimationClip.name);
+            controllerScript.deathAnimationClip.name, false);
         controllerScript.enemyCollider.enabled = false;
         controllerScript.enemyRigidBody.Sleep();
         Object.Destroy(controllerScript.gameObject, controllerScript.deathAnimationClip.length); 
