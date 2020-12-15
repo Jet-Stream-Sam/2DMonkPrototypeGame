@@ -31,6 +31,8 @@ public class PlayerMainController : MonoBehaviour, IDamageable, IEntityControlle
     [FoldoutGroup("Dependencies")]
     public Transform playerSpriteTransform;
     [FoldoutGroup("Dependencies")]
+    public SpriteRenderer playerSpriteRenderer;
+    [FoldoutGroup("Dependencies")]
     public HitCheck hitBoxCheck;
     [FoldoutGroup("Dependencies")]
     public PlayerInputHandler playerInputHandler;
@@ -85,6 +87,9 @@ public class PlayerMainController : MonoBehaviour, IDamageable, IEntityControlle
     [TabGroup("Player/Tabs", "Combat")]
     [ReadOnly]
     public int currentHealth;
+    [TabGroup("Player/Tabs", "Combat")]
+    [ColorUsage(true, true)]
+    public Color hitColor;
 
     [TabGroup("Player/Tabs", "Debug")]
     [SerializeField] private bool debugActivated = true;
@@ -110,6 +115,17 @@ public class PlayerMainController : MonoBehaviour, IDamageable, IEntityControlle
     public Action hasShotAProjectile;
     #endregion
 
+    #region Player Coroutines
+    private IEnumerator flashCoroutine;
+    #endregion
+
+    #region Animation Event Exclusive Methods
+    public void AnimationSendObject(ScriptableObject obj)
+    {
+        AnimationEventWasCalled?.Invoke(obj);
+    }
+
+    #endregion
     private void Start()
     {
         SoundManager = SoundManager.Instance;
@@ -187,6 +203,10 @@ public class PlayerMainController : MonoBehaviour, IDamageable, IEntityControlle
             return;
         }
 
+        if (flashCoroutine != null)
+            StopCoroutine(flashCoroutine);
+        flashCoroutine = HitFlash(playerSpriteRenderer, 1f);
+        StartCoroutine(flashCoroutine);
     }
     public void TakeDamage(int damage, Vector2 forceDirection, float knockbackForce)
     {
@@ -202,18 +222,51 @@ public class PlayerMainController : MonoBehaviour, IDamageable, IEntityControlle
             Die();
             return;
         }
+
+        if (flashCoroutine != null)
+            StopCoroutine(flashCoroutine);
+        flashCoroutine = HitFlash(playerSpriteRenderer, 3.5f);
+        StartCoroutine(flashCoroutine);
+
         StateMachine.ChangeState(new PlayerHitStunnedState(this, StateMachine));
+        
+
+        
     }
 
     private void Die()
     {
         
     }
-    #region Animation Event Exclusive Methods
-    public void AnimationSendObject(ScriptableObject obj)
-    {
-        AnimationEventWasCalled?.Invoke(obj);
-    }
 
-    #endregion
+    IEnumerator HitFlash(Renderer renderer, float secondsToRecover)
+    {
+        float lerpRate = 0;
+        Color previousMaterialColor = renderer.material.GetColor("_SpriteColor");
+        MaterialPropertyBlock propertyBlock = new MaterialPropertyBlock();
+        renderer.GetPropertyBlock(propertyBlock);
+        propertyBlock.SetColor("_SpriteColor", hitColor);
+        renderer.SetPropertyBlock(propertyBlock);
+
+        yield return null;
+        Color currentColor = hitColor;
+        while (true)
+        {
+            if (lerpRate >= 1)
+                break;
+
+            lerpRate += Time.deltaTime / secondsToRecover;
+
+            currentColor = Color.Lerp(currentColor, previousMaterialColor, lerpRate);
+            renderer.GetPropertyBlock(propertyBlock);
+            propertyBlock.SetColor("_SpriteColor", currentColor);
+            renderer.SetPropertyBlock(propertyBlock);
+
+            yield return null;
+        }
+
+
+
+    }
+    
 }

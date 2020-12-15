@@ -211,7 +211,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 337fd28fe67f44a42ba85dd2bf5f7599, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyGroan: {fileID: 0}
   enemyAnimationsScript: {fileID: 1484014983244567257}
   enemyCollider: {fileID: 570678192387728479}
   enemyRigidBody: {fileID: 1484014983244567262}
@@ -224,6 +223,7 @@ MonoBehaviour:
   wallDetectionRight: {fileID: 8435399783056346225}
   enemyIdle: {fileID: 7400000, guid: 2764c24f6af72004d948335f6021c03f, type: 2}
   hitAnimationClip: {fileID: 7400000, guid: 7c39e286fa1b37d40b6922b5547f8d6d, type: 2}
+  fallAnimationClip: {fileID: 7400000, guid: 2764c24f6af72004d948335f6021c03f, type: 2}
   deathAnimationClip: {fileID: 7400000, guid: 387aa5a5a99f4614ea70b001d9dd66b9, type: 2}
   AIBrain: {fileID: 65057941887699864}
   enemyProjectileTransform: {fileID: 6197938180333866224}
@@ -242,6 +242,7 @@ MonoBehaviour:
     m_Bits: 256
   maxHealth: 500
   currentHealth: 0
+  hitColor: {r: 3.8774097, g: 0.27434498, b: 0.27434498, a: 1}
   debugActivated: 0
   currentStateOutput: 
   isGrounded: 0
@@ -401,12 +402,12 @@ MonoBehaviour:
   detectionTransform: {fileID: 1484014983244567204}
   enemyController: {fileID: 1484014983244567259}
   detectAndFollowRange: 0
-  attackRange: 9.7
+  attackRange: 4
   detectionMask:
     serializedVersion: 2
     m_Bits: 512
   attackCooldown: 2
-  debugActivated: 1
+  debugActivated: 0
   hasDetectedTarget: 0
   isGoingToAttackTarget: 0
   focusedTarget: {fileID: 0}
@@ -489,7 +490,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sRenderer: {fileID: 1484014983244567207}
   transformToFlip: {fileID: 6197938180333866224}
-  direction: {x: 0, y: 0, z: 0}
+  horizontalDirection: 0
 --- !u!1 &1484014983868560251
 GameObject:
   m_ObjectHideFlags: 0

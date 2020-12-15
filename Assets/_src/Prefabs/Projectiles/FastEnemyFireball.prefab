@@ -9994,6 +9994,7 @@ MonoBehaviour:
   checkedHitColliders: []
   projectileHitProperties:
     damage: 50
+    hitStunType: 1
     knockbackForce: 22
     knockbackMode: 1
     timeStopLength: 0

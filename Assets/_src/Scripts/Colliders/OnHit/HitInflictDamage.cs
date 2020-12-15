@@ -19,15 +19,17 @@ public class HitInflictDamage : MonoBehaviour
         if (hitBox == null)
             return;
 
+        if (mainHitBox.HitProperties.hitStunType == HitProperties.HitStunType.Normal)
+        {
+            hitBox.TakeDamage(mainHitBox.HitProperties.damage);
+            return;
+        }
+
         Vector3 direction;
         if(mainHitBox.HitProperties.knockbackMode == HitProperties.KnockbackMode.AssignedFromColliderDirection)
-        {
             direction = colliderDirection.AttackDirection;   
-        }
         else
-        {
             direction = pos - mainHitBox.transform.position;
-        }
         mainHitBox.HitProperties.SetForceDirection(direction);
         hitBox.TakeDamage(mainHitBox.HitProperties.damage,
             mainHitBox.HitProperties.ForceDirection, mainHitBox.HitProperties.knockbackForce);

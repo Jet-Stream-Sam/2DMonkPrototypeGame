@@ -71,14 +71,23 @@ public class HitProperties
         AssignedFromColliderDirection,
         Manual
     }
+    public enum HitStunType
+    {
+        Normal,
+        Special
+    }
+
+    
     [TabGroup("Gameplay")]
     public int damage;
     [TabGroup("Gameplay")]
+    public HitStunType hitStunType;
+    [TabGroup("Gameplay")]
     public Vector2 ForceDirection { get; private set; }
     [TabGroup("Gameplay")]
-    public float knockbackForce;
+    [ShowIf("hitStunType", HitStunType.Special)] public float knockbackForce;
     [TabGroup("Gameplay")]
-    public KnockbackMode knockbackMode = KnockbackMode.AssignedFromColliderDirection;
+    [ShowIf("hitStunType", HitStunType.Special)] public KnockbackMode knockbackMode = KnockbackMode.AssignedFromColliderDirection;
     [TabGroup("Visuals")]
     public float timeStopLength = 0.08f;
     [TabGroup("Visuals")]
@@ -95,17 +104,6 @@ public class HitProperties
     [AssetsOnly]
     public GameObject particleHitEffect;
 
-    public HitProperties(HitProperties hitProperties)
-    {
-        damage = hitProperties.damage;
-        knockbackForce = hitProperties.knockbackForce;
-        timeStopLength = hitProperties.timeStopLength;
-        timeStopScale = hitProperties.timeStopScale;
-        hitSound = hitProperties.hitSound;
-        impulseSource = hitProperties.impulseSource;
-        rippleEffectAdjust = hitProperties.rippleEffectAdjust;
-        particleHitEffect = hitProperties.particleHitEffect;
-    }
     public HitProperties(int damage, float knockbackForce)
     {
         this.damage = damage;

@@ -16,7 +16,7 @@ public class ResolutionsSetting : MonoBehaviour, ISetting
 
         int currentResolutionIndex = (int)value;
 
-        if (resolutions.Length > 0)
+        if (currentResolutionIndex < resolutions.Length)
         {
             Resolution resolution = resolutions[currentResolutionIndex];
             Screen.SetResolution(resolution.width,

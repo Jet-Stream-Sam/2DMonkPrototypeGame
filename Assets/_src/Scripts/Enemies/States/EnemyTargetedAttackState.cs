@@ -70,8 +70,7 @@ public class EnemyTargetedAttackState : EnemyState
         if(audioClip != null)
             audioClip.PlaySound(soundManager);
 
-        controllerScript.hitBoxCheck.HitProperties =
-            new HitProperties(hitProperties);
+        controllerScript.hitBoxCheck.HitProperties = hitProperties;
 
         if (moveType == Moves.MoveType.Projectile && !attackAndProjectile)
             hitProperties = null;
@@ -85,7 +84,10 @@ public class EnemyTargetedAttackState : EnemyState
     {
         base.HandleUpdate();
 
-        
+        if (!controllerScript.isGrounded)
+        {
+            stateMachine.ChangeState(new EnemyFallingState(controllerScript, stateMachine));
+        }
         if (lockSideSwitch)
             LockSideSwitch(initialEnemyScale);
         else

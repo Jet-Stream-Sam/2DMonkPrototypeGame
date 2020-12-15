@@ -15,6 +15,9 @@ public class HitParticleEffect : MonoBehaviour
 
     private void ApplyEffect(Vector3 pos, IDamageable hitBox)
     {
+        if (hitBox == null)
+            return;
+
         var particlePrefab = mainHitBox.HitProperties.particleHitEffect;
 
         if(particlePrefab != null)

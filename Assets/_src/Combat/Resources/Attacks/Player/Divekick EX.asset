@@ -30,6 +30,7 @@ MonoBehaviour:
   attackAndProjectile: 0
   hitProperties:
     damage: 130
+    hitStunType: 1
     knockbackForce: 80
     knockbackMode: 0
     timeStopLength: 0.2

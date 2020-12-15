@@ -25,7 +25,7 @@ public class WizardFollowBehaviour : MonoBehaviour, IMonoBehaviourState
         enemyRigidBody = enemyController.enemyRigidBody;
         enemyRigidBody.velocity = new Vector2(0, enemyRigidBody.velocity.y);
     }
-    private void Update()
+    private void FixedUpdate()
     {
         if (enemyController.currentStateOutput != "EnemyStandingState")
             return;
@@ -41,6 +41,7 @@ public class WizardFollowBehaviour : MonoBehaviour, IMonoBehaviourState
 
             if (Time.deltaTime > 0)
                 enemyRigidBody.velocity = new Vector2(directionToFollow.x * enemySpeed, enemyRigidBody.velocity.y);
+                
 
             enemyController.spriteFlip.Flip(directionToFollow.x);
 

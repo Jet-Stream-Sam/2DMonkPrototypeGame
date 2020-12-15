@@ -70,8 +70,7 @@ public class PlayerAttackState : PlayerState
         if(audioClip != null)
             audioClip.PlaySound(soundManager);
 
-        controllerScript.hitBoxCheck.HitProperties = 
-            new HitProperties(hitProperties);
+        controllerScript.hitBoxCheck.HitProperties = hitProperties;
 
         if(lockVelocity)
             LockVelocity();

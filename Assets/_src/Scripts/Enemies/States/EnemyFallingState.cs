@@ -10,6 +10,7 @@ public class EnemyFallingState : EnemyState
     public override void Enter()
     {
         base.Enter();
+        controllerScript.enemyAnimationsScript.ChangeAnimationState(controllerScript.fallAnimationClip.name, false);
     }
 
     public override void HandleUpdate()

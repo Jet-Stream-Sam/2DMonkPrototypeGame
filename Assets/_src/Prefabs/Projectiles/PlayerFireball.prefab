@@ -10012,11 +10012,12 @@ MonoBehaviour:
   fireballRigidbody: {fileID: 484415720263746237}
   circleHitbox: {fileID: 3314060142123004480}
   particleExplosion: {fileID: 493859241871701665}
+  explosionSound: {fileID: 0}
   fireballSpeed: 22
-  timeUntilDestruction: 2
+  timeUntilDestruction: 1.2
   damageOnImpact: 1
-  timeOfImpactDetection: 0.3
-  explosionRadius: 2.5
+  timeOfImpactDetection: 0.04
+  explosionRadius: 2
 --- !u!114 &5175264200747042581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10057,6 +10058,7 @@ MonoBehaviour:
   checkedHitColliders: []
   projectileHitProperties:
     damage: 120
+    hitStunType: 1
     knockbackForce: 22
     knockbackMode: 1
     timeStopLength: 0

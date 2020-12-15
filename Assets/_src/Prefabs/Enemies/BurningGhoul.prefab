@@ -465,7 +465,7 @@ GameObject:
   - component: {fileID: 943370417519970699}
   - component: {fileID: 3675440340909805267}
   m_Layer: 10
-  m_Name: WeakEnemy
+  m_Name: BurningGhoul
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -532,9 +532,9 @@ SpriteRenderer:
   m_SortingLayerID: 2108280849
   m_SortingLayer: 2
   m_SortingOrder: 50
-  m_Sprite: {fileID: 21300000, guid: 0c95faed3aa5a43d3b19f112f0843c87, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0868bf4c36fa14dacbef0b4619f706e6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 5.0625, y: 4.125}
@@ -603,7 +603,7 @@ MonoBehaviour:
   wallDetectionLeft: {fileID: 347125681}
   wallDetectionRight: {fileID: 534419868}
   enemyIdle: {fileID: 7400000, guid: 2764c24f6af72004d948335f6021c03f, type: 2}
-  hitAnimationClip: {fileID: 7400000, guid: 2764c24f6af72004d948335f6021c03f, type: 2}
+  hitAnimationClip: {fileID: 7400000, guid: 7c39e286fa1b37d40b6922b5547f8d6d, type: 2}
   fallAnimationClip: {fileID: 7400000, guid: 2764c24f6af72004d948335f6021c03f, type: 2}
   deathAnimationClip: {fileID: 7400000, guid: 387aa5a5a99f4614ea70b001d9dd66b9, type: 2}
   AIBrain: {fileID: 1688054556}
@@ -687,7 +687,7 @@ Animator:
   m_GameObject: {fileID: 9103479759381710938}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 470bf6222028fcd44a0a249c8a119252, type: 2}
+  m_Controller: {fileID: 9100000, guid: 663f1252a93d0df41a8e0f334e417347, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

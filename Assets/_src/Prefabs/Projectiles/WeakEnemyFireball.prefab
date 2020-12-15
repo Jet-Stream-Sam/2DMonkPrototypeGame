@@ -10093,10 +10093,11 @@ MonoBehaviour:
   checkedHitColliders: []
   projectileHitProperties:
     damage: 25
+    hitStunType: 0
     knockbackForce: 12
     knockbackMode: 1
-    timeStopLength: 0
-    timeStopScale: 0
+    timeStopLength: 0.1
+    timeStopScale: 0.2
     hitSound: {fileID: 11400000, guid: f23a2be400c7e6348bbaceb382ba277b, type: 2}
     impulseSource: {fileID: 40801258633192796, guid: 115b2a39bfba62944a9623db74ed3562,
       type: 3}

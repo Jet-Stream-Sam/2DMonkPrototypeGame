@@ -3,6 +3,7 @@ using Sirenix.Serialization;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class EnemyMainController : MonoBehaviour, IDamageable, IEntityController
@@ -31,6 +32,8 @@ public class EnemyMainController : MonoBehaviour, IDamageable, IEntityController
     public AnimationClip enemyIdle;
     [FoldoutGroup("Dependencies")]
     public AnimationClip hitAnimationClip;
+    [FoldoutGroup("Dependencies")]
+    public AnimationClip fallAnimationClip;
     [FoldoutGroup("Dependencies")]
     public AnimationClip deathAnimationClip;
     [FoldoutGroup("Dependencies")]
@@ -72,6 +75,9 @@ public class EnemyMainController : MonoBehaviour, IDamageable, IEntityController
     [TabGroup("Enemy/Tabs", "Combat")]
     [ReadOnly]
     public int currentHealth;
+    [TabGroup("Enemy/Tabs", "Combat")]
+    [ColorUsage(true, true)]
+    public Color hitColor;
 
     [TabGroup("Enemy/Tabs", "Debug")]
     [SerializeField] private bool debugActivated = true;
@@ -89,6 +95,17 @@ public class EnemyMainController : MonoBehaviour, IDamageable, IEntityController
     public Action<ScriptableObject> AnimationEventWasCalled { get; set; }
     #endregion
 
+    #region Enemy Coroutines
+    private IEnumerator flashCoroutine;
+    #endregion
+
+    #region Animation Event Exclusive Methods
+    public void AnimationSendObject(ScriptableObject obj)
+    {
+        AnimationEventWasCalled?.Invoke(obj);
+    }
+
+    #endregion
     private void Start()
     {
         currentHealth = maxHealth;
@@ -109,6 +126,20 @@ public class EnemyMainController : MonoBehaviour, IDamageable, IEntityController
     {
         StateMachine.CurrentState.HandleFixedUpdate(); 
     }
+
+    private void OnDrawGizmos()
+    {
+        if (debugActivated)
+        {
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+            Gizmos.DrawWireSphere(groundDetectionLeft.position, groundDetectionLRadius);
+            Gizmos.DrawWireSphere(groundDetectionRight.position, groundDetectionRRadius);
+            Gizmos.DrawWireSphere(wallDetectionLeft.position, wallDetectionLRadius);
+            Gizmos.DrawWireSphere(wallDetectionRight.position, wallDetectionRRadius);
+        }
+
+    }
     public void TakeDamage(int damage)
     {
         if (currentHealth <= 0)
@@ -118,11 +149,14 @@ public class EnemyMainController : MonoBehaviour, IDamageable, IEntityController
         {
             currentHealth = 0;
             Die();
-            
             return;
         }
 
-        StateMachine.ChangeState(new EnemyHitStunnedState(this, StateMachine));
+        if (flashCoroutine != null)
+            StopCoroutine(flashCoroutine);
+        flashCoroutine = HitFlash(enemySpriteRenderer, 0.5f);
+        StartCoroutine(flashCoroutine);
+
   
     }
 
@@ -140,7 +174,14 @@ public class EnemyMainController : MonoBehaviour, IDamageable, IEntityController
             Die();
             return;
         }
+
+        if(flashCoroutine != null)
+            StopCoroutine(flashCoroutine);
+        flashCoroutine = HitFlash(enemySpriteRenderer, 3.5f);
+        StartCoroutine(flashCoroutine);
+
         StateMachine.ChangeState(new EnemyHitStunnedState(this, StateMachine));
+   
     }
 
     private void Die()
@@ -148,25 +189,38 @@ public class EnemyMainController : MonoBehaviour, IDamageable, IEntityController
         StateMachine.ChangeState(new EnemyDeathState(this, StateMachine));
     }
 
-    private void OnDrawGizmos()
+    IEnumerator HitFlash(Renderer renderer, float secondsToRecover)
     {
-        if (debugActivated)
+        float lerpRate = 0;
+        Color previousMaterialColor = renderer.material.GetColor("_SpriteColor");
+        MaterialPropertyBlock propertyBlock = new MaterialPropertyBlock();
+        renderer.GetPropertyBlock(propertyBlock);
+        propertyBlock.SetColor("_SpriteColor", hitColor);
+        renderer.SetPropertyBlock(propertyBlock);
+
+        
+        yield return null;
+        Color currentColor = hitColor;
+        
+        while (true)
         {
-            Gizmos.color = Color.cyan;
-            Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
-            Gizmos.DrawWireSphere(groundDetectionLeft.position, groundDetectionLRadius);
-            Gizmos.DrawWireSphere(groundDetectionRight.position, groundDetectionRRadius);
-            Gizmos.DrawWireSphere(wallDetectionLeft.position, wallDetectionLRadius);
-            Gizmos.DrawWireSphere(wallDetectionRight.position, wallDetectionRRadius);
+            if (lerpRate >= 1)
+                break;
+
+            lerpRate += Time.deltaTime / secondsToRecover;
+
+            currentColor = Color.Lerp(currentColor, previousMaterialColor, lerpRate);
+            renderer.GetPropertyBlock(propertyBlock);
+            propertyBlock.SetColor("_SpriteColor", currentColor);
+            renderer.SetPropertyBlock(propertyBlock);
+
+            yield return null;
         }
 
-    }
 
-    #region Animation Event Exclusive Methods
-    public void AnimationSendObject(ScriptableObject obj)
-    {
-        AnimationEventWasCalled?.Invoke(obj);
-    }
 
-    #endregion
+    }
+    
+
+    
 }
