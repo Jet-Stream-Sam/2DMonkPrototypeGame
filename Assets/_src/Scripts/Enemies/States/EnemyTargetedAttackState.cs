@@ -7,10 +7,11 @@ using System.CodeDom;
 
 public class EnemyTargetedAttackState : EnemyState
 {
+    private GlobalVFXManager VFXManager;
     protected CancellationTokenSource tokenSource;
     private Vector3 initialEnemyScale;
     private bool lockAsyncMethod;
-    private Vector2 directionToFollow;
+    public Vector2 directionToFollow { get; private set; }
     public Transform focusedTargetTransform { get; private set; }
     private Transform enemyTransform;
     private EnemyMoves attackAsset;
@@ -53,12 +54,15 @@ public class EnemyTargetedAttackState : EnemyState
     {
         
         base.Enter();
-        
+
+        VFXManager = GlobalVFXManager.Instance;
         attackBehaviour?.Init(controllerScript, attackAsset, this);
 
         enemyTransform = controllerScript.enemySpriteTransform;
+        directionToFollow = new Vector2(focusedTargetTransform.position.x - controllerScript.enemySpriteTransform.position.x, 0).normalized;
+
+        controllerScript.spriteFlip.Flip(directionToFollow.x);
         initialEnemyScale = enemyTransform.localScale;
-        
 
         controllerScript.enemyAnimationsScript.ChangeAnimationState(animationToPlay, false);
 
@@ -92,7 +96,7 @@ public class EnemyTargetedAttackState : EnemyState
             LockSideSwitch(initialEnemyScale);
         else
         {
-            directionToFollow = new Vector2(focusedTargetTransform.position.x - controllerScript.transform.position.x, 0).normalized;
+            directionToFollow = new Vector2(focusedTargetTransform.position.x - controllerScript.enemySpriteTransform.position.x, 0).normalized;
             controllerScript.spriteFlip.Flip(directionToFollow.x);
         }
             
@@ -164,7 +168,8 @@ public class EnemyTargetedAttackState : EnemyState
         if (!(obj is ProjectileTriggerEvent projEvent))
             return;
 
-        GameObject instantiatedObj = Object.Instantiate(projEvent.fireballPrefab, controllerScript.enemyProjectileTransform.position, Quaternion.identity);
+        
+        GameObject instantiatedObj = Object.Instantiate(projEvent.fireballPrefab, controllerScript.enemyProjectileTransform.position, Quaternion.identity, VFXManager.transform);
         FireballBehaviour fireball = instantiatedObj.GetComponent<FireballBehaviour>();
         ProjectileHitCheck projectileHitBox = instantiatedObj.GetComponent<ProjectileHitCheck>();
         fireball.target = focusedTargetTransform;

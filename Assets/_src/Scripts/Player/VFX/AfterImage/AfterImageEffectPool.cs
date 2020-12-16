@@ -4,17 +4,14 @@ using UnityEngine;
 
 public class AfterImageEffectPool : MonoBehaviour
 {
-    public GameObject effectPrefab;
+    private GameObject effectPrefab;
     [SerializeField] private Transform playerTransform;
     [SerializeField] private SpriteRenderer playerSpriteRenderer;
     [SerializeField] private int instantiatedImagesCount = 15;
 
-    private Queue<GameObject> availableObjects = new Queue<GameObject>();
+    public Queue<GameObject> availableObjects { get; private set; } = new Queue<GameObject>();
 
-    private void Awake()
-    {
-        GrowPool();
-    }
+
     private void GrowPool()
     {
         for (int i = 0; i < instantiatedImagesCount; i++)
@@ -40,11 +37,8 @@ public class AfterImageEffectPool : MonoBehaviour
 
     public GameObject GetFromPool()
     {
-        if(availableObjects.Count == 0)
-        {
-            GrowPool();
-        }
-
+        if (availableObjects.Count <= 0)
+            return null;
         var instance = availableObjects.Dequeue();
         instance.SetActive(true);
         return instance;

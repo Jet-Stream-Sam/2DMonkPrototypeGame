@@ -41,5 +41,4 @@ MonoBehaviour:
     rippleEffectAdjust: {fileID: 40801258633192796, guid: 115b2a39bfba62944a9623db74ed3562,
       type: 3}
     particleHitEffect: {fileID: 0}
-  moveBehaviour: {fileID: 5196282231864837771, guid: 250221fe02b6a8047bd80864e0a4734e,
-    type: 3}
+  moveBehaviour: {fileID: 0}

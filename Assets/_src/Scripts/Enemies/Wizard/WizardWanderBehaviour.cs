@@ -21,7 +21,6 @@ public class WizardWanderBehaviour : MonoBehaviour, IMonoBehaviourState
     private bool isCheckingWallDetectionOnTheLeft;
     private bool isCheckingWallDetectionOnTheRight;
     private float enemySpeed;
-    private bool wasFlipped;
     void Start()
     {
         enemyRigidBody = enemyController.enemyRigidBody;
@@ -41,7 +40,6 @@ public class WizardWanderBehaviour : MonoBehaviour, IMonoBehaviourState
 
     private void OnEnable()
     {
-
         directionToFollow = new Vector2(Random.Range(-1, 2), 0).normalized;
 
         if (directionToFollow.x == 0)

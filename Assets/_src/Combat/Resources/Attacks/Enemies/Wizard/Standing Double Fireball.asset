@@ -30,15 +30,15 @@ MonoBehaviour:
   attackAndProjectile: 1
   hitProperties:
     damage: 50
+    hitStunType: 0
     knockbackForce: 25
     knockbackMode: 0
     timeStopLength: 0
     timeStopScale: 0
-    hitSound: {fileID: 11400000, guid: 4cd25d573c9a79b42952b427acb09137, type: 2}
+    hitSound: {fileID: 0}
     impulseSource: {fileID: 40801258633192796, guid: 115b2a39bfba62944a9623db74ed3562,
       type: 3}
     rippleEffectAdjust: {fileID: 40801258633192796, guid: 115b2a39bfba62944a9623db74ed3562,
       type: 3}
     particleHitEffect: {fileID: 0}
-  moveBehaviour: {fileID: 5196282231864837771, guid: 250221fe02b6a8047bd80864e0a4734e,
-    type: 3}
+  moveBehaviour: {fileID: 0}

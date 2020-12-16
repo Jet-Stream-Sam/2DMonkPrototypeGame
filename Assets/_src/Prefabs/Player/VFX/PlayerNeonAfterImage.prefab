@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1605763319316409091}
   - component: {fileID: 5332358621787426964}
   m_Layer: 0
-  m_Name: NeonAfterImage
+  m_Name: PlayerNeonAfterImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -102,3 +102,4 @@ MonoBehaviour:
   activeTime: 0.7
   initialAlpha: 0.6
   fadingRate: 0.9
+  effectColor: {r: 0.4862744, g: 2.9960785, b: 2.6213598, a: 0.6039216}

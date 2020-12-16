@@ -11,7 +11,6 @@ public class WizardFollowBehaviour : MonoBehaviour, IMonoBehaviourState
     private Transform playerTransform;
     private Vector2 directionToFollow;
     private float enemySpeed;
-    private bool wasFlipped;
 
     private void Start()
     {

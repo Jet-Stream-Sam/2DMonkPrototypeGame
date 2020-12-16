@@ -26,6 +26,7 @@ public class Moves : SerializedScriptableObject
     [Title("Move Settings")]
     [PropertyOrder(-3)] public bool lockVelocity = true;
     [PropertyOrder(-3)] public bool lockSideSwitch = true;
+
     public enum MoveType
     {
         Attack,
@@ -38,7 +39,7 @@ public class Moves : SerializedScriptableObject
     [Title("Projectile Properties")]
     [ShowIf("moveType", MoveType.Projectile)]
     [InfoBox("Projectile prefabs are now assigned in the animation clip's events.")]
-    [PropertyOrder(-1)] public string projectiles = "are assigned in the animation clips!";
+    [PropertyOrder(-1)] [ReadOnly] public string projectiles = "are assigned in the animation clips!";
     [HideInInspector] public bool attackAndProjectile;
     [HideIf("@attackAndProjectile || moveType != MoveType.Projectile")]
     [PropertyOrder(-1)] [Button("Only Shoot Projectile", ButtonSizes.Medium)]

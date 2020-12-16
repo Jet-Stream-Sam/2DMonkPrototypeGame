@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerAttackState : PlayerState
 {
+    private GlobalVFXManager VFXManager;
     protected CancellationTokenSource tokenSource;
     private Vector3 initialPlayerScale;
     private bool lockAsyncMethod;
@@ -59,6 +60,8 @@ public class PlayerAttackState : PlayerState
     public override void Enter()
     {
         base.Enter();
+
+        VFXManager = GlobalVFXManager.Instance;
         attackBehaviour?.Init(controllerScript, attackAsset, this);
 
         initialPlayerScale = controllerScript.playerSpriteTransform.localScale;
@@ -176,7 +179,7 @@ public class PlayerAttackState : PlayerState
             return;
 
         
-        GameObject instantiatedObj = UnityEngine.Object.Instantiate(projEvent.fireballPrefab, controllerScript.playerProjectileTransform.position, Quaternion.identity);
+        GameObject instantiatedObj = UnityEngine.Object.Instantiate(projEvent.fireballPrefab, controllerScript.playerProjectileTransform.position, Quaternion.identity, VFXManager.transform);
         FireballBehaviour fireball = instantiatedObj.GetComponent<FireballBehaviour>();
 
         fireball.gameObject.transform.localScale = controllerScript.playerSpriteTransform.localScale.x >= 0 ?

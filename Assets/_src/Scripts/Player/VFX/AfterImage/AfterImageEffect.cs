@@ -17,11 +17,18 @@ public class AfterImageEffect : MonoBehaviour
     private float alpha;
     [SerializeField] private float initialAlpha = 0.8f;
     [SerializeField] private float fadingRate = 0.85f;
+    [ColorUsage(true, true)]
+    [SerializeField] private Color effectColor;
 
     private void OnEnable()
     {
-        alpha = initialAlpha;
+        currentRenderer.flipX = playerRenderer.flipX;
         currentRenderer.sprite = playerRenderer.sprite;
+        MaterialPropertyBlock propertyBlock = new MaterialPropertyBlock();
+        currentRenderer.GetPropertyBlock(propertyBlock);
+        propertyBlock.SetColor("_SpriteColor", effectColor);
+        currentRenderer.SetPropertyBlock(propertyBlock);
+        alpha = initialAlpha;
 
         transform.position = player.position;
         transform.rotation = player.rotation;

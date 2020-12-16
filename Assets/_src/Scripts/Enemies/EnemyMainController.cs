@@ -44,6 +44,8 @@ public class EnemyMainController : MonoBehaviour, IDamageable, IEntityController
     public HitCheck hitBoxCheck;
     [FoldoutGroup("Dependencies")]
     public FlipSprite spriteFlip;
+    [FoldoutGroup("Dependencies")]
+    public MainVFXManager enemyVFXManager;
 
     [TitleGroup("Enemy", Alignment = TitleAlignments.Centered)]
     [TabGroup("Enemy/Tabs", "Movement Settings")]
