@@ -5,8 +5,8 @@ using Sirenix.OdinInspector;
 public class FireballBehaviour : MonoBehaviour
 {
     private SoundManager soundManager;
-    [HideInInspector] public Transform target;
-    private Vector3 directionToShoot;
+    [ReadOnly] public Transform target;
+    private Vector2 directionToShoot;
     
     [FoldoutGroup("Dependencies")]
     [SerializeField] private ProjectileHitCheck projectileHitCheck;
@@ -43,10 +43,15 @@ public class FireballBehaviour : MonoBehaviour
         }
         else
         {
-            directionToShoot = (target.position - transform.position).normalized;
+            directionToShoot = new Vector2(target.position.x - transform.position.x,
+                target.position.y - transform.position.y).normalized;
+
+            if (directionToShoot == Vector2.zero)
+                directionToShoot = (transform.right * transform.localScale.x).normalized;
         }
-        
+
         fireballRigidbody.velocity = directionToShoot * fireballSpeed;
+        
         StartCoroutine(ExplodeNaturally());
         projectileHitCheck.OnSucessfulHit += Explode;
     }

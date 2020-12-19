@@ -31,7 +31,7 @@ public class WizardFollowBehaviour : MonoBehaviour, IMonoBehaviourState
 
         if (player != null)
         {
-            directionToFollow = new Vector2(playerTransform.position.x - transform.position.x, 0).normalized;
+            directionToFollow = new Vector2(playerTransform.position.x - enemyController.enemySpriteTransform.position.x, 0).normalized;
 
             if(directionToFollow.x == 0)
             {

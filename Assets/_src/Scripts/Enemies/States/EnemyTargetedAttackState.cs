@@ -7,7 +7,7 @@ using System.CodeDom;
 
 public class EnemyTargetedAttackState : EnemyState
 {
-    private GlobalVFXManager VFXManager;
+    private MainVFXManager VFXManager;
     protected CancellationTokenSource tokenSource;
     private Vector3 initialEnemyScale;
     private bool lockAsyncMethod;
@@ -44,9 +44,14 @@ public class EnemyTargetedAttackState : EnemyState
             controllerScript.AnimationEventWasCalled += ShootProjectile;
         }
 
+        
         if (enemyAttackAsset.moveBehaviour is IMoveBehaviour attack)
         {
-            attackBehaviour = attack;
+            if (attack is MonoBehaviour attackComponent)
+            {
+                attackBehaviour = (IMoveBehaviour)UnityEngine.Object.Instantiate(attackComponent, controllerScript.transform);
+            }
+            
         }
     }
 
@@ -55,11 +60,11 @@ public class EnemyTargetedAttackState : EnemyState
         
         base.Enter();
 
-        VFXManager = GlobalVFXManager.Instance;
+        VFXManager = controllerScript.enemyVFXManager;
         attackBehaviour?.Init(controllerScript, attackAsset, this);
 
         enemyTransform = controllerScript.enemySpriteTransform;
-        directionToFollow = new Vector2(focusedTargetTransform.position.x - controllerScript.enemySpriteTransform.position.x, 0).normalized;
+        directionToFollow = new Vector2(focusedTargetTransform.position.x - enemyTransform.position.x, 0).normalized;
 
         controllerScript.spriteFlip.Flip(directionToFollow.x);
         initialEnemyScale = enemyTransform.localScale;
@@ -96,7 +101,7 @@ public class EnemyTargetedAttackState : EnemyState
             LockSideSwitch(initialEnemyScale);
         else
         {
-            directionToFollow = new Vector2(focusedTargetTransform.position.x - controllerScript.enemySpriteTransform.position.x, 0).normalized;
+            directionToFollow = new Vector2(focusedTargetTransform.position.x - enemyTransform.position.x, 0).normalized;
             controllerScript.spriteFlip.Flip(directionToFollow.x);
         }
             
@@ -112,6 +117,7 @@ public class EnemyTargetedAttackState : EnemyState
     public override void Exit()
     {
         base.Exit();
+
         if(moveType == Moves.MoveType.Projectile)
         {
             controllerScript.AnimationEventWasCalled -= ShootProjectile;
@@ -120,7 +126,9 @@ public class EnemyTargetedAttackState : EnemyState
         controllerScript.hitBoxCheck.ResetProperties();
         controllerScript.AIBrain.StateReset();
         attackBehaviour?.OnMoveExit();
-        
+
+        if(attackBehaviour != null)
+            UnityEngine.Object.Destroy(((MonoBehaviour)attackBehaviour).gameObject);
     }
 
     private async void AttackLoop()
@@ -173,7 +181,7 @@ public class EnemyTargetedAttackState : EnemyState
         FireballBehaviour fireball = instantiatedObj.GetComponent<FireballBehaviour>();
         ProjectileHitCheck projectileHitBox = instantiatedObj.GetComponent<ProjectileHitCheck>();
         fireball.target = focusedTargetTransform;
-        projectileHitBox.hitInstanceException = controllerScript;
+        projectileHitBox.hitInstanceException = controllerScript.GetComponentInChildren<EnemyMainTrigger>();
         
     }
 }

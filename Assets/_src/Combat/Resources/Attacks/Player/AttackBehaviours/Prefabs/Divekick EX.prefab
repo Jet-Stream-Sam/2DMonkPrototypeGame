@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2103944031101461645}
   - component: {fileID: 86241210479870766}
   m_Layer: 0
-  m_Name: A_FDiveKick
+  m_Name: Divekick EX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,8 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a63becd019c9fef449c06c466e1563e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diveHorizontalPower: 32
-  diveVerticalPower: 8
+  diveHorizontalPower: 36
+  diveVerticalPower: 9
   afterImageEffect: {fileID: 1208973573239498853, guid: b156813773e405042a9e9832e863e7b9,
     type: 3}
   allowedDistanceBtwImages: 0.8

@@ -7,6 +7,7 @@ public class PlayerCrouchingState : PlayerGroundedState
 {
     private float cooldown = 0;
     private bool canTransition = true;
+    private float easingStandingMovementX;
     public PlayerCrouchingState(PlayerMainController controllerScript, MainStateMachine stateMachine) : base(controllerScript, stateMachine)
     {
 
@@ -43,6 +44,14 @@ public class PlayerCrouchingState : PlayerGroundedState
     public override void HandleUpdate()
     {
         base.HandleUpdate();
+        easingStandingMovementX =
+            Mathf.Lerp(easingStandingMovementX,
+            controllerScript.MovementX,
+            controllerScript.standingEasingRate);
+
+        easingStandingMovementX =
+            ClampMovement(easingStandingMovementX);
+
         if (!canTransition && controllerScript.MovementY > deadzoneMin && !controllerScript.isHittingHead)
         {
             stateMachine.ChangeState(new PlayerStandingState(controllerScript, stateMachine));
@@ -67,7 +76,7 @@ public class PlayerCrouchingState : PlayerGroundedState
     {
         base.HandleFixedUpdate();
 
-        float tempSpeed = easingMovementX * controllerScript.crouchingMoveSpeed;
+        float tempSpeed = easingStandingMovementX * controllerScript.crouchingMoveSpeed;
 
         controllerScript.playerRigidBody.velocity =
             new Vector2(tempSpeed, controllerScript.playerRigidBody.velocity.y);

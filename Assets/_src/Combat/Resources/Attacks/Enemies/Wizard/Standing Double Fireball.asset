@@ -36,9 +36,7 @@ MonoBehaviour:
     timeStopLength: 0
     timeStopScale: 0
     hitSound: {fileID: 0}
-    impulseSource: {fileID: 40801258633192796, guid: 115b2a39bfba62944a9623db74ed3562,
-      type: 3}
-    rippleEffectAdjust: {fileID: 40801258633192796, guid: 115b2a39bfba62944a9623db74ed3562,
+    visualEffects: {fileID: 40801258633192796, guid: 115b2a39bfba62944a9623db74ed3562,
       type: 3}
     particleHitEffect: {fileID: 0}
   moveBehaviour: {fileID: 0}

@@ -8,6 +8,7 @@ public class PlayerStandingState : PlayerGroundedState
 {
     private float toCrouchDelay = 0.18f;
     private float toCrouchTimer;
+    private float easingStandingMovementX;
     public PlayerStandingState(PlayerMainController controllerScript, MainStateMachine stateMachine) : base(controllerScript, stateMachine)
     {
 
@@ -34,7 +35,13 @@ public class PlayerStandingState : PlayerGroundedState
 
         base.HandleUpdate();
 
+        easingStandingMovementX =
+            Mathf.Lerp(easingStandingMovementX,
+            controllerScript.MovementX,
+            controllerScript.standingEasingRate);
 
+        easingStandingMovementX =
+            ClampMovement(easingStandingMovementX);
 
         if (controllerScript.MovementY < -deadzoneMin)
         {
@@ -59,7 +66,7 @@ public class PlayerStandingState : PlayerGroundedState
     {
         base.HandleFixedUpdate();
 
-        float tempSpeed = easingMovementX * controllerScript.standingMoveSpeed;
+        float tempSpeed = easingStandingMovementX * controllerScript.standingMoveSpeed;
 
         controllerScript.playerRigidBody.velocity =
             new Vector2(tempSpeed, controllerScript.playerRigidBody.velocity.y);

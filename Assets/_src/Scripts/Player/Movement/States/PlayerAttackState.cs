@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerAttackState : PlayerState
 {
-    private GlobalVFXManager VFXManager;
+    private MainVFXManager VFXManager;
     protected CancellationTokenSource tokenSource;
     private Vector3 initialPlayerScale;
     private bool lockAsyncMethod;
@@ -61,7 +61,7 @@ public class PlayerAttackState : PlayerState
     {
         base.Enter();
 
-        VFXManager = GlobalVFXManager.Instance;
+        VFXManager = controllerScript.playerMainVFXManager;
         attackBehaviour?.Init(controllerScript, attackAsset, this);
 
         initialPlayerScale = controllerScript.playerSpriteTransform.localScale;

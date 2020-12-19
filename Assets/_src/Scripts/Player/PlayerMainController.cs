@@ -49,7 +49,9 @@ public class PlayerMainController : MonoBehaviour, IDamageable, IEntityControlle
     [TabGroup("Player/Tabs", "Movement Settings")]
     public float crouchingMoveSpeed = 5;
     [TabGroup("Player/Tabs", "Movement Settings")]
-    [Range(0.01f, 1)] public float easingRate = 0.6f;
+    [Range(0.01f, 1)] public float standingEasingRate = 0.6f;
+    [TabGroup("Player/Tabs", "Movement Settings")]
+    [Range(0.01f, 1)] public float airborneEasingRate = 0.6f;
     [TabGroup("Player/Tabs", "Movement Settings")]
     public float jumpSpeed = 2;
     [TabGroup("Player/Tabs", "Movement Settings")]

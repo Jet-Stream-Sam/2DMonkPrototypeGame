@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HitRippleEffect : MonoBehaviour
+public class HitEffects : MonoBehaviour
 {
     [SerializeField] private HitCheck mainHitBox;
     [SerializeField] private Transform VFXTransform;
@@ -21,12 +21,16 @@ public class HitRippleEffect : MonoBehaviour
     {
         if (hitBox == null)
             return;
-        GameObject ripplePrefab = mainHitBox.HitProperties.rippleEffectAdjust;
+        GameObject effectPrefab = mainHitBox.HitProperties.visualEffects;
 
-        if (ripplePrefab == null)
+        if (effectPrefab == null)
             return;
 
-        GameObject rippleObj = Instantiate(ripplePrefab, hitPoint.position, Quaternion.identity, VFXTransform);
+        GameObject effectObj = Instantiate(effectPrefab, hitPoint.position, Quaternion.identity, VFXTransform);
+
+        Cinemachine.CinemachineImpulseSource impulseSource =
+                effectObj.GetComponent<Cinemachine.CinemachineImpulseSource>();
+        impulseSource.GenerateImpulse(transform.up);
 
     }
 

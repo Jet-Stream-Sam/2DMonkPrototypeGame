@@ -11,6 +11,7 @@ public class PlayerJumpingState : PlayerState
     #endregion
 
     private float pastGravityScale;
+    private float easingAirborneMovementX;
     public PlayerJumpingState(PlayerMainController playerMovement, MainStateMachine stateMachine) : base(playerMovement, stateMachine)
     {
 
@@ -47,7 +48,14 @@ public class PlayerJumpingState : PlayerState
     public override void HandleUpdate()
     {
         base.HandleUpdate();
-        
+
+        easingAirborneMovementX =
+            Mathf.Lerp(easingAirborneMovementX,
+            controllerScript.MovementX,
+            controllerScript.airborneEasingRate);
+
+        easingAirborneMovementX =
+            ClampMovement(easingAirborneMovementX);
     }
 
     public override void HandleFixedUpdate()
@@ -65,7 +73,7 @@ public class PlayerJumpingState : PlayerState
             stateMachine.ChangeState(new PlayerFallingState(controllerScript, stateMachine));
         }
 
-        float tempSpeed = easingMovementX * controllerScript.standingMoveSpeed;
+        float tempSpeed = easingAirborneMovementX * controllerScript.standingMoveSpeed;
 
         controllerScript.playerRigidBody.velocity =
             new Vector2(tempSpeed, controllerScript.playerRigidBody.velocity.y);

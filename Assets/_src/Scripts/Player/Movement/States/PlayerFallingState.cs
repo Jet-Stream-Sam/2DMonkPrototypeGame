@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerFallingState : PlayerState
 {
+    private float easingAirborneMovementX;
     public PlayerFallingState(PlayerMainController controllerScript, MainStateMachine stateMachine) : base(controllerScript, stateMachine)
     {
 
@@ -22,6 +23,13 @@ public class PlayerFallingState : PlayerState
     {
         base.HandleUpdate();
 
+        easingAirborneMovementX =
+            Mathf.Lerp(easingAirborneMovementX,
+            controllerScript.MovementX,
+            controllerScript.airborneEasingRate);
+
+        easingAirborneMovementX =
+            ClampMovement(easingAirborneMovementX);
 
         bool hasLanded = controllerScript.isGrounded;
         if (hasLanded)
@@ -45,7 +53,7 @@ public class PlayerFallingState : PlayerState
         base.HandleFixedUpdate();
         controllerScript.playerRigidBody.velocity += Vector2.up * Physics2D.gravity.y * controllerScript.fallMultiplier * Time.deltaTime;
 
-        float tempSpeed = easingMovementX * controllerScript.standingMoveSpeed;
+        float tempSpeed = easingAirborneMovementX * controllerScript.standingMoveSpeed;
 
         controllerScript.playerRigidBody.velocity =
             new Vector2(tempSpeed, controllerScript.playerRigidBody.velocity.y);

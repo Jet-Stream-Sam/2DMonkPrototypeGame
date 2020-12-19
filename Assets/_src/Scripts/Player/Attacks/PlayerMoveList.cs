@@ -6,8 +6,7 @@ using UnityEngine;
 public class PlayerMoveList : MonoBehaviour
 {
     [ListDrawerSettings(ShowIndexLabels = true, ListElementLabelName = "name")]
-    public PlayerMoves[] playerMoveList;
-
+    public List<PlayerMoves> playerMoveList;
     public PlayerMoves Find(string name)
     {
         

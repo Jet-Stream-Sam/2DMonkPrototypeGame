@@ -7,7 +7,6 @@ public class PlayerState : IState
 {
     protected PlayerMainController controllerScript;
     protected MainStateMachine stateMachine;
-    protected float easingMovementX;
     protected float deadzoneMin;
     public bool OverridingState { get; set; }
 
@@ -34,13 +33,6 @@ public class PlayerState : IState
             controllerScript.ceilingCheckRadius,
             controllerScript.ceilingMask);
 
-        easingMovementX = 
-            Mathf.Lerp(easingMovementX,
-            controllerScript.MovementX,
-            controllerScript.easingRate);
-
-        easingMovementX = 
-            ClampMovement(easingMovementX);
 
         if (controllerScript.MovementX > 0)
         {
@@ -70,7 +62,7 @@ public class PlayerState : IState
     }
 
 
-    private float ClampMovement(float value)
+    protected float ClampMovement(float value)
     {
         if (value < 0.01f && value > -0.01f)
         {

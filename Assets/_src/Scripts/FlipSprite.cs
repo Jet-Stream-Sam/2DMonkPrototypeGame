@@ -22,6 +22,9 @@ public class FlipSprite : MonoBehaviour
             case 1:
                 isFlipped = true;
                 break;
+            case 0:
+                isFlipped = true;
+                break;
         }  
         if (isFlipped != wasFlipped)
         {

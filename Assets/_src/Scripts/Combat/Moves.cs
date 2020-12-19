@@ -97,10 +97,7 @@ public class HitProperties
     public CollectionSounds hitSound;
     [TabGroup("Visuals")]
     [AssetsOnly]
-    public GameObject impulseSource;
-    [TabGroup("Visuals")]
-    [AssetsOnly]
-    public GameObject rippleEffectAdjust;
+    public GameObject visualEffects;
     [TabGroup("Visuals")]
     [AssetsOnly]
     public GameObject particleHitEffect;

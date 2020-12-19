@@ -4844,8 +4844,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -398044401
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
@@ -5103,8 +5103,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -398044401
+  m_SortingLayer: 3
   m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: bead47d786e844adba7899d02e8851eb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -9920,8 +9920,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -398044401
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
@@ -9962,7 +9962,6 @@ GameObject:
   - component: {fileID: 3772952124998032741}
   - component: {fileID: 8724382291911676412}
   - component: {fileID: 4452501828874426541}
-  - component: {fileID: 6338968253578782290}
   - component: {fileID: 5311828549058404417}
   - component: {fileID: 8301301816418000211}
   - component: {fileID: 2635538068766515624}
@@ -10099,9 +10098,8 @@ MonoBehaviour:
     timeStopLength: 0.1
     timeStopScale: 0.2
     hitSound: {fileID: 11400000, guid: f23a2be400c7e6348bbaceb382ba277b, type: 2}
-    impulseSource: {fileID: 40801258633192796, guid: 115b2a39bfba62944a9623db74ed3562,
+    visualEffects: {fileID: 40801258633192796, guid: 115b2a39bfba62944a9623db74ed3562,
       type: 3}
-    rippleEffectAdjust: {fileID: 0}
     particleHitEffect: {fileID: 0}
 --- !u!114 &4452501828874426541
 MonoBehaviour:
@@ -10118,19 +10116,6 @@ MonoBehaviour:
   mainHitBox: {fileID: 8724382291911676412}
   VFXTransform: {fileID: 7013382252313774233}
   hitPoint: {fileID: 7013382252313774233}
---- !u!114 &6338968253578782290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7199325355391586357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: add637ad82433a74fb4b11babc9fcff9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainHitBox: {fileID: 8724382291911676412}
 --- !u!114 &5311828549058404417
 MonoBehaviour:
   m_ObjectHideFlags: 0
