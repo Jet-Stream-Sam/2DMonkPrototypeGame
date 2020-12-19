@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 347125680}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.3499999, y: 0, z: 0}
+  m_LocalPosition: {x: -0.6, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9139251897600410759}
@@ -114,7 +114,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534419867}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.3499999, y: 0, z: 0}
+  m_LocalPosition: {x: 0.6, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9139251897600410759}
@@ -796,8 +796,8 @@ MonoBehaviour:
   groundCheckRadius: 0.25
   groundDetectionLRadius: 0.25
   groundDetectionRRadius: 0.25
-  wallDetectionLRadius: 0.25
-  wallDetectionRRadius: 0.25
+  wallDetectionLRadius: 1.15
+  wallDetectionRRadius: 1.15
   groundMask:
     serializedVersion: 2
     m_Bits: 256

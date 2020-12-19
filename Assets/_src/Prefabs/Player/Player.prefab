@@ -67,7 +67,7 @@ MonoBehaviour:
   standingMoveSpeed: 11
   crouchingMoveSpeed: 6
   standingEasingRate: 0.6
-  airborneEasingRate: 0.333
+  airborneEasingRate: 0.8
   jumpSpeed: 5
   jumpHeight: 5.75
   airborneJumpDelay: 0.15
