@@ -175,8 +175,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rippleRenderer: {fileID: 3937822526555751673}
-  rippleAmount: 2
-  rippleLength: 0.7
-  disappearingRate: 5
-  rippleSpeed: 40
+  rippleAmount: 3
+  rippleLength: 0.4
+  disappearingRate: 3
+  rippleSpeed: 20
   color: {r: 4.8029895, g: 0.6256533, b: 0.29452306, a: 1}

@@ -20,12 +20,26 @@ public class HitTimeStop : MonoBehaviour
     {
         if (hitBox == null)
             return;
+        if (mainHitBox.HitProperties.timeStopLength == 0)
+            return;
+
         timeStopTimer = mainHitBox.HitProperties.timeStopLength;
         timeStopScale = mainHitBox.HitProperties.timeStopScale;
 
         if(timeStopTimer > 0)
         {
-            Stop();
+            switch (mainHitBox.HitProperties.timeStopMode)
+            {
+                case HitProperties.TimeStopMode.SkipFrame:
+                    StartCoroutine(SkipFrame());
+                    break;
+                case HitProperties.TimeStopMode.Delay:
+                    StartCoroutine(Delay(mainHitBox.HitProperties.timeStopDelay));
+                    break;
+                default:
+                    Stop();
+                    break;
+            }
         }
     }
 
@@ -42,6 +56,20 @@ public class HitTimeStop : MonoBehaviour
         if(!PausingManager.isGamePaused)
             Time.timeScale = 1f;
 
+    }
+
+    private IEnumerator SkipFrame()
+    {
+        yield return null;
+        Stop();
+        StopAllCoroutines();
+    }
+
+    private IEnumerator Delay(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        Stop();
+        StopAllCoroutines();
     }
     private void OnDestroy()
     {

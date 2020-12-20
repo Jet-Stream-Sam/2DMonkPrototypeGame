@@ -77,7 +77,12 @@ public class HitProperties
         Normal,
         Special
     }
-
+    public enum TimeStopMode
+    {
+        None,
+        SkipFrame,
+        Delay
+    }
     
     [TabGroup("Gameplay")]
     public int damage;
@@ -93,6 +98,10 @@ public class HitProperties
     public float timeStopLength = 0.08f;
     [TabGroup("Visuals")]
     [Range(0, 1)] public float timeStopScale = 0;
+    [TabGroup("Visuals")]
+    [ShowIf("@timeStopLength > 0")] public TimeStopMode timeStopMode;
+    [TabGroup("Visuals")]
+    [ShowIf("@timeStopLength > 0 && timeStopMode == TimeStopMode.Delay")] public float timeStopDelay;
     [TabGroup("SFX")]
     public CollectionSounds hitSound;
     [TabGroup("Visuals")]

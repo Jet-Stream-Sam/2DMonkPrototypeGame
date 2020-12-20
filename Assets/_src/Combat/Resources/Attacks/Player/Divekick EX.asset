@@ -35,6 +35,8 @@ MonoBehaviour:
     knockbackMode: 0
     timeStopLength: 0.2
     timeStopScale: 0.4
+    timeStopMode: 2
+    timeStopDelay: 0.08
     hitSound: {fileID: 11400000, guid: f51e4b8625432c74ebb13263cc37c580, type: 2}
     visualEffects: {fileID: 5244326971005480206, guid: 1bfcec13ac6c15e4591355d5dd07a74e,
       type: 3}

@@ -9996,12 +9996,15 @@ MonoBehaviour:
     hitStunType: 1
     knockbackForce: 22
     knockbackMode: 1
-    timeStopLength: 0
-    timeStopScale: 0
+    timeStopLength: 0.2
+    timeStopScale: 0.1
+    timeStopMode: 2
+    timeStopDelay: 0.12
     hitSound: {fileID: 11400000, guid: c120905b86f5bb94ea97bdf59f785d50, type: 2}
-    visualEffects: {fileID: 40801258633192796, guid: 115b2a39bfba62944a9623db74ed3562,
+    visualEffects: {fileID: 40801258633192796, guid: 598d4df67ba3b44418cd9055e75ce4f0,
       type: 3}
-    particleHitEffect: {fileID: 0}
+    particleHitEffect: {fileID: 5244326971005480206, guid: 477917db31317684fb1ca836b6bcac2e,
+      type: 3}
 --- !u!114 &3871755525870580814
 MonoBehaviour:
   m_ObjectHideFlags: 0
