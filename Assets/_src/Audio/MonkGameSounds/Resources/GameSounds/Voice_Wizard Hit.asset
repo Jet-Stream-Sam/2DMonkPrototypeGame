@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85ce2fde12b5d8a49ad6708701ea6589, type: 3}
-  m_Name: Wizard Cry
+  m_Name: Voice_Wizard Hit
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 8300000, guid: 4555bfc87795da44ab8fdeea459bd18e, type: 3}
+  audioClip: {fileID: 8300000, guid: f4f6cc01774a8774e80dcfdaa84620ef, type: 3}
   mixer: {fileID: 5276277644291418981, guid: 35492a46fbac1924b81f78ed84406c47, type: 2}
-  volume: 0.5
+  volume: 1
   pitch: 1
   loop: 0

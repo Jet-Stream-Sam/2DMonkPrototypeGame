@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94acc2c2ef1db2448a639791e8468070, type: 3}
+  m_Name: Voice_Special Punch
+  m_EditorClassIdentifier: 
+  gameSounds:
+  - {fileID: 11400000, guid: f1bb271199d07c2408785a7456f2c9b0, type: 2}
+  - {fileID: 11400000, guid: e52ebec2d37b0de4895b4de400fa0f89, type: 2}
+  playMode: 1
+  sequence: 0

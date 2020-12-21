@@ -924,3 +924,11 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.6166667
+    functionName: RecieveSound
+    data: 
+    objectReferenceParameter: {fileID: 11400000, guid: df79f68d4d0cbd441b28a34b05628cc6,
+      type: 2}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

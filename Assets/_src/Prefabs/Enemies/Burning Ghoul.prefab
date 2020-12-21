@@ -781,6 +781,8 @@ MonoBehaviour:
   wallDetectionLeft: {fileID: 347125681}
   wallDetectionRight: {fileID: 534419868}
   enemyIdle: {fileID: 7400000, guid: 73d8c59b116569d44bb4a494409bd519, type: 2}
+  hitSound: {fileID: 11400000, guid: 169fea9eb65abbd41bd12238eed7b688, type: 2}
+  deathSound: {fileID: 11400000, guid: 22c3f1678edb52d43b49263e010c2dc8, type: 2}
   hitAnimationClip: {fileID: 7400000, guid: cf3d54134da73e74c94c2987973ad1d8, type: 2}
   fallAnimationClip: {fileID: 7400000, guid: 73d8c59b116569d44bb4a494409bd519, type: 2}
   deathAnimationClip: {fileID: 7400000, guid: 18c9115754859544a99451c4b48551d2, type: 2}

@@ -23,6 +23,7 @@ MonoBehaviour:
     SerializationNodes: []
   animationClip: {fileID: 7400000, guid: 36bd9648695c951489a6311bc76bcb71, type: 2}
   moveSoundEffect: {fileID: 11400000, guid: ff58f3e8d13636b4aa51ed2824de680f, type: 2}
+  crySoundEffect: {fileID: 11400000, guid: 826fd5b7743313a4cb8adb3a64a88ef6, type: 2}
   lockVelocity: 1
   lockSideSwitch: 1
   moveType: 2
@@ -35,9 +36,10 @@ MonoBehaviour:
     knockbackMode: 0
     timeStopLength: 0
     timeStopScale: 0
+    timeStopMode: 0
+    timeStopDelay: 0
     hitSound: {fileID: 0}
-    impulseSource: {fileID: 0}
-    rippleEffectAdjust: {fileID: 0}
+    visualEffects: {fileID: 0}
     particleHitEffect: {fileID: 0}
   moveBehaviour: {fileID: 0}
   moveEndsAtState: 0

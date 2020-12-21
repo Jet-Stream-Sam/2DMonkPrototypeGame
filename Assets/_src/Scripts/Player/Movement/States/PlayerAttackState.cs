@@ -15,7 +15,8 @@ public class PlayerAttackState : PlayerState
 
     private PlayerMoves attackAsset;
     private string animationToPlay;
-    private CollectionSounds audioClip;
+    private CollectionSounds moveSound;
+    private CollectionSounds crySound;
     private bool lockVelocity;
     private bool lockSideSwitch;
     private float attackDuration;
@@ -33,7 +34,8 @@ public class PlayerAttackState : PlayerState
     {
         attackAsset = playerAttackAsset;
         animationToPlay = playerAttackAsset.animationClip.name;
-        audioClip = playerAttackAsset.moveSoundEffect;
+        moveSound = playerAttackAsset.moveSoundEffect;
+        crySound = playerAttackAsset.crySoundEffect;
         lockVelocity = playerAttackAsset.lockVelocity;
         lockSideSwitch = playerAttackAsset.lockSideSwitch;
         hitProperties = playerAttackAsset.hitProperties;
@@ -70,8 +72,11 @@ public class PlayerAttackState : PlayerState
 
         SoundManager soundManager = SoundManager.Instance;
 
-        if(audioClip != null)
-            audioClip.PlaySound(soundManager);
+        if(moveSound != null)
+            moveSound.PlaySound(soundManager);
+
+        if (crySound != null)
+            crySound.PlaySound(soundManager);
 
         controllerScript.hitBoxCheck.HitProperties = hitProperties;
 

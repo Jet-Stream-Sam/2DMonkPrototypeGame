@@ -8,7 +8,9 @@ using UnityEngine;
 
 public class EnemyMainController : MonoBehaviour, IDamageable, IEntityController
 {
-    [FoldoutGroup("Dependencies")]
+    public SoundManager SoundManager { get; private set; }
+
+    [FoldoutGroup("Dependencies", expanded: false)]
     public AnimationsState enemyAnimationsScript;
     [FoldoutGroup("Dependencies")]
     public Collider2D enemyCollider;
@@ -30,6 +32,10 @@ public class EnemyMainController : MonoBehaviour, IDamageable, IEntityController
     public Transform wallDetectionRight;
     [FoldoutGroup("Dependencies")]
     public AnimationClip enemyIdle;
+    [FoldoutGroup("Dependencies")]
+    public CollectionSounds hitSound;
+    [FoldoutGroup("Dependencies")]
+    public CollectionSounds deathSound;
     [FoldoutGroup("Dependencies")]
     public AnimationClip hitAnimationClip;
     [FoldoutGroup("Dependencies")]
@@ -110,6 +116,7 @@ public class EnemyMainController : MonoBehaviour, IDamageable, IEntityController
     #endregion
     private void Start()
     {
+        SoundManager = SoundManager.Instance;
         currentHealth = maxHealth;
 
         StateMachine = new MainStateMachine();
@@ -147,6 +154,8 @@ public class EnemyMainController : MonoBehaviour, IDamageable, IEntityController
         if (currentHealth <= 0)
             return;
         currentHealth -= damage;
+
+        
         if(currentHealth <= 0)
         {
             currentHealth = 0;
@@ -176,6 +185,11 @@ public class EnemyMainController : MonoBehaviour, IDamageable, IEntityController
             Die();
             return;
         }
+        else
+        {
+            if (hitSound != null)
+                hitSound.PlaySound(SoundManager);
+        }
 
         if(flashCoroutine != null)
             StopCoroutine(flashCoroutine);
@@ -188,6 +202,8 @@ public class EnemyMainController : MonoBehaviour, IDamageable, IEntityController
 
     private void Die()
     {
+        if (deathSound != null)
+            deathSound.PlaySound(SoundManager);
         StateMachine.ChangeState(new EnemyDeathState(this, StateMachine));
     }
 

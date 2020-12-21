@@ -57,6 +57,8 @@ MonoBehaviour:
   playerRigidBody: {fileID: 3654240171522617204}
   playerMainCollider: {fileID: 8271591900109410372}
   playerAnimationsScript: {fileID: 4970770069740980496}
+  hitSound: {fileID: 11400000, guid: cf75106cfc2a53f45abfa86d66ac9350, type: 2}
+  deathSound: {fileID: 11400000, guid: 4b782cca8ca8aaf428656797069ee127, type: 2}
   playerSpriteTransform: {fileID: 2247691526897351477}
   playerSpriteRenderer: {fileID: 6783395830253098902}
   hitBoxCheck: {fileID: 27160427375678601}

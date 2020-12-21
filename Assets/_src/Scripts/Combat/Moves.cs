@@ -11,6 +11,7 @@ public class Moves : SerializedScriptableObject
     [Title("Dependencies")]
     [PropertyOrder(-5), Required] public AnimationClip animationClip;
     [PropertyOrder(-5)] public CollectionSounds moveSoundEffect;
+    [PropertyOrder(-5)] public CollectionSounds crySoundEffect;
     [PropertySpace]
     [PropertyOrder(-4)][Button("Debug AnimationClip info", ButtonSizes.Medium)]
     public void GetAnimationClipInfo()

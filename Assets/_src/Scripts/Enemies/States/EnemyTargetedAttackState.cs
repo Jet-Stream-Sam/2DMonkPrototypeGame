@@ -16,7 +16,8 @@ public class EnemyTargetedAttackState : EnemyState
     private Transform enemyTransform;
     private EnemyMoves attackAsset;
     private string animationToPlay;
-    private CollectionSounds audioClip;
+    private CollectionSounds moveSound;
+    private CollectionSounds crySound;
     private bool lockVelocity;
     private bool lockSideSwitch;
     private float attackDuration;
@@ -31,7 +32,8 @@ public class EnemyTargetedAttackState : EnemyState
     {
         attackAsset = enemyAttackAsset;
         animationToPlay = enemyAttackAsset.animationClip.name;
-        audioClip = enemyAttackAsset.moveSoundEffect;
+        moveSound = enemyAttackAsset.moveSoundEffect;
+        crySound = enemyAttackAsset.crySoundEffect;
         lockVelocity = enemyAttackAsset.lockVelocity;
         lockSideSwitch = enemyAttackAsset.lockSideSwitch;
         hitProperties = enemyAttackAsset.hitProperties;
@@ -76,8 +78,11 @@ public class EnemyTargetedAttackState : EnemyState
 
         SoundManager soundManager = SoundManager.Instance;
 
-        if(audioClip != null)
-            audioClip.PlaySound(soundManager);
+        if(moveSound != null)
+            moveSound.PlaySound(soundManager);
+
+        if (crySound != null)
+            crySound.PlaySound(soundManager);
 
         controllerScript.hitBoxCheck.HitProperties = hitProperties;
 

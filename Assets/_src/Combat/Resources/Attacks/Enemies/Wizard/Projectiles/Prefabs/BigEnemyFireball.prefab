@@ -10005,9 +10005,9 @@ MonoBehaviour:
     timeStopLength: 0.7
     timeStopScale: 0.2
     timeStopMode: 2
-    timeStopDelay: 0.09
+    timeStopDelay: 0.1
     hitSound: {fileID: 11400000, guid: 3361715ff025b64418e091e7bfb353b9, type: 2}
-    visualEffects: {fileID: 40801258633192796, guid: 115b2a39bfba62944a9623db74ed3562,
+    visualEffects: {fileID: 40801258633192796, guid: 64d5fbbe3e3987a4bad76bc90fe64111,
       type: 3}
     particleHitEffect: {fileID: 5244326971005480206, guid: 477917db31317684fb1ca836b6bcac2e,
       type: 3}

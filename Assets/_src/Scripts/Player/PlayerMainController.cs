@@ -29,6 +29,10 @@ public class PlayerMainController : MonoBehaviour, IDamageable, IEntityControlle
     [FoldoutGroup("Dependencies")]
     public AnimationsState playerAnimationsScript;
     [FoldoutGroup("Dependencies")]
+    public CollectionSounds hitSound;
+    [FoldoutGroup("Dependencies")]
+    public CollectionSounds deathSound;
+    [FoldoutGroup("Dependencies")]
     public Transform playerSpriteTransform;
     [FoldoutGroup("Dependencies")]
     public SpriteRenderer playerSpriteRenderer;
@@ -196,6 +200,8 @@ public class PlayerMainController : MonoBehaviour, IDamageable, IEntityControlle
     {
         if (currentHealth <= 0)
             return;
+
+
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
@@ -204,6 +210,7 @@ public class PlayerMainController : MonoBehaviour, IDamageable, IEntityControlle
 
             return;
         }
+
 
         if (flashCoroutine != null)
             StopCoroutine(flashCoroutine);
@@ -224,6 +231,11 @@ public class PlayerMainController : MonoBehaviour, IDamageable, IEntityControlle
             Die();
             return;
         }
+        else
+        {
+            if (hitSound != null)
+                hitSound.PlaySound(SoundManager);
+        }
 
         if (flashCoroutine != null)
             StopCoroutine(flashCoroutine);
@@ -238,7 +250,8 @@ public class PlayerMainController : MonoBehaviour, IDamageable, IEntityControlle
 
     private void Die()
     {
-        
+        if (deathSound != null)
+            deathSound.PlaySound(SoundManager);
     }
 
     IEnumerator HitFlash(Renderer renderer, float secondsToRecover)
