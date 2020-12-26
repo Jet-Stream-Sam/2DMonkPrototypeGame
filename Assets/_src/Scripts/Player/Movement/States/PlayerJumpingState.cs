@@ -42,7 +42,7 @@ public class PlayerJumpingState : PlayerState
 
         controllerScript.airborneJumpTimer = 0;
 
-        controllerScript.SoundManager.PlaySFX(S_PLAYER_JUMP);
+        controllerScript.SoundManager.PlaySFX(S_PLAYER_JUMP, controllerScript.playerSpriteTransform.position);
     }
 
     public override void HandleUpdate()

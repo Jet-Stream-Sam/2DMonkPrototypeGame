@@ -132,53 +132,53 @@ public class PlayerMoveHandler : MonoBehaviour
         {
             PlayerInputHandler.MovementInputNotation[] movementNotation = move.moveNotation.movementNotation;
 
-            if (move.moveNotation.allowedState == CurrentStateOutput)
+            if (move.moveNotation.allowedState != CurrentStateOutput)
+                continue;
+
+            bool freeMovementMove = movementNotation.Length == 0;
+            if (freeMovementMove)
             {
-                bool freeMovementMove = movementNotation.Length == 0;
-                if (freeMovementMove)
+                StartCoroutine(inputHandler.InputCheck(move.moveNotation, move, this));
+                continue;
+            }
+
+            bool firstNotationIsExecuted = movementNotation[0] == notation;
+
+            if (inputHandler.HasLateralMovement(movementNotation[0]))
+            {
+                PlayerInputHandler.MovementInputNotation reversedNotation = inputHandler.ReverseInput(movementNotation[0]);
+                bool firstNotationIsExecutedBackwards = reversedNotation == notation;
+
+                if (firstNotationIsExecuted || firstNotationIsExecutedBackwards)
                 {
-                    StartCoroutine(inputHandler.InputCheck(move.moveNotation, move, this));
-                }
-                else
-                {
-                    bool firstNotationIsExecuted = movementNotation[0] == notation;
-                    if (inputHandler.HasLateralMovement(movementNotation[0]))
+                    if (!availableMoves.Contains(move.moveNotation))
                     {
-                        PlayerInputHandler.MovementInputNotation reversedNotation = inputHandler.ReverseInput(movementNotation[0]);
-                        bool firstNotationIsExecutedBackwards = reversedNotation == notation;
+                        StartCoroutine(inputHandler.InputCheckTimer(move.moveNotation, move, true, this));
+                        StartCoroutine(inputHandler.InputCheckTimer(move.moveNotation, move, false, this));
 
-                        if(firstNotationIsExecuted || firstNotationIsExecutedBackwards)
-                        {
-                            if (!availableMoves.Contains(move.moveNotation))
-                            {
-                                StartCoroutine(inputHandler.InputCheckTimer(move.moveNotation, move, true, this));
-                                StartCoroutine(inputHandler.InputCheckTimer(move.moveNotation, move, false, this));
-
-                            }
-                        }
-                    }
-                    else if (inputHandler.HasLateralMovement(movementNotation))
-                    {
-                        if (firstNotationIsExecuted)
-                        {
-                            if (!availableMoves.Contains(move.moveNotation))
-                            {
-                                StartCoroutine(inputHandler.InputCheckTimer(move.moveNotation, move, true, this));
-                                StartCoroutine(inputHandler.InputCheckTimer(move.moveNotation, move, false, this));
-
-                            }
-                        }
-                    }
-                    else if (firstNotationIsExecuted)
-                    {
-                        if (!availableMoves.Contains(move.moveNotation))
-                        {
-                            StartCoroutine(inputHandler.InputCheckTimer(move.moveNotation, move, false, this));
-                        }
                     }
                 }
+            }
+            else if (inputHandler.HasLateralMovement(movementNotation))
+            {
+                if (firstNotationIsExecuted)
+                {
+                    if (!availableMoves.Contains(move.moveNotation))
+                    {
+                        StartCoroutine(inputHandler.InputCheckTimer(move.moveNotation, move, true, this));
+                        StartCoroutine(inputHandler.InputCheckTimer(move.moveNotation, move, false, this));
 
-            } 
+                    }
+                }
+            }
+            else if (firstNotationIsExecuted)
+            {
+                if (!availableMoves.Contains(move.moveNotation))
+                {
+                    StartCoroutine(inputHandler.InputCheckTimer(move.moveNotation, move, false, this));
+                }
+            }
+
         }
     }
 

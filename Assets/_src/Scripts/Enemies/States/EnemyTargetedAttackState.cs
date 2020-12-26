@@ -79,10 +79,10 @@ public class EnemyTargetedAttackState : EnemyState
         SoundManager soundManager = SoundManager.Instance;
 
         if(moveSound != null)
-            moveSound.PlaySound(soundManager);
+            moveSound.PlaySound(soundManager, enemyTransform.position);
 
         if (crySound != null)
-            crySound.PlaySound(soundManager);
+            crySound.PlaySound(soundManager, enemyTransform.position);
 
         controllerScript.hitBoxCheck.HitProperties = hitProperties;
 

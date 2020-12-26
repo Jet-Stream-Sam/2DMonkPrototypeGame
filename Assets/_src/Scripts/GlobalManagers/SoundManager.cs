@@ -7,11 +7,11 @@ public class SoundManager : MonoBehaviour
     public static SoundManager Instance { get; private set; }
 
     [SerializeField] private Transform musicTransform;
-    [SerializeField] private AudioSource currentMusic;
     [SerializeField] private Transform soundsTransform;
+    [SerializeField] private AudioSource currentMusic;
     [SerializeField] private GameSound[] gameSounds;
     [SerializeField] private GameMusic[] gameMusic;
-    
+    private GameObject emptyGameObject;
 
     private void Awake()
     {
@@ -31,6 +31,10 @@ public class SoundManager : MonoBehaviour
         gameSounds = Resources.LoadAll<GameSound>("GameSounds");
     }
 
+    private void Start()
+    {
+        emptyGameObject = new GameObject();
+    }
     public void PlayMusic(string name)
     {
         GameMusic song = Array.Find(gameMusic, m => m.name == name);
@@ -43,10 +47,10 @@ public class SoundManager : MonoBehaviour
         currentMusic.Play();
 
     }
-    public void PlaySFX(string name)
+    public void PlaySFX(string name, Vector3 pos)
     {
         GameSound sound = Array.Find(gameSounds, s => s.name == name);
-        GameObject soundObj = new GameObject();
+        GameObject soundObj = Instantiate(emptyGameObject, pos, Quaternion.identity, soundsTransform);
         soundObj.transform.parent = soundsTransform;
         soundObj.name = sound.name;
         
@@ -55,6 +59,7 @@ public class SoundManager : MonoBehaviour
         source.outputAudioMixerGroup = sound.mixer;
         source.volume = sound.volume;
         source.pitch = sound.pitch;
+        source.spatialBlend = sound.spatialBlend;
         source.loop = sound.loop;
         source.Play();
         if(!source.loop) Destroy(soundObj, sound.audioClip.length);
@@ -62,11 +67,11 @@ public class SoundManager : MonoBehaviour
 
     }
 
-    public void PlayOneShotSFX(string name)
+    public void PlayOneShotSFX(string name, Vector3 pos)
     {
         GameSound sound = Array.Find(gameSounds, s => s.name == name);
-        GameObject soundObj = new GameObject();
-        soundObj.transform.parent = soundsTransform;
+        GameObject soundObj = Instantiate(emptyGameObject, pos, Quaternion.identity, soundsTransform);
+        
         soundObj.name = sound.name;
 
         AudioSource source = soundObj.AddComponent<AudioSource>();
@@ -74,6 +79,7 @@ public class SoundManager : MonoBehaviour
         source.outputAudioMixerGroup = sound.mixer;
         source.volume = sound.volume;
         source.pitch = sound.pitch;
+        source.spatialBlend = sound.spatialBlend;
         source.loop = sound.loop;
         
         source.PlayOneShot(sound.audioClip);

@@ -14,6 +14,7 @@ public class GameSound : ScriptableObject
     public AudioMixerGroup mixer;
     [Range(0, 1)] public float volume = 1;
     [Range(.1f, 3)] public float pitch = 1;
+    [Range(0, 1)] public float spatialBlend;
     public bool loop;
     
 }

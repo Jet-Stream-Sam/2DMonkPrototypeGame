@@ -70,7 +70,7 @@ public class FireballBehaviour : MonoBehaviour
         hasExploded = true;
 
         if(explosionSound != null)
-            explosionSound.PlaySound(soundManager);
+            explosionSound.PlaySound(soundManager, transform.position);
 
         projectileHitCheck.OnSucessfulHit -= Explode;
         fireballRigidbody.Sleep();

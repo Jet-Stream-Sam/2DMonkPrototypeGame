@@ -234,7 +234,7 @@ public class PlayerMainController : MonoBehaviour, IDamageable, IEntityControlle
         else
         {
             if (hitSound != null)
-                hitSound.PlaySound(SoundManager);
+                hitSound.PlaySound(SoundManager, playerSpriteTransform.position);
         }
 
         if (flashCoroutine != null)
@@ -251,7 +251,7 @@ public class PlayerMainController : MonoBehaviour, IDamageable, IEntityControlle
     private void Die()
     {
         if (deathSound != null)
-            deathSound.PlaySound(SoundManager);
+            deathSound.PlaySound(SoundManager, playerSpriteTransform.position);
     }
 
     IEnumerator HitFlash(Renderer renderer, float secondsToRecover)

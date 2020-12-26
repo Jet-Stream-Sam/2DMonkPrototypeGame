@@ -14,6 +14,7 @@ public class EnemyDeathState : EnemyState
         controllerScript.enemyAnimationsScript.ChangeAnimationState(
             controllerScript.deathAnimationClip.name, false);
         controllerScript.enemyCollider.enabled = false;
+        controllerScript.enemyRigidBody.isKinematic = true;
         controllerScript.enemyRigidBody.Sleep();
         Object.Destroy(controllerScript.gameObject, controllerScript.deathAnimationClip.length); 
     }

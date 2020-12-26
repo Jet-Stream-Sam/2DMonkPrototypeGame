@@ -73,10 +73,10 @@ public class PlayerAttackState : PlayerState
         SoundManager soundManager = SoundManager.Instance;
 
         if(moveSound != null)
-            moveSound.PlaySound(soundManager);
+            moveSound.PlaySound(soundManager, controllerScript.playerSpriteTransform.position);
 
         if (crySound != null)
-            crySound.PlaySound(soundManager);
+            crySound.PlaySound(soundManager, controllerScript.playerSpriteTransform.position);
 
         controllerScript.hitBoxCheck.HitProperties = hitProperties;
 

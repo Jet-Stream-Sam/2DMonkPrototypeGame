@@ -16,7 +16,7 @@ public class AnimationSoundsManager : SerializedMonoBehaviour
         if (sounds.gameSounds.Length == 0)
             return;
 
-        sounds.PlaySound(soundManager);
+        sounds.PlaySound(soundManager, transform.position);
         
     }
 }

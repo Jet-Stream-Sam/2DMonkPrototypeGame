@@ -188,7 +188,7 @@ public class EnemyMainController : MonoBehaviour, IDamageable, IEntityController
         else
         {
             if (hitSound != null)
-                hitSound.PlaySound(SoundManager);
+                hitSound.PlaySound(SoundManager, enemySpriteTransform.position);
         }
 
         if(flashCoroutine != null)
@@ -203,7 +203,7 @@ public class EnemyMainController : MonoBehaviour, IDamageable, IEntityController
     private void Die()
     {
         if (deathSound != null)
-            deathSound.PlaySound(SoundManager);
+            deathSound.PlaySound(SoundManager, enemySpriteTransform.position);
         StateMachine.ChangeState(new EnemyDeathState(this, StateMachine));
     }
 

@@ -22,7 +22,7 @@ public class HitPlaySoundEffect : MonoBehaviour
         CollectionSounds audioClip = mainHitBox.HitProperties.hitSound;
 
         if(audioClip != null)
-            audioClip.PlaySound(soundManager);
+            audioClip.PlaySound(soundManager, pos);
     }
 
     private void OnDestroy()

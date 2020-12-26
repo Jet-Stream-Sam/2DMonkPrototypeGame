@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerStandingState : PlayerGroundedState
 {
-    private float toCrouchDelay = 0.18f;
+    private float toCrouchDelay = 0.05f;
     private float toCrouchTimer;
     private float easingStandingMovementX;
     public PlayerStandingState(PlayerMainController controllerScript, MainStateMachine stateMachine) : base(controllerScript, stateMachine)
