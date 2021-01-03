@@ -68,8 +68,8 @@ MonoBehaviour:
   playerProjectileTransform: {fileID: 585565224715657661}
   standingMoveSpeed: 11
   crouchingMoveSpeed: 6
-  standingEasingRate: 0.6
-  airborneEasingRate: 0.8
+  standingEasingRate: 0.8
+  airborneEasingRate: 1
   jumpSpeed: 5
   jumpHeight: 5.75
   airborneJumpDelay: 0.15
@@ -79,7 +79,7 @@ MonoBehaviour:
   fallMultiplier: 4.5
   groundedStunnedToIdleEasingRate: 0.2
   airborneStunnedToIdleEasingRate: 0.2
-  groundCheckRadius: 0.25
+  groundCheckRadius: 0.35
   groundMask:
     serializedVersion: 2
     m_Bits: 256
@@ -345,6 +345,7 @@ GameObject:
   - component: {fileID: 8271591900109410372}
   - component: {fileID: 2626304570625663778}
   - component: {fileID: 4216560216508893961}
+  - component: {fileID: 1333225238}
   m_Layer: 9
   m_Name: Sprite
   m_TagString: Untagged
@@ -513,6 +514,14 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+--- !u!81 &1333225238
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236577121039505280}
+  m_Enabled: 1
 --- !u!1 &1708156598237419952
 GameObject:
   m_ObjectHideFlags: 0

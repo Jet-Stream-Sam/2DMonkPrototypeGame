@@ -9,7 +9,6 @@ public class PauseMenu : MonoBehaviour
     private LoadingManager loadingManager;
     private ControlManager controlManager;
     private InputMaster controls;
-    [SerializeField] private string currentLevelName = "Main Level";
     [SerializeField] private string levelToLoadName = "Main Menu Ex";
     [SerializeField] private GameObject showCanvasObj;
 
@@ -38,7 +37,7 @@ public class PauseMenu : MonoBehaviour
 
     public void BackToMainMenu()
     {
-        loadingManager.InitiateLoad(currentLevelName, levelToLoadName);
+        loadingManager.InitiateLoad(gameObject.scene.name, levelToLoadName);
         
     }
 

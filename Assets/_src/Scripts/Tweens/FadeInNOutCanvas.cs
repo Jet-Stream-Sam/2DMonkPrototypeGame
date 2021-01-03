@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FadeInNOut : MonoBehaviour
+public class FadeInNOutCanvas : MonoBehaviour
 {
     [SerializeField] private Image imageRef;
     [SerializeField] private CanvasGroup canvasGroup;

@@ -8,14 +8,14 @@ public class LoadingManager : MonoBehaviour
     public static LoadingManager Instance { get; private set; }
     [SerializeField] private GameObject loadingScreen;
     [SerializeField] private Camera tempCamera;
-    private FadeInNOut tweenRef;
+    private FadeInNOutCanvas tweenRef;
     private bool isReadyingToLoad = false;
     private string loadedScene;
     private string sceneToLoad;
     private List<AsyncOperation> scenesLoading = new List<AsyncOperation>();
     private void Awake()
     {
-        tweenRef = loadingScreen.GetComponentInChildren<FadeInNOut>();
+        tweenRef = loadingScreen.GetComponentInChildren<FadeInNOutCanvas>();
         //SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
 
         #region Singleton

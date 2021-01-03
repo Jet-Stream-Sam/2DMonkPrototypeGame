@@ -10000,7 +10000,7 @@ MonoBehaviour:
     timeStopScale: 0.1
     timeStopMode: 2
     timeStopDelay: 0.12
-    hitSound: {fileID: 11400000, guid: c120905b86f5bb94ea97bdf59f785d50, type: 2}
+    hitSound: {fileID: 11400000, guid: 83a64036d4e737f4bba9d04c6d96f0dd, type: 2}
     visualEffects: {fileID: 40801258633192796, guid: 598d4df67ba3b44418cd9055e75ce4f0,
       type: 3}
     particleHitEffect: {fileID: 5244326971005480206, guid: 477917db31317684fb1ca836b6bcac2e,
