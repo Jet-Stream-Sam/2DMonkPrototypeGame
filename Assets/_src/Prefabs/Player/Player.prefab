@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 4970770069740980496}
   - component: {fileID: 4677405175835894480}
   - component: {fileID: 2445295424464135327}
+  - component: {fileID: 391760095}
+  - component: {fileID: 391760096}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -87,8 +89,12 @@ MonoBehaviour:
   ceilingMask:
     serializedVersion: 2
     m_Bits: 256
-  maxHealth: 2147483647
+  maxHealth: 1000
   currentHealth: 0
+  maxPowerOrbs: 4
+  currentPowerOrbMeter: 0
+  maxVitalityOrbs: 4
+  currentVitalityOrbMeter: 0
   hitColor: {r: 3.8774097, g: 0.27434498, b: 0.27434498, a: 1}
   debugActivated: 1
   isGrounded: 0
@@ -198,6 +204,35 @@ MonoBehaviour:
   mainController: {fileID: 6278708686460877383}
   availableMoves: []
   triggeredMoves: []
+--- !u!114 &391760095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160457991439401338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46ec41ed5a065964f899fc3ba25ba055, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMainController: {fileID: 6278708686460877383}
+  rateOverTime: 10
+  recoveryInterval: 0.6
+--- !u!114 &391760096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160457991439401338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3365a44f6c1dc94ba6078b707916d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMainController: {fileID: 6278708686460877383}
+  rateOnHit: 34
 --- !u!1 &566562695738576815
 GameObject:
   m_ObjectHideFlags: 0

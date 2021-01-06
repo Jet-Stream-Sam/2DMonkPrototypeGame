@@ -10056,7 +10056,7 @@ MonoBehaviour:
   subjectCollider2D: {fileID: 3314060142123004480}
   checkedHitColliders: []
   projectileHitProperties:
-    damage: 120
+    damage: 70
     hitStunType: 1
     knockbackForce: 22
     knockbackMode: 1

@@ -9988,7 +9988,7 @@ MonoBehaviour:
       Data: 0|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: EnemyMainController, Assembly-CSharp
+      Data: EnemyMainTrigger, Assembly-CSharp
     - Name: 
       Entry: 8
       Data: 
@@ -9998,7 +9998,7 @@ MonoBehaviour:
   subjectCollider2D: {fileID: 3314060142123004480}
   checkedHitColliders: []
   projectileHitProperties:
-    damage: 100
+    damage: 450
     hitStunType: 1
     knockbackForce: 40
     knockbackMode: 1

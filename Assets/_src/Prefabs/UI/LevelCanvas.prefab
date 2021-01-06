@@ -58,7 +58,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 50
   m_TargetDisplay: 0
 --- !u!114 &2565051305230782119
 MonoBehaviour:
@@ -110,7 +110,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 4002464851715267987}
     - target: {fileID: 2360399412648836347, guid: 26339de8defc1824ca3297933f4fb5f1,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -239,3 +239,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 2565051304955381412}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4002464851715267987 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1446631855150144311, guid: 26339de8defc1824ca3297933f4fb5f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 2565051304955381412}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8024a31f6389ec847a00ec8a0f5e364d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

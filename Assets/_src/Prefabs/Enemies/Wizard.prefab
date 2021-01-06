@@ -781,12 +781,12 @@ MonoBehaviour:
   groundDetectionRight: {fileID: 6728834594238140278}
   wallDetectionLeft: {fileID: 347125681}
   wallDetectionRight: {fileID: 534419868}
-  enemyIdle: {fileID: 7400000, guid: 2764c24f6af72004d948335f6021c03f, type: 2}
-  hitSound: {fileID: 11400000, guid: 54bddbb285c33d7428b7f87bf1b9a73e, type: 2}
-  deathSound: {fileID: 11400000, guid: a9665bb05e490334ca3305fcbf586ee3, type: 2}
+  idleAnimationClip: {fileID: 7400000, guid: 2764c24f6af72004d948335f6021c03f, type: 2}
   hitAnimationClip: {fileID: 7400000, guid: 2764c24f6af72004d948335f6021c03f, type: 2}
   fallAnimationClip: {fileID: 7400000, guid: 2764c24f6af72004d948335f6021c03f, type: 2}
   deathAnimationClip: {fileID: 7400000, guid: 387aa5a5a99f4614ea70b001d9dd66b9, type: 2}
+  hitSound: {fileID: 11400000, guid: 54bddbb285c33d7428b7f87bf1b9a73e, type: 2}
+  deathSound: {fileID: 11400000, guid: a9665bb05e490334ca3305fcbf586ee3, type: 2}
   AIBrain: {fileID: 8395823318256213357}
   enemyProjectileTransform: {fileID: 453552881}
   hitBoxCheck: {fileID: 1840672164}
@@ -926,7 +926,7 @@ MonoBehaviour:
   detectionMask:
     serializedVersion: 2
     m_Bits: 512
-  attackCooldown: 0.5
+  attackCooldown: 1.3
   debugActivated: 1
   focusedTarget: {fileID: 0}
   attackCooldownTimer: 0

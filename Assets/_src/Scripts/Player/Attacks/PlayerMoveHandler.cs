@@ -35,6 +35,24 @@ public class PlayerMoveHandler : MonoBehaviour
 
     public IEnumerator ExecuteMove(PlayerMoves move)
     {
+        if(move.powerMeterUsage > 0)
+        {
+            if (!CanExecutePowerMove(move.powerMeterUsage))
+            {
+                availableMoves.Clear();
+                yield break;
+            }
+                
+        }
+        if (move.vitalityMeterUsage > 0)
+        {
+            if (!CanExecuteVitalityMove(move.vitalityMeterUsage))
+            {
+                availableMoves.Clear();
+                yield break;
+            }
+                
+        }
         triggeredMoves.Add(move);
 
         yield return null;
@@ -51,6 +69,14 @@ public class PlayerMoveHandler : MonoBehaviour
         ClearAllMoves();
         triggeredMoves.Clear();
 
+        if(move.powerMeterUsage > 0)
+        {
+            mainController.DepletePowerOrbMeter(move.powerMeterUsage);
+        }
+        if(move.vitalityMeterUsage > 0)
+        {
+            mainController.DepleteVitalityOrbMeter(move.vitalityMeterUsage);
+        }
         Moves.MoveType moveType = move.moveType;
         
         switch (moveType)
@@ -112,6 +138,20 @@ public class PlayerMoveHandler : MonoBehaviour
             }
 
             return tempAttack;
+        }
+
+        bool CanExecutePowerMove(int amount)
+        {
+            if (amount > mainController.currentPowerOrbMeter)
+                return false;
+            return true;
+        }
+
+        bool CanExecuteVitalityMove(int amount)
+        {
+            if (amount > mainController.currentVitalityOrbMeter)
+                return false;
+            return true;
         }
     }
     private void UpdateMoveListOnInput(PlayerInputHandler.MovementInputNotation notation)

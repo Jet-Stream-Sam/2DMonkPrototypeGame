@@ -43,6 +43,8 @@ MonoBehaviour:
     particleHitEffect: {fileID: 0}
   moveBehaviour: {fileID: 0}
   moveEndsAtState: 0
+  powerMeterUsage: 0
+  vitalityMeterUsage: 100
   moveNotation:
     movementNotation: 020000000600000004000000
     buttonNotation: 8

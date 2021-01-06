@@ -31,17 +31,17 @@ public class EnemyMainController : MonoBehaviour, IDamageable, IEntityController
     [FoldoutGroup("Dependencies")]
     public Transform wallDetectionRight;
     [FoldoutGroup("Dependencies")]
-    public AnimationClip enemyIdle;
-    [FoldoutGroup("Dependencies")]
-    public CollectionSounds hitSound;
-    [FoldoutGroup("Dependencies")]
-    public CollectionSounds deathSound;
+    public AnimationClip idleAnimationClip;
     [FoldoutGroup("Dependencies")]
     public AnimationClip hitAnimationClip;
     [FoldoutGroup("Dependencies")]
     public AnimationClip fallAnimationClip;
     [FoldoutGroup("Dependencies")]
     public AnimationClip deathAnimationClip;
+    [FoldoutGroup("Dependencies")]
+    public CollectionSounds hitSound;
+    [FoldoutGroup("Dependencies")]
+    public CollectionSounds deathSound;
     [FoldoutGroup("Dependencies")]
     public EnemyAIBrain AIBrain;
     [FoldoutGroup("Dependencies")]

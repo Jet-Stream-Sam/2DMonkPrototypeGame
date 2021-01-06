@@ -46,6 +46,8 @@ MonoBehaviour:
   moveBehaviour: {fileID: -2872195656749309971, guid: 24082f96dc9c0b04d81e5e5988bc1ee6,
     type: 3}
   moveEndsAtState: 1
+  powerMeterUsage: 100
+  vitalityMeterUsage: 0
   moveNotation:
     movementNotation: 020000000000000002000000
     buttonNotation: 2

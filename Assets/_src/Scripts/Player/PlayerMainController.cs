@@ -93,6 +93,17 @@ public class PlayerMainController : MonoBehaviour, IDamageable, IEntityControlle
     [TabGroup("Player/Tabs", "Combat")]
     [ReadOnly]
     public int currentHealth;
+    public const int ORB_CAPACITY = 100;
+    [TabGroup("Player/Tabs", "Combat")]
+    public int maxPowerOrbs;
+    [TabGroup("Player/Tabs", "Combat")]
+    [ReadOnly]
+    public int currentPowerOrbMeter;
+    [TabGroup("Player/Tabs", "Combat")]
+    public int maxVitalityOrbs;
+    [TabGroup("Player/Tabs", "Combat")]
+    [ReadOnly]
+    public int currentVitalityOrbMeter;
     [TabGroup("Player/Tabs", "Combat")]
     [ColorUsage(true, true)]
     public Color hitColor;
@@ -119,6 +130,9 @@ public class PlayerMainController : MonoBehaviour, IDamageable, IEntityControlle
     public Action<ScriptableObject> AnimationEventWasCalled { get; set; }
     public Action hasPerformedJump;
     public Action hasShotAProjectile;
+    public Action<int> hasDamaged;
+    public Action<int> hasChangedPowerOrbMeter;
+    public Action<int> hasChangedVitalityOrbMeter;
     #endregion
 
     #region Player Coroutines
@@ -132,6 +146,13 @@ public class PlayerMainController : MonoBehaviour, IDamageable, IEntityControlle
     }
 
     #endregion
+
+    private void Awake()
+    {
+        currentHealth = maxHealth;
+        currentPowerOrbMeter = maxPowerOrbs * ORB_CAPACITY;
+        currentVitalityOrbMeter = maxVitalityOrbs * ORB_CAPACITY;
+    }
     private void Start()
     {
         SoundManager = SoundManager.Instance;
@@ -156,8 +177,6 @@ public class PlayerMainController : MonoBehaviour, IDamageable, IEntityControlle
 
 
         #endregion
-
-        currentHealth = maxHealth;
 
         StateMachine = new MainStateMachine();
         
@@ -203,6 +222,7 @@ public class PlayerMainController : MonoBehaviour, IDamageable, IEntityControlle
 
 
         currentHealth -= damage;
+        hasDamaged?.Invoke(damage);
         if (currentHealth <= 0)
         {
             currentHealth = 0;
@@ -222,6 +242,7 @@ public class PlayerMainController : MonoBehaviour, IDamageable, IEntityControlle
         if (currentHealth <= 0)
             return;
         currentHealth -= damage;
+        hasDamaged?.Invoke(damage);
         float originalYVelocity = playerRigidBody.velocity.y;
         playerRigidBody.AddForce(forceDirection * knockbackForce, ForceMode2D.Impulse);
         playerRigidBody.velocity = new Vector2(playerRigidBody.velocity.x, originalYVelocity);
@@ -284,4 +305,34 @@ public class PlayerMainController : MonoBehaviour, IDamageable, IEntityControlle
 
     }
     
+    public void DepletePowerOrbMeter(int amount)
+    {
+        currentPowerOrbMeter -= amount;
+        if (currentPowerOrbMeter < 0)
+            currentPowerOrbMeter = 0;
+        hasChangedPowerOrbMeter?.Invoke(currentPowerOrbMeter);
+    }
+
+    public void FillPowerOrbMeter(int amount)
+    {
+        currentPowerOrbMeter += amount;
+        if (currentPowerOrbMeter > maxPowerOrbs * ORB_CAPACITY)
+            currentPowerOrbMeter = maxPowerOrbs * ORB_CAPACITY;
+        hasChangedPowerOrbMeter?.Invoke(currentPowerOrbMeter);
+    }
+    public void DepleteVitalityOrbMeter(int amount)
+    {
+        currentVitalityOrbMeter -= amount;
+        if (currentVitalityOrbMeter < 0)
+            currentVitalityOrbMeter = 0;
+        hasChangedVitalityOrbMeter?.Invoke(currentVitalityOrbMeter);
+    }
+
+    public void FillVitalityOrbMeter(int amount)
+    {
+        currentVitalityOrbMeter += amount;
+        if (currentVitalityOrbMeter > maxVitalityOrbs * ORB_CAPACITY)
+            currentVitalityOrbMeter = maxVitalityOrbs * ORB_CAPACITY;
+        hasChangedVitalityOrbMeter?.Invoke(currentVitalityOrbMeter);
+    }
 }

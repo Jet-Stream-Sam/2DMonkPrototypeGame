@@ -115,7 +115,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &343963594249940020
 Transform:
   m_ObjectHideFlags: 0
@@ -154,12 +154,12 @@ MonoBehaviour:
   groundDetectionRight: {fileID: 1781591449641657835}
   wallDetectionLeft: {fileID: 925068398}
   wallDetectionRight: {fileID: 105789476}
-  enemyIdle: {fileID: 7400000, guid: 2764c24f6af72004d948335f6021c03f, type: 2}
-  hitSound: {fileID: 11400000, guid: a9665bb05e490334ca3305fcbf586ee3, type: 2}
-  deathSound: {fileID: 11400000, guid: 54bddbb285c33d7428b7f87bf1b9a73e, type: 2}
+  idleAnimationClip: {fileID: 7400000, guid: 2764c24f6af72004d948335f6021c03f, type: 2}
   hitAnimationClip: {fileID: 7400000, guid: 7c39e286fa1b37d40b6922b5547f8d6d, type: 2}
   fallAnimationClip: {fileID: 7400000, guid: 2764c24f6af72004d948335f6021c03f, type: 2}
   deathAnimationClip: {fileID: 7400000, guid: 387aa5a5a99f4614ea70b001d9dd66b9, type: 2}
+  hitSound: {fileID: 11400000, guid: 54bddbb285c33d7428b7f87bf1b9a73e, type: 2}
+  deathSound: {fileID: 11400000, guid: a9665bb05e490334ca3305fcbf586ee3, type: 2}
   AIBrain: {fileID: -6116354194168683481}
   enemyProjectileTransform: {fileID: 2230559071831496308}
   hitBoxCheck: {fileID: 6814436414655476199}

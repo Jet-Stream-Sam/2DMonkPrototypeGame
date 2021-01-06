@@ -23,6 +23,11 @@ public class PlayerMoves : Moves
     [PropertyOrder(-2)]
     public EndsAtState moveEndsAtState;
 
+    [PropertyOrder(-2)]
+    public int powerMeterUsage = 0;
+    [PropertyOrder(-2)]
+    public int vitalityMeterUsage = 0;
+
     [Title("Move Notation")]
 
     [HideLabel]
