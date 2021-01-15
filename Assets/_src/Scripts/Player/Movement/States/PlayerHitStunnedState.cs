@@ -60,7 +60,8 @@ public class PlayerHitStunnedState : PlayerState
             controllerScript.playerRigidBody.velocity += Vector2.up * Physics2D.gravity.y * controllerScript.fallMultiplier * Time.deltaTime;
 
             controllerScript.playerRigidBody.velocity =
-                new Vector2(0, controllerScript.playerRigidBody.velocity.y);
+                new Vector2(Mathf.Lerp(controllerScript.playerRigidBody.velocity.x, 0,
+                controllerScript.airborneStunnedToIdleEasingRate), controllerScript.playerRigidBody.velocity.y);
         }
     }
 

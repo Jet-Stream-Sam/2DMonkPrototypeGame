@@ -9,6 +9,11 @@ public class FlipSprite : MonoBehaviour
     [SerializeField] private Transform transformToFlip;
     [ReadOnly] public float horizontalDirection;
     private bool wasFlipped;
+
+    private void Awake()
+    {
+        wasFlipped = sRenderer.flipX;
+    }
     public void Flip(float direction)
     {
         horizontalDirection = direction;

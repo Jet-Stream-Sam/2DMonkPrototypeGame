@@ -28,11 +28,15 @@ public class WizardAIBrain : EnemyAIBrain
         hasDetectedTarget = Physics2D.OverlapCircle(detectionTransform.position, detectAndFollowRange, detectionMask);
         isGoingToAttackTarget = Physics2D.OverlapCircle(detectionTransform.position, attackRange, detectionMask);
 
-        if (attackCooldownTimer > 0)
+        if (isGoingToAttackTarget && attackCooldownTimer > 0)
         {
             attackCooldownTimer -= Time.deltaTime;
             if (attackCooldownTimer < 0)
                 attackCooldownTimer = 0;
+        }
+        else
+        {
+            attackCooldownTimer = attackCooldown;
         }
 
         if (isGoingToAttackTarget && attackCooldownTimer == 0)

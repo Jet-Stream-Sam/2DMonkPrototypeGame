@@ -15,7 +15,7 @@ public class ColliderDirection : MonoBehaviour
         AttackDirection = (endPoint.position - startPoint.position).normalized;
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawLine(startPoint.position, endPoint.position);

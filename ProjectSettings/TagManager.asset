@@ -44,6 +44,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Hazards
+    uniqueID: 3984958669
+    locked: 0
   - name: Ground
     uniqueID: 497669129
     locked: 0

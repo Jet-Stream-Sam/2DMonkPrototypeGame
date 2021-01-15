@@ -34,17 +34,19 @@ MonoBehaviour:
     hitStunType: 0
     knockbackForce: 12
     knockbackMode: 0
-    timeStopLength: 0.1
-    timeStopScale: 0.16
-    timeStopMode: 1
-    timeStopDelay: 0.1
+    timeStopLength: 0
+    timeStopScale: 0
+    timeStopMode: 2
+    timeStopDelay: 0.05
     hitSound: {fileID: 11400000, guid: c120905b86f5bb94ea97bdf59f785d50, type: 2}
-    visualEffects: {fileID: 40801258633192796, guid: d4cdfddeaaa19a048999bb3ea85d88c2,
+    visualEffects: {fileID: 40801258633192796, guid: 757510964e716bc40ae9d6572265457b,
       type: 3}
     particleHitEffect: {fileID: 0}
   moveBehaviour: {fileID: -5936667180954219801, guid: 2e2a14200b3cf144eb7487a26efe15d6,
     type: 3}
   moveEndsAtState: 0
+  powerMeterUsage: 0
+  vitalityMeterUsage: 0
   moveNotation:
     movementNotation: 
     buttonNotation: 1

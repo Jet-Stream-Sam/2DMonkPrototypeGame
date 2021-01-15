@@ -193,7 +193,7 @@ public class PlayerMainController : MonoBehaviour, IDamageable, IEntityControlle
     {
         StateMachine.CurrentState.HandleFixedUpdate();
     }
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {   
         if (debugActivated)
         {

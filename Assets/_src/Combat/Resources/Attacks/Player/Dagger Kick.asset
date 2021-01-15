@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b0d9c19a2ed173a4995d816dc2439058, type: 3}
-  m_Name: Spear Kick
+  m_Name: Dagger Kick
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -44,6 +44,8 @@ MonoBehaviour:
     particleHitEffect: {fileID: 0}
   moveBehaviour: {fileID: 0}
   moveEndsAtState: 1
+  powerMeterUsage: 0
+  vitalityMeterUsage: 0
   moveNotation:
     movementNotation: 
     buttonNotation: 2

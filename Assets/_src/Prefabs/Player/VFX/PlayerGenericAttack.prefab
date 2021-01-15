@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -398044401
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2a4a71c224444cf4aa4f9241679e508c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -176,7 +176,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rippleRenderer: {fileID: 6958904856475582952}
   rippleAmount: 1
-  rippleLength: 0.3
-  disappearingRate: 2
-  rippleSpeed: 5
+  rippleLength: 0.2
+  disappearingRate: 3
+  rippleSpeed: 10
   color: {r: 0.40980276, g: 2.5173597, b: 5.5908804, a: 1}

@@ -41,9 +41,12 @@ MonoBehaviour:
     hitSound: {fileID: 11400000, guid: c120905b86f5bb94ea97bdf59f785d50, type: 2}
     visualEffects: {fileID: 40801258633192796, guid: d4cdfddeaaa19a048999bb3ea85d88c2,
       type: 3}
-    particleHitEffect: {fileID: 0}
+    particleHitEffect: {fileID: 5244326971005480206, guid: 0dead9502786cf74781dc232cb8dc447,
+      type: 3}
   moveBehaviour: {fileID: 0}
   moveEndsAtState: 1
+  powerMeterUsage: 0
+  vitalityMeterUsage: 0
   moveNotation:
     movementNotation: 
     buttonNotation: 2

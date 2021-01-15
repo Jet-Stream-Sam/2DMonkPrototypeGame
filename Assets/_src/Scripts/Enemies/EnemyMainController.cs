@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class EnemyMainController : MonoBehaviour, IDamageable, IEntityController
 {
-    public SoundManager SoundManager { get; private set; }
+    public SoundManager SoundManager { get; protected set; }
 
     [FoldoutGroup("Dependencies", expanded: false)]
     public AnimationsState enemyAnimationsScript;
@@ -89,7 +89,7 @@ public class EnemyMainController : MonoBehaviour, IDamageable, IEntityController
 
     [TabGroup("Enemy/Tabs", "Debug")]
     [SerializeField] private bool debugActivated = true;
-    public MainStateMachine StateMachine { get; private set; }
+    public MainStateMachine StateMachine { get; protected set; }
     [TabGroup("Enemy/Tabs", "Debug")]
     [ShowIf("debugActivated")] [ReadOnly] public string currentStateOutput;
     [TabGroup("Enemy/Tabs", "Debug")]
@@ -136,7 +136,7 @@ public class EnemyMainController : MonoBehaviour, IDamageable, IEntityController
         StateMachine.CurrentState.HandleFixedUpdate(); 
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         if (debugActivated)
         {
@@ -149,7 +149,7 @@ public class EnemyMainController : MonoBehaviour, IDamageable, IEntityController
         }
 
     }
-    public void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage)
     {
         if (currentHealth <= 0)
             return;
@@ -171,7 +171,7 @@ public class EnemyMainController : MonoBehaviour, IDamageable, IEntityController
   
     }
 
-    public void TakeDamage(int damage, Vector2 forceDirection, float knockbackForce)
+    public virtual void TakeDamage(int damage, Vector2 forceDirection, float knockbackForce)
     {
         if (currentHealth <= 0)
             return;
@@ -200,7 +200,7 @@ public class EnemyMainController : MonoBehaviour, IDamageable, IEntityController
    
     }
 
-    private void Die()
+    protected virtual void Die()
     {
         if (deathSound != null)
             deathSound.PlaySound(SoundManager, enemySpriteTransform.position);

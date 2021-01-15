@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85ce2fde12b5d8a49ad6708701ea6589, type: 3}
   m_Name: Swift Woosh
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 8300000, guid: d3d2244668fd8224085f4df183ad2f72, type: 3}
+  audioClip: {fileID: 8300000, guid: 60037f8231861134fa9c7e2a6dedd777, type: 3}
   mixer: {fileID: 5276277644291418981, guid: 35492a46fbac1924b81f78ed84406c47, type: 2}
   volume: 0.2
   pitch: 1
