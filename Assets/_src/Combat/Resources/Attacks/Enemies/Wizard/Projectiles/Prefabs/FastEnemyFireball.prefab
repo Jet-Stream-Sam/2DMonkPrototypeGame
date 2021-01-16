@@ -4854,7 +4854,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -398044401
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
@@ -9756,7 +9756,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -398044401
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
@@ -9955,7 +9955,7 @@ MonoBehaviour:
   particleExplosion: {fileID: 493859241871701665}
   explosionSound: {fileID: 11400000, guid: a2000390737cfb043bc054aeb54677d0, type: 2}
   fireballSpeed: 14
-  timeUntilDestruction: 1.4
+  timeUntilDestruction: 2.3
   damageOnImpact: 1
   timeOfImpactDetection: 0.3
   explosionRadius: 1.2
@@ -9994,7 +9994,7 @@ MonoBehaviour:
   projectileHitProperties:
     damage: 50
     hitStunType: 1
-    knockbackForce: 22
+    knockbackForce: 58
     knockbackMode: 1
     timeStopLength: 0.2
     timeStopScale: 0.1
@@ -10144,7 +10144,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -398044401
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: bead47d786e844adba7899d02e8851eb, type: 3}
   m_Color: {r: 0.7019608, g: 1, b: 0, a: 1}

@@ -79,8 +79,6 @@ public class FieryCharge : MonoBehaviour, IMoveBehaviour
         if (!(obj is AttackTriggerEvent trigger))
             return;
 
-        Debug.Log(attackState.directionToFollow);
-
         controllerScript.enemyRigidBody.velocity =
             new Vector2(attackState.directionToFollow.x * dashPower,
             controllerScript.enemyRigidBody.velocity.y);

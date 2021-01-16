@@ -14,7 +14,6 @@ public class LevelChanger : MonoBehaviour
     }
     public void ChangeLevel()
     {
-        Debug.Log(gameObject.scene.name);
         loadingManager.InitiateLoad(gameObject.scene.name, levelToLoadName);
     }
 }
