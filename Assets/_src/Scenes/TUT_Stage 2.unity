@@ -2400,6 +2400,12 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.7
       objectReference: {fileID: 0}
+    - target: {fileID: 3548958535767674128, guid: 147b70e1a91f11441a3df8a72abb6d25,
+        type: 3}
+      propertyPath: musicToPlay
+      value: 
+      objectReference: {fileID: 11400000, guid: 1d556c800d9fae643883c9ed21a2aa26,
+        type: 2}
     - target: {fileID: 3548958535767674129, guid: 147b70e1a91f11441a3df8a72abb6d25,
         type: 3}
       propertyPath: m_RootOrder
@@ -2974,12 +2980,12 @@ PrefabInstance:
     - target: {fileID: 2703661811016647551, guid: 9351a2dc2fb1b3c4ba788c0c3c8a14c3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.672259
+      value: -14.672258
       objectReference: {fileID: 0}
     - target: {fileID: 2703661811016647551, guid: 9351a2dc2fb1b3c4ba788c0c3c8a14c3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.79855126
+      value: 0.0016490221
       objectReference: {fileID: 0}
     - target: {fileID: 2703661811016647551, guid: 9351a2dc2fb1b3c4ba788c0c3c8a14c3,
         type: 3}
@@ -4179,7 +4185,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 177638, guid: 0abab5bb77339e4428787a870eb31bd3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11496292, guid: 0abab5bb77339e4428787a870eb31bd3, type: 3}
       propertyPath: m_advancedModuleState
@@ -4541,7 +4547,7 @@ PrefabInstance:
     - target: {fileID: 7828917929208041197, guid: e212684ecc0e64a48996da92a76e2986,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.3956629
+      value: -0.39566302
       objectReference: {fileID: 0}
     - target: {fileID: 7828917929208041197, guid: e212684ecc0e64a48996da92a76e2986,
         type: 3}

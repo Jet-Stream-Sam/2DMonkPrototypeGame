@@ -8249,6 +8249,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3548958535767674128, guid: 147b70e1a91f11441a3df8a72abb6d25,
+        type: 3}
+      propertyPath: musicToPlay
+      value: 
+      objectReference: {fileID: 11400000, guid: 1d556c800d9fae643883c9ed21a2aa26,
+        type: 2}
     - target: {fileID: 3548958535767674129, guid: 147b70e1a91f11441a3df8a72abb6d25,
         type: 3}
       propertyPath: m_RootOrder
@@ -12344,7 +12350,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 177638, guid: 0abab5bb77339e4428787a870eb31bd3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22424132, guid: 0abab5bb77339e4428787a870eb31bd3, type: 3}
       propertyPath: m_AnchoredPosition.x

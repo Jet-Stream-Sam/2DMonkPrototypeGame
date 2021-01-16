@@ -2610,7 +2610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 841476b85b36bc84b94bd4662ef31b64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicToPlay: mainmenu_rising
+  musicToPlay: {fileID: 11400000, guid: 9c5ff50fc345f864d917075ab83b8fef, type: 2}
 --- !u!4 &956722333
 Transform:
   m_ObjectHideFlags: 0

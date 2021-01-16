@@ -106,7 +106,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 1
+  moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0
@@ -668,7 +668,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 120, y: 25, z: 1}
+    m_Scale: {x: 114.258385, y: 25, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -1304,8 +1304,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 0.06666667}
-        key1: {r: 0.19215687, g: 0.70054454, b: 0.77254903, a: 0.5176471}
+        key0: {r: 1, g: 0.696355, b: 0.5424528, a: 0.06666667}
+        key1: {r: 1, g: 0.46966612, b: 0.3066038, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -4881,6 +4881,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movingTransform: {fileID: 4164156039288857142}
   isParallaxEnabledForThisObject: 1
-  startPos: 25.1
+  startPos: 234.67
   mainCamera: {fileID: 0}
-  parallaxEffect: -0.16
+  parallaxEffect: -0.3

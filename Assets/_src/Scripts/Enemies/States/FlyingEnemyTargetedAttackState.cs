@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Threading;
 using System.Threading.Tasks;
-using UnityEditorInternal;
 
 public class FlyingEnemyTargetedAttackState : EnemyState
 {

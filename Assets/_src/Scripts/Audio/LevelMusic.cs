@@ -5,10 +5,10 @@ using UnityEngine;
 public class LevelMusic : MonoBehaviour
 {
     private SoundManager soundManager;
-    [SerializeField] private string musicToPlay;
+    [SerializeField] private GameMusic musicToPlay;
     private void Start()
     {
         soundManager = SoundManager.Instance;
-        soundManager.PlayMusic(musicToPlay);
+        soundManager.PlayMusic(musicToPlay.name);
     }
 }

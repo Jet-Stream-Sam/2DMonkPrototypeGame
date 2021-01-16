@@ -29,6 +29,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_src/Scenes/TUT_Stage 4.unity
     guid: a40897b2c81c17d4b8a445466abeba33
+  - enabled: 1
+    path: Assets/_src/Scenes/TUT_Stage 5.unity
+    guid: 96855fa42a8151a418cff95e41b67fd3
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 825bdd4dfcd22994e895fa11c812e322,
       type: 2}

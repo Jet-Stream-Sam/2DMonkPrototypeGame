@@ -803,7 +803,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 256
-  maxHealth: 200
+  maxHealth: 90
   currentHealth: 0
   hitColor: {r: 3.8774097, g: 0.27434498, b: 0.27434498, a: 1}
   debugActivated: 1
@@ -955,7 +955,7 @@ MonoBehaviour:
   detectionMask:
     serializedVersion: 2
     m_Bits: 512
-  attackCooldown: 3
+  attackCooldown: 1
   debugActivated: 1
   focusedTarget: {fileID: 0}
   attackCooldownTimer: 0
