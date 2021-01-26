@@ -101,6 +101,7 @@ public class EnemyMainController : MonoBehaviour, IDamageable, IEntityController
 
     #region Enemy Events
     public Action<ScriptableObject> AnimationEventWasCalled { get; set; }
+    public Action hasDied;
     #endregion
 
     #region Enemy Coroutines
@@ -204,6 +205,7 @@ public class EnemyMainController : MonoBehaviour, IDamageable, IEntityController
     {
         if (deathSound != null)
             deathSound.PlaySound(SoundManager, enemySpriteTransform.position);
+        hasDied?.Invoke();
         StateMachine.ChangeState(new EnemyDeathState(this, StateMachine));
     }
 

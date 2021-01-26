@@ -10,36 +10,12 @@ public class SettingsConfig : MonoBehaviour
     public static List<ConfigData> configData { get; private set; }  = new List<ConfigData>();
     public static List<ISetting> allSettings { get; private set; } = new List<ISetting>();
 
-    private void Awake()
-    {
-        
-        GameObject[] allSettingsInstances = Resources.LoadAll<GameObject>("GameSettings/Prefabs");
-
-        foreach (GameObject instance in allSettingsInstances)
-        {
-            allSettings.Add(instance.GetComponent<ISetting>());
-        }
-
-        if(configData.Count == 0)
-        {
-            configData = SaveData.LoadAll<ConfigData>("/config/");
-        }
-        
-    }
-
     private void Start()
     {
-        foreach (ISetting setting in allSettings)
-        {
-            int index = ContainsConfigKey(configData, setting.SettingName);
-            if (index != -1)
-            {
-                
-                setting.SetChanges(configData[index].settingValue);
-            }
-        }
+        InitializeSettings();
     }
-    public void ApplySavedChanges()
+
+    public static void ApplySavedChanges()
     {
         foreach (ConfigData dataComponent in configData)
         {
@@ -50,7 +26,33 @@ public class SettingsConfig : MonoBehaviour
 
     }
 
-    public int ContainsConfigKey(List<ConfigData> data, string key)
+    public static void InitializeSettings()
+    {
+        print("Initializing");
+        GameObject[] allSettingsInstances = Resources.LoadAll<GameObject>("GameSettings/Prefabs");
+
+        foreach (GameObject instance in allSettingsInstances)
+        {
+            allSettings.Add(instance.GetComponent<ISetting>());
+        }
+
+        if (configData.Count == 0)
+        {
+            configData = SaveData.LoadAll<ConfigData>("/config/");
+        }
+
+        foreach (ISetting setting in allSettings)
+        {
+            int index = ContainsConfigKey(configData, setting.SettingName);
+            if (index != -1)
+            {
+                print($"{configData[index].settingKey} :{configData[index].settingValue}");
+                setting.SetChanges(configData[index].settingValue);
+            }
+        }
+    }
+
+    public static int ContainsConfigKey(List<ConfigData> data, string key)
     {
         int dataIndex = 0;
         foreach (ConfigData dataComponent in data)
@@ -64,4 +66,5 @@ public class SettingsConfig : MonoBehaviour
         }
         return -1;
     }
+
 }

@@ -54,5 +54,15 @@ public class EnemyAIBrain : SerializedMonoBehaviour
     {
         
     }
-    
+
+    public void EnableAI()
+    {
+        enabled = true;
+    }
+
+    public void DisableAI()
+    {
+        StateReset();
+        enabled = false;
+    }
 }

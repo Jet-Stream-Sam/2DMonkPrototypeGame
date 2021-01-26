@@ -663,7 +663,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40722218d61c235488a0d8e33d563304, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLevelName: Main Level
   levelToLoadName: Main Menu Ex
   showCanvasObj: {fileID: 2704082282780445769}
 --- !u!114 &2704082282530655807
@@ -1162,6 +1161,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 380279567927387596, guid: c99378047d7d88343ad5425713cb540d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 380279567927387596, guid: c99378047d7d88343ad5425713cb540d,
         type: 3}

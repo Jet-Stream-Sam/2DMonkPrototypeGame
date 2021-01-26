@@ -17,6 +17,7 @@ public class PlayerMainController : MonoBehaviour, IDamageable, IEntityControlle
     [HideInInspector] public bool isReversed = false;
     public float MovementX { get; private set; }
     public float MovementY { get; private set; }
+    public bool areControlsEnabled { get; private set; } = true;
     public bool IsHoldingJumpButton { get; private set; }
     [FoldoutGroup("Dependencies", expanded: false)]
     public Transform groundCheck;
@@ -133,6 +134,7 @@ public class PlayerMainController : MonoBehaviour, IDamageable, IEntityControlle
     public Action<int> hasDamaged;
     public Action<int> hasChangedPowerOrbMeter;
     public Action<int> hasChangedVitalityOrbMeter;
+    public Action hasDied;
     #endregion
 
     #region Player Coroutines
@@ -155,6 +157,7 @@ public class PlayerMainController : MonoBehaviour, IDamageable, IEntityControlle
     }
     private void Start()
     {
+        
         SoundManager = SoundManager.Instance;
         controlManager = ControlManager.Instance;
         Controls = controlManager.controls;
@@ -182,6 +185,9 @@ public class PlayerMainController : MonoBehaviour, IDamageable, IEntityControlle
         
         StateMachine.onStateChanged += state => currentStateOutput = state;
         StateMachine.Init(new PlayerStandingState(this, StateMachine));
+
+        controlManager.ClearObjects();
+        EnableControls();
     }
 
     private void Update()
@@ -273,6 +279,7 @@ public class PlayerMainController : MonoBehaviour, IDamageable, IEntityControlle
     {
         if (deathSound != null)
             deathSound.PlaySound(SoundManager, playerSpriteTransform.position);
+        hasDied?.Invoke();
     }
 
     IEnumerator HitFlash(Renderer renderer, float secondsToRecover)
@@ -335,4 +342,28 @@ public class PlayerMainController : MonoBehaviour, IDamageable, IEntityControlle
             currentVitalityOrbMeter = maxVitalityOrbs * ORB_CAPACITY;
         hasChangedVitalityOrbMeter?.Invoke(currentVitalityOrbMeter);
     }
+
+    [HideIf("areControlsEnabled")]
+    [Button("Enable Player Controls")]
+    public void EnableControls()
+    {
+        controlManager.EnablePlayerControls(gameObject);
+        areControlsEnabled = true;
+    }
+
+    [ShowIf("areControlsEnabled")]
+    [Button("Disable Player Controls")]
+    public void DisableControls()
+    {
+        controlManager.DisablePlayerControls(gameObject);
+        areControlsEnabled = false;
+    }
+
+    [Button("Freeze Horizontal Movement")]
+    public void FreezeHorizontalMovement()
+    {
+        StateMachine.ChangeState(new PlayerStandingState(this, StateMachine));
+        playerRigidBody.velocity = new Vector2(0, playerRigidBody.velocity.y);
+    }
+
 }

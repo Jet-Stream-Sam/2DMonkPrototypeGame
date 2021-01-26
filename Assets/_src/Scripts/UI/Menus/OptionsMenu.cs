@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class OptionsMenu : MonoBehaviour
 {
+
     public void BackMenu(GameObject activatedMenu)
     {
         activatedMenu.SetActive(true);
@@ -12,5 +13,10 @@ public class OptionsMenu : MonoBehaviour
         menuScript.ChangeFirstButtonSelected();
         gameObject.SetActive(false);
 
+    }
+
+    private void OnDisable()
+    {
+        SettingsConfig.ApplySavedChanges();
     }
 }

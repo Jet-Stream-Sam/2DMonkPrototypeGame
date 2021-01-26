@@ -11,6 +11,8 @@ public class ScaleInNOut : MonoBehaviour, IUIAnimation
 
     private Vector3 originalScale;
     private Vector3 newScale;
+
+    private LTDescr currentAnimation;
     public enum ActivationType
     {
         PlayOnce,
@@ -23,27 +25,33 @@ public class ScaleInNOut : MonoBehaviour, IUIAnimation
     }
     public void OnSelect()
     {
-
-        if (LeanTween.isTweening(gameObject)) 
+        if(currentAnimation != null)
         {
-            LeanTween.cancel(gameObject);
-            transform.localScale = originalScale;
+            if (LeanTween.isTweening(currentAnimation.uniqueId))
+            {
+                LeanTween.cancel(currentAnimation.uniqueId);
+                transform.localScale = originalScale;
+            }
         }
-
+        
         newScale = transform.localScale * scaleRate;
-        LTDescr animation = LeanTween.scale(gameObject, newScale, time).setEase(tweenType).setIgnoreTimeScale(true);
+        currentAnimation = LeanTween.scale(gameObject, newScale, time).setEase(tweenType).setIgnoreTimeScale(true);
 
     }
 
     public void OnDeselect()
     {
-        if (LeanTween.isTweening(gameObject))
+
+        if (currentAnimation != null)
         {
-            LeanTween.cancel(gameObject);
-            transform.localScale = newScale;
+            if (LeanTween.isTweening(currentAnimation.uniqueId))
+            {
+                LeanTween.cancel(currentAnimation.uniqueId);
+                transform.localScale = newScale;
+            }
         }
 
-        LTDescr animation = LeanTween.scale(gameObject, originalScale, time).setEase(tweenType).setIgnoreTimeScale(true);
+        currentAnimation = LeanTween.scale(gameObject, originalScale, time).setEase(tweenType).setIgnoreTimeScale(true);
           
     }
 

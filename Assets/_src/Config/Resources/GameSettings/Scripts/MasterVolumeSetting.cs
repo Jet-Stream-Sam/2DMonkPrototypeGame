@@ -20,8 +20,6 @@ public class MasterVolumeSetting : MonoBehaviour, ISetting
         float resultVolume = ConvertVolumeToMixer(volume, -40, 0);
         mixer.SetFloat(SettingName, resultVolume);
 
-        
-
         int dataIndex = ContainsConfigKey(SettingsConfig.configData, SettingName);
         if (dataIndex != -1)
         {

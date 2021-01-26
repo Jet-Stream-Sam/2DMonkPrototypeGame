@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioClip: {fileID: 8300000, guid: 6366fc87e0401b949bab35405f398d63, type: 3}
   mixer: {fileID: 5276277644291418981, guid: 35492a46fbac1924b81f78ed84406c47, type: 2}
-  volume: 1
+  volume: 0.7
   pitch: 1
   spatialBlend: 0
   loop: 0

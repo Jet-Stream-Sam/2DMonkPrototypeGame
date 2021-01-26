@@ -60,6 +60,51 @@ Transform:
   m_Father: {fileID: 886972781766681168}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1217313047
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1217313048}
+  - component: {fileID: 1217313049}
+  m_Layer: 0
+  m_Name: Boss Music
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1217313048
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217313047}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 343963594249940020}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1217313049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217313047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 841476b85b36bc84b94bd4662ef31b64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicToPlay: {fileID: 11400000, guid: 0a380969d67f2e74f964eca5622ef75a, type: 2}
+  playOnStart: 0
 --- !u!1 &274908272951886205
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,6 +154,7 @@ GameObject:
   - component: {fileID: 177281622889489539}
   - component: {fileID: -6116354194168683481}
   - component: {fileID: 3331705600348280585}
+  - component: {fileID: 1723513195}
   m_Layer: 0
   m_Name: UnholyGiant - Wizard Boss
   m_TagString: Untagged
@@ -129,6 +175,7 @@ Transform:
   m_Children:
   - {fileID: 886972781766681168}
   - {fileID: 6986702542095110473}
+  - {fileID: 1217313048}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -179,7 +226,7 @@ MonoBehaviour:
   maxHealth: 2500
   currentHealth: 0
   hitColor: {r: 3.8774097, g: 0.27434498, b: 0.27434498, a: 1}
-  debugActivated: 1
+  debugActivated: 0
   currentStateOutput: 
   isGrounded: 0
   hasRecovered: 1
@@ -297,7 +344,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 343963594249940022}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33637dbeffbdb6841934974e4c1fc8ac, type: 3}
   m_Name: 
@@ -401,6 +448,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   placeSpot: {fileID: 886972781766681168}
   mainVFXManager: {fileID: 4235145721956587702}
+--- !u!114 &1723513195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343963594249940022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 86ac3dfb06903e1458bc9d37e874a9be, type: 2}
+    - {fileID: 11400000, guid: d55fb30e6fff980408cb4689de022553, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: -6116354194168683481}
+          m_TargetAssemblyTypeName: EnemyAIBrain, Assembly-CSharp
+          m_MethodName: EnableAI
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1217313049}
+          m_TargetAssemblyTypeName: SetMusic, Assembly-CSharp
+          m_MethodName: PlayMusic
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &343963595502964203
 GameObject:
   m_ObjectHideFlags: 0

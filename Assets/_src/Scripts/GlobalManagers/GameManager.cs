@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadSceneAsync("LoadingScreen", LoadSceneMode.Additive);
             PausingManager.canPause = true;
+            
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
@@ -23,6 +24,12 @@ public class GameManager : MonoBehaviour
         }
 
         
+
+    }
+
+    private void Start()
+    {
+        SettingsConfig.InitializeSettings();
     }
 
 }

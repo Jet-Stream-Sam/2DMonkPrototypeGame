@@ -6754,6 +6754,65 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2492667238806603698, guid: 21d93d4d6af15ab469e32b1ffc82f08c,
         type: 3}
+    - target: {fileID: 4077586489913838961, guid: 21d93d4d6af15ab469e32b1ffc82f08c,
+        type: 3}
+      propertyPath: playerMoveList.Array.size
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4077586489913838961, guid: 21d93d4d6af15ab469e32b1ffc82f08c,
+        type: 3}
+      propertyPath: playerMoveList.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: b2e5a1c8d38c1fa4980186544584f253,
+        type: 2}
+    - target: {fileID: 4077586489913838961, guid: 21d93d4d6af15ab469e32b1ffc82f08c,
+        type: 3}
+      propertyPath: playerMoveList.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: fba68e0a83f30e94c8561a0afcee5a6a,
+        type: 2}
+    - target: {fileID: 4077586489913838961, guid: 21d93d4d6af15ab469e32b1ffc82f08c,
+        type: 3}
+      propertyPath: playerMoveList.Array.data[8]
+      value: 
+      objectReference: {fileID: 11400000, guid: e9a215c4f8eb11e44b67e52001575e8d,
+        type: 2}
+    - target: {fileID: 4077586489913838961, guid: 21d93d4d6af15ab469e32b1ffc82f08c,
+        type: 3}
+      propertyPath: playerMoveList.Array.data[9]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4ee3794565ecb5b4c875079efc9b7a7b,
+        type: 2}
+    - target: {fileID: 4077586489913838961, guid: 21d93d4d6af15ab469e32b1ffc82f08c,
+        type: 3}
+      propertyPath: playerMoveList.Array.data[10]
+      value: 
+      objectReference: {fileID: 11400000, guid: dc37bf07789600449b2c2cfdcbd9a72a,
+        type: 2}
+    - target: {fileID: 4077586489913838961, guid: 21d93d4d6af15ab469e32b1ffc82f08c,
+        type: 3}
+      propertyPath: playerMoveList.Array.data[11]
+      value: 
+      objectReference: {fileID: 11400000, guid: e7cbe05ca8e45444597bb8fe96073a48,
+        type: 2}
+    - target: {fileID: 4077586489913838961, guid: 21d93d4d6af15ab469e32b1ffc82f08c,
+        type: 3}
+      propertyPath: playerMoveList.Array.data[12]
+      value: 
+      objectReference: {fileID: 11400000, guid: 0bae32968f926e44695b95085bc33365,
+        type: 2}
+    - target: {fileID: 4077586489913838961, guid: 21d93d4d6af15ab469e32b1ffc82f08c,
+        type: 3}
+      propertyPath: playerMoveList.Array.data[13]
+      value: 
+      objectReference: {fileID: 11400000, guid: 932a2cdd08010894e93d8118466399ce,
+        type: 2}
+    - target: {fileID: 4077586489913838961, guid: 21d93d4d6af15ab469e32b1ffc82f08c,
+        type: 3}
+      propertyPath: playerMoveList.Array.data[14]
+      value: 
+      objectReference: {fileID: 11400000, guid: 0b59a4aa0f721804aba207549cc05a35,
+        type: 2}
     - target: {fileID: 4216560216508893961, guid: 21d93d4d6af15ab469e32b1ffc82f08c,
         type: 3}
       propertyPath: serializationData.Prefab
@@ -6776,6 +6835,11 @@ PrefabInstance:
         type: 3}
       propertyPath: maxHealth
       value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278708686460877383, guid: 21d93d4d6af15ab469e32b1ffc82f08c,
+        type: 3}
+      propertyPath: maxVitalityOrbs
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21d93d4d6af15ab469e32b1ffc82f08c, type: 3}
@@ -12351,6 +12415,10 @@ PrefabInstance:
     - target: {fileID: 177638, guid: 0abab5bb77339e4428787a870eb31bd3, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11496292, guid: 0abab5bb77339e4428787a870eb31bd3, type: 3}
+      propertyPath: m_advancedModuleState
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 22424132, guid: 0abab5bb77339e4428787a870eb31bd3, type: 3}
       propertyPath: m_AnchoredPosition.x

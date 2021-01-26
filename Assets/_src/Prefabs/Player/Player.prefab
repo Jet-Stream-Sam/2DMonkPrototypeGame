@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2445295424464135327}
   - component: {fileID: 391760095}
   - component: {fileID: 391760096}
+  - component: {fileID: 53849542}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -93,7 +94,7 @@ MonoBehaviour:
   currentHealth: 0
   maxPowerOrbs: 4
   currentPowerOrbMeter: 0
-  maxVitalityOrbs: 4
+  maxVitalityOrbs: 0
   currentVitalityOrbMeter: 0
   hitColor: {r: 3.8774097, g: 0.27434498, b: 0.27434498, a: 1}
   debugActivated: 1
@@ -117,19 +118,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 14b0bfb8693d28f4095b9e11ace576c5, type: 2}
   - {fileID: 11400000, guid: f5d9b68bec406044881e36e859c670eb, type: 2}
   - {fileID: 11400000, guid: 598a8f344acd1714fbae9426bc809d0f, type: 2}
-  - {fileID: 11400000, guid: b2e5a1c8d38c1fa4980186544584f253, type: 2}
   - {fileID: 11400000, guid: cf71c3dbfc062924c9a49017ad1a8f33, type: 2}
-  - {fileID: 11400000, guid: 4ee3794565ecb5b4c875079efc9b7a7b, type: 2}
-  - {fileID: 11400000, guid: dc37bf07789600449b2c2cfdcbd9a72a, type: 2}
   - {fileID: 11400000, guid: 2b31c189c2b7d4b4898956b83959b0de, type: 2}
-  - {fileID: 11400000, guid: e7cbe05ca8e45444597bb8fe96073a48, type: 2}
-  - {fileID: 11400000, guid: 0bae32968f926e44695b95085bc33365, type: 2}
-  - {fileID: 11400000, guid: 932a2cdd08010894e93d8118466399ce, type: 2}
-  - {fileID: 11400000, guid: 0b59a4aa0f721804aba207549cc05a35, type: 2}
-  - {fileID: 11400000, guid: f3d7b6d677dc389428ddceba7b62dc80, type: 2}
   - {fileID: 11400000, guid: 487444dd677ad964ca000bb48abe07e9, type: 2}
-  - {fileID: 11400000, guid: 9eb5221cc11ab3f45936c69a9e3f4fe9, type: 2}
-  - {fileID: 11400000, guid: 4b7fbe1cd9b0ab049881e0688833fcf4, type: 2}
 --- !u!114 &4970770069740980496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,6 +224,63 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMainController: {fileID: 6278708686460877383}
   rateOnHit: 34
+--- !u!114 &53849542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160457991439401338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: c4cac8b0f5d9f8540a4fc355afee8136, type: 2}
+    - {fileID: 11400000, guid: 01670ad0b8047dd41826074d03c03897, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6278708686460877383}
+          m_TargetAssemblyTypeName: PlayerMainController, Assembly-CSharp
+          m_MethodName: EnableControls
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6278708686460877383}
+          m_TargetAssemblyTypeName: PlayerMainController, Assembly-CSharp
+          m_MethodName: DisableControls
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 6278708686460877383}
+          m_TargetAssemblyTypeName: PlayerMainController, Assembly-CSharp
+          m_MethodName: FreezeHorizontalMovement
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &566562695738576815
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,7 +326,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LightType: 3
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.536
+  m_FalloffIntensity: 0.835
   m_Color: {r: 0.2971698, g: 0.8681932, b: 1, a: 1}
   m_Intensity: 0.6
   m_LightVolumeOpacity: 0
@@ -292,7 +340,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 1
-  m_PointLightOuterRadius: 5
+  m_PointLightOuterRadius: 20
   m_PointLightDistance: 3
   m_PointLightQuality: 1
   m_ShapeLightParametricSides: 5
@@ -446,7 +494,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2108280849
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 60
   m_Sprite: {fileID: 21300000, guid: fdb550509659347d4b4c37d05c566ad2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5788,7 +5836,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 497669129
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
@@ -10746,7 +10794,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 497669129
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0

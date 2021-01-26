@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class FadeInNOutCanvas : MonoBehaviour
 {
-    [SerializeField] private Image imageRef;
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private float fadeInTime = 0.5f;
     [SerializeField] private float fadeOutTime = 0.5f;

@@ -47,12 +47,12 @@ public class PausingManager : MonoBehaviour
             if (isGamePaused)
             {
                 pMenu.GetComponent<MenuFirstSelected>().ChangeFirstButtonSelected();
-                controls.Player.Disable();
+                controlManager.DisablePlayerControls(gameObject);
 
             }
             else
             {
-                controls.Player.Enable();
+                controlManager.EnablePlayerControls(gameObject);
             }
 
             
@@ -69,7 +69,7 @@ public class PausingManager : MonoBehaviour
 
     private void SceneChanged(Scene arg0, Scene arg1)
     {
-        controls.Player.Enable();
+        controlManager.EnablePlayerControls(gameObject);
         isGamePaused = false;
         Time.timeScale = 1;
     }
