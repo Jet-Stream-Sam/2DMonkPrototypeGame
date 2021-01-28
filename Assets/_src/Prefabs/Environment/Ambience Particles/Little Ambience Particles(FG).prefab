@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8874545107463545804}
   - component: {fileID: 8874545107463545802}
   - component: {fileID: 8874545107463545803}
+  - component: {fileID: 4955177156896020451}
   m_Layer: 0
   m_Name: Little Ambience Particles(FG)
   m_TagString: Untagged
@@ -4839,7 +4840,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 798559227
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
@@ -4866,3 +4867,17 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &4955177156896020451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8874545107463545805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d89c68e5e9f6924ebd0d3e01fc57322, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainParticleSystem: {fileID: 8874545107463545802}
+  limiterRate: 0.5

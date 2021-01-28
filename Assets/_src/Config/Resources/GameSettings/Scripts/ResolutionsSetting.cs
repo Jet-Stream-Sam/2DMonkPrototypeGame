@@ -26,7 +26,7 @@ public class ResolutionsSetting : MonoBehaviour, ISetting
 
         
 
-        int dataIndex = ContainsConfigKey(SettingsConfig.configData, SettingName);
+        int dataIndex = SettingsUtils.ContainsConfigKey(SettingsConfig.configData, SettingName);
         if (dataIndex != -1)
         {
             SettingsConfig.configData[dataIndex].settingValue = currentResolutionIndex;
@@ -38,18 +38,5 @@ public class ResolutionsSetting : MonoBehaviour, ISetting
 
     }
 
-    public int ContainsConfigKey(List<ConfigData> data, string key)
-    {
-        int dataIndex = 0;
-        foreach (ConfigData dataComponent in data)
-        {
-            if (dataComponent.settingKey == key)
-            {
-
-                return dataIndex;
-            }
-            dataIndex++;
-        }
-        return -1;
-    }
+    
 }

@@ -20,7 +20,7 @@ public class FullScreenSetting : MonoBehaviour, ISetting
         if (resolutions.Length > 0) Screen.fullScreen = isActivated;
 
 
-        int dataIndex = ContainsConfigKey(SettingsConfig.configData, SettingName);
+        int dataIndex = SettingsUtils.ContainsConfigKey(SettingsConfig.configData, SettingName);
         if (dataIndex != -1)
         {
             SettingsConfig.configData[dataIndex].settingValue = isActivated;
@@ -31,18 +31,4 @@ public class FullScreenSetting : MonoBehaviour, ISetting
         }
     }
 
-    public int ContainsConfigKey(List<ConfigData> data, string key)
-    {
-        int dataIndex = 0;
-        foreach (ConfigData dataComponent in data)
-        {
-            if (dataComponent.settingKey == key)
-            {
-
-                return dataIndex;
-            }
-            dataIndex++;
-        }
-        return -1;
-    }
 }

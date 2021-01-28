@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4164156039288857146}
   - component: {fileID: 4164156039288857147}
   - component: {fileID: 4164156039288857145}
+  - component: {fileID: 1317948360376226763}
   m_Layer: 0
   m_Name: 'Space Particles(BG) '
   m_TagString: Untagged
@@ -4884,3 +4885,17 @@ MonoBehaviour:
   startPos: 234.67
   mainCamera: {fileID: 0}
   parallaxEffect: -0.3
+--- !u!114 &1317948360376226763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4164156039288857143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d89c68e5e9f6924ebd0d3e01fc57322, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainParticleSystem: {fileID: 4164156039288857146}
+  limiterRate: 0.5

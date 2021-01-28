@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 3581756684590565533}
   - component: {fileID: 8195192359580522249}
   - component: {fileID: 5494983436667796460}
+  - component: {fileID: 6700128056787130379}
+  - component: {fileID: 8187320046998122302}
   m_Layer: 0
   m_Name: AnticipationParticles
   m_TagString: Untagged
@@ -49,7 +51,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -4845,7 +4847,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -398044401
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
@@ -4886,3 +4888,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destructionType: 1
   objParticleSystem: {fileID: 3581756684590565533}
+--- !u!114 &6700128056787130379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8441736055599862016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d89c68e5e9f6924ebd0d3e01fc57322, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainParticleSystem: {fileID: 3581756684590565533}
+  limiterRate: 0.5
+  limitBursts: 1
+  burstLimiterRate: 0.5
+--- !u!114 &8187320046998122302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8441736055599862016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7370a742145afb844b1e0e04b7323e80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainParticleSystem: {fileID: 3581756684590565533}

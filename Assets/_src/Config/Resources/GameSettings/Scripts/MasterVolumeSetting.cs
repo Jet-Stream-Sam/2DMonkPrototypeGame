@@ -17,10 +17,10 @@ public class MasterVolumeSetting : MonoBehaviour, ISetting
 
         float volume = (float)value;
 
-        float resultVolume = ConvertVolumeToMixer(volume, -40, 0);
+        float resultVolume = SettingsUtils.ConvertVolumeToMixer(volume, -40, 0);
         mixer.SetFloat(SettingName, resultVolume);
 
-        int dataIndex = ContainsConfigKey(SettingsConfig.configData, SettingName);
+        int dataIndex = SettingsUtils.ContainsConfigKey(SettingsConfig.configData, SettingName);
         if (dataIndex != -1)
         {
             SettingsConfig.configData[dataIndex].settingValue = volume;
@@ -33,29 +33,4 @@ public class MasterVolumeSetting : MonoBehaviour, ISetting
         
     }
 
-    private float ConvertVolumeToMixer(float volume, float min, float max)
-    {
-        if(volume == 0)
-        {
-            return -80;
-        }
-        float normalizedVolume = Mathf.InverseLerp(0, 10, volume);
-        float resultVolume = Mathf.Lerp(min, max, normalizedVolume);
-
-        return resultVolume;
-    }
-    public int ContainsConfigKey(List<ConfigData> data, string key)
-    {
-        int dataIndex = 0;
-        foreach (ConfigData dataComponent in data)
-        {
-            if (dataComponent.settingKey == key)
-            {
-
-                return dataIndex;
-            }
-            dataIndex++;
-        }
-        return -1;
-    }
 }

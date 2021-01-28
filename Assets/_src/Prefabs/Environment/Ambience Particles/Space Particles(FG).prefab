@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6768777596912372410}
   - component: {fileID: 6768777596912372412}
   - component: {fileID: 6768777596912372413}
+  - component: {fileID: 8010958784220767437}
   m_Layer: 0
   m_Name: Space Particles(FG)
   m_TagString: Untagged
@@ -4866,3 +4867,17 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &8010958784220767437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6768777596912372411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d89c68e5e9f6924ebd0d3e01fc57322, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainParticleSystem: {fileID: 6768777596912372412}
+  limiterRate: 0.5

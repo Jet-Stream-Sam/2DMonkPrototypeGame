@@ -33,6 +33,15 @@ public class ScrollRectPageItem : MonoBehaviour, ISelectHandler
         controls = controlManager.controls;
         controls.UIExtra.SwitchOptions.performed += OnButtonPressed;
     }
+
+    private void OnEnable()
+    {
+        if (controls == null)
+            return;
+        controls.UIExtra.SwitchOptions.performed -= OnButtonPressed;
+        controls.UIExtra.SwitchOptions.performed += OnButtonPressed;
+    }
+
     public void OnButtonPressed(InputAction.CallbackContext context)
     {
         float options = context.ReadValue<float>();
@@ -47,6 +56,10 @@ public class ScrollRectPageItem : MonoBehaviour, ISelectHandler
         }
     }
 
+    private void OnDisable()
+    {
+        controls.UIExtra.SwitchOptions.performed -= OnButtonPressed;
+    }
     private void OnDestroy()
     {
         controls.UIExtra.SwitchOptions.performed -= OnButtonPressed;

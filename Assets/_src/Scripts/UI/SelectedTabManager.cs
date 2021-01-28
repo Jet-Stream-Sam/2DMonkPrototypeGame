@@ -33,6 +33,19 @@ public class SelectedTabManager : MonoBehaviour
         tabs[0].Select();
     }
 
+    private void OnEnable()
+    {
+        if (controls == null)
+            return;
+        controls.UIExtra.SwitchTabs.performed -= OnButtonPressed;
+        controls.UIExtra.SwitchTabs.performed += OnButtonPressed;
+        foreach (var tab in tabs)
+        {
+            tab.OnTabSelected += TabSelected;
+        }
+        tabs[0].Select();
+    }
+
     void TabSelected(int tabIndex, IUIAnimation tab)
     {
         
@@ -75,6 +88,10 @@ public class SelectedTabManager : MonoBehaviour
         
     }
 
+    private void OnDisable()
+    {
+        controls.UIExtra.SwitchTabs.performed -= OnButtonPressed;
+    }
     private void OnDestroy()
     {
         controls.UIExtra.SwitchTabs.performed -= OnButtonPressed;

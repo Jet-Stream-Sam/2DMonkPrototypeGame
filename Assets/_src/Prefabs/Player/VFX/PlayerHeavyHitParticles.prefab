@@ -84,6 +84,7 @@ GameObject:
   - component: {fileID: 7954549234323496877}
   - component: {fileID: 1346979265753962679}
   - component: {fileID: 8806047053592096615}
+  - component: {fileID: 5293890373304737317}
   m_Layer: 0
   m_Name: PlayerHeavyHitParticles
   m_TagString: Untagged
@@ -4927,7 +4928,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -398044401
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 50
   m_RenderMode: 0
   m_SortMode: 0
@@ -4972,3 +4973,19 @@ MonoBehaviour:
   endIfNotAlive: 1
   sizeMultiplier: 2.3
   alphaMultiplier: 1.2
+--- !u!114 &5293890373304737317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5244326971005480206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d89c68e5e9f6924ebd0d3e01fc57322, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainParticleSystem: {fileID: 7954549234323496877}
+  limiterRate: 0.5
+  limitBursts: 1
+  burstLimiterRate: 0.5

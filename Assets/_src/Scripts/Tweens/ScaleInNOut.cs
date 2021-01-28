@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,7 +26,10 @@ public class ScaleInNOut : MonoBehaviour, IUIAnimation
     }
     public void OnSelect()
     {
-        if(currentAnimation != null)
+        if (!gameObject.activeInHierarchy)
+            return;
+
+        if (currentAnimation != null)
         {
             if (LeanTween.isTweening(currentAnimation.uniqueId))
             {
@@ -34,13 +38,15 @@ public class ScaleInNOut : MonoBehaviour, IUIAnimation
             }
         }
         
-        newScale = transform.localScale * scaleRate;
-        currentAnimation = LeanTween.scale(gameObject, newScale, time).setEase(tweenType).setIgnoreTimeScale(true);
+        newScale = originalScale * scaleRate;
+        StartCoroutine(SkipFrame(() => { currentAnimation = LeanTween.scale(gameObject, newScale, time).setEase(tweenType).setIgnoreTimeScale(true); }));
 
     }
 
     public void OnDeselect()
     {
+        if (!gameObject.activeInHierarchy)
+            return;
 
         if (currentAnimation != null)
         {
@@ -50,9 +56,15 @@ public class ScaleInNOut : MonoBehaviour, IUIAnimation
                 transform.localScale = newScale;
             }
         }
-
-        currentAnimation = LeanTween.scale(gameObject, originalScale, time).setEase(tweenType).setIgnoreTimeScale(true);
+        StartCoroutine(SkipFrame(() => { currentAnimation = LeanTween.scale(gameObject, originalScale, time).setEase(tweenType).setIgnoreTimeScale(true); }));
+        
           
     }
 
+    private IEnumerator SkipFrame(Action func)
+    {
+        yield return null;
+
+        func?.Invoke();
+    }
 }

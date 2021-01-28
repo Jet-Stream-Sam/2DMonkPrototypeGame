@@ -6,6 +6,7 @@ public class FireballBehaviour : MonoBehaviour
 {
     private SoundManager soundManager;
     [ReadOnly] public Transform target;
+    
     private Vector2 directionToShoot;
     
     [FoldoutGroup("Dependencies")]
@@ -20,7 +21,8 @@ public class FireballBehaviour : MonoBehaviour
     [SerializeField] private CollectionSounds explosionSound;
 
     [TitleGroup("Fireball", Alignment = TitleAlignments.Centered)]
-    
+
+    [SerializeField] private Vector2 defaultDirection;
     [SerializeField] private float fireballSpeed = 3;
     [SerializeField] private float timeUntilDestruction = 2f;
     
@@ -39,7 +41,15 @@ public class FireballBehaviour : MonoBehaviour
 
         if(target == null)
         {
-            directionToShoot = (transform.right * transform.localScale.x).normalized;
+            if(defaultDirection == Vector2.zero)
+            {
+                directionToShoot = (transform.right * transform.localScale.x).normalized;
+            }
+            else
+            {
+                directionToShoot = (defaultDirection.normalized * transform.localScale.x).normalized;
+            }
+            
         }
         else
         {

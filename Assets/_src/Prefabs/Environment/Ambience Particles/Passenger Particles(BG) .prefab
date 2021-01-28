@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2635486820728395854}
   - component: {fileID: 2635486820728395855}
   - component: {fileID: 2635486820728395853}
+  - component: {fileID: 2278355753985383507}
   m_Layer: 0
   m_Name: 'Passenger Particles(BG) '
   m_TagString: Untagged
@@ -4884,3 +4885,17 @@ MonoBehaviour:
   startPos: 25.1
   mainCamera: {fileID: 0}
   parallaxEffect: -0.16
+--- !u!114 &2278355753985383507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2635486820728395843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d89c68e5e9f6924ebd0d3e01fc57322, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainParticleSystem: {fileID: 2635486820728395854}
+  limiterRate: 0.5

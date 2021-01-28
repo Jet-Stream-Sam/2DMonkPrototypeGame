@@ -1,4 +1,5 @@
-﻿using System.CodeDom;
+﻿using System;
+using System.CodeDom;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,7 @@ public class MoveBackNForth : MonoBehaviour, IUIAnimation
 
     private Vector3 originalPosition;
     private Vector3 newPosition;
+
     public enum ActivationType
     {
         PlayOnce,
@@ -36,28 +38,33 @@ public class MoveBackNForth : MonoBehaviour, IUIAnimation
         if (activationType == ActivationType.Continuous)
             return;
 
-        if (LeanTween.isTweening(gameObject))
-        { 
-            LeanTween.cancel(gameObject);
-            transform.localPosition = originalPosition;
-        }
 
-        
-        newPosition = transform.localPosition + (Vector3)moveDistance;
-        currentAnimation = LeanTween.moveLocal(gameObject, newPosition, time).setEase(tweenType).setIgnoreTimeScale(true); 
+        LeanTween.cancel(gameObject);
+        transform.localPosition = originalPosition;
+
+        newPosition = originalPosition + (Vector3)moveDistance;
+        StartCoroutine(SkipFrame(() => { currentAnimation = LeanTween.moveLocal(gameObject, newPosition, time).setEase(tweenType).setIgnoreTimeScale(true); }));
     }
 
     public void OnDeselect()
     {
         if (activationType == ActivationType.Continuous)
             return;
-        if (LeanTween.isTweening(gameObject))
-        {
-            LeanTween.cancel(gameObject);
-            transform.localPosition = newPosition;
-        }
+        if (!gameObject.activeInHierarchy)
+            return;
 
-        currentAnimation = LeanTween.moveLocal(gameObject, originalPosition, time).setEase(tweenType).setIgnoreTimeScale(true);
+        LeanTween.cancel(gameObject);
+        transform.localPosition = newPosition;
+
+        StartCoroutine(SkipFrame(() => { currentAnimation = LeanTween.moveLocal(gameObject, originalPosition, time).setEase(tweenType).setIgnoreTimeScale(true); }));
+        
     }
- 
+
+    private IEnumerator SkipFrame(Action func)
+    {
+        yield return null;
+
+        func?.Invoke();
+    }
+
 }
