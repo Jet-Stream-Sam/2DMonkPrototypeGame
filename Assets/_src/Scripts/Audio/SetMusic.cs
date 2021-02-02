@@ -11,12 +11,25 @@ public class SetMusic : MonoBehaviour
     {
         soundManager = SoundManager.Instance;
 
-        if(playOnStart)
+        if (playOnStart)
+        {
+            if (musicToPlay == null)
+            {
+                Debug.LogWarning("There is no music set to play in this SetMusic script! Did you mean to add one?");
+                return;
+            }
             soundManager.PlayMusic(musicToPlay.name);
+        }
+            
     }
 
     public void PlayMusic()
     {
+        if (musicToPlay == null)
+        {
+            Debug.LogWarning("There is no music set to play in this SetMusic script! Did you mean to add one?");
+            return;
+        }
         soundManager.PlayMusic(musicToPlay.name);
     }
 }

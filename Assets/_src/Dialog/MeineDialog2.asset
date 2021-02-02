@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57de6fb3e3ffebf48bca2e6411dcaa18, type: 3}
+  m_Name: MeineDialog2
+  m_EditorClassIdentifier: 
+  dialogues:
+  - characterName: Meine
+    characterPortrait: {fileID: 21300000, guid: c4a8f919b60ceae46bfebf79e9c8a17f,
+      type: 3}
+    isMysteriousCharacter: 1
+    isDialogueUnskippable: 0
+    dialogueForcesAdvancing: 0
+    dialogueText:
+    - Now, you were not who I was expecting... Which <#FFD700>Shindo Clan</color>
+      are you from?
+  - characterName: Tatsuo
+    characterPortrait: {fileID: 21300000, guid: 39c35c19dd9082d4aaa73d7586dde1a2,
+      type: 3}
+    isMysteriousCharacter: 0
+    isDialogueUnskippable: 0
+    dialogueForcesAdvancing: 0
+    dialogueText:
+    - ......
+  - characterName: Meine
+    characterPortrait: {fileID: 21300000, guid: c4a8f919b60ceae46bfebf79e9c8a17f,
+      type: 3}
+    isMysteriousCharacter: 1
+    isDialogueUnskippable: 0
+    dialogueForcesAdvancing: 0
+    dialogueText:
+    - Oh, how rude of me. Let me introduce myself. My name is <b>Meine</b>, captain
+      of the <#ff3c33>Fierce Red</color>, first Shindo Clan.
+  - characterName: Meine
+    characterPortrait: {fileID: 21300000, guid: c4a8f919b60ceae46bfebf79e9c8a17f,
+      type: 3}
+    isMysteriousCharacter: 0
+    isDialogueUnskippable: 0
+    dialogueForcesAdvancing: 0
+    dialogueText:
+    - Now please introduce yourself.
+  - characterName: Tatsuo
+    characterPortrait: {fileID: 21300000, guid: 39c35c19dd9082d4aaa73d7586dde1a2,
+      type: 3}
+    isMysteriousCharacter: 0
+    isDialogueUnskippable: 0
+    dialogueForcesAdvancing: 0
+    dialogueText:
+    - Name's <b>Tatsuo</b>. I'm all by myself, and for clans... I am unaffiliated.

@@ -2,11 +2,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class ScaleInNOut : MonoBehaviour, IUIAnimation
 {
+    [ShowIf("scaleMode", ScaleMode.MultiplyScale)]
     public float scaleRate = 2f;
+    [ShowIf("scaleMode", ScaleMode.FixedScale)]
+    public Vector3 scaleInValue;
     public float time = 0.2f;
+    public ScaleMode scaleMode = ScaleMode.MultiplyScale;
     public LeanTweenType tweenType = LeanTweenType.easeOutQuint;
     public ActivationType activationType;
 
@@ -18,6 +23,12 @@ public class ScaleInNOut : MonoBehaviour, IUIAnimation
     {
         PlayOnce,
         Continuous
+    }
+
+    public enum ScaleMode
+    {
+        MultiplyScale,
+        FixedScale
     }
 
     private void Awake()
@@ -38,7 +49,15 @@ public class ScaleInNOut : MonoBehaviour, IUIAnimation
             }
         }
         
-        newScale = originalScale * scaleRate;
+        if(scaleMode == ScaleMode.MultiplyScale)
+        {
+            newScale = originalScale * scaleRate;
+        }
+        else
+        {
+            newScale = scaleInValue;
+        }
+        
         StartCoroutine(SkipFrame(() => { currentAnimation = LeanTween.scale(gameObject, newScale, time).setEase(tweenType).setIgnoreTimeScale(true); }));
 
     }
