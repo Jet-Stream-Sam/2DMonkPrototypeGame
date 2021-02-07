@@ -18,6 +18,6 @@ MonoBehaviour:
       type: 3}
     isMysteriousCharacter: 0
     isDialogueUnskippable: 1
-    dialogueForcesAdvancing: 1
+    dialogueBlocksAdvancing: 1
     dialogueText:
     - I'm not in pursuit of richness. That could be said about your clan-

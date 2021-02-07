@@ -30,9 +30,16 @@ public class PausingManager : MonoBehaviour
         #endregion
     }
 
+
     public static bool canPause = false;
     public static bool isGamePaused = false;
     
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    private static void Init()
+    {
+        canPause = true;
+        isGamePaused = false;
+    }
     public void Pause(GameObject pMenu)
     {
         if (!canPause)
