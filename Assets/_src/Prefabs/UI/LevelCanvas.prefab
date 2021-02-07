@@ -30,8 +30,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 7820969940165343284}
   - {fileID: 908435342351930734}
+  - {fileID: 7820969940165343284}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -59,7 +59,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 500
   m_TargetDisplay: 0
 --- !u!114 &5264565281724323624
 MonoBehaviour:
@@ -120,7 +120,7 @@ PrefabInstance:
     - target: {fileID: 5013657686944891520, guid: 396d533cd7ec9e346a9273d673b24927,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5013657686944891520, guid: 396d533cd7ec9e346a9273d673b24927,
         type: 3}
@@ -260,7 +260,7 @@ PrefabInstance:
     - target: {fileID: 2704082282530655793, guid: 26339de8defc1824ca3297933f4fb5f1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2704082282530655793, guid: 26339de8defc1824ca3297933f4fb5f1,
         type: 3}
