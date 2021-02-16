@@ -18,9 +18,11 @@ MonoBehaviour:
       type: 3}
     isMysteriousCharacter: 0
     isDialogueUnskippable: 0
-    dialogueForcesAdvancing: 0
+    dialogueBlocksAdvancing: 0
     dialogueText:
-    - <b>Shut your trap, you little brat.</b> Do not mistake my clan's men for some
-      stupid rich goons.
-    - I could kill you right <b>here</b>, right <b>now</b>, and no one would ever
-      come to rescue you.
+    - '<speed=85><b>Shut your trap, you little brat.</b> Do not mistake my clan''s
+
+      men
+      for some stupid rich goons.'
+    - "I could kill you right <b>here</b>, right <b>now</b>, \nand no one would ever
+      come to rescue you."

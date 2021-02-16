@@ -18,6 +18,8 @@ public class VertexWobblyText : MonoBehaviour
         mesh = textComponent.mesh;
         vertices = mesh.vertices;
 
+        var textInfo = textComponent.textInfo;
+
         for (int i = 0; i < vertices.Length; i++)
         {
             Vector3 offset = Wobble(Time.time + i);
@@ -25,8 +27,13 @@ public class VertexWobblyText : MonoBehaviour
             vertices[i] = vertices[i] + offset;
         }
 
-        mesh.vertices = vertices;
-        textComponent.canvasRenderer.SetMesh(mesh);
+        for (int i = 0; i < textInfo.meshInfo.Length; i++)
+        {
+            var meshInfo = textInfo.meshInfo[i];
+            meshInfo.mesh.vertices = meshInfo.vertices;
+            textComponent.UpdateGeometry(meshInfo.mesh, i);
+        }
+
     }
 
     private Vector3 Wobble(float time)

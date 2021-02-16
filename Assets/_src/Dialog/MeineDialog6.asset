@@ -18,9 +18,14 @@ MonoBehaviour:
       type: 3}
     isMysteriousCharacter: 0
     isDialogueUnskippable: 0
-    dialogueForcesAdvancing: 0
+    dialogueBlocksAdvancing: 0
     dialogueText:
-    - However, I'll let you off the hook this time.
-    - "Let's see if you can survive in this underground jungle first. Let's see if
-      your resolve is enough to impress me. \nThen we can have a proper fight."
+    - <speed=75>However,<pause=0.5> I'll let you off the hook this time.
+    - 'Let''s see if you can survive in this underground jungle first. <pause=0.5>
+
+      Let''s
+      see if your resolve is enough to impress me.<pause=0.5>
+
+      Then,<pause=0.2>
+      we can have a proper fight.'
     - Good luck.

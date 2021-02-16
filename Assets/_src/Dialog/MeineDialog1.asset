@@ -18,6 +18,6 @@ MonoBehaviour:
       type: 3}
     isMysteriousCharacter: 1
     isDialogueUnskippable: 0
-    dialogueForcesAdvancing: 0
+    dialogueBlocksAdvancing: 0
     dialogueText:
-    - <b>Halt.</b> I can feel your presence.
+    - <b>Halt.</b><pause=0.3> I can feel your presence.

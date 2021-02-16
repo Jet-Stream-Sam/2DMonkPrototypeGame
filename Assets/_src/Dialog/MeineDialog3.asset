@@ -18,16 +18,20 @@ MonoBehaviour:
       type: 3}
     isMysteriousCharacter: 0
     isDialogueUnskippable: 0
-    dialogueForcesAdvancing: 0
+    dialogueBlocksAdvancing: 0
     dialogueText:
-    - Unaffiliated? Hah, are you trying to play a trick on me? For what reason would
-      a civilian roam in this hell hole? By himself even?
+    - 'Unaffiliated? Hah, are you trying to play a trick on me?
+
+      For what reason
+      would a civilian roam in this hell hole?
+
+      By himself even?'
   - characterName: Tatsuo
     characterPortrait: {fileID: 21300000, guid: 39c35c19dd9082d4aaa73d7586dde1a2,
       type: 3}
     isMysteriousCharacter: 0
     isDialogueUnskippable: 0
-    dialogueForcesAdvancing: 0
+    dialogueBlocksAdvancing: 0
     dialogueText:
     - I'm in search for the <b>Dusk Diamond</b>.
   - characterName: Meine
@@ -35,19 +39,17 @@ MonoBehaviour:
       type: 3}
     isMysteriousCharacter: 0
     isDialogueUnskippable: 0
-    dialogueForcesAdvancing: 0
+    dialogueBlocksAdvancing: 0
     dialogueText:
-    - Well, aren't we all. Don't make me laugh! The <b>Dusk Diamond</b> is not some
-      grave robbing jewel you can just steal and get rich from!
-    - 'The diamond is utterly destructive, and has caused mayhem
-
-      upon our
-      lands. It''s none of your business to reach it.'
+    - "Well, aren't we all.<pause=0.3> Don't make me laugh! \nThe <b>Dusk Diamond</b>
+      is not some grave robbing \njewel you can just steal and get rich from!"
+    - "The diamond is utterly destructive, and has caused \nmayhem upon our lands.
+      It's none of your business \nto reach it."
   - characterName: Meine
     characterPortrait: {fileID: 21300000, guid: c4a8f919b60ceae46bfebf79e9c8a17f,
       type: 3}
     isMysteriousCharacter: 0
     isDialogueUnskippable: 1
-    dialogueForcesAdvancing: 0
+    dialogueBlocksAdvancing: 0
     dialogueText:
-    - Do you understand how serious that is, you punk? <b>Huh?
+    - Do you understand how serious that is, you punk?<pause=0.9><b> Huh?

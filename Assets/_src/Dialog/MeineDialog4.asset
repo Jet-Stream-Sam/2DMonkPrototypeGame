@@ -20,4 +20,5 @@ MonoBehaviour:
     isDialogueUnskippable: 1
     dialogueBlocksAdvancing: 1
     dialogueText:
-    - I'm not in pursuit of richness. That could be said about your clan-
+    - "<speed=30>I'm not in pursuit of richness. That could be said \nabout your
+      clan-"

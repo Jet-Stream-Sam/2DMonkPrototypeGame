@@ -935,5 +935,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textComponent: {fileID: 5013657687709426944}
-  revealSpeed: 25
+  revealSpeed: 70
   characterFadeSpread: 3

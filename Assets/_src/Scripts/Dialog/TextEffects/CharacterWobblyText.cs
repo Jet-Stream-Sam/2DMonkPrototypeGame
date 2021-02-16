@@ -7,24 +7,20 @@ public class CharacterWobblyText : MonoBehaviour
     [SerializeField] private TMP_Text textComponent;
     [SerializeField] private Vector2 wobbleSpeed = new Vector2(1, 1);
     [SerializeField] private Vector2 wobbleOffset = new Vector2(1, 1);
-    private Mesh mesh;
-    private Vector3[] vertices;
 
     private void Update()
     {
-        textComponent.ForceMeshUpdate();
-
-        mesh = textComponent.mesh;
-        vertices = mesh.vertices;
-
         var textInfo = textComponent.textInfo;
 
         for (int i = 0; i < textInfo.characterCount; i++)
         {
             var characterInfo = textInfo.characterInfo[i];
 
-            int index = characterInfo.vertexIndex;
+            if (!characterInfo.isVisible)
+                continue;
 
+            var vertices = textInfo.meshInfo[characterInfo.materialReferenceIndex].vertices;
+            int index = characterInfo.vertexIndex;
 
             Vector3 offset = Wobble(Time.time + i);
 
@@ -35,8 +31,15 @@ public class CharacterWobblyText : MonoBehaviour
             
         }
 
-        mesh.vertices = vertices;
-        textComponent.canvasRenderer.SetMesh(mesh);
+        for (int i = 0; i < textInfo.meshInfo.Length; i++)
+        {
+            var meshInfo = textInfo.meshInfo[i];
+            meshInfo.mesh.vertices = meshInfo.vertices;
+            
+            textComponent.UpdateGeometry(meshInfo.mesh, i);
+        }
+
+        
     }
 
     private Vector3 Wobble(float time)

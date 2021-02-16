@@ -18,16 +18,16 @@ MonoBehaviour:
       type: 3}
     isMysteriousCharacter: 1
     isDialogueUnskippable: 0
-    dialogueForcesAdvancing: 0
+    dialogueBlocksAdvancing: 0
     dialogueText:
-    - Now, you were not who I was expecting... Which <#FFD700>Shindo Clan</color>
-      are you from?
+    - "Now,<pause=0.2><speed=85> you were not who I was expecting...<speed=75><pause=0.3>
+      \nWhich <#FF1D00>Shindo Clan </color>are you from?"
   - characterName: Tatsuo
     characterPortrait: {fileID: 21300000, guid: 39c35c19dd9082d4aaa73d7586dde1a2,
       type: 3}
     isMysteriousCharacter: 0
     isDialogueUnskippable: 0
-    dialogueForcesAdvancing: 0
+    dialogueBlocksAdvancing: 0
     dialogueText:
     - ......
   - characterName: Meine
@@ -35,16 +35,17 @@ MonoBehaviour:
       type: 3}
     isMysteriousCharacter: 1
     isDialogueUnskippable: 0
-    dialogueForcesAdvancing: 0
+    dialogueBlocksAdvancing: 0
     dialogueText:
-    - Oh, how rude of me. Let me introduce myself. My name is <b>Meine</b>, captain
-      of the <#ff3c33>Fierce Red</color>, first Shindo Clan.
+    - "Oh, how rude of me.<pause=0.2> Let me introduce myself.<pause=0.5> My name
+      is \n<b>Meine</b>, captain of the <#ff3c33>Fierce Red</color>, first Shindo
+      Clan."
   - characterName: Meine
     characterPortrait: {fileID: 21300000, guid: c4a8f919b60ceae46bfebf79e9c8a17f,
       type: 3}
     isMysteriousCharacter: 0
     isDialogueUnskippable: 0
-    dialogueForcesAdvancing: 0
+    dialogueBlocksAdvancing: 0
     dialogueText:
     - Now please introduce yourself.
   - characterName: Tatsuo
@@ -52,6 +53,7 @@ MonoBehaviour:
       type: 3}
     isMysteriousCharacter: 0
     isDialogueUnskippable: 0
-    dialogueForcesAdvancing: 0
+    dialogueBlocksAdvancing: 0
     dialogueText:
-    - Name's <b>Tatsuo</b>. I'm all by myself, and for clans... I am unaffiliated.
+    - "Name's <b>Tatsuo</b>.<pause=0.5> I'm all by myself, and for clans...<pause=0.2>
+      \nI am unaffiliated."
