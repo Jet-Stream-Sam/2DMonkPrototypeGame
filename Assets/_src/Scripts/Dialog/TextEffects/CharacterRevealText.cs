@@ -26,7 +26,7 @@ public class CharacterRevealText : MonoBehaviour
 
     public bool isWritingText { get; private set; } = false;
 
-    private IEnumerator RevealCharacters()
+    private IEnumerator ValidateCharacters()
     {
         isWritingText = true;
         var textInfo = textComponent.textInfo;
@@ -101,7 +101,6 @@ public class CharacterRevealText : MonoBehaviour
                 ProcessTag(customTag);
             }
                 
-
             if (currentDialogCharacter >= characterCount) currentDialogCharacter = characterCount - 1;
             if (currentRawCharacter >= textComponent.text.Length) currentRawCharacter = characterCount - 1;
 
@@ -120,6 +119,10 @@ public class CharacterRevealText : MonoBehaviour
         onDialogStopped?.Invoke();
     }
 
+    private void RevealText()
+    {
+
+    }
     private void ProcessTag(string tagDescription)
     {
         string tagKey = "";
@@ -155,7 +158,7 @@ public class CharacterRevealText : MonoBehaviour
         textComponent.text = dialogue;
         HideAllCharacters();
         
-        StartCoroutine(revealCharactersCoroutine = RevealCharacters());
+        StartCoroutine(revealCharactersCoroutine = ValidateCharacters());
     }
     [Button("Hide All Characters")]
     public void HideAllCharacters()

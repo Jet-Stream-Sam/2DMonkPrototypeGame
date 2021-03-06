@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveBackNForth : MonoBehaviour, IUIAnimation
+public class MoveBackNForth : MonoBehaviour, ITweenAnimation
 {
     public Vector2 moveDistance = new Vector2(30, 30);
     public float time = 0.2f;

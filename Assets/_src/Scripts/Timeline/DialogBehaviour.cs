@@ -24,6 +24,11 @@ public class DialogBehaviour : PlayableBehaviour
         Wait(0.1f);
 
     }
+
+    public override void OnPlayableDestroy(Playable playable)
+    {
+        dialogueHandler.onDialogFinish -= SkipClip;
+    }
     public override void ProcessFrame(Playable playable, FrameData info, object playerData)
     {
         playablePreviousTime = playable.GetPreviousTime();

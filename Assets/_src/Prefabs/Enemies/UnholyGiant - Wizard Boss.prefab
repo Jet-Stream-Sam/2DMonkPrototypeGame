@@ -1275,13 +1275,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 549579324246746291, guid: f1ce50aec4db06a459a81df39176e97f,
         type: 3}
+      propertyPath: m_Events.m_Events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnSelect
+      objectReference: {fileID: 0}
+    - target: {fileID: 549579324246746291, guid: f1ce50aec4db06a459a81df39176e97f,
+        type: 3}
       propertyPath: m_Events.m_Events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: OnSelect
       objectReference: {fileID: 0}
     - target: {fileID: 549579324246746291, guid: f1ce50aec4db06a459a81df39176e97f,
         type: 3}
       propertyPath: m_Events.m_Events.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: FadeOut
+      value: OnDeselect
       objectReference: {fileID: 0}
     - target: {fileID: 549579324246746291, guid: f1ce50aec4db06a459a81df39176e97f,
         type: 3}
@@ -1442,6 +1447,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6256546350008751430, guid: f1ce50aec4db06a459a81df39176e97f,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 6692236958384247425, guid: f1ce50aec4db06a459a81df39176e97f,
         type: 3}

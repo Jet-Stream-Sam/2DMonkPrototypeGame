@@ -9,6 +9,7 @@ public class HealthBar : MonoBehaviour
     [Required][SerializeField] private PlayerMainController playerController;
     [SerializeField] private Image barFill;
     [SerializeField] private Image barDamage;
+    [SerializeField] private TMP_Text healthValue;
 
     [SerializeField] private float barDamageFreezeTime = 0.5f;
     [SerializeField] private float barDamageShrinkSpeed = 1;
@@ -17,7 +18,7 @@ public class HealthBar : MonoBehaviour
 
     private void Start()
     {
-        SetHealth(GetNormalizedHealth(playerController.currentHealth, playerController.maxHealth));
+        SetHealth(playerController.currentHealth, playerController.maxHealth);
         barDamage.fillAmount = barFill.fillAmount;
         playerController.hasDamaged += InflictDamage;
     }
@@ -27,11 +28,12 @@ public class HealthBar : MonoBehaviour
             StopCoroutine(damagedTimer);
         damagedTimer = DamagedTimer();
         StartCoroutine(damagedTimer);
-        SetHealth(GetNormalizedHealth(playerController.currentHealth, playerController.maxHealth));
+        SetHealth(playerController.currentHealth, playerController.maxHealth);
     }
-    private void SetHealth(float normalizedHealth)
+    private void SetHealth(int health, int maxHealth)
     {
-        barFill.fillAmount = normalizedHealth;
+        barFill.fillAmount = GetNormalizedHealth(health, maxHealth);
+        healthValue.text = health.ToString();
     }
 
     private float GetNormalizedHealth(int currentHealth, int maxHealth)

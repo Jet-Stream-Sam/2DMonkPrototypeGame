@@ -2598,6 +2598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 841476b85b36bc84b94bd4662ef31b64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stopCurrentMusic: 0
   musicToPlay: {fileID: 11400000, guid: 9c5ff50fc345f864d917075ab83b8fef, type: 2}
   playOnStart: 1
 --- !u!4 &956722333

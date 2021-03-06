@@ -20,16 +20,11 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_95220E8C:
-        m_Texture: {fileID: 2800000, guid: fdb550509659347d4b4c37d05c566ad2, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: fdb550509659347d4b4c37d05c566ad2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
     m_Colors:
-    - Color_C7EBD9F9: {r: 1, g: 1, b: 1, a: 0}
-    - _SpriteColor: {r: 67.793495, g: 2.3327003, b: 1.0648173, a: 0}
+    - _SpriteColor: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []

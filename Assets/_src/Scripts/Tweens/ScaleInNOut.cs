@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-public class ScaleInNOut : MonoBehaviour, IUIAnimation
+public class ScaleInNOut : MonoBehaviour, ITweenAnimation
 {
     [ShowIf("scaleMode", ScaleMode.MultiplyScale)]
     public float scaleRate = 2f;
@@ -34,9 +34,25 @@ public class ScaleInNOut : MonoBehaviour, IUIAnimation
     private void Awake()
     {
         originalScale = transform.localScale;
+
+        if (activationType == ActivationType.Continuous)
+        {
+            if (scaleMode == ScaleMode.MultiplyScale)
+            {
+                newScale = originalScale * scaleRate;
+            }
+            else
+            {
+                newScale = scaleInValue;
+            }
+            currentAnimation = LeanTween.scale(gameObject, newScale, time).setIgnoreTimeScale(true).setLoopPingPong().setEase(tweenType);
+        }
     }
     public void OnSelect()
     {
+        if (activationType == ActivationType.Continuous)
+            return;
+
         if (!gameObject.activeInHierarchy)
             return;
 

@@ -1814,7 +1814,7 @@ MonoBehaviour:
   rawValueText: {fileID: 8118011523189471990}
   settingObject: {fileID: 3400253065554924578, guid: 72c60648675c7ed44b7630e86ff74fc4,
     type: 3}
-  sliderDefaultValue: 10
+  sliderDefaultValue: 5
 --- !u!1 &380279567962471978
 GameObject:
   m_ObjectHideFlags: 0
@@ -4668,7 +4668,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleRate: 2
+  scaleInValue: {x: 0, y: 0, z: 0}
   time: 0.2
+  scaleMode: 0
   tweenType: 12
   activationType: 0
 --- !u!1 &380279568656639066
@@ -5656,7 +5658,7 @@ MonoBehaviour:
   rawValueText: {fileID: 2207958478977562533}
   settingObject: {fileID: 7973159590205007271, guid: 39b8e97beab3efe43af5abf8c6947169,
     type: 3}
-  sliderDefaultValue: 10
+  sliderDefaultValue: 5
 --- !u!1 &380279568838924013
 GameObject:
   m_ObjectHideFlags: 0
@@ -9846,7 +9848,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleRate: 2
+  scaleInValue: {x: 0, y: 0, z: 0}
   time: 0.2
+  scaleMode: 0
   tweenType: 12
   activationType: 0
 --- !u!1001 &2021472948242120152

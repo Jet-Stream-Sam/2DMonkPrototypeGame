@@ -47,7 +47,7 @@ public class LoadingManager : MonoBehaviour
 
         PausingManager.canPause = false;
         loadingScreen.SetActive(true);
-        tweenRef.FadeIn();
+        tweenRef.OnSelect();
         isReadyingToLoad = true;
 
     }
@@ -80,7 +80,7 @@ public class LoadingManager : MonoBehaviour
         PausingManager pManager = PausingManager.Instance;
         pManager.PauseReset();
         tempCamera.gameObject.SetActive(false);
-        tweenRef.FadeOut();
+        tweenRef.OnDeselect();
         scenesLoading.Clear();
     }
 

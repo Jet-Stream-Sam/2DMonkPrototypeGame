@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class SelectedItemManager : MonoBehaviour
 {
     public int selectedItemIndex = -1;
-    private List<IUIAnimation> lastItem;
+    private List<ITweenAnimation> lastItem;
 
     private void Awake()
     {
@@ -16,21 +16,21 @@ public class SelectedItemManager : MonoBehaviour
         }
     }
 
-    void ItemSelected(int itemIndex, List<IUIAnimation> items)
+    void ItemSelected(int itemIndex, List<ITweenAnimation> items)
     {
         if (itemIndex != selectedItemIndex)
         {
             
             if (lastItem != null)
             {
-                foreach (IUIAnimation item in lastItem)
+                foreach (ITweenAnimation item in lastItem)
                 {
                     item.OnDeselect();
                 }
             }
             if (items != null)
             {
-                foreach (IUIAnimation item in items)
+                foreach (ITweenAnimation item in items)
                 {
                     item.OnSelect();
                 }
@@ -47,7 +47,7 @@ public class SelectedItemManager : MonoBehaviour
         
         if (lastItem != null)
         {
-            foreach (IUIAnimation item in lastItem)
+            foreach (ITweenAnimation item in lastItem)
             {
                 item.OnDeselect();
             }

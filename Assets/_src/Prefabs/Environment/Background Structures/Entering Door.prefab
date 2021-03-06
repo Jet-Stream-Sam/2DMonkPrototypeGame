@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2952074921526735715}
   - component: {fileID: 2952074921526735712}
+  - component: {fileID: 1843104979}
+  - component: {fileID: 5732580958788622854}
   m_Layer: 0
   m_Name: Entering Door
   m_TagString: Untagged
@@ -87,6 +89,51 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1843104979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2952074921526735714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dd4ef3620b864946a4b36e363409023, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: animationObjs
+      Entry: 6
+      Data: 
+  interactable: {fileID: 5732580958788622854}
+  levelChanger: {fileID: 0}
+  isLocked: 1
+--- !u!114 &5732580958788622854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2952074921526735714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05ed80b728dbaa849926e6f187da3cf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionRadius: 5
+  areaTransform: {fileID: 2952074921526735715}
+  areaMask:
+    serializedVersion: 2
+    m_Bits: 512
+  debugActivated: 0
 --- !u!1 &2952074922032195417
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,6 +361,7 @@ GameObject:
   - component: {fileID: 1137834754619013960}
   - component: {fileID: 5734877313865115305}
   - component: {fileID: 2288822006880980342}
+  - component: {fileID: 1843104981}
   m_Layer: 0
   m_Name: DownArrow
   m_TagString: Untagged
@@ -376,7 +424,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 55f23303e382e1b4f8fb5339aa96b06f, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -402,6 +450,21 @@ MonoBehaviour:
   time: 0.8
   tweenType: 16
   activationType: 1
+--- !u!114 &1843104981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4032491521903412518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaae21e9eed44f4489dbacbf5b683b15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadingObject: {fileID: 4032491521903412518}
+  fadeInTime: 0.1
+  fadeOutTime: 0.8
 --- !u!1 &7914433217113519808
 GameObject:
   m_ObjectHideFlags: 0

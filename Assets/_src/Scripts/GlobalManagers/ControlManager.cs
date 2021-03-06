@@ -23,7 +23,6 @@ public class ControlManager : MonoBehaviour
 
         #endregion
         controls = new InputMaster();
-
     }
 
     public void EnablePlayerControls(GameObject emitter)
@@ -43,7 +42,6 @@ public class ControlManager : MonoBehaviour
 
     private void ClearNullObjects()
     {
-
         for(int i = playerControlEmitters.Count - 1; i >= 0; i--)
         {
             if(playerControlEmitters[i] == null)

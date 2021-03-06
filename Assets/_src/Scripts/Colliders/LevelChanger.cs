@@ -12,7 +12,7 @@ public class LevelChanger : MonoBehaviour
     {
         loadingManager = LoadingManager.Instance;
     }
-    public void ChangeLevel()
+    public void Change()
     {
         loadingManager.InitiateLoad(gameObject.scene.name, levelToLoadName);
     }

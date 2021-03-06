@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class SelectedTabReciever : MonoBehaviour
 {
-    public event System.Action<int, IUIAnimation> OnTabSelected;
-    private IUIAnimation tabSelectableAnimation;
+    public event System.Action<int, ITweenAnimation> OnTabSelected;
+    private ITweenAnimation tabSelectableAnimation;
 
     private void Awake()
     {
-        tabSelectableAnimation = GetComponent<IUIAnimation>();
+        tabSelectableAnimation = GetComponent<ITweenAnimation>();
     }
     public void Select()
     {

@@ -11,7 +11,7 @@ public class SelectedTabManager : MonoBehaviour
     public int selectedTabIndex = -1;
 
 
-    private IUIAnimation lastTab;
+    private ITweenAnimation lastTab;
     private ITabFunction tabFunction;
     private SelectedTabReciever[] tabs;
 
@@ -46,7 +46,7 @@ public class SelectedTabManager : MonoBehaviour
         tabs[0].Select();
     }
 
-    void TabSelected(int tabIndex, IUIAnimation tab)
+    void TabSelected(int tabIndex, ITweenAnimation tab)
     {
         
         if(tabIndex != selectedTabIndex && lastTab != tab)

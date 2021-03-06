@@ -1,28 +1,28 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Globalization;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class DoorDetection : MonoBehaviour
+public class Interactable : MonoBehaviour
 {
     private ControlManager controlManager;
     private InputMaster controls;
     private float deadzoneMin;
-
-    [SerializeField] private Transform doorTransform;
-    [SerializeField] private FadeInNOutRenderer fadingRenderer;
-    [SerializeField] private LevelChanger levelChanger;
     [SerializeField] private float detectionRadius;
-    [SerializeField] private LayerMask doorMask;
-    [SerializeField] private bool isLocked;
+    [SerializeField] private Transform areaTransform;
+    [SerializeField] private LayerMask areaMask;
     [SerializeField] private bool debugActivated;
 
     private Collider2D[] targets = new Collider2D[1];
     private int targetsCount;
 
-    private bool isFadingIn;
-    private bool isFadingOut;
+    public Action OnInteract;
+    public Action OnAreaEnter;
+    public Action OnAreaExit;
+
+    private bool isAreaOccupied;
 
     private void Start()
     {
@@ -33,55 +33,42 @@ public class DoorDetection : MonoBehaviour
 
         deadzoneMin = InputSystem.settings.defaultDeadzoneMin;
     }
+
     private void Update()
     {
-        if (isLocked)
-            return;
+        targetsCount = Physics2D.OverlapCircleNonAlloc(areaTransform.position, detectionRadius, targets, areaMask);
 
-        targetsCount = Physics2D.OverlapCircleNonAlloc(doorTransform.position, detectionRadius, targets, doorMask);
         if(targetsCount == 0)
         {
             targets = new Collider2D[1];
-
-            if (!isFadingOut)
-            {
-                fadingRenderer.FadeOut();
-                isFadingOut = true;
-                isFadingIn = false;
-            }
-            
+            if (isAreaOccupied)
+                OnAreaExit?.Invoke();
+            isAreaOccupied = false;
         }
         else
         {
-            if (!isFadingIn)
-            {
-                fadingRenderer.FadeIn();
-                isFadingIn = true;
-                isFadingOut = false;
-            }
-            
+            if (!isAreaOccupied)
+                OnAreaEnter?.Invoke();
+            isAreaOccupied = true;
         }
     }
-
     private void Interact(InputAction.CallbackContext ctx)
     {
-        if (isLocked)
-            return;
         if (targetsCount == 0)
             return;
-
         float movementY = ctx.ReadValue<Vector2>().y;
         if (movementY > deadzoneMin)
-            levelChanger.ChangeLevel();
-
+            OnInteract?.Invoke();
     }
+
+
     private void OnDrawGizmosSelected()
     {
         if (!debugActivated)
             return;
 
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(doorTransform.position, detectionRadius);
+        Gizmos.DrawWireSphere(areaTransform.position, detectionRadius);
     }
 
     private void OnDestroy()

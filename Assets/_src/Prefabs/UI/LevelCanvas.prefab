@@ -232,6 +232,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dialog
       objectReference: {fileID: 0}
+    - target: {fileID: 5013657686944891533, guid: 396d533cd7ec9e346a9273d673b24927,
+        type: 3}
+      propertyPath: m_Events.m_Events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnSelect
+      objectReference: {fileID: 0}
+    - target: {fileID: 5013657686944891533, guid: 396d533cd7ec9e346a9273d673b24927,
+        type: 3}
+      propertyPath: m_Events.m_Events.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnDeselect
+      objectReference: {fileID: 0}
+    - target: {fileID: 5013657687709426944, guid: 396d533cd7ec9e346a9273d673b24927,
+        type: 3}
+      propertyPath: m_fontColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5013657687709426944, guid: 396d533cd7ec9e346a9273d673b24927,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 5013657687709426944, guid: 396d533cd7ec9e346a9273d673b24927,
+        type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5013657687709426958, guid: 396d533cd7ec9e346a9273d673b24927,
+        type: 3}
+      propertyPath: revealBaseSpeed
+      value: 75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 396d533cd7ec9e346a9273d673b24927, type: 3}
 --- !u!224 &908435342351930734 stripped

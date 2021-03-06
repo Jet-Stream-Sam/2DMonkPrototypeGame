@@ -1,5 +1,5 @@
 ﻿
-public interface IUIAnimation
+public interface ITweenAnimation
 {
     void OnSelect();
     void OnDeselect();
