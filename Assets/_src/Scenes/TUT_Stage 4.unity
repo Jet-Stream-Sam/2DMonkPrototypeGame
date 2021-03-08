@@ -6968,11 +6968,17 @@ PrefabInstance:
     - target: {fileID: 1980197916781157593, guid: 88ab15365d938ae40807341f4d951e6e,
         type: 3}
       propertyPath: m_text
-      value: 'Attack while falling with the Kick Button [X]
+      value: 'Attack while falling with <sprite=3>
 
-        to strike enemies
-        in the air.'
+        to strike enemies in
+        the air.'
       objectReference: {fileID: 0}
+    - target: {fileID: 1980197916781157593, guid: 88ab15365d938ae40807341f4d951e6e,
+        type: 3}
+      propertyPath: m_spriteAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 204b5ad04fbf3cb4a942bd7fcd88c75c,
+        type: 2}
     - target: {fileID: 4175464374532737352, guid: 88ab15365d938ae40807341f4d951e6e,
         type: 3}
       propertyPath: m_Sprite
@@ -7891,12 +7897,12 @@ PrefabInstance:
     - target: {fileID: 2703661811016647551, guid: 9351a2dc2fb1b3c4ba788c0c3c8a14c3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.77827954
+      value: -0.77827907
       objectReference: {fileID: 0}
     - target: {fileID: 2703661811016647551, guid: 9351a2dc2fb1b3c4ba788c0c3c8a14c3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.79855126
+      value: 0.0016490221
       objectReference: {fileID: 0}
     - target: {fileID: 2703661811016647551, guid: 9351a2dc2fb1b3c4ba788c0c3c8a14c3,
         type: 3}
@@ -8346,13 +8352,20 @@ PrefabInstance:
       propertyPath: m_text
       value: 'You''ve unlocked the <b>Atomic Punch EX</b> attack!
 
-'
+        Notation:
+        <sprite=5><sprite=4>'
       objectReference: {fileID: 0}
     - target: {fileID: 5446404339568676526, guid: f02ba1cf336d1ba47935464a971360ec,
         type: 3}
       propertyPath: m_fontStyle
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5446404339568676526, guid: f02ba1cf336d1ba47935464a971360ec,
+        type: 3}
+      propertyPath: m_spriteAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 204b5ad04fbf3cb4a942bd7fcd88c75c,
+        type: 2}
     - target: {fileID: 6444391504792101346, guid: f02ba1cf336d1ba47935464a971360ec,
         type: 3}
       propertyPath: m_Pivot.x
@@ -25389,6 +25402,12 @@ PrefabInstance:
       propertyPath: m_fontStyle
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5446404339568676526, guid: f02ba1cf336d1ba47935464a971360ec,
+        type: 3}
+      propertyPath: m_spriteAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 204b5ad04fbf3cb4a942bd7fcd88c75c,
+        type: 2}
     - target: {fileID: 6444391504792101346, guid: f02ba1cf336d1ba47935464a971360ec,
         type: 3}
       propertyPath: m_Pivot.x

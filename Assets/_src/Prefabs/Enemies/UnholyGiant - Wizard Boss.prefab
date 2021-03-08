@@ -103,6 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 841476b85b36bc84b94bd4662ef31b64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stopCurrentMusic: 0
   musicToPlay: {fileID: 11400000, guid: 0a380969d67f2e74f964eca5622ef75a, type: 2}
   playOnStart: 0
 --- !u!1 &1386941136
@@ -1327,6 +1328,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Alpha
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3661743872267288302, guid: f1ce50aec4db06a459a81df39176e97f,
+        type: 3}
+      propertyPath: m_text
+      value: corrupted colossus
       objectReference: {fileID: 0}
     - target: {fileID: 4180267052589600577, guid: f1ce50aec4db06a459a81df39176e97f,
         type: 3}

@@ -774,7 +774,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '[Z] to continue'
+  m_text: <sprite=4> to continue
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 91c6dc32eddec514381a0e4cb0c22a18, type: 2}
   m_sharedMaterial: {fileID: -4335116504858579165, guid: 91c6dc32eddec514381a0e4cb0c22a18,
@@ -794,7 +794,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: 204b5ad04fbf3cb4a942bd7fcd88c75c, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901

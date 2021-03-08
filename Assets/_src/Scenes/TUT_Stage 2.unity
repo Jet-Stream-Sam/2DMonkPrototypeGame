@@ -2938,6 +2938,9 @@ PrefabInstance:
       propertyPath: m_text
       value: 'You''ve unlocked the <b>Dagger Kick</b> attack!
 
+        Notation:
+        While Crouching <sprite=3>
+
 '
       objectReference: {fileID: 0}
     - target: {fileID: 5446404339568676526, guid: f02ba1cf336d1ba47935464a971360ec,
@@ -2945,6 +2948,12 @@ PrefabInstance:
       propertyPath: m_fontStyle
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5446404339568676526, guid: f02ba1cf336d1ba47935464a971360ec,
+        type: 3}
+      propertyPath: m_spriteAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 204b5ad04fbf3cb4a942bd7fcd88c75c,
+        type: 2}
     - target: {fileID: 6444391504792101346, guid: f02ba1cf336d1ba47935464a971360ec,
         type: 3}
       propertyPath: m_Pivot.x
@@ -3258,13 +3267,19 @@ PrefabInstance:
       propertyPath: m_text
       value: 'You''ve unlocked the <b>Heel Spear</b> attack!
 
-'
+        Notation: <sprite=3>'
       objectReference: {fileID: 0}
     - target: {fileID: 5446404339568676526, guid: f02ba1cf336d1ba47935464a971360ec,
         type: 3}
       propertyPath: m_fontStyle
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5446404339568676526, guid: f02ba1cf336d1ba47935464a971360ec,
+        type: 3}
+      propertyPath: m_spriteAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 204b5ad04fbf3cb4a942bd7fcd88c75c,
+        type: 2}
     - target: {fileID: 6444391504792101346, guid: f02ba1cf336d1ba47935464a971360ec,
         type: 3}
       propertyPath: m_Pivot.x
@@ -3575,11 +3590,17 @@ PrefabInstance:
     - target: {fileID: 1980197916781157593, guid: 88ab15365d938ae40807341f4d951e6e,
         type: 3}
       propertyPath: m_text
-      value: 'Punch your enemies with [Z],
+      value: 'Punch your enemies with <sprite=4>,
 
-        and destroy them to advance to
-        the next level.'
+        and destroy them to advance
+        to the next level.'
       objectReference: {fileID: 0}
+    - target: {fileID: 1980197916781157593, guid: 88ab15365d938ae40807341f4d951e6e,
+        type: 3}
+      propertyPath: m_spriteAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 204b5ad04fbf3cb4a942bd7fcd88c75c,
+        type: 2}
     - target: {fileID: 4175464374532737352, guid: 88ab15365d938ae40807341f4d951e6e,
         type: 3}
       propertyPath: m_Sprite

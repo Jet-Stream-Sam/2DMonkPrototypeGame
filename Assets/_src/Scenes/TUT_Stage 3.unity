@@ -28449,6 +28449,12 @@ PrefabInstance:
 
         get under tight spaces.'
       objectReference: {fileID: 0}
+    - target: {fileID: 1980197916781157593, guid: 88ab15365d938ae40807341f4d951e6e,
+        type: 3}
+      propertyPath: m_spriteAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 204b5ad04fbf3cb4a942bd7fcd88c75c,
+        type: 2}
     - target: {fileID: 4175464374532737352, guid: 88ab15365d938ae40807341f4d951e6e,
         type: 3}
       propertyPath: m_Sprite
@@ -31895,13 +31901,20 @@ PrefabInstance:
       propertyPath: m_text
       value: 'You''ve unlocked the <b>Divekick</b> attack!
 
-'
+        Notation: While
+        Falling <sprite=3>'
       objectReference: {fileID: 0}
     - target: {fileID: 5446404339568676526, guid: f02ba1cf336d1ba47935464a971360ec,
         type: 3}
       propertyPath: m_fontStyle
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5446404339568676526, guid: f02ba1cf336d1ba47935464a971360ec,
+        type: 3}
+      propertyPath: m_spriteAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 204b5ad04fbf3cb4a942bd7fcd88c75c,
+        type: 2}
     - target: {fileID: 6444391504792101346, guid: f02ba1cf336d1ba47935464a971360ec,
         type: 3}
       propertyPath: m_Pivot.x
@@ -47845,7 +47858,7 @@ PrefabInstance:
     - target: {fileID: 7006248145539332322, guid: 42b6ebee0be9956418a868724126d4c7,
         type: 3}
       propertyPath: m_text
-      value: 'Tip: Attack with the Kick button [X]
+      value: 'Tip: Attack with the <sprite=3> button
 
         while crouched to strike
         at a low position.'
@@ -47865,6 +47878,12 @@ PrefabInstance:
       propertyPath: m_fontColor.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7006248145539332322, guid: 42b6ebee0be9956418a868724126d4c7,
+        type: 3}
+      propertyPath: m_spriteAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 204b5ad04fbf3cb4a942bd7fcd88c75c,
+        type: 2}
     - target: {fileID: 7006248145539332322, guid: 42b6ebee0be9956418a868724126d4c7,
         type: 3}
       propertyPath: m_fontColor32.rgba
@@ -47964,7 +47983,7 @@ PrefabInstance:
     - target: {fileID: 8484810404393323033, guid: 42b6ebee0be9956418a868724126d4c7,
         type: 3}
       propertyPath: m_Name
-      value: Wooden_Sign
+      value: Sign
       objectReference: {fileID: 0}
     - target: {fileID: 8959323633280223935, guid: 42b6ebee0be9956418a868724126d4c7,
         type: 3}

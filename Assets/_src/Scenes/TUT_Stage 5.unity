@@ -52703,13 +52703,19 @@ PrefabInstance:
     - target: {fileID: 1980197916781157593, guid: 88ab15365d938ae40807341f4d951e6e,
         type: 3}
       propertyPath: m_text
-      value: 'Do quarter circle forward + Punch [Z] Attack
-
-        to release a
-        special attack that stuns enemies.
-
-        This attack needs 2 orbs of your
-        new power meter.'
+      value: "Do <sprite=5><sprite=4> to release a \nspecial attack that stuns enemies.\nThis
+        attack needs 2 orbs of your new power meter."
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980197916781157593, guid: 88ab15365d938ae40807341f4d951e6e,
+        type: 3}
+      propertyPath: m_spriteAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 204b5ad04fbf3cb4a942bd7fcd88c75c,
+        type: 2}
+    - target: {fileID: 3876495366047731941, guid: 88ab15365d938ae40807341f4d951e6e,
+        type: 3}
+      propertyPath: m_text
+      value: <sprite=1>Interact
       objectReference: {fileID: 0}
     - target: {fileID: 3982451547812422667, guid: 88ab15365d938ae40807341f4d951e6e,
         type: 3}
