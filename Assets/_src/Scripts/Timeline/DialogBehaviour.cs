@@ -45,6 +45,7 @@ public class DialogBehaviour : PlayableBehaviour
         if (info.weight > 0)
         {
             clipIsPlaying = true;
+            Debug.Log(dialogueHandler);
             dialogueHandler.dialogueObject = dialogueObject;
             dialogueHandler.InitiateDialog(timeline);
             dialogueHandler.onDialogFinish += SkipClip;

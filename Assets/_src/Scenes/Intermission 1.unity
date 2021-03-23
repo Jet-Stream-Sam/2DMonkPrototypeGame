@@ -8210,6 +8210,21 @@ PrefabInstance:
       propertyPath: playerController
       value: 
       objectReference: {fileID: 1106374065}
+    - target: {fileID: 3762094308300654282, guid: 3b5645cc557776647aa964d65a611ea1,
+        type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3762094308300654282, guid: 3b5645cc557776647aa964d65a611ea1,
+        type: 3}
+      propertyPath: m_FillMethod
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3762094308300654282, guid: 3b5645cc557776647aa964d65a611ea1,
+        type: 3}
+      propertyPath: m_FillOrigin
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3762094308348658087, guid: 3b5645cc557776647aa964d65a611ea1,
         type: 3}
       propertyPath: m_Name
@@ -10431,6 +10446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 841476b85b36bc84b94bd4662ef31b64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stopCurrentMusic: 0
   musicToPlay: {fileID: 11400000, guid: 087517af0e9573f4dbcba4b1477b28e6, type: 2}
   playOnStart: 0
 --- !u!114 &1048992233 stripped
@@ -10657,7 +10673,7 @@ PrefabInstance:
     - target: {fileID: 9143045600590085025, guid: ae12b263db543384da2ca8456b5808a8,
         type: 3}
       propertyPath: levelToLoadName
-      value: Level1
+      value: CRU_Stage 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae12b263db543384da2ca8456b5808a8, type: 3}
@@ -11029,7 +11045,7 @@ PrefabInstance:
     - target: {fileID: 2703661811016647551, guid: 9351a2dc2fb1b3c4ba788c0c3c8a14c3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.9100005
+      value: -0.6722581
       objectReference: {fileID: 0}
     - target: {fileID: 2703661811016647551, guid: 9351a2dc2fb1b3c4ba788c0c3c8a14c3,
         type: 3}
@@ -11089,7 +11105,7 @@ PrefabInstance:
     - target: {fileID: 2703661811245347157, guid: 9351a2dc2fb1b3c4ba788c0c3c8a14c3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.23774242
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2703661811245347157, guid: 9351a2dc2fb1b3c4ba788c0c3c8a14c3,
         type: 3}
@@ -13681,9 +13697,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dd4ef3620b864946a4b36e363409023, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: animationObjs
+      Entry: 6
+      Data: 
   interactable: {fileID: 0}
-  fadingRenderer: {fileID: 1843104981}
   levelChanger: {fileID: 0}
+  unlockedFeatures: {fileID: 0}
   isLocked: 1
 --- !u!1 &1843104980 stripped
 GameObject:

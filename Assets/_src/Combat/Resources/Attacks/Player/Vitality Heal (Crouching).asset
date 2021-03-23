@@ -23,6 +23,7 @@ MonoBehaviour:
     SerializationNodes: []
   animationClip: {fileID: 7400000, guid: f102029be1850d84299cca7aeb523dd2, type: 2}
   moveSoundEffect: {fileID: 0}
+  crySoundEffect: {fileID: 0}
   lockVelocity: 1
   lockSideSwitch: 1
   moveType: 1
@@ -30,16 +31,21 @@ MonoBehaviour:
   attackAndProjectile: 0
   hitProperties:
     damage: 0
+    hitStunType: 0
     knockbackForce: 0
     knockbackMode: 0
     timeStopLength: 0
     timeStopScale: 0
+    timeStopMode: 0
+    timeStopDelay: 0
     hitSound: {fileID: 0}
-    impulseSource: {fileID: 0}
-    rippleEffectAdjust: {fileID: 0}
+    visualEffects: {fileID: 0}
     particleHitEffect: {fileID: 0}
-  moveBehaviour: {fileID: 0}
+  moveBehaviour: {fileID: -2872195656749309971, guid: 2c315a1608f073d41a609c65d1ae6143,
+    type: 3}
   moveEndsAtState: 1
+  powerMeterUsage: 0
+  vitalityMeterUsage: 0
   moveNotation:
     movementNotation: 02000000
     buttonNotation: 8

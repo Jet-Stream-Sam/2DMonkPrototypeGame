@@ -19,4 +19,5 @@ public class PlayerMainTrigger : MonoBehaviour, IDamageable
     {
         playerController.AnimationSendObject(obj);
     }
+
 }

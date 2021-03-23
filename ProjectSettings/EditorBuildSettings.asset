@@ -12,12 +12,6 @@ EditorBuildSettings:
     path: Assets/_src/Scenes/LoadingScreen.unity
     guid: 27458d66a510a614a87a031077a72403
   - enabled: 1
-    path: Assets/_src/Scenes/Level1.unity
-    guid: 36e6769a76bedf543992b3ad4ccf50fc
-  - enabled: 1
-    path: Assets/_src/Scenes/Level2.unity
-    guid: 5932dc3a58cb44f4eae13d80f88980ca
-  - enabled: 1
     path: Assets/_src/Scenes/TUT_Stage 1.unity
     guid: 3039392992c3fac4fad8f78045ea5002
   - enabled: 1
@@ -35,6 +29,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_src/Scenes/Intermission 1.unity
     guid: 15c5272dbaa86c144a527175a952f625
+  - enabled: 1
+    path: Assets/_src/Scenes/CRU_Stage 1.unity
+    guid: 1b70053c25772e446b9715fe3ecfed15
+  - enabled: 1
+    path: Assets/_src/Scenes/Level1.unity
+    guid: 36e6769a76bedf543992b3ad4ccf50fc
+  - enabled: 1
+    path: Assets/_src/Scenes/Level2.unity
+    guid: 5932dc3a58cb44f4eae13d80f88980ca
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 825bdd4dfcd22994e895fa11c812e322,
       type: 2}

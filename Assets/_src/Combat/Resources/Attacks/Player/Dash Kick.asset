@@ -49,7 +49,7 @@ MonoBehaviour:
   powerMeterUsage: 200
   vitalityMeterUsage: 0
   moveNotation:
-    movementNotation: 040000000000000004000000
+    movementNotation: 04000000000000000400000000000000020000000600000004000000
     buttonNotation: 2
     allowedState: PlayerStandingState
     allowedTimeBetweenInputs: 0.25

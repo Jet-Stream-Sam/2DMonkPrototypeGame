@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e051f83bb44fbf44eb2b9e542c2daeed, type: 3}
+  m_Name: Angel Super Charge
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  animationClip: {fileID: 7400000, guid: ef45f1c5d5ccd204496b84e4b7487f54, type: 2}
+  moveSoundEffect: {fileID: 0}
+  crySoundEffect: {fileID: 11400000, guid: 5bc9064fdd0dacb4b8aefecd1879a9dd, type: 2}
+  lockVelocity: 1
+  lockSideSwitch: 1
+  moveType: 0
+  projectiles: are assigned in the animation clips!
+  attackAndProjectile: 0
+  hitProperties:
+    damage: 140
+    hitStunType: 1
+    knockbackForce: 45
+    knockbackMode: 1
+    timeStopLength: 0.2
+    timeStopScale: 0.1
+    timeStopMode: 2
+    timeStopDelay: 0.12
+    hitSound: {fileID: 11400000, guid: 3361715ff025b64418e091e7bfb353b9, type: 2}
+    visualEffects: {fileID: 5244326971005480206, guid: 96863327a8e7b524eb7c686ef6748a74,
+      type: 3}
+    particleHitEffect: {fileID: 5244326971005480206, guid: 477917db31317684fb1ca836b6bcac2e,
+      type: 3}
+  moveBehaviour: {fileID: 7105861742051242310, guid: d3fb6be575e7fb740b1437f1836f2e70,
+    type: 3}

@@ -184,7 +184,9 @@ public class PlayerAttackState : PlayerState
             return;
 
         
-        GameObject instantiatedObj = UnityEngine.Object.Instantiate(projEvent.fireballPrefab, controllerScript.playerProjectileTransform.position, Quaternion.identity, VFXManager.transform);
+        GameObject instantiatedObj = UnityEngine.Object.Instantiate(projEvent.fireballPrefab, 
+            controllerScript.playerProjectileTransform.position, 
+            Quaternion.identity, VFXManager.transform);
         FireballBehaviour fireball = instantiatedObj.GetComponent<FireballBehaviour>();
 
         fireball.gameObject.transform.localScale = controllerScript.playerSpriteTransform.localScale.x >= 0 ?

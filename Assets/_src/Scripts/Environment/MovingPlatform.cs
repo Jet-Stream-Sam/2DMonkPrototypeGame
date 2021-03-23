@@ -1,60 +1,142 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D platformRigidbody;
-    [SerializeField] private float speed;
+    [SerializeField] private float platformSpeed;
+    [SerializeField] private PlatformFinishRoute platformFinishRoute;
+    [SerializeField] private bool platformWaitsForPlayer;
     [SerializeField] private Transform[] movePoints;
+    [SerializeField] private float pointDetectionRadius;
+    
+
     [SerializeField] private float stopTime = 0;
     private float stopTimer;
+
     private int movePointIndex = 0;
-    private Vector2 originalPosition;
+    private bool reversed = false;
+    private bool isStopped;
+
+    private PlayerMainController playerController;
+    private Rigidbody2D attachedRb;
+
+    public enum PlatformFinishRoute
+    {
+        BackToFirstPoint,
+        Reverse
+    }
 
     private void Start()
     {
-        originalPosition = platformRigidbody.position;
+        if (!platformWaitsForPlayer)
+            MovementStart();
+    }
+
+    private void MovementStart()
+    {
+        isStopped = false;
+    }
+
+    private void MovementStop()
+    {
+        isStopped = true;
     }
     private void FixedUpdate()
     {
-        bool isStopped = stopTimer > 0;
+        bool isWaiting = stopTimer > 0;
 
-        bool isOnTheLastMovePoint = movePointIndex == -1;
-        if (isOnTheLastMovePoint)
+        bool isOnTheLastMovePoint = movePointIndex == movePoints.Length;
+
+        if (isWaiting || isStopped)
+            return;
+
+        if (!isOnTheLastMovePoint)
         {
-            if (!isStopped)
-            {
-                platformRigidbody.position = Vector3.MoveTowards(platformRigidbody.position, originalPosition, speed * Time.fixedDeltaTime);
-                if (platformRigidbody.position == originalPosition)
-                {
-                    movePointIndex = 0;
-                    if(stopTime > 0)
-                        StartCoroutine(StopMovement(stopTime));
-                }
+            bool canPlatformDepart = !(movePointIndex == 0 && platformWaitsForPlayer && !attachedRb && !reversed);
+            if (!canPlatformDepart)
                 return;
-            }
-            
-          
-        }
 
-        if (!isStopped)
-        {
-            platformRigidbody.position = Vector3.MoveTowards(platformRigidbody.position, movePoints[movePointIndex].position, speed * Time.fixedDeltaTime);
-            if (platformRigidbody.position == (Vector2)movePoints[movePointIndex].position)
+            MovePlatform(movePoints[movePointIndex].position, platformSpeed, AdvancePointIndex);
+
+            void AdvancePointIndex()
             {
-                movePointIndex++;
-                if (movePointIndex >= movePoints.Length)
-                    movePointIndex = -1;
+                ChooseNextPoint();
                 if (stopTime > 0)
                     StartCoroutine(StopMovement(stopTime));
             }
         }
-        
- 
+        else
+        {
+            if(platformFinishRoute == PlatformFinishRoute.BackToFirstPoint)
+            {
+                movePointIndex = 0;
+                MovePlatform(movePoints[movePointIndex].position, platformSpeed, ResetPointIndex);
+            }    
+            else if(platformFinishRoute == PlatformFinishRoute.Reverse)
+            {
+                reversed = true;
+                movePointIndex -= 2;
+                MovePlatform(movePoints[movePointIndex].position, platformSpeed, ReversePointIndex);
+            }
+                
+            void ResetPointIndex()
+            {
+                ChooseNextPoint();
+                if (stopTime > 0)
+                    StartCoroutine(StopMovement(stopTime));
+            }
+
+            void ReversePointIndex()
+            {
+                ChooseNextPoint();
+                if (stopTime > 0)
+                    StartCoroutine(StopMovement(stopTime));
+            }
+        }
+
+        if (attachedRb != null)
+            AttachRigidBodyToPlatform(attachedRb);
+    }
+    private void AttachRigidBodyToPlatform(Rigidbody2D rb)
+    {
+        rb.velocity = new Vector2(rb.velocity.x + platformRigidbody.velocity.x, platformRigidbody.velocity.y);
+        Debug.Log(attachedRb.velocity);
+    }
+
+    private void MovePlatform(Vector2 point, float speed, Action onFinish) 
+    {
+        Vector2 movingDirection = (point - platformRigidbody.position).normalized;
+        platformRigidbody.velocity = new Vector2(movingDirection.x * speed, movingDirection.y * speed);
+
+        bool distanceCheck = Vector2.Distance(point, platformRigidbody.position) < pointDetectionRadius;
+        if (distanceCheck)
+        {
+            platformRigidbody.velocity = Vector2.zero;
+            onFinish?.Invoke();
+        }
+    }
+
+    private void ChooseNextPoint()
+    {
+        if (movePointIndex == 0)
+        {
+            reversed = false;
+            if (platformWaitsForPlayer && !attachedRb)
+                MovementStop();
+        }
+            
+
+        if (!reversed)
+            movePointIndex++;
+        else
+            movePointIndex--;
     }
     IEnumerator StopMovement(float seconds)
     {
+        
         stopTimer = seconds;
         while (stopTimer > 0)
         {
@@ -63,5 +145,37 @@ public class MovingPlatform : MonoBehaviour
         }
         stopTimer = 0;
 
+    }
+
+    private void DisconnectRigidBody()
+    {
+        attachedRb = null;
+
+    }
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        var player = col.GetComponent<PlayerMainTrigger>();
+        if (!player)
+            return;
+        if (platformWaitsForPlayer && isStopped)
+            MovementStart();
+        attachedRb = col.attachedRigidbody;
+        playerController = player.playerController;
+        playerController.hasPerformedJump += DisconnectRigidBody;
+    }
+
+    private void OnTriggerExit2D(Collider2D col)
+    {
+        var player = col.GetComponent<PlayerMainTrigger>();
+        if (!player)
+            return;
+        DisconnectRigidBody();
+        playerController.hasPerformedJump -= DisconnectRigidBody;
+
+    }
+
+    private void OnDestroy()
+    {
+        playerController.hasPerformedJump -= DisconnectRigidBody;
     }
 }
