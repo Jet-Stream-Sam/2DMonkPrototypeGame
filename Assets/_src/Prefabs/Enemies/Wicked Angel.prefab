@@ -515,7 +515,7 @@ SpriteRenderer:
   m_SortingOrder: 50
   m_Sprite: {fileID: 21300000, guid: fce97958da54a4c40a77191a048fa121, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 5.0625, y: 4.125}
@@ -771,6 +771,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1c4bd93d855384418fe8e8cf519371f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MovementX: 0
+  MovementY: 0
   enemyAnimationsScript: {fileID: 9103479759381710885}
   enemyCollider: {fileID: 7816727701821363042}
   enemyRigidBody: {fileID: 3350644368407841336}
@@ -809,8 +811,6 @@ MonoBehaviour:
   debugActivated: 1
   currentStateOutput: 
   isGrounded: 0
-  hasRecovered: 1
-  hasNormalizedMovement: 1
 --- !u!114 &140710951
 MonoBehaviour:
   m_ObjectHideFlags: 0

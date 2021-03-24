@@ -3,6 +3,7 @@ using System.Collections;
 
 public class EnemyHitStunnedState : EnemyState
 {
+    private float easingMovementX;
     public EnemyHitStunnedState(EnemyMainController controllerScript, MainStateMachine stateMachine) : base(controllerScript, stateMachine)
     {
     }
@@ -13,42 +14,42 @@ public class EnemyHitStunnedState : EnemyState
         controllerScript.enemyAnimationsScript.ChangeAnimationState(controllerScript.hitAnimationClip.name, true);
         controllerScript.AIBrain.StateReset();
         controllerScript.StartCoroutine(ComeBackToState(controllerScript.hitAnimationClip.length));
+
+        if (controllerScript.stunnedCoroutine != null)
+            controllerScript.StopCoroutine(controllerScript.stunnedCoroutine);
+        controllerScript.StartCoroutine(controllerScript.stunnedCoroutine = ComeBackToState(controllerScript.stunnedMaxTime));
+        easingMovementX = controllerScript.enemyRigidBody.velocity.x;
     }
 
     public override void HandleUpdate()
     {
         base.HandleUpdate();
 
-        if (controllerScript.isGrounded && controllerScript.hasRecovered)
-        {
-            bool hasStopped = Mathf.Abs(controllerScript.enemyRigidBody.velocity.x) < 0.01f && controllerScript.enemyRigidBody.velocity.y < 0.01f;
-            if (hasStopped)
-            {
-                controllerScript.hasNormalizedMovement = true;
-                controllerScript.enemyRigidBody.velocity = Vector2.zero;
-                stateMachine.ChangeState(new EnemyStandingState(controllerScript, stateMachine));
-            }
-
-        }
-
-        
     }
 
     public override void HandleFixedUpdate()
     {
         base.HandleFixedUpdate();
-        if (controllerScript.isGrounded && !controllerScript.hasNormalizedMovement)
+        if (controllerScript.isGrounded)
         {
-            controllerScript.enemyRigidBody.velocity = 
-                Vector2.Lerp(controllerScript.enemyRigidBody.velocity, Vector2.zero,
-                controllerScript.groundedStunnedToIdleEasingRate);
-        }
-        else if (!controllerScript.isGrounded && !controllerScript.hasRecovered || 
-            !controllerScript.isGrounded && !controllerScript.hasNormalizedMovement)
-        {
+            easingMovementX =
+            Mathf.Lerp(easingMovementX,
+            0,
+            controllerScript.groundedStunnedToIdleEasingRate);
+
             controllerScript.enemyRigidBody.velocity =
-                Vector2.Lerp(controllerScript.enemyRigidBody.velocity, Vector2.zero, 
-                controllerScript.airborneStunnedToIdleEasingRate);
+                new Vector2(easingMovementX, controllerScript.enemyRigidBody.velocity.y);
+        }
+        else
+        {
+            easingMovementX =
+            Mathf.Lerp(easingMovementX,
+            0,
+            controllerScript.airborneStunnedToIdleEasingRate);
+
+            controllerScript.enemyRigidBody.velocity =
+                new Vector2(easingMovementX, controllerScript.enemyRigidBody.velocity.y);
+
         }
     }
 
@@ -60,10 +61,10 @@ public class EnemyHitStunnedState : EnemyState
 
     private IEnumerator ComeBackToState(float time)
     {
-        controllerScript.hasRecovered = false;
-        controllerScript.hasNormalizedMovement = false;
         yield return new WaitForSeconds(time);
-        controllerScript.hasRecovered = true;
-        
+
+        controllerScript.enemyRigidBody.velocity = Vector2.zero;
+        stateMachine.ChangeState(new EnemyStandingState(controllerScript, stateMachine));
+
     }
 }

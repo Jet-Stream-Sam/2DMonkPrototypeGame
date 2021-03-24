@@ -76,7 +76,6 @@ GameObject:
   - component: {fileID: 769584158}
   - component: {fileID: 769584156}
   - component: {fileID: 1570159645715280143}
-  - component: {fileID: 5629784418332206547}
   - component: {fileID: 4115354500613223656}
   m_Layer: 0
   m_Name: Enraged Wizard
@@ -113,6 +112,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 337fd28fe67f44a42ba85dd2bf5f7599, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MovementX: 0
+  MovementY: 0
+  isReversed: 0
   enemyAnimationsScript: {fileID: 1484014983244567257}
   enemyCollider: {fileID: 4294972898798938000}
   enemyRigidBody: {fileID: 4505342065083756299}
@@ -132,7 +134,7 @@ MonoBehaviour:
   AIBrain: {fileID: 4115354500613223656}
   enemyProjectileTransform: {fileID: 6197938180333866224}
   hitBoxCheck: {fileID: 5072161450295100988}
-  spriteFlip: {fileID: 5629784418332206547}
+  spriteFlip: {fileID: 0}
   enemyVFXManager: {fileID: 6912393679464688830}
   groundedStunnedToIdleEasingRate: 0.3
   airborneStunnedToIdleEasingRate: 0.25
@@ -151,8 +153,6 @@ MonoBehaviour:
   debugActivated: 0
   currentStateOutput: 
   isGrounded: 0
-  hasRecovered: 1
-  hasNormalizedMovement: 1
 --- !u!114 &19382250852233352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,21 +244,6 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
---- !u!114 &5629784418332206547
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1484014983244567206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22354c531eb111348997de797d87c5ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sRenderer: {fileID: 7356389034460904384}
-  transformToFlip: {fileID: 6197938180333866224}
-  horizontalDirection: 0
 --- !u!114 &4115354500613223656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -574,11 +559,11 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2108280849
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 50
   m_Sprite: {fileID: 21300000, guid: 0c95faed3aa5a43d3b19f112f0843c87, type: 3}
   m_Color: {r: 1, g: 0.7249701, b: 0, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 5.0625, y: 4.125}
@@ -745,7 +730,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6470686485045245830}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.0499992, y: -0.09000015, z: 0}
+  m_LocalPosition: {x: 2.05, y: -0.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7747152992261613372}

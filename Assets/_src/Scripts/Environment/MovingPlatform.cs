@@ -11,8 +11,9 @@ public class MovingPlatform : MonoBehaviour
     [SerializeField] private bool platformWaitsForPlayer;
     [SerializeField] private Transform[] movePoints;
     [SerializeField] private float pointDetectionRadius;
+    private PlayerMainController playerController;
+    private Rigidbody2D attachedRb;
     
-
     [SerializeField] private float stopTime = 0;
     private float stopTimer;
 
@@ -20,8 +21,6 @@ public class MovingPlatform : MonoBehaviour
     private bool reversed = false;
     private bool isStopped;
 
-    private PlayerMainController playerController;
-    private Rigidbody2D attachedRb;
 
     public enum PlatformFinishRoute
     {
@@ -72,6 +71,7 @@ public class MovingPlatform : MonoBehaviour
         {
             if(platformFinishRoute == PlatformFinishRoute.BackToFirstPoint)
             {
+                reversed = true;
                 movePointIndex = 0;
                 MovePlatform(movePoints[movePointIndex].position, platformSpeed, ResetPointIndex);
             }    
@@ -103,7 +103,6 @@ public class MovingPlatform : MonoBehaviour
     private void AttachRigidBodyToPlatform(Rigidbody2D rb)
     {
         rb.velocity = new Vector2(rb.velocity.x + platformRigidbody.velocity.x, platformRigidbody.velocity.y);
-        Debug.Log(attachedRb.velocity);
     }
 
     private void MovePlatform(Vector2 point, float speed, Action onFinish) 
@@ -125,10 +124,13 @@ public class MovingPlatform : MonoBehaviour
         {
             reversed = false;
             if (platformWaitsForPlayer && !attachedRb)
+            {
                 MovementStop();
+                return;
+            }
+                
         }
             
-
         if (!reversed)
             movePointIndex++;
         else
@@ -154,9 +156,9 @@ public class MovingPlatform : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D col)
     {
-        var player = col.GetComponent<PlayerMainTrigger>();
-        if (!player)
+        if (!col.TryGetComponent(out PlayerMainTrigger player))
             return;
+
         if (platformWaitsForPlayer && isStopped)
             MovementStart();
         attachedRb = col.attachedRigidbody;
@@ -166,9 +168,9 @@ public class MovingPlatform : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D col)
     {
-        var player = col.GetComponent<PlayerMainTrigger>();
-        if (!player)
+        if (!col.TryGetComponent(out PlayerMainTrigger player))
             return;
+
         DisconnectRigidBody();
         playerController.hasPerformedJump -= DisconnectRigidBody;
 

@@ -33,23 +33,7 @@ public class PlayerState : IState
             controllerScript.ceilingCheckRadius,
             controllerScript.ceilingMask);
 
-
-        if (controllerScript.MovementX > 0)
-        {
-            controllerScript.playerSpriteTransform.localScale = 
-                new Vector2(1, 1);
-            controllerScript.isReversed = false;
-
-        }
-        else if (controllerScript.MovementX < 0)
-        {
-            controllerScript.playerSpriteTransform.localScale = 
-                new Vector2(-1, 1);
-            controllerScript.isReversed = true;
-        }
-
-        
-        
+        controllerScript.isReversed = !controllerScript.Flip(controllerScript.playerSpriteTransform, controllerScript.MovementX);
     }
 
     public virtual void HandleFixedUpdate()
@@ -78,4 +62,6 @@ public class PlayerState : IState
         }
         return value;
     }
+
+    
 }

@@ -33187,12 +33187,12 @@ PrefabInstance:
     - target: {fileID: 2703661811016647551, guid: 9351a2dc2fb1b3c4ba788c0c3c8a14c3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.26774052
+      value: 0.26774102
       objectReference: {fileID: 0}
     - target: {fileID: 2703661811016647551, guid: 9351a2dc2fb1b3c4ba788c0c3c8a14c3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.2031999
+      value: 0.40299958
       objectReference: {fileID: 0}
     - target: {fileID: 2703661811016647551, guid: 9351a2dc2fb1b3c4ba788c0c3c8a14c3,
         type: 3}
@@ -34823,16 +34823,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6115346111568690261, guid: 21d93d4d6af15ab469e32b1ffc82f08c,
         type: 3}
-    - target: {fileID: 6278708686460877383, guid: 21d93d4d6af15ab469e32b1ffc82f08c,
-        type: 3}
-      propertyPath: maxHealth
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 6278708686460877383, guid: 21d93d4d6af15ab469e32b1ffc82f08c,
-        type: 3}
-      propertyPath: maxVitalityOrbs
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21d93d4d6af15ab469e32b1ffc82f08c, type: 3}
 --- !u!1001 &2565051305352385878

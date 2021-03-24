@@ -78,6 +78,8 @@ public class FlyingCharge : MonoBehaviour, IMoveBehaviour
 
         Debug.Log(attackState.directionToFollow);
 
+        controllerScript.SetMovement(attackState.directionToFollow);
+
         controllerScript.enemyRigidBody.velocity = attackState.directionToFollow * dashPower;
 
         easingMovement = controllerScript.enemyRigidBody.velocity;

@@ -22,6 +22,8 @@ public class EnemyState : IState
             controllerScript.groundCheck.position,
             controllerScript.groundCheckRadius,
             controllerScript.groundMask);
+
+        controllerScript.isReversed = !controllerScript.Flip(controllerScript.enemySpriteTransform, controllerScript.MovementX);
     }
 
     public virtual void HandleFixedUpdate()
@@ -32,5 +34,22 @@ public class EnemyState : IState
     public virtual void Exit()
     {
 
+    }
+
+    protected float ClampMovement(float value)
+    {
+        if (value < 0.01f && value > -0.01f)
+        {
+            value = 0;
+        }
+        if (value > 0.99f)
+        {
+            value = 1;
+        }
+        if (value < -0.99f)
+        {
+            value = -1;
+        }
+        return value;
     }
 }

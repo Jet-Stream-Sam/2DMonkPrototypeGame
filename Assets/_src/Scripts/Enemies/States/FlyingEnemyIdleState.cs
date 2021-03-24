@@ -22,6 +22,9 @@ public class FlyingEnemyIdleState : FlyingEnemyState
     public override void HandleFixedUpdate()
     {
         base.HandleFixedUpdate();
+
+        controllerScript.enemyRigidBody.velocity =
+            new Vector2(controllerScript.MovementX * controllerScript.enemySpeed, controllerScript.MovementY * controllerScript.enemySpeed);
     }
 
     public override void Exit()

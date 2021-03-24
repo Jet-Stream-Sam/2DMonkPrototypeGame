@@ -39,13 +39,8 @@ public class WizardFollowBehaviour : MonoBehaviour, IMonoBehaviourState
             }
 
             if (Time.deltaTime > 0)
-                enemyRigidBody.velocity = new Vector2(directionToFollow.x * enemySpeed, enemyRigidBody.velocity.y);
-                
-
-            enemyController.spriteFlip.Flip(directionToFollow.x);
-
-            
-            
+                enemyController.SetMovement(directionToFollow);
+                 
         }
     }
 

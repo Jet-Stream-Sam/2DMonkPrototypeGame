@@ -8,9 +8,8 @@ public class CameraChangeByTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        PlayerMainTrigger player = col.GetComponent<PlayerMainTrigger>();
 
-        if (player == null)
+        if (!col.TryGetComponent(out PlayerMainTrigger player))
             return;
 
         cameraToToggle.SetActive(true);
@@ -18,9 +17,7 @@ public class CameraChangeByTrigger : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D col)
     {
-        PlayerMainTrigger player = col.GetComponent<PlayerMainTrigger>();
-
-        if (player == null)
+        if (!col.TryGetComponent(out PlayerMainTrigger player))
             return;
 
         cameraToToggle.SetActive(false);

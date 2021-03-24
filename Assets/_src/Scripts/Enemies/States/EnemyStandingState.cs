@@ -3,6 +3,7 @@ using System.Collections;
 
 public class EnemyStandingState : EnemyGroundedState
 {
+    private float easingStandingMovementX;
     public EnemyStandingState(EnemyMainController controllerScript, MainStateMachine stateMachine) : base(controllerScript, stateMachine)
     {
     }
@@ -16,11 +17,15 @@ public class EnemyStandingState : EnemyGroundedState
     public override void HandleUpdate()
     {
         base.HandleUpdate();
+
     }
 
     public override void HandleFixedUpdate()
     {
         base.HandleFixedUpdate();
+
+        controllerScript.enemyRigidBody.velocity =
+            new Vector2(controllerScript.MovementX * controllerScript.enemySpeed, controllerScript.enemyRigidBody.velocity.y);
     }
 
     public override void Exit()

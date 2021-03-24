@@ -28,8 +28,11 @@ public class HitEffects : MonoBehaviour
 
         GameObject effectObj = Instantiate(effectPrefab, hitPoint.position, Quaternion.identity, VFXTransform);
 
-        Cinemachine.CinemachineImpulseSource impulseSource =
-                effectObj.GetComponent<Cinemachine.CinemachineImpulseSource>();
+        Cinemachine.CinemachineImpulseSource impulseSource;
+
+        if(!effectObj.TryGetComponent(out impulseSource))
+            return;
+
         impulseSource.GenerateImpulse(transform.up);
 
     }

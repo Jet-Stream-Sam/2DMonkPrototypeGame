@@ -215,8 +215,6 @@ public class PlayerInputHandler : SerializedMonoBehaviour
         if (isReversed)
         {
             sequences = ReverseInputAll(sequences);
-            
-            
         }
 
         int i = 0;

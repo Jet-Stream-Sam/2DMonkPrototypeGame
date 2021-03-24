@@ -73,6 +73,7 @@ MonoBehaviour:
   crouchingMoveSpeed: 6
   standingEasingRate: 0.8
   airborneEasingRate: 1
+  stunnedMaxTime: 0.4
   jumpSpeed: 5
   jumpHeight: 5.75
   airborneJumpDelay: 0.15
@@ -99,8 +100,6 @@ MonoBehaviour:
   hitColor: {r: 3.8774097, g: 0.27434498, b: 0.27434498, a: 1}
   debugActivated: 1
   isGrounded: 0
-  hasRecovered: 1
-  hasNormalizedMovement: 1
   currentStateOutput: 
 --- !u!114 &4077586489913838961
 MonoBehaviour:

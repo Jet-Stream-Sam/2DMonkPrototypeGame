@@ -17,8 +17,8 @@ public class PlayerMainController : MonoBehaviour, IDamageable, IEntityControlle
     [HideInInspector] public bool isReversed = false;
     public float MovementX { get; private set; }
     public float MovementY { get; private set; }
-    public bool areControlsEnabled { get; private set; } = true;
     public bool IsHoldingJumpButton { get; private set; }
+
     [FoldoutGroup("Dependencies", expanded: false)]
     public Transform groundCheck;
     [FoldoutGroup("Dependencies")]
@@ -57,6 +57,8 @@ public class PlayerMainController : MonoBehaviour, IDamageable, IEntityControlle
     [Range(0.01f, 1)] public float standingEasingRate = 0.6f;
     [TabGroup("Player/Tabs", "Movement Settings")]
     [Range(0.01f, 1)] public float airborneEasingRate = 0.6f;
+    [TabGroup("Player/Tabs", "Movement Settings")]
+    public float stunnedMaxTime = 0.4f;
     [TabGroup("Player/Tabs", "Movement Settings")]
     public float jumpSpeed = 2;
     [TabGroup("Player/Tabs", "Movement Settings")]
@@ -113,10 +115,7 @@ public class PlayerMainController : MonoBehaviour, IDamageable, IEntityControlle
     [SerializeField] private bool debugActivated = true;
     [TabGroup("Player/Tabs", "Debug")]
     [ShowIf("debugActivated")] [ReadOnly] public bool isGrounded;
-    [TabGroup("Player/Tabs", "Debug")]
-    [ShowIf("debugActivated")] [ReadOnly] public bool hasRecovered = true;
-    [TabGroup("Player/Tabs", "Debug")]
-    [ShowIf("debugActivated")] [ReadOnly] public bool hasNormalizedMovement = true;
+
     public MainStateMachine StateMachine { get; private set; }
     [TabGroup("Player/Tabs", "Debug")]
     [ShowIf("debugActivated")]
@@ -136,9 +135,12 @@ public class PlayerMainController : MonoBehaviour, IDamageable, IEntityControlle
     public Action<int> hasChangedVitalityOrbMeter;
     public Action hasDied;
     #endregion
-
+    #region Odin Inspector Conditions
+    private bool areControlsEnabled;
+    #endregion
     #region Player Coroutines
     private IEnumerator flashCoroutine;
+    public IEnumerator stunnedCoroutine;
     #endregion
 
     #region Animation Event Exclusive Methods
@@ -311,7 +313,19 @@ public class PlayerMainController : MonoBehaviour, IDamageable, IEntityControlle
 
 
     }
-    
+    public bool Flip(Transform _transform, float movementValue)
+    {
+        bool isFacingRight = _transform.localScale.x > 0;
+        bool willFlip = isFacingRight && movementValue < 0 || !isFacingRight && movementValue > 0;
+        if (willFlip)
+        {
+            _transform.localScale =
+                    new Vector2(_transform.localScale.x * -1,
+                     _transform.localScale.y);
+
+        }
+        return isFacingRight;
+    }
     public void DepletePowerOrbMeter(int amount)
     {
         currentPowerOrbMeter -= amount;

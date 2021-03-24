@@ -10,6 +10,10 @@ public class EnemyMainController : MonoBehaviour, IDamageable, IEntityController
 {
     public SoundManager SoundManager { get; protected set; }
 
+    public float MovementX;
+    public float MovementY;
+    [HideInInspector] public bool isReversed = false;
+
     [FoldoutGroup("Dependencies", expanded: false)]
     public AnimationsState enemyAnimationsScript;
     [FoldoutGroup("Dependencies")]
@@ -59,6 +63,8 @@ public class EnemyMainController : MonoBehaviour, IDamageable, IEntityController
     [TabGroup("Enemy/Tabs", "Movement Settings")]
     [Range(0, 1f)] public float airborneStunnedToIdleEasingRate = 0.6f;
     [TabGroup("Enemy/Tabs", "Movement Settings")]
+    public float stunnedMaxTime = 0.4f;
+    [TabGroup("Enemy/Tabs", "Movement Settings")]
     [SerializeField] public float enemySpeed;
 
     [TabGroup("Enemy/Tabs", "Collision Checks")]
@@ -94,10 +100,6 @@ public class EnemyMainController : MonoBehaviour, IDamageable, IEntityController
     [ShowIf("debugActivated")] [ReadOnly] public string currentStateOutput;
     [TabGroup("Enemy/Tabs", "Debug")]
     [ShowIf("debugActivated")] [ReadOnly] public bool isGrounded;
-    [TabGroup("Enemy/Tabs", "Debug")]
-    [ShowIf("debugActivated")] [ReadOnly] public bool hasRecovered = true;
-    [TabGroup("Enemy/Tabs", "Debug")]
-    [ShowIf("debugActivated")] [ReadOnly] public bool hasNormalizedMovement = true;
 
     #region Enemy Events
     public Action<ScriptableObject> AnimationEventWasCalled { get; set; }
@@ -106,6 +108,7 @@ public class EnemyMainController : MonoBehaviour, IDamageable, IEntityController
 
     #region Enemy Coroutines
     private IEnumerator flashCoroutine;
+    public IEnumerator stunnedCoroutine;
     #endregion
 
     #region Animation Event Exclusive Methods
@@ -240,7 +243,24 @@ public class EnemyMainController : MonoBehaviour, IDamageable, IEntityController
 
 
     }
-    
 
-    
+    public bool Flip(Transform _transform, float movementValue)
+    {
+        bool isFacingRight = _transform.localScale.x > 0;
+        bool willFlip = isFacingRight && movementValue < 0 || !isFacingRight && movementValue > 0;
+        if (willFlip)
+        {
+            _transform.localScale =
+                    new Vector2(_transform.localScale.x * -1,
+                     _transform.localScale.y);
+
+        }
+        return isFacingRight;
+    }
+
+    public void SetMovement(Vector2 direction)
+    {
+        MovementX = direction.x;
+        MovementY = direction.y;
+    }
 }

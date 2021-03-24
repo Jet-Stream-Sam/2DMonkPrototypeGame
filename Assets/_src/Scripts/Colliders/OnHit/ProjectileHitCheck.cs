@@ -21,20 +21,16 @@ public class ProjectileHitCheck : HitCheck
             return;
         if (checkedHitColliders.Contains(hitCollider))
             return;
-        IDamageable hitBox = hitCollider.GetComponent<IDamageable>();
 
-        
-        if (hitInstanceException != null)
+        if (hitCollider.TryGetComponent(out IDamageable hitBox))
         {
-            
-            if (hitBox == hitInstanceException)
+            if (hitInstanceException != null)
             {
-                return;
+                if (hitBox == hitInstanceException)
+                {
+                    return;
+                }
             }
-        }
-
-        if (hitBox != null)
-        {
             if (hitBox.GetType() == hitTypeException)
             {
                 return;
@@ -43,9 +39,7 @@ public class ProjectileHitCheck : HitCheck
             checkedHitColliders.Add(hitCollider);
         }
 
-        Tilemap tile = hitCollider.GetComponent<Tilemap>();
-        
-        if(tile != null)
+        if(hitCollider.TryGetComponent(out Tilemap tile))
         {
             OnSucessfulHit?.Invoke(hitCollider.transform.position, null);
             checkedHitColliders.Add(hitCollider);

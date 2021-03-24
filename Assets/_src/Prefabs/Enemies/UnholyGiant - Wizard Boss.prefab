@@ -251,7 +251,6 @@ GameObject:
   - component: {fileID: 1546837830}
   - component: {fileID: 1546837831}
   - component: {fileID: 1546837832}
-  - component: {fileID: 177281622889489539}
   - component: {fileID: -6116354194168683481}
   - component: {fileID: 3331705600348280585}
   - component: {fileID: 1723513195}
@@ -272,7 +271,7 @@ Transform:
   m_GameObject: {fileID: 343963594249940022}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 41.43, y: -4.93, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 886972781766681168}
   - {fileID: 6986702542095110473}
@@ -293,6 +292,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 337fd28fe67f44a42ba85dd2bf5f7599, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MovementX: 0
+  MovementY: 0
+  isReversed: 0
   enemyAnimationsScript: {fileID: 343963594249940041}
   enemyCollider: {fileID: 6890546787194372237}
   enemyRigidBody: {fileID: 3853090378102596793}
@@ -312,7 +314,7 @@ MonoBehaviour:
   AIBrain: {fileID: -6116354194168683481}
   enemyProjectileTransform: {fileID: 2230559071831496308}
   hitBoxCheck: {fileID: 6814436414655476199}
-  spriteFlip: {fileID: 177281622889489539}
+  spriteFlip: {fileID: 0}
   enemyVFXManager: {fileID: 4235145721956587702}
   groundedStunnedToIdleEasingRate: 0.5
   airborneStunnedToIdleEasingRate: 0.25
@@ -331,8 +333,6 @@ MonoBehaviour:
   debugActivated: 0
   currentStateOutput: 
   isGrounded: 0
-  hasRecovered: 1
-  hasNormalizedMovement: 1
 --- !u!114 &705711117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -424,21 +424,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyAI: {fileID: -6116354194168683481}
   enemyController: {fileID: 343963594249940043}
---- !u!114 &177281622889489539
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 343963594249940022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22354c531eb111348997de797d87c5ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sRenderer: {fileID: 8101006032883796836}
-  transformToFlip: {fileID: 2230559071831496308}
-  horizontalDirection: 0
 --- !u!114 &-6116354194168683481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -693,7 +678,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2169170222607945403}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.0500007, y: -0.09000015, z: 0}
+  m_LocalPosition: {x: 2.05, y: -0.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 886972781766681168}
@@ -1069,7 +1054,7 @@ Transform:
   m_GameObject: {fileID: 9156882621679174602}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10.45, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 343963595502964200}
   - {fileID: 2383320665592565210}
@@ -1123,7 +1108,7 @@ SpriteRenderer:
   m_SortingOrder: 50
   m_Sprite: {fileID: 21300000, guid: 0c95faed3aa5a43d3b19f112f0843c87, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 5.0625, y: 4.125}

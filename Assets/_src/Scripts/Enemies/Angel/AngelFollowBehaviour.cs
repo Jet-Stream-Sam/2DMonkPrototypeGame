@@ -30,14 +30,9 @@ public class AngelFollowBehaviour : MonoBehaviour, IMonoBehaviourState
         {
             directionToFollow = (playerTransform.position - enemyController.enemySpriteTransform.position).normalized;
 
- 
+
             if (Time.deltaTime > 0)
-                enemyRigidBody.velocity = new Vector2(directionToFollow.x * enemySpeed, directionToFollow.y * enemySpeed);
-
-
-            enemyController.spriteFlip.Flip(directionToFollow.x);
-
-
+                enemyController.SetMovement(directionToFollow);
 
         }
     }

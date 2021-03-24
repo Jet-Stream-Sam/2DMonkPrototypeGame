@@ -515,7 +515,7 @@ SpriteRenderer:
   m_SortingOrder: 50
   m_Sprite: {fileID: 21300000, guid: fce97958da54a4c40a77191a048fa121, type: 3}
   m_Color: {r: 1, g: 0.6073077, b: 0.53333336, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 5.0625, y: 4.125}
@@ -730,7 +730,6 @@ GameObject:
   - component: {fileID: 2277371242047701965}
   - component: {fileID: 140710951}
   - component: {fileID: 9103479759381710885}
-  - component: {fileID: 3675440340909805267}
   - component: {fileID: 1141201990012428999}
   - component: {fileID: 4089806748207030825}
   - component: {fileID: 7131707793076673987}
@@ -771,6 +770,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1c4bd93d855384418fe8e8cf519371f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MovementX: 0
+  MovementY: 0
   enemyAnimationsScript: {fileID: 9103479759381710885}
   enemyCollider: {fileID: 7816727701821363042}
   enemyRigidBody: {fileID: 3350644368407841336}
@@ -790,7 +791,7 @@ MonoBehaviour:
   AIBrain: {fileID: 4089806748207030825}
   enemyProjectileTransform: {fileID: 453552881}
   hitBoxCheck: {fileID: 1840672164}
-  spriteFlip: {fileID: 3675440340909805267}
+  spriteFlip: {fileID: 0}
   enemyVFXManager: {fileID: 345806811}
   groundedStunnedToIdleEasingRate: 0.2
   airborneStunnedToIdleEasingRate: 0.2
@@ -809,8 +810,6 @@ MonoBehaviour:
   debugActivated: 1
   currentStateOutput: 
   isGrounded: 0
-  hasRecovered: 1
-  hasNormalizedMovement: 1
 --- !u!114 &140710951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -838,21 +837,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteAnimator: {fileID: 252701935027741351}
---- !u!114 &3675440340909805267
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9103479759381710938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22354c531eb111348997de797d87c5ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sRenderer: {fileID: 5618107794097552915}
-  transformToFlip: {fileID: 453552881}
-  horizontalDirection: 0
 --- !u!114 &1141201990012428999
 MonoBehaviour:
   m_ObjectHideFlags: 0

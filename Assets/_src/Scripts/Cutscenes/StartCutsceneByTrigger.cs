@@ -10,8 +10,7 @@ public class StartCutsceneByTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        PlayerMainTrigger player = col.GetComponent<PlayerMainTrigger>();
-        if (player == null)
+        if (!col.TryGetComponent(out PlayerMainTrigger player))
             return;
         timeline.Play();
         if(deactivateTriggerOnTouch) gameObject.SetActive(false);

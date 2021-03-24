@@ -37,11 +37,12 @@ public class FieryCharge : MonoBehaviour, IMoveBehaviour
     public void OnMoveEnter()
     {
         controllerScript.AnimationEventWasCalled += TriggerAttack;
+
+
     }
 
     public void OnMoveUpdate()
     {
-
 
 
     }
@@ -78,6 +79,8 @@ public class FieryCharge : MonoBehaviour, IMoveBehaviour
     {
         if (!(obj is AttackTriggerEvent trigger))
             return;
+
+        controllerScript.SetMovement(attackState.directionToFollow);
 
         controllerScript.enemyRigidBody.velocity =
             new Vector2(attackState.directionToFollow.x * dashPower,

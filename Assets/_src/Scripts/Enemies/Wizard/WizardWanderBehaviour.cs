@@ -5,7 +5,6 @@ using UnityEngine;
 public class WizardWanderBehaviour : MonoBehaviour, IMonoBehaviourState
 {
     [SerializeField] private EnemyMainController enemyController;
-    private Rigidbody2D enemyRigidBody;
     private Vector2 directionToFollow;
     private Transform groundDetectionLeft;
     private Transform groundDetectionRight;
@@ -20,11 +19,8 @@ public class WizardWanderBehaviour : MonoBehaviour, IMonoBehaviourState
     private bool isCheckingGroundDetectionOnTheRight;
     private bool isCheckingWallDetectionOnTheLeft;
     private bool isCheckingWallDetectionOnTheRight;
-    private float enemySpeed;
     void Start()
     {
-        enemyRigidBody = enemyController.enemyRigidBody;
-        enemySpeed = enemyController.enemySpeed;
         groundDetectionLeft = enemyController.groundDetectionLeft;
         groundDetectionRight = enemyController.groundDetectionRight;
         wallDetectionLeft = enemyController.wallDetectionLeft;
@@ -34,8 +30,7 @@ public class WizardWanderBehaviour : MonoBehaviour, IMonoBehaviourState
         groundDetectionLRadius = enemyController.groundDetectionLRadius;
         groundDetectionRRadius = enemyController.groundDetectionRRadius;
         groundLayerMask = enemyController.groundMask;
-
-        
+   
     }
 
     private void OnEnable()
@@ -46,7 +41,6 @@ public class WizardWanderBehaviour : MonoBehaviour, IMonoBehaviourState
         {
             directionToFollow = new Vector2(1, 0);
         }
-        enemyController.spriteFlip.Flip(directionToFollow.x);
     }
 
     public void FixedUpdate()
@@ -74,27 +68,25 @@ public class WizardWanderBehaviour : MonoBehaviour, IMonoBehaviourState
             wallDetectionRRadius,
             groundLayerMask);
 
-        enemyRigidBody.velocity = directionToFollow * enemySpeed;
+        if ((!isCheckingGroundDetectionOnTheRight ||
+            isCheckingWallDetectionOnTheRight) && enemyController.isReversed)
+        {
+            directionToFollow = new Vector2(1, 0);
+        }
+        if ((!isCheckingGroundDetectionOnTheRight ||
+                    isCheckingWallDetectionOnTheRight) && !enemyController.isReversed)
+        {
+            directionToFollow = new Vector2(-1, 0);
+        }
 
         if (!isCheckingGroundDetectionOnTheLeft && !isCheckingGroundDetectionOnTheRight ||
             isCheckingWallDetectionOnTheLeft && isCheckingWallDetectionOnTheRight)
         {
-            enemyRigidBody.velocity = new Vector2(0, enemyRigidBody.velocity.y);
+            enemyController.SetMovement(Vector2.zero);
             return;
         }
 
-        if(!isCheckingGroundDetectionOnTheLeft ||
-            isCheckingWallDetectionOnTheLeft)
-        {
-            directionToFollow = new Vector2(1, 0);
-            enemyController.spriteFlip.Flip(directionToFollow.x);
-        }
-        if (!isCheckingGroundDetectionOnTheRight ||
-                    isCheckingWallDetectionOnTheRight)
-        {
-            directionToFollow = new Vector2(-1, 0);
-            enemyController.spriteFlip.Flip(directionToFollow.x);
-        }
+        enemyController.SetMovement(directionToFollow);
 
 
     }

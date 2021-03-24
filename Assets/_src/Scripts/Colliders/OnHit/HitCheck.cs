@@ -25,26 +25,24 @@ public class HitCheck : SerializedMonoBehaviour
             return;
         if (checkedHitColliders.Contains(hitCollider))
             return;
-        IDamageable hitBox = hitCollider.GetComponent<IDamageable>();
-        
+
+        if (!hitCollider.TryGetComponent(out IDamageable hitBox))
+            return;
+
         if(hitInstanceException != null)
         {
-
             if (hitBox == hitInstanceException)
             {
                 return;
             }
         }
-        
-        if(hitBox != null)
+
+        if (hitBox.GetType() == hitTypeException)
         {
-            if (hitBox.GetType() == hitTypeException)
-            {
-                return;
-            }
-            OnSucessfulHit?.Invoke(hitCollider.transform.position, hitBox);
-            checkedHitColliders.Add(hitCollider);
+            return;
         }
+        OnSucessfulHit?.Invoke(hitCollider.transform.position, hitBox);
+        checkedHitColliders.Add(hitCollider);
     }
 
     public void ResetProperties()

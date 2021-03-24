@@ -20,31 +20,15 @@ public class FlyingEnemyHitStunnedState : FlyingEnemyState
     {
         base.HandleUpdate();
 
-        if (controllerScript.hasRecovered)
-        {
-            bool hasStopped = Mathf.Abs(controllerScript.enemyRigidBody.velocity.x) < 0.01f && controllerScript.enemyRigidBody.velocity.y < 0.01f;
-            if (hasStopped)
-            {
-                controllerScript.hasNormalizedMovement = true;
-                controllerScript.enemyRigidBody.velocity = Vector2.zero;
-                stateMachine.ChangeState(new FlyingEnemyIdleState(controllerScript, stateMachine));
-            }
-
-        }
-
-
     }
 
     public override void HandleFixedUpdate()
     {
         base.HandleFixedUpdate();
-        if (!controllerScript.hasRecovered ||
-            !controllerScript.hasNormalizedMovement)
-        {
-            controllerScript.enemyRigidBody.velocity =
+
+        controllerScript.enemyRigidBody.velocity =
                 Vector2.Lerp(controllerScript.enemyRigidBody.velocity, Vector2.zero,
                 controllerScript.airborneStunnedToIdleEasingRate);
-        }
     }
 
     public override void Exit()
@@ -52,13 +36,12 @@ public class FlyingEnemyHitStunnedState : FlyingEnemyState
         base.Exit();
     }
 
-
     private IEnumerator ComeBackToState(float time)
     {
-        controllerScript.hasRecovered = false;
-        controllerScript.hasNormalizedMovement = false;
         yield return new WaitForSeconds(time);
-        controllerScript.hasRecovered = true;
+
+        controllerScript.enemyRigidBody.velocity = Vector2.zero;
+        stateMachine.ChangeState(new FlyingEnemyIdleState(controllerScript, stateMachine));
 
     }
 }
