@@ -484,6 +484,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -771,6 +772,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MovementX: 0
   MovementY: 0
+  isReversed: 0
   enemyAnimationsScript: {fileID: 9103479759381710885}
   enemyCollider: {fileID: 7816727701821363042}
   enemyRigidBody: {fileID: 3350644368407841336}
@@ -794,6 +796,7 @@ MonoBehaviour:
   enemyVFXManager: {fileID: 345806811}
   groundedStunnedToIdleEasingRate: 0.1
   airborneStunnedToIdleEasingRate: 0.05
+  stunnedMaxTime: 0.4
   enemySpeed: 6
   groundCheckRadius: 0.25
   groundDetectionLRadius: 0.25
@@ -805,7 +808,7 @@ MonoBehaviour:
     m_Bits: 256
   maxHealth: 150
   currentHealth: 0
-  hitColor: {r: 3.8774097, g: 0.27434498, b: 0.27434498, a: 1}
+  hitColor: {r: 11.984314, g: 0.5019608, b: 0.5019608, a: 1}
   debugActivated: 0
   currentStateOutput: 
   isGrounded: 0

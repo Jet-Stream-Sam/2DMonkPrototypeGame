@@ -392,6 +392,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -797,6 +798,7 @@ MonoBehaviour:
   enemyVFXManager: {fileID: 3470001099744600564}
   groundedStunnedToIdleEasingRate: 0.1
   airborneStunnedToIdleEasingRate: 0.05
+  stunnedMaxTime: 0.4
   enemySpeed: 3
   groundCheckRadius: 0.25
   groundDetectionLRadius: 0.25
@@ -808,7 +810,7 @@ MonoBehaviour:
     m_Bits: 256
   maxHealth: 100
   currentHealth: 0
-  hitColor: {r: 3.9533494, g: 0.2897743, b: 0.2897743, a: 1}
+  hitColor: {r: 11.984314, g: 0.47937283, b: 0.47937283, a: 1}
   debugActivated: 0
   currentStateOutput: 
   isGrounded: 0

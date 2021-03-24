@@ -38,6 +38,8 @@ public class CuttingKickAttack : MonoBehaviour, IMoveBehaviour
 
         easingMovement = controllerScript.playerRigidBody.velocity.x;
 
+        if (!afterImageEffect)
+            return;
         vfxPool = controllerScript.playerMainVFXManager.afterImageEffectPool;
         
         vfxPool.UpdatePool(afterImageEffect);
@@ -62,6 +64,9 @@ public class CuttingKickAttack : MonoBehaviour, IMoveBehaviour
 
         controllerScript.playerRigidBody.velocity =
             new Vector2(tempSpeed, controllerScript.playerRigidBody.velocity.y);
+
+        if (!afterImageEffect)
+            return;
 
         if (Mathf.Abs(controllerScript.playerMainCollider.transform.position.x - lastImagePos) > allowedDistanceBtwImages)
         {
