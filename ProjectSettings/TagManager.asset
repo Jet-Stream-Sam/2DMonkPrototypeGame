@@ -41,6 +41,9 @@ TagManager:
   - name: Background
     uniqueID: 2290128831
     locked: 0
+  - name: Hidden Objects
+    uniqueID: 3269081061
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
@@ -52,9 +55,6 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 2108280849
-    locked: 0
-  - name: VFX
-    uniqueID: 3896922895
     locked: 0
   - name: Foreground
     uniqueID: 798559227

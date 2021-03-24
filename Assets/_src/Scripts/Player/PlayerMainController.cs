@@ -268,7 +268,7 @@ public class PlayerMainController : MonoBehaviour, IDamageable, IEntityControlle
 
         if (flashCoroutine != null)
             StopCoroutine(flashCoroutine);
-        flashCoroutine = HitFlash(playerSpriteRenderer, 3.5f);
+        flashCoroutine = HitFlash(playerSpriteRenderer, 4f);
         StartCoroutine(flashCoroutine);
 
         StateMachine.ChangeState(new PlayerHitStunnedState(this, StateMachine));
