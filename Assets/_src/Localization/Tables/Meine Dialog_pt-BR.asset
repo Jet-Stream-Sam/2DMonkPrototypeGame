@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Meine Dialog_pt-BR
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: pt-BR
+  m_SharedData: {fileID: 11400000, guid: a87258dc88b9056409b5135798f5db88, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 9613680640
+    m_Localized: "<b>Pare.</b><pause=0.3> Sei que est\xE1 chegando."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 312773779456
+    m_Localized: "Que estranho,<pause=0.2><speed=85> voc\xEA n\xE3o era quem eu esperava...<speed=75><pause=0.3>
+      \nDe qual <#FF1D00>Cl\xE3 Shindo </color>voc\xEA \xE9?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 480785014784
+    m_Localized: .....
+    m_Metadata:
+      m_Items: []
+  - m_Id: 495276335104
+    m_Localized: "Oh, o qu\xE3o rude da minha pessoa.<pause=0.2> Deixe me introduzir.<pause=0.5>
+      \nMeu nome \xE9 <b>Meine</b>, capit\xE3o da <#ff3c33>Fierce Red</color>, \nprimeira
+      Cl\xE3 Shindo."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 504973565952
+    m_Localized: Agora, por favor, apresente-se.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 649932906496
+    m_Localized: "Meu nome \xE9 <b>Tatsuo</b>.<pause=0.5> Estou sozinho, e sobre
+      cl\xE3s...<pause=0.2> \nN\xE3o estou em um."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59805171785728
+    m_Localized: "Voc\xEA n\xE3o est\xE1 em um cl\xE3? Ha, voc\xEA est\xE1 tentando
+      pregar \numa pe\xE7a em mim? Por qual raz\xE3o um civil andaria \npor essas
+      partes? E ainda sozinho?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 60488637816832
+    m_Localized: Estou em busca do <b>Diamante Crepuscular</b>.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 60825792749568
+    m_Localized: "Ah v\xE1, \xE9 memo?<pause=0.3> N\xE3o me fa\xE7a rir!\nO <b>Diamante
+      Crepuscular</b> n\xE3o \xE9 qualquer j\xF3ia que\nvoc\xEA pode simplesmente
+      pegar e ganhar com isso!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 62052542783488
+    m_Localized: "O diamante \xE9 altamente destrutivo, e j\xE1 causou\ncaos nas
+      cidades. \xC9 fora dos limites para voc\xEA\nalcan\xE7\xE1-lo."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 62054925148160
+    m_Localized: "Voc\xEA entende o qu\xE3o s\xE9rio isso \xE9, seu pirralho?<pause=0.9><b>
+      Hein?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63169670488064
+    m_Localized: "<speed=30>N\xE3o estou em busca de me enriquecer. Isso \xE9\ncoisa
+      do seu cl\xE3-"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63362570723328
+    m_Localized: "<speed=85><b>Cale a boca, seu idiota.</b> N\xE3o ache que\nos soldados
+      do meu cl\xE3 s\xE3o apenas capangas sem c\xE9rebro."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63368312725504
+    m_Localized: "Eu posso te matar <b>aqui</b>, e <b>agora</b>, \ne ningu\xE9m vir\xE1
+      para te resgatar."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63941690859520
+    m_Localized: "<speed=75>Pensando melhor,<pause=0.5> vou deixar voc\xEA ir dessa
+      vez."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 64091276517376
+    m_Localized: "Vamos ver se voc\xEA consegue sobreviver nessa selva subterr\xE2nea.
+      <pause=0.5>\nVamos ver se sua determina\xE7\xE3o consegue me impressionar..<pause=0.5>\nE
+      ent\xE3o,<pause=0.2> n\xF3s teremos uma luta adequada."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 64093189120000
+    m_Localized: Boa sorte.
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 1

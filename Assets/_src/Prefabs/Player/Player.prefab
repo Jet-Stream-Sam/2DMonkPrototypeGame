@@ -120,6 +120,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cf71c3dbfc062924c9a49017ad1a8f33, type: 2}
   - {fileID: 11400000, guid: 2b31c189c2b7d4b4898956b83959b0de, type: 2}
   - {fileID: 11400000, guid: 487444dd677ad964ca000bb48abe07e9, type: 2}
+  - {fileID: 11400000, guid: b2e5a1c8d38c1fa4980186544584f253, type: 2}
 --- !u!114 &4970770069740980496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -464,6 +465,7 @@ GameObject:
   - component: {fileID: 2626304570625663778}
   - component: {fileID: 4216560216508893961}
   - component: {fileID: 1333225238}
+  - component: {fileID: 914800709194098539}
   m_Layer: 9
   m_Name: Sprite
   m_TagString: Untagged
@@ -641,6 +643,25 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1236577121039505280}
   m_Enabled: 1
+--- !u!114 &914800709194098539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236577121039505280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78be7df8a0ad2c44eba47138e81b6b2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMainController: {fileID: 6278708686460877383}
+  actorTransform: {fileID: 2247691526897351477}
+  detectionRadius: 1.5
+  interactableMask:
+    serializedVersion: 2
+    m_Bits: 2048
+  debugActivated: 1
 --- !u!1 &1708156598237419952
 GameObject:
   m_ObjectHideFlags: 0

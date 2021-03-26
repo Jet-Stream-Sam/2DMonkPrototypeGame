@@ -19,6 +19,13 @@ MonoBehaviour:
     isMysteriousCharacter: 1
     isDialogueUnskippable: 0
     dialogueBlocksAdvancing: 0
+    localizedDialogueText:
+    - m_TableReference:
+        m_TableCollectionName: GUID:a87258dc88b9056409b5135798f5db88
+      m_TableEntryReference:
+        m_KeyId: 312773779456
+        m_Key: 
+      m_FallbackState: 0
     dialogueText:
     - "Now,<pause=0.2><speed=85> you were not who I was expecting...<speed=75><pause=0.3>
       \nWhich <#FF1D00>Shindo Clan </color>are you from?"
@@ -28,6 +35,13 @@ MonoBehaviour:
     isMysteriousCharacter: 0
     isDialogueUnskippable: 0
     dialogueBlocksAdvancing: 0
+    localizedDialogueText:
+    - m_TableReference:
+        m_TableCollectionName: GUID:a87258dc88b9056409b5135798f5db88
+      m_TableEntryReference:
+        m_KeyId: 480785014784
+        m_Key: 
+      m_FallbackState: 0
     dialogueText:
     - ......
   - characterName: Meine
@@ -36,6 +50,13 @@ MonoBehaviour:
     isMysteriousCharacter: 1
     isDialogueUnskippable: 0
     dialogueBlocksAdvancing: 0
+    localizedDialogueText:
+    - m_TableReference:
+        m_TableCollectionName: GUID:a87258dc88b9056409b5135798f5db88
+      m_TableEntryReference:
+        m_KeyId: 495276335104
+        m_Key: 
+      m_FallbackState: 0
     dialogueText:
     - "Oh, how rude of me.<pause=0.2> Let me introduce myself.<pause=0.5> My name
       is \n<b>Meine</b>, captain of the <#ff3c33>Fierce Red</color>, first Shindo
@@ -46,6 +67,13 @@ MonoBehaviour:
     isMysteriousCharacter: 0
     isDialogueUnskippable: 0
     dialogueBlocksAdvancing: 0
+    localizedDialogueText:
+    - m_TableReference:
+        m_TableCollectionName: GUID:a87258dc88b9056409b5135798f5db88
+      m_TableEntryReference:
+        m_KeyId: 504973565952
+        m_Key: 
+      m_FallbackState: 0
     dialogueText:
     - Now please introduce yourself.
   - characterName: Tatsuo
@@ -54,6 +82,13 @@ MonoBehaviour:
     isMysteriousCharacter: 0
     isDialogueUnskippable: 0
     dialogueBlocksAdvancing: 0
+    localizedDialogueText:
+    - m_TableReference:
+        m_TableCollectionName: GUID:a87258dc88b9056409b5135798f5db88
+      m_TableEntryReference:
+        m_KeyId: 649932906496
+        m_Key: 
+      m_FallbackState: 0
     dialogueText:
     - "Name's <b>Tatsuo</b>.<pause=0.5> I'm all by myself, and for clans...<pause=0.2>
       \nI am unaffiliated."

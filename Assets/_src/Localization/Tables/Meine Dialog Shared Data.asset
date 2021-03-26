@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Meine Dialog Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Meine Dialog I
+  m_TableCollectionNameGuidString: a87258dc88b9056409b5135798f5db88
+  m_Entries:
+  - m_Id: 9613680640
+    m_Key: MeineDialog (1)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 312773779456
+    m_Key: MeineDialog (2)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 480785014784
+    m_Key: MeineDialog (3)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 495276335104
+    m_Key: MeineDialog (4)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 504973565952
+    m_Key: MeineDialog (5)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 649932906496
+    m_Key: MeineDialog (6)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59805171785728
+    m_Key: MeineDialog (7)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 60488637816832
+    m_Key: MeineDialog (8)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 60825792749568
+    m_Key: MeineDialog (9)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 62052542783488
+    m_Key: MeineDialog (10)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 62054925148160
+    m_Key: MeineDialog (11)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63169670488064
+    m_Key: MeineDialog (12)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63362570723328
+    m_Key: MeineDialog (13)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63368312725504
+    m_Key: MeineDialog (14)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63941690859520
+    m_Key: MeineDialog (15)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 64091276517376
+    m_Key: MeineDialog (16)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 64093189120000
+    m_Key: MeineDialog (17)
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables,
+        asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1616705620177

@@ -19,6 +19,19 @@ MonoBehaviour:
     isMysteriousCharacter: 0
     isDialogueUnskippable: 0
     dialogueBlocksAdvancing: 0
+    localizedDialogueText:
+    - m_TableReference:
+        m_TableCollectionName: GUID:a87258dc88b9056409b5135798f5db88
+      m_TableEntryReference:
+        m_KeyId: 63362570723328
+        m_Key: 
+      m_FallbackState: 0
+    - m_TableReference:
+        m_TableCollectionName: GUID:a87258dc88b9056409b5135798f5db88
+      m_TableEntryReference:
+        m_KeyId: 63368312725504
+        m_Key: 
+      m_FallbackState: 0
     dialogueText:
     - '<speed=85><b>Shut your trap, you little brat.</b> Do not mistake my clan''s
 

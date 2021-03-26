@@ -19,13 +19,26 @@ MonoBehaviour:
     isMysteriousCharacter: 0
     isDialogueUnskippable: 0
     dialogueBlocksAdvancing: 0
+    localizedDialogueText:
+    - m_TableReference:
+        m_TableCollectionName: GUID:a87258dc88b9056409b5135798f5db88
+      m_TableEntryReference:
+        m_KeyId: 63941690859520
+        m_Key: 
+      m_FallbackState: 0
+    - m_TableReference:
+        m_TableCollectionName: GUID:a87258dc88b9056409b5135798f5db88
+      m_TableEntryReference:
+        m_KeyId: 64091276517376
+        m_Key: 
+      m_FallbackState: 0
+    - m_TableReference:
+        m_TableCollectionName: GUID:a87258dc88b9056409b5135798f5db88
+      m_TableEntryReference:
+        m_KeyId: 64093189120000
+        m_Key: 
+      m_FallbackState: 0
     dialogueText:
-    - <speed=75>However,<pause=0.5> I'll let you off the hook this time.
-    - 'Let''s see if you can survive in this underground jungle first. <pause=0.5>
-
-      Let''s
-      see if your resolve is enough to impress me.<pause=0.5>
-
-      Then,<pause=0.2>
-      we can have a proper fight.'
-    - Good luck.
+    - 
+    - 
+    - 

@@ -241,6 +241,7 @@ GameObject:
   - component: {fileID: 822370932692169290}
   - component: {fileID: 3185785416688961785}
   - component: {fileID: 6539926899801730733}
+  - component: {fileID: 6289427959718696379}
   m_Layer: 0
   m_Name: MainText
   m_TagString: Untagged
@@ -441,6 +442,41 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &6289427959718696379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4272193998907834174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:4bccda2c5e9a9ce43b5fd1f91543928b
+    m_TableEntryReference:
+      m_KeyId: 133467283456
+      m_Key: 
+    m_FallbackState: 0
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7006248145539332322}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4828950330639422162
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,6 +561,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &4385089976097105718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -585,6 +622,7 @@ GameObject:
   - component: {fileID: 3964176898962497775}
   - component: {fileID: 5397152086327423309}
   - component: {fileID: 273273870667348717}
+  - component: {fileID: 9073630394295034566}
   m_Layer: 0
   m_Name: Continue Prompt
   m_TagString: Untagged
@@ -783,6 +821,41 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &9073630394295034566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6994336044113452739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:4bccda2c5e9a9ce43b5fd1f91543928b
+    m_TableEntryReference:
+      m_KeyId: 133467283456
+      m_Key: 
+    m_FallbackState: 0
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 988208512570826899}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7553013904677236376
 GameObject:
   m_ObjectHideFlags: 0
@@ -827,6 +900,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -909,6 +983,7 @@ GameObject:
   - component: {fileID: 1026427441197990421}
   - component: {fileID: 5621528100399995310}
   - component: {fileID: 1558590768583672768}
+  - component: {fileID: 4751914436400483526}
   m_Layer: 0
   m_Name: Interact
   m_TagString: Untagged
@@ -1033,6 +1108,41 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4751914436400483526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7835662740425145104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:ce1356094a415894f8a99853cd0bef92
+    m_TableEntryReference:
+      m_KeyId: 6279208960
+      m_Key: 
+    m_FallbackState: 0
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1558590768583672768}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8484810404393323033
 GameObject:
   m_ObjectHideFlags: 0
@@ -1046,7 +1156,8 @@ GameObject:
   - component: {fileID: 8780337588504113905}
   - component: {fileID: 8080731048593826347}
   - component: {fileID: 1139104008140255255}
-  m_Layer: 0
+  - component: {fileID: 5425397193674889769}
+  m_Layer: 11
   m_Name: Sign
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1082,6 +1193,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -1134,12 +1246,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05ed80b728dbaa849926e6f187da3cf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadius: 1.85
-  areaTransform: {fileID: 8484810404393323032}
-  areaMask:
-    serializedVersion: 2
-    m_Bits: 512
-  debugActivated: 0
 --- !u!114 &8080731048593826347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1181,7 +1287,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  interactable: {fileID: 8780337588504113905}
+  interaction: {fileID: 8780337588504113905}
   alertObj: {fileID: 8484810404620209055}
   timeline: {fileID: 7849961402132724659}
 --- !u!114 &1139104008140255255
@@ -1199,6 +1305,32 @@ MonoBehaviour:
   fadingObject: {fileID: 7553013904677236376}
   fadeInTime: 0.1
   fadeOutTime: 0.8
+--- !u!61 &5425397193674889769
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8484810404393323033}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 2}
+    newSize: {x: 2, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2, y: 2}
+  m_EdgeRadius: 0
 --- !u!1 &8484810404620209055
 GameObject:
   m_ObjectHideFlags: 0
@@ -1242,6 +1374,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -1391,6 +1524,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &7221391560594094174
 MonoBehaviour:
   m_ObjectHideFlags: 0

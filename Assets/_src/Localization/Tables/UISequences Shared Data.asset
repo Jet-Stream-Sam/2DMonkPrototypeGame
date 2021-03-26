@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: UISequences Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: UISequences
+  m_TableCollectionNameGuidString: 4bccda2c5e9a9ce43b5fd1f91543928b
+  m_Entries:
+  - m_Id: 133467283456
+    m_Key: Continue Prompt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 236877848576
+    m_Key: TUT_Stage 1 Tomb 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5960735465472
+    m_Key: TUT_Stage 1 Unlocked 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6323492429824
+    m_Key: TUT_Stage 2 Tomb 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6363355095040
+    m_Key: TUT_Stage 2 Unlocked 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6366945419264
+    m_Key: TUT_Stage 2 Unlocked 2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9004290220032
+    m_Key: TUT_Stage 3 Sign 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8995129860096
+    m_Key: TUT_Stage 3 Tomb 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9111467270144
+    m_Key: TUT_Stage 3 Unlocked 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11123017719808
+    m_Key: TUT_Stage 4 Tomb 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11129023963136
+    m_Key: TUT_Stage 4 Unlocked 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11130638770176
+    m_Key: TUT_Stage 4 Unlocked 2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13713625391104
+    m_Key: TUT_Stage 5 Sign 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13785767419904
+    m_Key: TUT_Stage 5 Sign 2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13661142065152
+    m_Key: TUT_Stage 5 Tomb 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18397224312832
+    m_Key: CRU_Stage 1 Sign 1
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables,
+        asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1616722865805

@@ -1,0 +1,131 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: UISequences_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 4bccda2c5e9a9ce43b5fd1f91543928b, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 133467283456
+    m_Localized: <sprite=4> to continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 236877848576
+    m_Localized: "Go through the level and enter the door \nto get to the next level.\nJump
+      with [Space].\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5960735465472
+    m_Localized: 'You''ve unlocked the <b>Atomic Punch</b> attack!
+
+      Notation:
+      <sprite=4>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6323492429824
+    m_Localized: 'Punch your enemies with <sprite=4>,
+
+      and destroy them to
+      advance to the next level.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6363355095040
+    m_Localized: 'You''ve unlocked the <b>Heel Spear</b> attack!
+
+      Notation:
+      <sprite=3>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6366945419264
+    m_Localized: 'You''ve unlocked the <b>Dagger Kick</b> attack!
+
+      Notation:
+      While Crouching <sprite=3>
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9111467270144
+    m_Localized: 'You''ve unlocked the <b>Divekick</b> attack!
+
+      Notation: While
+      Falling <sprite=3>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8995129860096
+    m_Localized: 'Crouch while holding down to
+
+      get under tight spaces.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9004290220032
+    m_Localized: 'Tip: Attack with the <sprite=3> button
+
+      while crouched to
+      strike at a low position.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11123017719808
+    m_Localized: 'Attack while falling with <sprite=3>
+
+      to strike enemies in
+      the air.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11129023963136
+    m_Localized: 'Now you have a power meter for use of special attacks!
+
+      It
+      replenishes after attacking enemies.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11130638770176
+    m_Localized: 'You''ve unlocked the <b>Atomic Punch EX</b> attack!
+
+      Notation:
+      <sprite=5><sprite=4>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13661142065152
+    m_Localized: "Do <sprite=5><sprite=4> to release a \nspecial attack that stuns
+      enemies.\nThis attack needs 2 orbs of your new power meter."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13713625391104
+    m_Localized: 'Tip: Be careful! Some enemies can
+
+      also make special attacks
+      that can
+
+      stagger you! '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13785767419904
+    m_Localized: NOW YOU CAN'T ESCAPE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18397224312832
+    m_Localized: '<color=#ffd700>Tip: From now on, new moves are
+
+      unlocked
+      by <b>Moon Shards!</b> There''s one
+
+      on this level.'
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 1

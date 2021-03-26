@@ -76,7 +76,6 @@ public class FlyingCharge : MonoBehaviour, IMoveBehaviour
         if (!(obj is AttackTriggerEvent trigger))
             return;
 
-        Debug.Log(attackState.directionToFollow);
 
         controllerScript.SetMovement(attackState.directionToFollow);
 

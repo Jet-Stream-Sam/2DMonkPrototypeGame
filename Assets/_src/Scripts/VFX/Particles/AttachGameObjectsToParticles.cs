@@ -19,18 +19,18 @@ public class AttachGameObjectsToParticles : MonoBehaviour
     [SerializeField] private float sizeMultiplier = 1;
     [ShowIf("alphaAffectsIntensity")]
     [SerializeField] private float alphaMultiplier = 1;
-    void Start()
+
+    private void Awake()
     {
-        if(ParticleLightingSetting.ParticleLighting == 1)
+        if (ParticleLightingSetting.ParticleLighting == 1)
         {
             Destroy(this);
         }
-
-
+    }
+    void Start()
+    {
         m_ParticleSystem = GetComponent<ParticleSystem>();
         m_Particles = new ParticleSystem.Particle[m_ParticleSystem.main.maxParticles];
-        
-
     }
 
     void LateUpdate()

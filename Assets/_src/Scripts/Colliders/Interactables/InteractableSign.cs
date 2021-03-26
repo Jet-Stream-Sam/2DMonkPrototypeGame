@@ -4,18 +4,18 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 using UnityEngine.Playables;
 
-public class InteractableSign : SerializedMonoBehaviour
+public class InteractableSign : SerializedMonoBehaviour, IInteractable
 {
-    [SerializeField] private Interactable interactable;
+    [SerializeField] private TriggeredInteraction interaction;
     [SerializeField] private ITweenAnimation[] animationObjs;
     [SerializeField] private GameObject alertObj;
     [SerializeField] private PlayableDirector timeline;
 
     private void Start()
     {
-        interactable.OnInteract += OpenMenu;
-        interactable.OnAreaEnter += ShowIndicationArrow;
-        interactable.OnAreaExit += HideIndicationArrow;
+        interaction.Interact += OpenMenu;
+        interaction.AreaEntered += ShowIndicationArrow;
+        interaction.AreaExited += HideIndicationArrow;
     }
 
     private void ShowIndicationArrow()
@@ -41,8 +41,8 @@ public class InteractableSign : SerializedMonoBehaviour
 
     private void OnDestroy()
     {
-        interactable.OnInteract -= OpenMenu;
-        interactable.OnAreaEnter -= ShowIndicationArrow;
-        interactable.OnAreaExit -= HideIndicationArrow;
+        interaction.Interact -= OpenMenu;
+        interaction.AreaEntered -= ShowIndicationArrow;
+        interaction.AreaExited -= HideIndicationArrow;
     }
 }

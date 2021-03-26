@@ -19,5 +19,12 @@ MonoBehaviour:
     isMysteriousCharacter: 1
     isDialogueUnskippable: 0
     dialogueBlocksAdvancing: 0
+    localizedDialogueText:
+    - m_TableReference:
+        m_TableCollectionName: GUID:a87258dc88b9056409b5135798f5db88
+      m_TableEntryReference:
+        m_KeyId: 9613680640
+        m_Key: 
+      m_FallbackState: 0
     dialogueText:
     - <b>Halt.</b><pause=0.3> I can feel your presence.

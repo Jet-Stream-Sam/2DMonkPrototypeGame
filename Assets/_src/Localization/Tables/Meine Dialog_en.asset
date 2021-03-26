@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Meine Dialog_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: a87258dc88b9056409b5135798f5db88, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 9613680640
+    m_Localized: <b>Halt.</b><pause=0.3> I can feel your presence.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 312773779456
+    m_Localized: "Now,<pause=0.2><speed=85> you were not who I was expecting...<speed=75><pause=0.3>
+      \nWhich <#FF1D00>Shindo Clan </color>are you from?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 480785014784
+    m_Localized: ......
+    m_Metadata:
+      m_Items: []
+  - m_Id: 495276335104
+    m_Localized: "Oh, how rude of me.<pause=0.2> Let me introduce myself.<pause=0.5>
+      My name is \n<b>Meine</b>, captain of the <#ff3c33>Fierce Red</color>, first
+      Shindo Clan."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 504973565952
+    m_Localized: Now please introduce yourself.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 649932906496
+    m_Localized: "Name's <b>Tatsuo</b>.<pause=0.5> I'm all by myself, and for clans...<pause=0.2>
+      \nI am unaffiliated."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59805171785728
+    m_Localized: 'Unaffiliated? Hah, are you trying to play a trick on me?
+
+      For
+      what reason would a civilian roam in this hell hole?
+
+      By himself even?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 60488637816832
+    m_Localized: I'm in search for the <b>Dusk Diamond</b>.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 60825792749568
+    m_Localized: "Well, aren't we all.<pause=0.3> Don't make me laugh! \nThe <b>Dusk
+      Diamond</b> is not some grave robbing \njewel you can just steal and get rich
+      from!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 62052542783488
+    m_Localized: "The diamond is utterly destructive, and has caused \nmayhem upon
+      our lands. It's none of your business \nto reach it."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 62054925148160
+    m_Localized: Do you understand how serious that is, you punk?<pause=0.9><b> Huh?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63169670488064
+    m_Localized: "<speed=30>I'm not in pursuit of richness. That could be said \nabout
+      your clan-"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63362570723328
+    m_Localized: '<speed=85><b>Shut your trap, you little brat.</b> Do not mistake
+      my clan''s
+
+      men for some stupid rich goons.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63368312725504
+    m_Localized: "I could kill you right <b>here</b>, right <b>now</b>, \nand no
+      one would ever come to rescue you."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63941690859520
+    m_Localized: <speed=75>However,<pause=0.5> I'll let you off the hook this time.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 64091276517376
+    m_Localized: 'Let''s see if you can survive in this underground jungle first.
+      <pause=0.5>
+
+      Let''s see if your resolve is enough to impress me.<pause=0.5>
+
+      Then,<pause=0.2>
+      we can have a proper fight.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 64093189120000
+    m_Localized: Good luck.
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 1

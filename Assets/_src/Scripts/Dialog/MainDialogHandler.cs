@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Playables;
+using UnityEngine.Localization;
 
 public class MainDialogHandler : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class MainDialogHandler : MonoBehaviour
     [SerializeField] private Image imagePortraitShadow;
     [FoldoutGroup("Dependencies")]
     [SerializeField] private TMP_Text characterNameTitle;
+
     [SerializeField] private bool playOnStart = true;
     private bool isDialogActive = false;
 
@@ -91,7 +93,7 @@ public class MainDialogHandler : MonoBehaviour
         if (!isDialogActive) return;
         
 
-        List<string> dialogueSequences = dialogueObject.dialogues[dialogueCurrentIndex].dialogueText;
+        List<LocalizedString> dialogueSequences = dialogueObject.dialogues[dialogueCurrentIndex].localizedDialogueText;
 
         if (textAdvancer.isWritingText && !dialogueObject.dialogues[dialogueCurrentIndex].isDialogueUnskippable)
         {
@@ -133,7 +135,7 @@ public class MainDialogHandler : MonoBehaviour
         else
             characterNameTitle.text = dialogueObject.dialogues[dialogueCurrentIndex].characterName;
 
-        List<string> dialogueSequences = dialogueObject.dialogues[dialogueCurrentIndex].dialogueText;
+        List<LocalizedString> dialogueSequences = dialogueObject.dialogues[dialogueCurrentIndex].localizedDialogueText;
         textAdvancer.WriteDialog(dialogueSequences[dialogueTextCurrentIndex]);
 
     }

@@ -708,6 +708,8 @@ MonoBehaviour:
   canvasGroup: {fileID: 5013657686944891530}
   fadeInTime: 0.1
   fadeOutTime: 0.1
+  fadeInIgnoreTimeScale: 1
+  fadeOutIgnoreTimeScale: 0
 --- !u!1 &5013657687369342376
 GameObject:
   m_ObjectHideFlags: 0
@@ -935,5 +937,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textComponent: {fileID: 5013657687709426944}
-  revealSpeed: 70
+  localizeStringEvent: {fileID: 0}
+  revealBaseSpeed: 10
   characterFadeSpread: 3

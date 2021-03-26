@@ -28456,6 +28456,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 204b5ad04fbf3cb4a942bd7fcd88c75c,
         type: 2}
+    - target: {fileID: 3152980483382832640, guid: 88ab15365d938ae40807341f4d951e6e,
+        type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 8995129860096
+      objectReference: {fileID: 0}
     - target: {fileID: 4175464374532737352, guid: 88ab15365d938ae40807341f4d951e6e,
         type: 3}
       propertyPath: m_Sprite
@@ -31896,6 +31901,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Alpha
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4707390736624848203, guid: f02ba1cf336d1ba47935464a971360ec,
+        type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 9111467270144
       objectReference: {fileID: 0}
     - target: {fileID: 5446404339568676526, guid: f02ba1cf336d1ba47935464a971360ec,
         type: 3}
@@ -47858,6 +47868,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Alpha
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6289427959718696379, guid: 42b6ebee0be9956418a868724126d4c7,
+        type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 9004290220032
       objectReference: {fileID: 0}
     - target: {fileID: 7006248145539332322, guid: 42b6ebee0be9956418a868724126d4c7,
         type: 3}

@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Lorem Ipsum_pt-BR
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: pt-BR
+  m_SharedData: {fileID: 11400000, guid: 4ad1e7e5e2953964b8c5ba487b666a9f, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 23316471808
+    m_Localized: "Lorem Ipsum \xE9 simplesmente um texto fict\xEDcio da ind\xFAstria
+      de impress\xE3o e composi\xE7\xE3o. Lorem Ipsum tem sido o texto fict\xEDcio
+      padr\xE3o da ind\xFAstria desde 1500, quando um impressor desconhecido pegou
+      um modelo de impress\xE3o e embaralhou-o para fazer um livro de amostra de
+      tipos. "
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 1

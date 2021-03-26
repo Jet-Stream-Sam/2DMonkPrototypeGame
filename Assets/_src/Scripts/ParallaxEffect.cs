@@ -22,7 +22,6 @@ public class ParallaxEffect : MonoBehaviour
     {
         isParallaxEnabledForThisObject = true;
         startPos = movingTransform.position.x;
-        Debug.Log(startPos);
     }
     [Title("Edit Mode")]
     [ShowIf("isParallaxEnabledForThisObject"), Button("Disable Parallax for this object")]

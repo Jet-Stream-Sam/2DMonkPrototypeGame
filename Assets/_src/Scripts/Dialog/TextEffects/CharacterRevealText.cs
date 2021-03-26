@@ -4,10 +4,14 @@ using TMPro;
 using Sirenix.OdinInspector;
 using System;
 using System.Globalization;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Components;
+using UnityEngine.UI;
 
 public class CharacterRevealText : MonoBehaviour
 {
     [SerializeField] private TMP_Text textComponent;
+    [SerializeField] private LocalizeStringEvent localizeStringEvent;
     [SerializeField] [Range(0, 100)] private float revealBaseSpeed = 10f;
     private float revealResultSpeed => revealBaseSpeed * 0.5f;
     [SerializeField] private int characterFadeSpread = 10;
@@ -24,10 +28,12 @@ public class CharacterRevealText : MonoBehaviour
     public Action onDialogResume;
     public Action onDialogStopped;
 
+
     public bool isWritingText { get; private set; } = false;
 
     private IEnumerator ValidateCharacters()
     {
+
         isWritingText = true;
         var textInfo = textComponent.textInfo;
         characterCount = textInfo.characterCount;
@@ -138,27 +144,29 @@ public class CharacterRevealText : MonoBehaviour
             switch (tagKey)
             {
                 case "pause":
-                    Debug.Log($"Pausing dialogue for {tagValue} seconds.");
-                    Debug.Log(tagValue);
                     pauseTimer = float.Parse(tagValue, CultureInfo.InvariantCulture.NumberFormat);
                     return;
                 case "speed":
-                    Debug.Log($"Changing dialogue speed to {tagValue}.");
                     revealBaseSpeed = float.Parse(tagValue, CultureInfo.InvariantCulture.NumberFormat);
                     return;
                 case "reveal_mode":
-                    Debug.Log($"Changing character reveal mode to {tagValue}.");
                     return;
 
             }
         }
     }
-    public void WriteDialog(string dialogue)
+    public void WriteDialog(LocalizedString dialogue)
     {
-        textComponent.text = dialogue;
+        localizeStringEvent.StringReference.SetReference(dialogue.TableReference, dialogue.TableEntryReference);
+        localizeStringEvent.StringReference.StringChanged += UpdateString;
+    }
+
+    private void UpdateString(string localizedText)
+    {
         HideAllCharacters();
-        
+        textComponent.text = localizedText;
         StartCoroutine(revealCharactersCoroutine = ValidateCharacters());
+        localizeStringEvent.StringReference.StringChanged -= UpdateString;
     }
     [Button("Hide All Characters")]
     public void HideAllCharacters()

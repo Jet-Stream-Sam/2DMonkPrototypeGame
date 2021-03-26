@@ -19,6 +19,13 @@ MonoBehaviour:
     isMysteriousCharacter: 0
     isDialogueUnskippable: 1
     dialogueBlocksAdvancing: 1
+    localizedDialogueText:
+    - m_TableReference:
+        m_TableCollectionName: GUID:a87258dc88b9056409b5135798f5db88
+      m_TableEntryReference:
+        m_KeyId: 63169670488064
+        m_Key: 
+      m_FallbackState: 0
     dialogueText:
     - "<speed=30>I'm not in pursuit of richness. That could be said \nabout your
       clan-"

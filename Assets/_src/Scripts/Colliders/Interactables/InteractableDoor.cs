@@ -1,10 +1,10 @@
 ﻿using System;
 using UnityEngine;
 using Sirenix.OdinInspector;
-public class InteractableDoor : SerializedMonoBehaviour
+public class InteractableDoor : SerializedMonoBehaviour, IInteractable
 {
     [FoldoutGroup("Dependencies")]
-    [SerializeField] private Interactable interactable;
+    [SerializeField] private TriggeredInteraction interaction;
     [FoldoutGroup("Dependencies")]
     [SerializeField] private ITweenAnimation[] animationObjs;
     [FoldoutGroup("Dependencies")]
@@ -16,9 +16,9 @@ public class InteractableDoor : SerializedMonoBehaviour
 
     private void Start()
     {
-        interactable.OnInteract += EnterDoor;
-        interactable.OnAreaEnter += ShowIndicationArrow;
-        interactable.OnAreaExit += HideIndicationArrow;
+        interaction.Interact += EnterDoor;
+        interaction.AreaEntered += ShowIndicationArrow;
+        interaction.AreaExited += HideIndicationArrow;
     }
 
     private void ShowIndicationArrow()
@@ -49,8 +49,8 @@ public class InteractableDoor : SerializedMonoBehaviour
 
     private void OnDestroy()
     {
-        interactable.OnInteract -= EnterDoor;
-        interactable.OnAreaEnter -= ShowIndicationArrow;
-        interactable.OnAreaExit -= HideIndicationArrow;
+        interaction.Interact -= EnterDoor;
+        interaction.AreaEntered -= ShowIndicationArrow;
+        interaction.AreaExited -= HideIndicationArrow;
     }
 }

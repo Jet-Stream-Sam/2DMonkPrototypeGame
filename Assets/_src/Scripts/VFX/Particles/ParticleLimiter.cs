@@ -15,9 +15,8 @@ public class ParticleLimiter : MonoBehaviour
     private ParticleSystem.MinMaxCurve originalRateOverTime;
     private ParticleSystem.MinMaxCurve originalRateOverDistance;
     private int limitValue = 0;
-    
 
-    private void Start()
+    private void Awake()
     {
         originalRateOverTime = mainParticleSystem.emission.rateOverTime;
         originalRateOverDistance = mainParticleSystem.emission.rateOverDistance;
@@ -27,7 +26,6 @@ public class ParticleLimiter : MonoBehaviour
         LimitRates();
         LimitBursts();
         ParticleLevelSetting.OnSettingsChanged += ChangeSetting;
-   
     }
 
     private void ChangeSetting(int setting)

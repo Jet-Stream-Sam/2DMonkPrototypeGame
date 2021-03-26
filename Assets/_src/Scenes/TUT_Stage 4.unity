@@ -1647,6 +1647,7 @@ TilemapRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
@@ -6979,6 +6980,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 204b5ad04fbf3cb4a942bd7fcd88c75c,
         type: 2}
+    - target: {fileID: 3152980483382832640, guid: 88ab15365d938ae40807341f4d951e6e,
+        type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 11123017719808
+      objectReference: {fileID: 0}
     - target: {fileID: 4175464374532737352, guid: 88ab15365d938ae40807341f4d951e6e,
         type: 3}
       propertyPath: m_Sprite
@@ -8341,6 +8347,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Alpha
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4707390736624848203, guid: f02ba1cf336d1ba47935464a971360ec,
+        type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 11130638770176
       objectReference: {fileID: 0}
     - target: {fileID: 5443877105899364325, guid: f02ba1cf336d1ba47935464a971360ec,
         type: 3}
@@ -10701,6 +10712,7 @@ TilemapRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
@@ -24768,7 +24780,7 @@ MonoBehaviour:
     - Name: animationObjs
       Entry: 6
       Data: 
-  interactable: {fileID: 0}
+  interaction: {fileID: 0}
   levelChanger: {fileID: 0}
   unlockedFeatures: {fileID: 0}
   isLocked: 1
@@ -25376,6 +25388,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Alpha
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4707390736624848203, guid: f02ba1cf336d1ba47935464a971360ec,
+        type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 11129023963136
       objectReference: {fileID: 0}
     - target: {fileID: 5443877105899364325, guid: f02ba1cf336d1ba47935464a971360ec,
         type: 3}
@@ -27347,6 +27364,7 @@ TilemapRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
@@ -39926,6 +39944,7 @@ TilemapRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0

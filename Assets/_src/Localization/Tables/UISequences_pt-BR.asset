@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: UISequences_pt-BR
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: pt-BR
+  m_SharedData: {fileID: 11400000, guid: 4bccda2c5e9a9ce43b5fd1f91543928b, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 133467283456
+    m_Localized: <sprite=4> para continuar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 236877848576
+    m_Localized: "Passe pelo n\xEDvel e entre na porta\npara chegar ao pr\xF3ximo
+      n\xEDvel.\nPule com [Espa\xE7o].\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5960735465472
+    m_Localized: "Voc\xEA acabou de desbloquear o ataque <b>Soco At\xF4mico</b>!\nNota\xE7\xE3o:
+      <sprite=4>"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6323492429824
+    m_Localized: "Ataque seus inimigos com <sprite=4>,\ne destrua-os para avan\xE7ar
+      para o pr\xF3ximo n\xEDvel."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6363355095040
+    m_Localized: "Voc\xEA acabou de desbloquear o ataque <b>Lan\xE7a Do Calcanhar</b>!\nNota\xE7\xE3o:
+      <sprite=3>"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6366945419264
+    m_Localized: "Voc\xEA acabou de desbloquear o ataque <b>Chute da Adaga</b>!\nNota\xE7\xE3o:
+      Enquanto agacha <sprite=3>\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8995129860096
+    m_Localized: 'Agache enquanto segura para baixo
+
+      para passar em lugares
+      apertados.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9004290220032
+    m_Localized: "Dica: Ataque com o bot\xE3o <sprite=3>\nenquanto agacha para atacar
+      em uma posi\xE7\xE3o baixa."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9111467270144
+    m_Localized: "Voc\xEA acabou de desbloquear o ataque <b>Voadora</b>!\nNota\xE7\xE3o:
+      Enquanto cai <sprite=3>"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11130638770176
+    m_Localized: "Voc\xEA acabou de desbloquear o ataque <b>Soco At\xF4mico EX</b>!\nNota\xE7\xE3o:
+      <sprite=5><sprite=4>"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11123017719808
+    m_Localized: 'Ataque enquanto cai com <sprite=3>
+
+      para atingir inimigos
+      no ar. '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11129023963136
+    m_Localized: "Agora voc\xEA possui uma barra de poder para o uso\nde ataques
+      especiais! A barra recupera ao atacar inimigos."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13713625391104
+    m_Localized: "Dica: Cuidado! Alguns inimigos tamb\xE9m\nconseguem lan\xE7ar ataques
+      especiais que podem\natordo\xE1-lo!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13785767419904
+    m_Localized: "N\xC3O H\xC1 ESCAPAT\xD3RIA"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13661142065152
+    m_Localized: "Fa\xE7a <sprite=5><sprite=4> para lan\xE7ar um\nataque especial
+      que atordoa inimigos.\nEsse ataque precisa de 2 orbes da sua nova barra de
+      poder."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18397224312832
+    m_Localized: "<color=#ffd700> Dica: De agora em diante, novos\ngolpes ser\xE3o
+      desbloqueados pelos <b>Moon Shards!</b>\nH\xE1 um nesse n\xEDvel."
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 1

@@ -74,7 +74,6 @@ public class PlayerHitStunnedState : PlayerState
         while (time > 0)
         {
             time -= Time.deltaTime;
-            Debug.Log(time);
             yield return null;
         }
             

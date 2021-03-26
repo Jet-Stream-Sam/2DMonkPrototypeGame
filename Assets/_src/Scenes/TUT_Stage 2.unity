@@ -619,6 +619,7 @@ TilemapRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
@@ -2933,6 +2934,11 @@ PrefabInstance:
       propertyPath: m_Alpha
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4707390736624848203, guid: f02ba1cf336d1ba47935464a971360ec,
+        type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 6366945419264
+      objectReference: {fileID: 0}
     - target: {fileID: 5446404339568676526, guid: f02ba1cf336d1ba47935464a971360ec,
         type: 3}
       propertyPath: m_text
@@ -3261,6 +3267,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Alpha
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4707390736624848203, guid: f02ba1cf336d1ba47935464a971360ec,
+        type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 6363355095040
       objectReference: {fileID: 0}
     - target: {fileID: 5446404339568676526, guid: f02ba1cf336d1ba47935464a971360ec,
         type: 3}
@@ -3601,6 +3612,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 204b5ad04fbf3cb4a942bd7fcd88c75c,
         type: 2}
+    - target: {fileID: 3152980483382832640, guid: 88ab15365d938ae40807341f4d951e6e,
+        type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 6323492429824
+      objectReference: {fileID: 0}
     - target: {fileID: 4175464374532737352, guid: 88ab15365d938ae40807341f4d951e6e,
         type: 3}
       propertyPath: m_Sprite
@@ -4122,6 +4138,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9143045600590085024, guid: ae12b263db543384da2ca8456b5808a8,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 9143045600590085024, guid: ae12b263db543384da2ca8456b5808a8,
+        type: 3}
+    - target: {fileID: 9143045600590085024, guid: ae12b263db543384da2ca8456b5808a8,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143045600590085024, guid: ae12b263db543384da2ca8456b5808a8,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[0]
+      value: '"path":"animationObjs.[0]","value":$eref:0'
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143045600590085024, guid: ae12b263db543384da2ca8456b5808a8,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[1]
+      value: '"path":"animationObjs.[1]","value":$eref:1'
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143045600590085024, guid: ae12b263db543384da2ca8456b5808a8,
+        type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143045600590085024, guid: ae12b263db543384da2ca8456b5808a8,
+        type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 1262684969}
+    - target: {fileID: 9143045600590085024, guid: ae12b263db543384da2ca8456b5808a8,
+        type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 1262684968}
     - target: {fileID: 9143045600590085025, guid: ae12b263db543384da2ca8456b5808a8,
         type: 3}
       propertyPath: levelToLoadName
@@ -4135,6 +4187,30 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1262684966}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1262684968 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2125379609919226718, guid: ae12b263db543384da2ca8456b5808a8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1262684966}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90f26d2bffc66574c8c8b0ef995de4d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1262684969 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 414790191360901209, guid: ae12b263db543384da2ca8456b5808a8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1262684966}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaae21e9eed44f4489dbacbf5b683b15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1290836654
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5017,6 +5093,7 @@ TilemapRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
@@ -5354,7 +5431,7 @@ MonoBehaviour:
     - Name: animationObjs
       Entry: 6
       Data: 
-  interactable: {fileID: 0}
+  interaction: {fileID: 0}
   levelChanger: {fileID: 0}
   unlockedFeatures: {fileID: 0}
   isLocked: 1
@@ -5949,6 +6026,7 @@ TilemapRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
@@ -9118,6 +9196,7 @@ TilemapRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
